@@ -1,0 +1,27 @@
+/* XPM */
+static char *xpm_arrow_right[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 5 1",
+"  c black",
+". c navy",
+"X c #C0C0C0",
+"o c gray100",
+"O c None",
+/* pixels */
+"OOOOOOOOOOOOOOOO",
+"OOOOOOOO..OOOOOO",
+"OOOOOOO.X..OOOOO",
+"OOOOOOO.o.X.OOOO",
+"OOOOOOO.X.oX.OOO",
+"OO........XoX.OO",
+"O..XoXoXoXoXoX.O",
+".o.oXoXoXoXoXoX.",
+".X.XoXoXoXoXoX.O",
+".o........XoX.OO",
+"..........oX.OOO",
+"........o.X.OOOO",
+"OOOOOOO.X..OOOOO",
+"OOOOOOO.o.OOOOOO",
+"OOOOOOO..OOOOOOO",
+"OOOOOOOOOOOOOOOO"
+};

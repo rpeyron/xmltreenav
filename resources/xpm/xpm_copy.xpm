@@ -1,0 +1,26 @@
+/* XPM */
+static char *xpm_copy[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 4 1",
+"  c black",
+". c navy",
+"X c gray100",
+"o c None",
+/* pixels */
+"oooooooooooooooo",
+"o      ooooooooo",
+"o XXXX  oooooooo",
+"o XXXX X ooooooo",
+"o X  X ......ooo",
+"o XXXXX.XXXX..oo",
+"o X    .XXXX.X.o",
+"o XXXXX.X  X....",
+"o X    .XXXXXXX.",
+"o XXXXX.X     X.",
+"o      .XXXXXXX.",
+"ooooooo.X     X.",
+"ooooooo.XXXXXXX.",
+"ooooooo.........",
+"oooooooooooooooo",
+"oooooooooooooooo"
+};

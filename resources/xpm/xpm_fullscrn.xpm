@@ -1,0 +1,27 @@
+/* XPM */
+static char *xpm_fullscrn[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 5 1",
+"  c black",
+". c cyan",
+"X c #808080",
+"o c gray100",
+"O c None",
+/* pixels */
+"OOOOOOOOOOOOOOOO",
+"OOOOOOOOOOOOOOOO",
+"O             OO",
+" XXXXXXXXXXXXX O",
+" X           X O",
+" X .o.o.o.o. X O",
+" X oXXXo.o.o X O",
+" X .o.o.o.o. X O",
+" X oXXXXXXXo X O",
+" X .o.o.o.o. X O",
+" X oXXXXXXXo X O",
+" X .o.o.o.o. X O",
+" X           X O",
+" XXXXXXXXXXXXX O",
+"O             OO",
+"OOOOOOOOOOOOOOOO"
+};

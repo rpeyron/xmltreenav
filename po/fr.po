@@ -1,0 +1,315 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2004-08-21 19:33+0200\n"
+"PO-Revision-Date: 2004-08-21 19:48+0100\n"
+"Last-Translator: \n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/ConfigDialog.cpp:82
+msgid "Apply"
+msgstr "Appliquer"
+
+#: ../src/ConfigDialog.cpp:83
+msgid "Cancel"
+msgstr "Annuler"
+
+#: ../src/xtnApp.cpp:58
+#, c-format
+msgid "%s %s (c) 2004 - Rémi Peyronnet - http://www.via.ecp.fr/~remi"
+msgstr "%s %s (c) 2004 - Rémi Peyronnet - http://www.via.ecp.fr/~remi"
+
+#: ../src/xtnApp.cpp:59
+msgid "XSLT Display File to use"
+msgstr "Aperçu XSLT à utiliser"
+
+#: ../src/xtnApp.cpp:60
+msgid "XML File to open"
+msgstr "Fichier XML à ouvrir"
+
+#: ../src/xtnFrame.cpp:81
+msgid "Preferences"
+msgstr "Préférences"
+
+#: ../src/xtnFrame.cpp:83
+#: ../src/xtnFrame.cpp:84
+#: ../src/xtnFrame.cpp:85
+msgid "XML"
+msgstr "XML"
+
+#: ../src/xtnFrame.cpp:83
+msgid "Clean Text"
+msgstr "Nettoyage du text"
+
+#: ../src/xtnFrame.cpp:84
+msgid "Enforce Cleaning"
+msgstr "Force le nettoyage"
+
+#: ../src/xtnFrame.cpp:85
+msgid "Pretty Print on Save"
+msgstr "Sauvegarde un XML indenté"
+
+#: ../src/xtnFrame.cpp:168
+msgid "&Open..."
+msgstr "&Ouvrir..."
+
+#: ../src/xtnFrame.cpp:168
+msgid "Open a file."
+msgstr "Ouvre un fichier"
+
+#: ../src/xtnFrame.cpp:169
+msgid "&Save"
+msgstr "&Enregistre"
+
+#: ../src/xtnFrame.cpp:169
+msgid "Save the current file."
+msgstr "Enregistre le fichier en cours"
+
+#: ../src/xtnFrame.cpp:170
+msgid "&Save as..."
+msgstr "En&registre sous..."
+
+#: ../src/xtnFrame.cpp:170
+msgid "Save the current file under another name."
+msgstr "Enregistre le fichier courant sous un autre nom."
+
+#: ../src/xtnFrame.cpp:171
+msgid "&Reload"
+msgstr "Re&charge"
+
+#: ../src/xtnFrame.cpp:171
+msgid "Reload original file."
+msgstr "Recharge le fichier tel qu'il était lors du dernier enregistrement."
+
+#: ../src/xtnFrame.cpp:173
+msgid "&Preferences"
+msgstr "&Préférences"
+
+#: ../src/xtnFrame.cpp:173
+msgid "Define application's settings."
+msgstr "Définit les réglages de l'application."
+
+#: ../src/xtnFrame.cpp:175
+msgid "&Quit"
+msgstr "&Quitter"
+
+#: ../src/xtnFrame.cpp:175
+msgid "Quit the application."
+msgstr "Quitte l'application."
+
+#: ../src/xtnFrame.cpp:176
+msgid "&File"
+msgstr "&Fichier"
+
+#: ../src/xtnFrame.cpp:179
+msgid "&Search..."
+msgstr "&Recherche"
+
+#: ../src/xtnFrame.cpp:179
+msgid "Search nodes with XPath expression."
+msgstr "Recherche selon une expression XPath"
+
+#: ../src/xtnFrame.cpp:180
+msgid "&Next"
+msgstr "&Suivant"
+
+#: ../src/xtnFrame.cpp:180
+msgid "Next node of the previous search."
+msgstr "Affiche le prochain résultat de la dernière recherche."
+
+#: ../src/xtnFrame.cpp:181
+msgid "&Edit"
+msgstr "&Edition"
+
+#: ../src/xtnFrame.cpp:184
+msgid "&Normal"
+msgstr "Standard"
+
+#: ../src/xtnFrame.cpp:184
+#: ../src/xtnFrame.cpp:193
+msgid "Normal display, with attributes and text inline."
+msgstr "Affichage standard"
+
+#: ../src/xtnFrame.cpp:185
+msgid "&Texts"
+msgstr "&Textes"
+
+#: ../src/xtnFrame.cpp:185
+msgid "Display with attributes inline, and texts as elements."
+msgstr "Affiche les textes comme des élements"
+
+#: ../src/xtnFrame.cpp:186
+msgid "&Full"
+msgstr "&Tous éléments"
+
+#: ../src/xtnFrame.cpp:186
+msgid "Display everything as elements."
+msgstr "Affiche attributs et textes comme des éléments"
+
+#: ../src/xtnFrame.cpp:187
+msgid "&Open XSLT Display..."
+msgstr "Aperçu XSLT..."
+
+#: ../src/xtnFrame.cpp:187
+msgid "Open a XSLT Display file."
+msgstr "Ouvre un fichier XSLT pour afficher un aperçu de chaque noeud."
+
+#: ../src/xtnFrame.cpp:190
+msgid "&Display"
+msgstr "&Affichage"
+
+#: ../src/xtnFrame.cpp:193
+msgid "&Diff to..."
+msgstr "&Compare à ..."
+
+#: ../src/xtnFrame.cpp:195
+msgid "&Show differences"
+msgstr "&Montre les différences"
+
+#: ../src/xtnFrame.cpp:195
+msgid "Highlight differents elements."
+msgstr "Affiche des icônes pour symboliser les différences."
+
+#: ../src/xtnFrame.cpp:197
+msgid "Show &only differences"
+msgstr "&Uniquement les différences"
+
+#: ../src/xtnFrame.cpp:197
+msgid "Show only elements with differences."
+msgstr "Montre uniquement les éléments différents."
+
+#: ../src/xtnFrame.cpp:198
+msgid "&Diff"
+msgstr "&Comparaison"
+
+#: ../src/xtnFrame.cpp:201
+msgid "&About..."
+msgstr "&A Propos..."
+
+#: ../src/xtnFrame.cpp:201
+msgid "About this application."
+msgstr "A Propos de cette application."
+
+#: ../src/xtnFrame.cpp:202
+msgid "&Help"
+msgstr "&Aide"
+
+#: ../src/xtnFrame.cpp:210
+msgid "Open"
+msgstr "Ouvrir"
+
+#: ../src/xtnFrame.cpp:210
+#: ../src/xtnFrame.cpp:314
+msgid "Open a file"
+msgstr "Ouvrir un fichier"
+
+#: ../src/xtnFrame.cpp:211
+msgid "Open XSLT"
+msgstr "Ouvrir un fichier XSLT"
+
+#: ../src/xtnFrame.cpp:211
+msgid "Open a XSLT display file"
+msgstr "Ouvrir un fichier XSLT d'aperçu"
+
+#: ../src/xtnFrame.cpp:212
+msgid "Save"
+msgstr "Enregistre"
+
+#: ../src/xtnFrame.cpp:212
+msgid "Save the current file"
+msgstr "Enregistre le fichier en cours"
+
+#: ../src/xtnFrame.cpp:213
+msgid "Reload"
+msgstr "Ré-ouvre"
+
+#: ../src/xtnFrame.cpp:213
+msgid "Reload original file"
+msgstr "Ré-ouvre le fichier tel qu'il l'était lors du dernier enregistrement"
+
+#: ../src/xtnFrame.cpp:247
+msgid "Ready"
+msgstr "Prêt."
+
+#: ../src/xtnFrame.cpp:308
+#, c-format
+msgid ""
+"%s %s\n"
+"\n"
+"(c) 2004 - Rémi Peyronnet\n"
+"http://www.via.ecp.fr/~remi"
+msgstr ""
+"%s %s\n"
+"\n"
+"(c) 2004 - Rémi Peyronnet\n"
+"http://www.via.ecp.fr/~remi"
+
+#: ../src/xtnFrame.cpp:328
+msgid "Save a file"
+msgstr "Enregistre le fichier"
+
+#: ../src/xtnFrame.cpp:371
+msgid "Open a display XSLT file"
+msgstr "Ouvre un fichier XSLT d'aperçu"
+
+#: ../src/xtnFrame.cpp:402
+msgid "XPath Expression search :"
+msgstr "Expression XPath à chercher : "
+
+#: ../src/xtnFrame.cpp:402
+msgid "XPath Search"
+msgstr "Recherche XPath"
+
+#: ../src/xtnXmlTree.cpp:140
+#: ../src/xtnXmlTree.cpp:182
+#, c-format
+msgid "Error while Loading the file %s"
+msgstr "Erreur lors du chargement du fichier %s"
+
+#: ../src/xtnXmlTree.cpp:145
+msgid "Unable to instanciate stuctures, probably due to a memory problem"
+msgstr "Impossible de créer une structure, sans doute faute de mémoire."
+
+#: ../src/xtnXmlTree.cpp:476
+msgid "Invalid selected node."
+msgstr "Noeud sélectionné invalide."
+
+#: ../src/xtnXmlTree.cpp:483
+msgid "Unable to create the structure. Memory may be full."
+msgstr "Impossible de créer une structure. Mémoire sans doute pleine."
+
+#: ../src/xtnXmlTree.cpp:496
+msgid "XPath query error."
+msgstr "Erreur lors de la requête XPath"
+
+#: ../src/xtnXmlTree.cpp:514
+#, c-format
+msgid "Node %d of %d found (%s)"
+msgstr "Noeud %d sur %d noeuds trouvés (%s)."
+
+#: ../src/xtnXmlTree.cpp:518
+msgid "No nodes found : "
+msgstr "Aucun noeud trouvé :"
+
+#: ../src/xtnApp.h:39
+#: ../src/xtnApp.h:42
+msgid ""
+"This function is not yet implemented, \n"
+"or is being developped.\n"
+msgstr ""
+"Cette fonction n'est pas pour l'instant développée, \n"
+"ou est en cours de développement.\n"
+
+#: ../src/xtnApp.h:39
+#: ../src/xtnApp.h:42
+msgid "Function not implemented."
+msgstr "Fonction non développée."
+

@@ -1,0 +1,26 @@
+/* XPM */
+static char *xpm_undo[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 4 1",
+"  c black",
+". c navy",
+"X c #808080",
+"o c None",
+/* pixels */
+"oooooooooooooooo",
+"oooooooooooooooo",
+"oooooooooooooooo",
+"oooooooooooooooo",
+"oooooooo....Xooo",
+"oo.ooo..oooo.Xoo",
+"oo..o.ooooooo.oo",
+"oo...oooooooo.oo",
+"oo....ooooooo.oo",
+"oo.....ooooo.Xoo",
+"oooooooooooX.ooo",
+"oooooooooooooooo",
+"oooooooooooooooo",
+"oooooooooooooooo",
+"oooooooooooooooo",
+"oooooooooooooooo"
+};

@@ -1,0 +1,29 @@
+/* XPM */
+static char *xpm_ti_below[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 7 1",
+"  c black",
+". c blue",
+"X c cyan",
+"o c magenta",
+"O c #C0C0C0",
+"+ c gray100",
+"@ c None",
+/* pixels */
+"@@@@@@@@@@@@@@@@",
+"@@@@@@@@@@@@@@@@",
+"@              @",
+"@ OOOOOOOOOOOO @",
+"@ O@@@...X@@@O @",
+"@ O@@.X@@.O@@O @",
+"@ O@@@@@@.O@@O @",
+"@ O@@@@o.O@@@O @",
+"@ O@@@@.O@@@@O @",
+"@ O@@@@@@@@@@O @",
+"@ O@@@@.O@@@@O @",
+"@ O@@@@.O@@@@O @",
+"@ OOOOOOOOOOOO @",
+"@              @",
+"@@@@@@@@@@@@@@@@",
+"@@@@@@@@@@@@@@@@"
+};

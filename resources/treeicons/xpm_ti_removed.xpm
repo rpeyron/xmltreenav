@@ -1,0 +1,28 @@
+/* XPM */
+static char *xpm_ti_removed[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 6 1",
+"  c black",
+". c #800000",
+"X c red",
+"o c #C0C0C0",
+"O c gray100",
+"+ c None",
+/* pixels */
+"++++++++++++++++",
+"++++++++++++++++",
+"+              +",
+"+ oooooooooooo +",
+"+ oXXXXXXXXXXo +",
+"+ oXXXXXXXXXXo +",
+"+ oXXXXXXXXXXo +",
+"+ oXXX.   XXXo +",
+"+ oXXXXXXXXXXo +",
+"+ oXXXXXXXXXXo +",
+"+ oXXXXXXXXXXo +",
+"+ oXXXXXXXXXXo +",
+"+ oooooooooooo +",
+"+              +",
+"++++++++++++++++",
+"++++++++++++++++"
+};

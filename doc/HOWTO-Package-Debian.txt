@@ -1,0 +1,17 @@
+You will need : dh-make, fakeroot
+
+Then : 
+
+dpkg-buildpackage -rfakeroot
+
+To clean :
+
+fakeroot debian/rules clean
+
+This is package with make debian.
+
+Things to know :
+ - On some systems, strip don't work : use DEB_BUILD_OPTIONS=--nostrip
+ - You must make clean before, or ./configure
+   --prefix=/path/to/the/debian/rphoto
+ - To quick build : fakeroot debian/rules binary

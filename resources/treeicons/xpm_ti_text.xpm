@@ -1,0 +1,26 @@
+/* XPM */
+static char *xpm_ti_text[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 4 1",
+"  c black",
+". c red",
+"X c gray100",
+"o c None",
+/* pixels */
+"oooooooooooooooo",
+"oooooooooooooooo",
+"o              o",
+"o oooooooooooo o",
+"o ooo.....oooo o",
+"o ooooo.oooooo o",
+"o ooooo.oooooo o",
+"o ooooo.oooooo o",
+"o ooooo.oooooo o",
+"o ooooo.oooooo o",
+"o ooooo.oooooo o",
+"o ooooo.oooooo o",
+"o oooooooooooo o",
+"o              o",
+"oooooooooooooooo",
+"oooooooooooooooo"
+};

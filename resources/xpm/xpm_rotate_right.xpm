@@ -1,0 +1,25 @@
+/* XPM */
+static char *xpm_rotate_right[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 3 1",
+"  c black",
+". c navy",
+"X c None",
+/* pixels */
+"XXXXXXXXXXXXXXXX",
+"XXXXXX....XXXXXX",
+"XXXX........XXXX",
+"XXX...XXXX...XXX",
+"XXX..XXXXXX..XXX",
+"XX..XXXXXXXX..XX",
+"XXXXXXXXXXXX..XX",
+"XXXXXXXXXXXX..XX",
+"XXXXXXXXXXXX..XX",
+"XXXXXXXXX.X..XXX",
+"XXXXXXXXX....XXX",
+"XXXXXXXXX...XXXX",
+"XXXXXXXXX....XXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX"
+};

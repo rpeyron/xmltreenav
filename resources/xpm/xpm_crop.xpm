@@ -1,0 +1,25 @@
+/* XPM */
+static char *xpm_crop[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 3 1",
+"  c black",
+". c #808080",
+"X c None",
+/* pixels */
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"X            XXX",
+"X ..........XXXX",
+"X .XXXXXXXXXXXXX",
+"X .XXXXXXXXXX XX",
+"X .XXXXXXXXX. XX",
+"X .XXXXXXXXX. XX",
+"X .XXXXXXXXX. XX",
+"X XXXXXXXXXX. XX",
+"XXXXXXXXXXXX. XX",
+"XXX.......... XX",
+"XX            XX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX",
+"XXXXXXXXXXXXXXXX"
+};
