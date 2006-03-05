@@ -1,0 +1,16 @@
+*.dll
+xmlTreeNav.zip
+*.pdb
+fr
+test.xml
+test.xsl
+after.xml
+after.xml-Diff
+before.xml
+iconv.dll
+libexslt.dll
+libxml2.dll
+libxslt.dll
+test2.xml
+test3.xml
+test4.xml

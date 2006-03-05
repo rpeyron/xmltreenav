@@ -34,6 +34,7 @@
 #include "../resources/resource.h"
 #include "../resources/resource.inc" // Include XPM Data
 #include "xtnXmlTree.h"
+#include <wxmisc/wxUniCompat.h>
 
 IMPLEMENT_CLASS(xtnXmlTree, wxTreeCtrl)
 
@@ -87,7 +88,41 @@ xtnXmlTree::~xtnXmlTree()
 // Event Map Table
 BEGIN_EVENT_TABLE(xtnXmlTree, wxTreeCtrl)
   EVT_TREE_ITEM_EXPANDING(-1, xtnXmlTree::OnItemExpanding)
+  EVT_TREE_DELETE_ITEM(-1, xtnXmlTree::OnItemDeleted)
 END_EVENT_TABLE()
+
+/// Standart Progression bar callback
+void cbDialogProgressionBar(int percent, int prec,
+                           long nbNodesBefore, 
+                           long nbNodesAfter,
+                           long nbNodesProcessed,
+						   void * arg)
+{
+    static int precPer;
+	wxFrame * frame = (wxFrame *) arg;
+	if (frame == NULL) return;
+
+    switch (percent)
+    {
+    case -1:
+        // Number of nodes in Before file
+		frame->SetStatusText(wxString::Format(_("Parsing Before file OK : %ld nodes"), nbNodesBefore),0);
+        precPer = 0;
+        break;
+    case -2:
+        // Number of nodes in After file
+		frame->SetStatusText(wxString::Format(_("Parsing After file OK : %ld nodes"), nbNodesAfter),0);
+        break;
+    case -3:
+		frame->SetStatusText(wxString::Format(_("Diff OK : %ld nodes processed"), nbNodesProcessed),0);
+        break;
+    default:
+		frame->SetStatusText(wxString::Format(_("Diff in progress... (%ld%%)"), percent),0);
+		frame->SetStatusText(wxString::Format(_("%ld%%"), percent),1);
+        break;
+    }
+}
+
 
 
 class treeItemXmlNode : public wxTreeItemData
@@ -119,30 +154,33 @@ void xtnXmlTree::LoadTreeImageList()
 }
 
 
-void xtnXmlTree::LoadFile(const wxString & name)
+void xtnXmlTree::LoadFile(const wxString & name, const struct globalOptions * curOptions)
 {
     wxTreeItemId curItem;
     xmlNodePtr node;
-
     // Delete Previous
     CloseFile();
     m_sXmlFilename = name;
+    if (curOptions != NULL) m_rCurOptions = *curOptions;
 
     // Load XML File
     try
     {
-        node = getXmlFile((char *)name.mb_str(wxConvLibc).data(), m_rCurOptions);
+        node = getXmlFile(wxString2string(name), m_rCurOptions);
     }
-    catch (XD_Exception e)
+    catch(XD_Exception e) 
     {
         wxMessageBox(
-            wxString(e.what(),wxConvLibc),
-            wxString::Format(_("Error while Loading the file %s"),name),
+            string2wxString(e.what()),        // Error messages contains both xmlstring and string... 
+            wxString::Format(_("Error while Loading the file %s"),name.GetData()),
             wxICON_ERROR);
         return;
     }
     xpathCtx = xmlXPathNewContext(node->doc);   
     if(xpathCtx == NULL)  wxMessageBox(_("Unable to instanciate stuctures, probably due to a memory problem"));
+
+	// Clean Private Tag (necessary for diff files)
+	if (m_sXmlFilename.Contains(wxT("|XMLDIFF|"))) cleanPrivateTag(node);
 
     curItem = this->AddRoot(wxT("ROOT"), TI_ROOT, -1, new treeItemXmlNode(node));
     PopulateItem(curItem);
@@ -153,9 +191,9 @@ void xtnXmlTree::LoadFile(const wxString & name)
 
 void xtnXmlTree::CloseFile()
 {
-    if (xpathCtx) xmlXPathFreeContext(xpathCtx); 
-    closeXmlFile((char *)m_sXmlFilename.mb_str(wxConvLibc).data(), m_rCurOptions);
     this->DeleteAllItems();
+    if (xpathCtx) { xmlXPathFreeContext(xpathCtx);  xpathCtx = NULL; }
+    closeXmlFile(wxString2string(m_sXmlFilename), m_rCurOptions);
 }
 
 void xtnXmlTree::LoadXsltFile(const wxString & xsltName)
@@ -163,7 +201,7 @@ void xtnXmlTree::LoadXsltFile(const wxString & xsltName)
     // Close previous file
     if (m_sXsltFilename != wxT(""))
     {
-        closeXmlFile((char *)m_sXsltFilename.mb_str(wxConvLibc).data(), m_rCurOptions);
+        closeXmlFile(wxString2string(m_sXsltFilename), m_rCurOptions);
         xsltDisplay = NULL;
     }
 
@@ -173,20 +211,54 @@ void xtnXmlTree::LoadXsltFile(const wxString & xsltName)
     {
         try
         {
-            xsltDisplay = getXsltFile((char *)m_sXsltFilename.mb_str(wxConvLibc).data(), m_rCurOptions);
+            xsltDisplay = getXsltFile(wxString2string(m_sXsltFilename), m_rCurOptions);
         }
         catch (XD_Exception e)
         {
             wxMessageBox(
-                wxString(e.what(),wxConvLibc),
-                wxString::Format(_("Error while Loading the file %s"),xsltName),
+                string2wxString(e.what()),
+                wxString::Format(_("Error while Loading the file %s"),xsltName.GetData()),
                 wxICON_ERROR);
             return;
         }
     }
 }
 
-void xtnXmlTree::Reload()
+void xtnXmlTree::DiffFiles(const wxString & before, const wxString & after, const struct globalOptions * curOptions)
+{
+    wxString diffAlias;
+    
+    diffAlias = wxString(wxT("|XMLDIFF|")) + before + wxT("|") + after + wxT("|");
+    if (diffAlias == m_sXmlFilename) diffAlias += wxT("2");
+    if (curOptions != NULL) m_rCurOptions = *curOptions;
+    
+	try
+	{
+		m_rCurOptions.callbackProgressionPercent = cbDialogProgressionBar;
+		m_rCurOptions.cbProgressionArg = (void *) GetParent();
+		diffXmlFiles(
+			wxString2string(before),
+			wxString2string(after),
+			wxString2string(diffAlias),
+			m_rCurOptions);
+		closeXmlFile(wxString2string(before), m_rCurOptions);
+		closeXmlFile(wxString2string(after), m_rCurOptions);
+		LoadFile(diffAlias);
+	}
+    catch(XD_Exception e) 
+    {
+        wxMessageBox(
+            string2wxString(e.what()),        // Error messages contains both xmlstring and string... 
+            wxString::Format(_("Error while diffing the files.")),
+            wxICON_ERROR);
+        return;
+    }
+
+}    
+
+
+
+void xtnXmlTree::Refresh(bool reload)
 {
     wxTreeItemId curItem;
     xmlNodePtr node;
@@ -198,9 +270,31 @@ void xtnXmlTree::Reload()
 
     node = ((treeItemXmlNode *)this->GetItemData(curItem))->getXmlNodePtr();
     path = xmlCharTmp(xmlGetNodePath(node));
-    
-    LoadFile(m_sXmlFilename);
-    if (m_sXsltFilename != wxT("")) LoadXsltFile(m_sXsltFilename);
+
+    if (reload)
+    {   
+        if (m_sXmlFilename.Contains(wxT("|XMLDIFF|")))
+        {
+            DiffFiles(
+                   m_sXmlFilename.AfterFirst(wxT('|')).AfterFirst(wxT('|')).BeforeFirst(wxT('|')),
+                   m_sXmlFilename.AfterFirst(wxT('|')).AfterFirst(wxT('|')).AfterFirst(wxT('|')).BeforeFirst(wxT('|'))
+                );
+        }
+        else
+        {
+            LoadFile(m_sXmlFilename);
+        }        
+        if (m_sXsltFilename != wxT("")) LoadXsltFile(m_sXsltFilename);
+    }
+    else
+    {
+        node = ((treeItemXmlNode *)this->GetItemData(GetRootItem()))->getXmlNodePtr();
+        Delete(GetRootItem());
+        curItem = this->AddRoot(wxT("ROOT"), TI_ROOT, -1, new treeItemXmlNode(node));
+        PopulateItem(curItem);
+        this->SetItemHasChildren(curItem, true);
+        this->Expand(curItem);
+    }        
 
     if (path != BAD_CAST "")
     {
@@ -332,10 +426,10 @@ void xtnXmlTree::PopulateItem(wxTreeItemId item)
     {
         child = xpathObj->nodesetval->nodeTab[i];
         icon = TI_UNKNOWN;
-        libelle = wxString((char *)child->name, wxConvUTF8);
+        libelle = xmlstring2wxString(child->name);
         if (child->ns != NULL)
         {
-            libelle = wxString((char *)child->ns->prefix, wxConvUTF8) + wxT(":") + libelle;
+            libelle = xmlstring2wxString(child->ns->prefix) + wxT(":") + libelle;
         }
         hasChildren = false;
         // Default Behaviour
@@ -372,8 +466,8 @@ void xtnXmlTree::PopulateItem(wxTreeItemId item)
                         sxTemp += attr->name;
                         if ((!m_bShowDiff) || (sxTemp != xmlstring(diffNsPrefix) + BAD_CAST ":" + diffStatusAttr))
                         {
-                            libelle += wxT(" ") + wxString((char *)sxTemp.c_str(), wxConvUTF8) + wxT("=\"");
-                            libelle += wxString((char *)(xmlChar *)xmlCharTmp(xmlNodeGetContent((xmlNodePtr)attr)), wxConvUTF8);
+                            libelle += wxT(" ") + xmlstring2wxString(sxTemp) + wxT("=\"");
+                            libelle += xmlstring2wxString(xmlstring(xmlCharTmp(xmlNodeGetContent((xmlNodePtr)attr))));
                             libelle += wxT("\"");
                         }
                         attr = attr->next;
@@ -386,7 +480,7 @@ void xtnXmlTree::PopulateItem(wxTreeItemId item)
                     if (sxTemp != BAD_CAST "")
                     {
                         libelle += wxT(" = ");
-                        libelle += wxString((char *)sxTemp.c_str(), wxConvUTF8);
+                        libelle += xmlstring2wxString(sxTemp);
                     }
                 }
                 if (child->children) hasChildren = true;
@@ -395,16 +489,16 @@ void xtnXmlTree::PopulateItem(wxTreeItemId item)
             case XML_ATTRIBUTE_NODE:
                 icon = TI_ATTRIBUTE;
                 libelle += wxT("=\"");
-                libelle += wxString((char *)(xmlChar *)xmlCharTmp(xmlNodeGetContent((xmlNodePtr)child)), wxConvUTF8);
+                libelle += xmlstring2wxString(xmlstring(xmlCharTmp(xmlNodeGetContent((xmlNodePtr)child))));
                 libelle += wxT("\"");
                 break;
             case XML_TEXT_NODE:
                 icon = TI_TEXT;
-                libelle = wxString((char *)child->content, wxConvUTF8);
+                libelle = xmlstring2wxString(child->content);
                 break;
             case XML_COMMENT_NODE:
                 icon = TI_COMMENT;
-                libelle = wxString(wxT("<-- ")) + wxString((char *)child->content, wxConvUTF8) + wxString(wxT(" -->"));
+                libelle = wxString(wxT("<-- ")) + xmlstring2wxString(child->content) + wxString(wxT(" -->"));
                 break;
             default:
                 break;
@@ -421,7 +515,7 @@ void xtnXmlTree::PopulateItem(wxTreeItemId item)
                 strTemp = xmlNodeGetContent((xmlNodePtr)result);
                 if (strTemp != NULL)
                 {
-                    libelle = wxString((char *)strTemp, wxConvUTF8);
+                    libelle = xmlstring2wxString(strTemp);
                     xmlFree(strTemp);
                 }
                 // Icon
@@ -457,6 +551,14 @@ void xtnXmlTree::OnItemExpanding(wxTreeEvent &event)
     PopulateItem(event.GetItem());
 }
 
+void xtnXmlTree::OnItemDeleted(wxTreeEvent &event)
+{
+    xmlNodePtr node;
+    if (!event.GetItem().IsOk()) return;
+    if (GetItemData(event.GetItem()) == NULL) return;    
+    node = ((treeItemXmlNode *)GetItemData(event.GetItem()))->getXmlNodePtr();
+    if (node != NULL) node->_private = NULL;
+}
 
 int xtnXmlTree::FindNodes(const wxString & xpath, xmlNodePtr refNode)
 {
@@ -490,7 +592,7 @@ int xtnXmlTree::FindNodes(const wxString & xpath, xmlNodePtr refNode)
     while (ns != NULL) { xpathCtx->nsNr++; ns = ns->next; }
 
     // Get XPath
-    xpathObj = xmlXPathEvalExpression((xmlChar *)xpath.mb_str(wxConvUTF8).data(), xpathCtx);
+    xpathObj = xmlXPathEvalExpression(wxString2xmlstring(xpath).c_str(), xpathCtx);
     if (xpathObj == NULL) 
     { 
         if (m_pStatusBar != NULL) m_pStatusBar->SetStatusText(_("XPath query error."));
@@ -511,7 +613,7 @@ int xtnXmlTree::FindNodes(const wxString & xpath, xmlNodePtr refNode)
         } while ((i < (nb-1)) && (!found));
         if ((!found) && (i == (nb-1))) { i = 0; status = 2; } else { status = 1; }
         MakeNodeVisible(xpathObj->nodesetval->nodeTab[i]);
-        if (m_pStatusBar != NULL) m_pStatusBar->SetStatusText(wxString::Format(_("Node %d of %d found (%s)"), i+1, nb, xpath));
+        if (m_pStatusBar != NULL) m_pStatusBar->SetStatusText(wxString::Format(_("Node %d of %d found (%s)"), i+1, nb, xpath.GetData()));
     }
     else
     {

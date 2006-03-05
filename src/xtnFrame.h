@@ -32,18 +32,30 @@
 #include "xtnApp.h"
 #include "xtnXmlTree.h"
 #include <wx/frame.h>
-#include "ConfigDialog.h"
-#include "../lib/xmldiff/xmldiff.h"
+#include <wx/dnd.h>
+#include "../lib/wxmisc/ConfigDialog.h"
+#include <libxmldiff/libxmldiff.h>
+#include <libxslt/xslt.h>
+
+#ifdef __WXMSW__
+#include <iehtmlwin/iehtmlwin.h>
+#endif
+
+// Position des menus
+#define MENU_DISP	2
 
 // Menu Ids
 #define MENU_FILE_OPEN		10001
 #define MENU_FILE_SAVE		10002
 #define MENU_FILE_SAVEAS    10003
+#define MENU_FILE_OPEN_DIFF	10004
 #define MENU_FILE_RELOAD    10010
 #define MENU_FILE_PREFS     10080
 #define MENU_FILE_QUIT		10099
 #define MENU_HELP_ABOUT		10901
 // Edit
+#define MENU_EDIT_COPY	    10302
+#define MENU_EDIT_PASTE	    10303
 #define MENU_EDIT_SEARCH    10311
 #define MENU_EDIT_SEARCHNXT 10312
 // Display
@@ -51,6 +63,7 @@
 #define MENU_DISP_TEXT      10102
 #define MENU_DISP_FULL      10103
 #define MENU_DISP_XSLT      10109
+#define MENU_DISP_XSLTHTML  10110
 #define MENU_DISP_XBEGIN    10120
 #define MENU_DISP_XEND      10190
 // Diff
@@ -65,6 +78,7 @@
 
 // Controls Ids
 #define CTRL_XML_TREE       30001
+#define CTRL_XML_IE			30002
 
 class xtnFrame : public wxFrame
 {
@@ -79,6 +93,8 @@ public:
 	~xtnFrame();
     void LoadFile(const wxString &name);
     void LoadXsltFile(const wxString &xsltname);
+    void LoadHtmlXsltFile(const wxString &xsltname);
+	void LoadConfigFile(const wxString &name);
 
 protected:
     // Initialisation stuff
@@ -94,18 +110,23 @@ protected:
     //   - File
     void OnMenuFileQuit(wxCommandEvent &event);
 	void OnFileOpen(wxCommandEvent &event);
+	void OnFileOpenAndDiff(wxCommandEvent &event);
 	void OnFileSave(wxCommandEvent &event);
 	void OnFileSaveAs(wxCommandEvent &event);
 	void OnFileReload(wxCommandEvent &event);
     void OnPreferences(wxCommandEvent &event);
+	//   - Edit
     void OnEditSearch(wxCommandEvent &event);
     void OnEditSearchNext(wxCommandEvent &event);
+    void OnEditCopy(wxCommandEvent &event);
+	void OnEditPaste(wxCommandEvent &event);
     //   - Display
 	void OnDispNormal(wxCommandEvent &event);
 	void OnDispText(wxCommandEvent &event);
 	void OnDispFull(wxCommandEvent &event);
 	void OnDispOpenXslt(wxCommandEvent &event);
-    void OnDispExtended(wxCommandEvent &event);
+	void OnDispOpenXsltHtml(wxCommandEvent &event);
+    void OnDispCustom(wxCommandEvent &event);
     //   - Diff
     void OnDiffDiff(wxCommandEvent &event);
     void OnDiffShow(wxCommandEvent &event);
@@ -119,15 +140,47 @@ protected:
     appCommand m_curOptions;
 	wxMenuBar * m_pMenuBar;
     xtnXmlTree * m_pXmlTree;
+	#ifdef __WXMSW__
+	IEHtmlWin * m_pIEHtml;
+	#endif
+
     wxLocale m_locale;
     wxConfig * m_pConfig;
     wxConfigDialog * m_pConfigDialog;
     wxString m_sLastSearch;
+
     xmlNodePtr m_pLastSearchXmlNodeRef;
+	xsltStylesheetPtr m_pHtmlXslt;
+	wxString m_sResultTempFilename;
+	wxString m_sDirectXMLTempFilename;
+
+	struct customXslt 
+	{
+		enum customXsltType { CUSTOM_XSLT_LOCAL, CUSTOM_XSLT_HTML } type;
+		wxString file;
+	} customXsltMenu[MENU_DISP_XEND - MENU_DISP_XBEGIN];
 
    	DECLARE_CLASS(xtnFrame)
 
     friend class xtnApp;
+};
+
+class xtnFrameDropTarget : public wxFileDropTarget
+{
+public:
+	xtnFrameDropTarget(xtnFrame * owner) : wxFileDropTarget() {m_pOwner = owner;}
+    virtual bool OnDropFiles(wxCoord x, wxCoord y, const wxArrayString& filenames)
+	{
+		int i;
+		for(i = 0; i < filenames.Count(); i++)
+		{
+			m_pOwner->LoadFile(filenames[i]);
+		}
+		return true;
+	}
+
+protected:
+	xtnFrame * m_pOwner;
 };
 
 

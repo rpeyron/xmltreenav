@@ -1,0 +1,55 @@
+#!/usr/bin/make -f
+# CFLAGS = -g
+
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+ CFLAGS += -O0
+else
+ CFLAGS += -O2
+endif
+ifneq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
+ INSTALL_TARGET = install
+else
+ INSTALL_TARGET = install-strip
+ STRIP = yes
+endif
+
+build: build-stamp
+build-stamp:
+	rm -f debian/files debian/files.new debian/substvars
+	./configure --prefix=$(CURDIR)/debian/xmltreenav/usr
+	$(MAKE)
+	touch build-stamp
+
+clean:
+	rm -f build-stamp debian/files debian/files.new debian/substvars
+	rm -fR debian/xmltreenav
+	-$(MAKE) clean
+
+install: build
+	#install -d debian/xmltreenav/usr/games debian/xmltreenav/usr/share/games
+	$(MAKE) $(INSTALL_TARGET)
+
+binary-indep:
+
+binary-arch: build install
+	install -d debian/xmltreenav/DEBIAN debian/xmltreenav/usr/share/xmltreenav
+	install -d debian/xmltreenav/usr/share/doc/xmltreenav debian/xmltreenav/usr/share/man/man1
+	install -d debian/xmltreenav/usr/lib/menu
+	install -m644 -p debian/changelog debian/xmltreenav/usr/share/doc/xmltreenav/changelog.Debian
+	gzip -9f debian/xmltreenav/usr/share/doc/xmltreenav/changelog.Debian
+	install -m644 -p debian/copyright debian/xmltreenav/usr/share/doc/xmltreenav
+	install -m644 -p debian/xmltreenav.1 debian/xmltreenav/usr/share/man/man1
+	gzip -9f debian/xmltreenav/usr/share/man/man1/xmltreenav.1
+	install -m644 debian/menu debian/xmltreenav/usr/lib/menu/xmltreenav
+	install -m644 debian/xmltreenav.xpm debian/xmltreenav/usr/share/xmltreenav/xmltreenav.xpm
+	install -m755 debian/postinst debian/xmltreenav/DEBIAN
+	install -m755 debian/postrm debian/xmltreenav/DEBIAN
+#	test "x$(STRIP)" = "xyes" && \
+#    strip --remove-section=.comment --remove-section=.note debian/xmltreenav/usr/bin/RPhoto
+	dpkg-shlibdeps debian/xmltreenav/usr/bin/xmltreenav
+	dpkg-gencontrol -isp -Pdebian/xmltreenav
+	cd debian/xmltreenav && find usr -type f -exec "md5sum" "{}" ";" > DEBIAN/md5sums
+	dpkg-deb --build debian/xmltreenav ..
+
+binary: binary-arch
+.PHONY: build clean binary-arch binary-indep binary install

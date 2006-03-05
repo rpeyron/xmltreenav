@@ -1,0 +1,14 @@
+lib/wxmisc/ConfigDialog.cpp
+lib/wxmisc/ConfigDialog.h
+src/xtnApp.cpp
+src/xtnApp.h
+src/xtnDialogDiffCurrent.cpp
+src/xtnDialogDiffCurrent.h
+src/xtnDialogDiffDual.cpp
+src/xtnDialogDiffDual.h
+src/xtnFrame.cpp
+src/xtnFrame.h
+src/xtnPrecomp.cpp
+src/xtnPrecomp.h
+src/xtnXmlTree.cpp
+src/xtnXmlTree.h

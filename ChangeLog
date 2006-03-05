@@ -1,0 +1,7 @@
+02/05/2005 : v0.2.2
+ - FIXED Behaviour on diff documents : 
+    * Reload,
+    * Go to last location
+    * Change view
+ - FIXED Bug when diffing not wellformed xml files
+ 

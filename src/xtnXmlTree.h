@@ -29,7 +29,7 @@
 #pragma interface "xtnFrame.h"
 #endif
 
-#include "../lib/xmldiff/xmldiff.h"
+#include <libxmldiff/libxmldiff.h>
 #include <libxml/parser.h>
 #include <libxslt/xslt.h>
 #include <libxslt/transform.h>
@@ -59,10 +59,13 @@ public:
 			const wxString& name = wxT("xmltree"));
 	~xtnXmlTree();
 
-    void LoadFile(const wxString & name);
+    void LoadFile(const wxString & name, const struct globalOptions * curOptions = NULL);
+    void DiffFiles(const wxString & before, const wxString & after, const struct globalOptions * curOptions = NULL);
     void CloseFile();
     void LoadXsltFile(const wxString & xsltName);
-    void Reload();
+    void Refresh(bool reload = false);
+	wxString GetXMLFilename() { return m_sXmlFilename; };
+	wxString GetXSLTFilename() { return m_sXsltFilename; };
 
     int FindNodes(const wxString & xpath, xmlNodePtr refNode);
     xmlNodePtr GetCurrentNode();
@@ -77,6 +80,7 @@ public:
 protected:
     // - Item Management
     void OnItemExpanding(wxTreeEvent & event);
+    void OnItemDeleted(wxTreeEvent & event);
     //void OnItemCollapsing(wxTreeEvent & event);
 	// - Déclaration de la table
     DECLARE_EVENT_TABLE()
@@ -93,7 +97,7 @@ protected:
     void SetLocalProgress(int progress);
 
 protected:
-    appCommand & m_rCurOptions;
+    globalOptions & m_rCurOptions;
     wxStatusBar * m_pStatusBar;
 	wxString m_sXmlFilename;
 	wxString m_sXsltFilename;

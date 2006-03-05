@@ -1,0 +1,12 @@
+xmltreenav (0.2-2) unstable; urgency=low
+
+  * FIXED Behaviour on diff documents : Reload, Go to last location, Change view
+  * FIXED Bug when diffing not wellformed xml files
+ 
+ -- Remi Peyronnet <remi+debian@via.ecp.fr>  Mon, 02 May 2005 20:55:00 +0000
+
+xmltreenav (0.2-1) unstable; urgency=low
+
+  * Initial debian release.
+
+ -- Remi Peyronnet <remi+debian@via.ecp.fr>  Tue, 10 Mar 2004 19:17:23 +0000

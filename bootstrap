@@ -1,0 +1,7 @@
+#! /bin/sh
+
+# libtoolize
+gettextize -f
+aclocal
+automake -a
+autoconf

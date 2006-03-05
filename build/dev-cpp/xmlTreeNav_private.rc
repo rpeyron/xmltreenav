@@ -1,0 +1,6 @@
+// THIS FILE WILL BE OVERWRITTEN BY DEV-C++!
+// DO NOT EDIT!
+
+#include "../../resources/resources.rc"
+
+A ICON MOVEABLE PURE LOADONCALL DISCARDABLE "xmlTreeNav.ico"

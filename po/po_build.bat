@@ -1,5 +1,5 @@
 
 REM fr
-msgfmt fr.po
+msgfmt -o fr.mo fr.po
 mkdir ..\bin\fr
-copy messages.mo ..\bin\fr\xmlTreeNav.mo
+copy fr.mo ..\bin\fr\xmlTreeNav.mo

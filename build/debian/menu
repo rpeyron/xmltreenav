@@ -1,0 +1,3 @@
+?package(xmltreenav):needs=X11 section="Apps/Text"\
+ title="xmlTreeNav" command="/usr/bin/xmltreenav"\
+ icon="/usr/share/xmltreenav/xmltreenav.xpm"

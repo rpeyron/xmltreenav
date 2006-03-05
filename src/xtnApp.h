@@ -23,8 +23,8 @@
  * http://www.gnu.org/copyleft/gpl.html                                       *
  * ************************************************************************** */
 
-#define XTN_NAME wxT("XmlTreeNav")
-#define XTN_VERSION wxT("v0.1.0")
+#define XTN_NAME wxT("xmlTreeNav")
+#define XTN_VERSION wxT("v0.2.3")
 
 #define XMLTREENAV_FILTERLIST_ALL wxString(wxT("XML Files (*.xml)|*.xml|All files (*.*)|*.*"))
 #define XMLTREENAV_FILTERLIST_XSL wxString(wxT("XSL Files (*.xsl;*.xslt)|*.xsl;*.xslt|All files (*.*)|*.*"))

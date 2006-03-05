@@ -59,20 +59,48 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
+host_alias = @host_alias@
+host_triplet = @host@
 
 EXEEXT = @EXEEXT@
 OBJEXT = @OBJEXT@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 AMTAR = @AMTAR@
 AWK = @AWK@
+BUILD_INCLUDED_LIBINTL = @BUILD_INCLUDED_LIBINTL@
+CATOBJEXT = @CATOBJEXT@
 CC = @CC@
 CPP = @CPP@
 CXX = @CXX@
+DATADIRNAME = @DATADIRNAME@
 DEPDIR = @DEPDIR@
+GENCAT = @GENCAT@
+GLIBC21 = @GLIBC21@
+GMSGFMT = @GMSGFMT@
+HAVE_ASPRINTF = @HAVE_ASPRINTF@
+HAVE_LIB = @HAVE_LIB@
+HAVE_POSIX_PRINTF = @HAVE_POSIX_PRINTF@
+HAVE_SNPRINTF = @HAVE_SNPRINTF@
+HAVE_WPRINTF = @HAVE_WPRINTF@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+INSTOBJEXT = @INSTOBJEXT@
+INTLBISON = @INTLBISON@
+INTLLIBS = @INTLLIBS@
+INTLOBJS = @INTLOBJS@
+INTL_LIBTOOL_SUFFIX_PREFIX = @INTL_LIBTOOL_SUFFIX_PREFIX@
+LIB = @LIB@
+LIBICONV = @LIBICONV@
+LIBINTL = @LIBINTL@
+LTLIB = @LTLIB@
+LTLIBICONV = @LTLIBICONV@
+LTLIBINTL = @LTLIBINTL@
+MKINSTALLDIRS = @MKINSTALLDIRS@
 PACKAGE = @PACKAGE@
+POSUB = @POSUB@
 RANLIB = @RANLIB@
 STRIP = @STRIP@
+USE_INCLUDED_LIBINTL = @USE_INCLUDED_LIBINTL@
+USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 WX_CFLAGS = @WX_CFLAGS@
 WX_CFLAGS_ONLY = @WX_CFLAGS_ONLY@
@@ -83,6 +111,9 @@ WX_CXXFLAGS_ONLY = @WX_CXXFLAGS_ONLY@
 WX_LIBS = @WX_LIBS@
 WX_LIBS_STATIC = @WX_LIBS_STATIC@
 WX_VERSION = @WX_VERSION@
+XML2_CONFIG = @XML2_CONFIG@
+XML_CPPFLAGS = @XML_CPPFLAGS@
+XML_LIBS = @XML_LIBS@
 am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
@@ -90,28 +121,25 @@ EXTRA_DIST = \
      xpm_arrow_left.xpm \
      xpm_arrow_right.xpm \
      xpm_copy.xpm \
+     xpm_history_folder.xpm \
+     xpm_paste.xpm \
      xpm_crop.xpm \
      xpm_cut.xpm \
      xpm_explorer.xpm \
      xpm_fullscrn.xpm \
      xpm_help.xpm \
-     xpm_landorpo.xpm \
-     xpm_landscap.xpm \
      xpm_new.xpm \
      xpm_open.xpm \
-     xpm_page.xpm \
-     xpm_paste.xpm \
-     xpm_portrait.xpm \
      xpm_preview.xpm \
      xpm_print.xpm \
      xpm_rotate_left.xpm \
      xpm_rotate_right.xpm \
      xpm_save.xpm \
      xpm_undo.xpm \
-     xpm_FilesPhoto.xpm \
      xpm_light_green.xpm \
      xpm_light_red.xpm \
-     xpm_light_grey.xpm
+     xpm_light_grey.xpm \
+	 xpm_xmltreenav.xpm
 
 subdir = resources/xpm
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs

@@ -18,6 +18,7 @@
 #include "xpm/xpm_light_red.xpm"
 #include "xpm/xpm_light_grey.xpm"
 #include "xpm/xpm_history_folder.xpm"
+#include "xpm/xpm_xmltreenav.xpm"
 
 #include "treeicons/xpm_ti_root.xpm"
 #include "treeicons/xpm_ti_element.xpm"

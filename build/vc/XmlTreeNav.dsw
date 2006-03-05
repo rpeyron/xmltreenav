@@ -12,13 +12,13 @@ Package=<5>
 Package=<4>
 {{{
     Begin Project Dependency
-    Project_Dep_Name xmldiff_lib
+    Project_Dep_Name libxmldiff
     End Project Dependency
 }}}
 
 ###############################################################################
 
-Project: "xmldiff_lib"=.\xmldiff_lib.dsp - Package Owner=<4>
+Project: "libxmldiff"=..\..\..\libxmldiff\build\vc\libxmldiff.dsp - Package Owner=<4>
 
 Package=<5>
 {{{

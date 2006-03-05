@@ -1,0 +1,478 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR (c) 2004-2005 - R�mi Peyronnet - GPL
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: remi+xmltreenav@via.ecp.fr\n"
+"POT-Creation-Date: 2005-03-12 13:42+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: lib/wxmisc/ConfigDialog.cpp:81
+msgid "Apply"
+msgstr ""
+
+#: lib/wxmisc/ConfigDialog.cpp:82
+msgid "Cancel"
+msgstr ""
+
+#: src/xtnApp.cpp:58
+#, c-format
+msgid "%s %s (c) 2004 - Rémi Peyronnet - http://www.via.ecp.fr/~remi"
+msgstr ""
+
+#: src/xtnApp.cpp:59
+msgid "XSLT Display File to use"
+msgstr ""
+
+#: src/xtnApp.cpp:60
+msgid "XML File to open"
+msgstr ""
+
+#: src/xtnApp.h:39 src/xtnApp.h:42
+msgid ""
+"This function is not yet implemented, \n"
+"or is being developped.\n"
+msgstr ""
+
+#: src/xtnApp.h:39 src/xtnApp.h:42
+msgid "Function not implemented."
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:11 src/xtnDialogDiffDual.cpp:12
+msgid "Diff Options"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:12
+msgid "xmlDiff current file"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:13
+msgid "With "
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:15 src/xtnDialogDiffDual.cpp:16
+#: src/xtnDialogDiffDual.cpp:19
+msgid "..."
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:16
+msgid "...as Before file"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:17
+msgid "... as After file"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:18 src/xtnDialogDiffDual.cpp:20
+msgid "Identifiers "
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:19 src/xtnDialogDiffDual.cpp:21
+msgid "@id,@value"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:20 src/xtnDialogDiffDual.cpp:22
+msgid "Add before values"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:21 src/xtnDialogDiffDual.cpp:23
+msgid "Separator "
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:22 src/xtnDialogDiffDual.cpp:24
+msgid "|"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:23 src/xtnDialogDiffDual.cpp:25
+msgid "Tag Childs"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:24 src/xtnDialogDiffDual.cpp:26
+msgid "&Diff !"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:25 src/xtnDialogDiffDual.cpp:27
+msgid "&Cancel"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:37 src/xtnFrame.cpp:418
+msgid "Diff to current XML File"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:39 src/xtnDialogDiffDual.cpp:40
+msgid "Diff the currently opened XML file with this file."
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:42
+msgid ""
+"Use the file specified above as before file, and the currently opened file "
+"as after file."
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:44
+msgid ""
+"Use the file specified above as after file, and the currently opened file as "
+"before file."
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:45 src/xtnDialogDiffDual.cpp:44
+msgid ""
+"Use these items as identifiers. (List of items separated by comma, "
+"attributes must be prefixed by @, and '.' can be used for the text)"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:46 src/xtnDialogDiffDual.cpp:45
+msgid ""
+"If checked, when a difference occurs, the output file will contain \"before "
+"value <separator> after value\""
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:48 src/xtnDialogDiffDual.cpp:47
+msgid "Text to separate before and after values"
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:49 src/xtnDialogDiffDual.cpp:48
+msgid "Recursively tag childs of added or deleted nodes."
+msgstr ""
+
+#: src/xtnDialogDiffCurrent.cpp:109 src/xtnDialogDiffDual.cpp:111
+#: src/xtnDialogDiffDual.cpp:128 src/xtnFrame.cpp:172 src/xtnFrame.cpp:312
+msgid "Open a file"
+msgstr ""
+
+#: src/xtnDialogDiffDual.cpp:13
+msgid "xmlDiff two files"
+msgstr ""
+
+#: src/xtnDialogDiffDual.cpp:14
+msgid "Before"
+msgstr ""
+
+#: src/xtnDialogDiffDual.cpp:17
+msgid "After"
+msgstr ""
+
+#: src/xtnDialogDiffDual.cpp:38
+msgid "Diff Two XML Files"
+msgstr ""
+
+#: src/xtnFrame.cpp:85
+msgid "Preferences"
+msgstr ""
+
+#: src/xtnFrame.cpp:87 src/xtnFrame.cpp:88 src/xtnFrame.cpp:89
+msgid "XML"
+msgstr ""
+
+#: src/xtnFrame.cpp:87
+msgid "Clean Text"
+msgstr ""
+
+#: src/xtnFrame.cpp:88
+msgid "Enforce Cleaning"
+msgstr ""
+
+#: src/xtnFrame.cpp:89
+msgid "Pretty Print on Save"
+msgstr ""
+
+#: src/xtnFrame.cpp:91 src/xtnFrame.cpp:92
+msgid "Engine"
+msgstr ""
+
+#: src/xtnFrame.cpp:91
+msgid "Optimize Memory usage"
+msgstr ""
+
+#: src/xtnFrame.cpp:92
+msgid "Use EXSLT"
+msgstr ""
+
+#: src/xtnFrame.cpp:127
+msgid "&Open..."
+msgstr ""
+
+#: src/xtnFrame.cpp:127
+msgid "Open a file."
+msgstr ""
+
+#: src/xtnFrame.cpp:128
+msgid "&Open and Diff..."
+msgstr ""
+
+#: src/xtnFrame.cpp:128
+msgid "Open and diff two XML files."
+msgstr ""
+
+#: src/xtnFrame.cpp:129
+msgid "&Save"
+msgstr ""
+
+#: src/xtnFrame.cpp:129
+msgid "Save the current file."
+msgstr ""
+
+#: src/xtnFrame.cpp:130
+msgid "&Save as..."
+msgstr ""
+
+#: src/xtnFrame.cpp:130
+msgid "Save the current file under another name."
+msgstr ""
+
+#: src/xtnFrame.cpp:131
+msgid "&Reload"
+msgstr ""
+
+#: src/xtnFrame.cpp:131
+msgid "Reload original file."
+msgstr ""
+
+#: src/xtnFrame.cpp:133
+msgid "&Preferences"
+msgstr ""
+
+#: src/xtnFrame.cpp:133
+msgid "Define application's settings."
+msgstr ""
+
+#: src/xtnFrame.cpp:135
+msgid "&Quit"
+msgstr ""
+
+#: src/xtnFrame.cpp:135
+msgid "Quit the application."
+msgstr ""
+
+#: src/xtnFrame.cpp:136
+msgid "&File"
+msgstr ""
+
+#: src/xtnFrame.cpp:139
+msgid "&Copy"
+msgstr ""
+
+#: src/xtnFrame.cpp:139
+msgid "Copy current node to clipboard."
+msgstr ""
+
+#: src/xtnFrame.cpp:141
+msgid "&Search..."
+msgstr ""
+
+#: src/xtnFrame.cpp:141
+msgid "Search nodes with XPath expression."
+msgstr ""
+
+#: src/xtnFrame.cpp:142
+msgid "&Next"
+msgstr ""
+
+#: src/xtnFrame.cpp:142
+msgid "Next node of the previous search."
+msgstr ""
+
+#: src/xtnFrame.cpp:143
+msgid "&Edit"
+msgstr ""
+
+#: src/xtnFrame.cpp:146
+msgid "&Normal"
+msgstr ""
+
+#: src/xtnFrame.cpp:146 src/xtnFrame.cpp:155
+msgid "Normal display, with attributes and text inline."
+msgstr ""
+
+#: src/xtnFrame.cpp:147
+msgid "&Texts"
+msgstr ""
+
+#: src/xtnFrame.cpp:147
+msgid "Display with attributes inline, and texts as elements."
+msgstr ""
+
+#: src/xtnFrame.cpp:148
+msgid "&Full"
+msgstr ""
+
+#: src/xtnFrame.cpp:148
+msgid "Display everything as elements."
+msgstr ""
+
+#: src/xtnFrame.cpp:149
+msgid "&Open XSLT Display..."
+msgstr ""
+
+#: src/xtnFrame.cpp:149
+msgid "Open a XSLT Display file."
+msgstr ""
+
+#: src/xtnFrame.cpp:152
+msgid "&Display"
+msgstr ""
+
+#: src/xtnFrame.cpp:155
+msgid "&Diff to..."
+msgstr ""
+
+#: src/xtnFrame.cpp:157
+msgid "&Show differences"
+msgstr ""
+
+#: src/xtnFrame.cpp:157
+msgid "Highlight differents elements."
+msgstr ""
+
+#: src/xtnFrame.cpp:159
+msgid "Show &only differences"
+msgstr ""
+
+#: src/xtnFrame.cpp:159
+msgid "Show only elements with differences."
+msgstr ""
+
+#: src/xtnFrame.cpp:160
+msgid "&Diff"
+msgstr ""
+
+#: src/xtnFrame.cpp:163
+msgid "&About..."
+msgstr ""
+
+#: src/xtnFrame.cpp:163
+msgid "About this application."
+msgstr ""
+
+#: src/xtnFrame.cpp:164
+msgid "&Help"
+msgstr ""
+
+#: src/xtnFrame.cpp:172
+msgid "Open"
+msgstr ""
+
+#: src/xtnFrame.cpp:173
+msgid "Open XSLT"
+msgstr ""
+
+#: src/xtnFrame.cpp:173
+msgid "Open a XSLT display file"
+msgstr ""
+
+#: src/xtnFrame.cpp:174
+msgid "Save"
+msgstr ""
+
+#: src/xtnFrame.cpp:174
+msgid "Save the current file"
+msgstr ""
+
+#: src/xtnFrame.cpp:175
+msgid "Reload"
+msgstr ""
+
+#: src/xtnFrame.cpp:175
+msgid "Reload original file"
+msgstr ""
+
+#: src/xtnFrame.cpp:210
+msgid "Ready"
+msgstr ""
+
+#: src/xtnFrame.cpp:281
+#, c-format
+msgid "Parsing Before file OK : %ld nodes"
+msgstr ""
+
+#: src/xtnFrame.cpp:286
+#, c-format
+msgid "Parsing After file OK : %ld nodes"
+msgstr ""
+
+#: src/xtnFrame.cpp:289
+#, c-format
+msgid "Diff OK : %ld nodes processed"
+msgstr ""
+
+#: src/xtnFrame.cpp:292
+#, c-format
+msgid "Diff in progress... (%ld%%)"
+msgstr ""
+
+#: src/xtnFrame.cpp:293
+#, c-format
+msgid "%ld%%"
+msgstr ""
+
+#: src/xtnFrame.cpp:306
+#, c-format
+msgid ""
+"%s %s\n"
+"\n"
+"(c) 2004 - Rémi Peyronnet\n"
+"http://www.via.ecp.fr/~remi"
+msgstr ""
+
+#: src/xtnFrame.cpp:329
+msgid "Save a file"
+msgstr ""
+
+#: src/xtnFrame.cpp:375
+msgid "Open a display XSLT file"
+msgstr ""
+
+#: src/xtnFrame.cpp:394
+msgid "Diff two XML File"
+msgstr ""
+
+#: src/xtnFrame.cpp:459
+msgid "Unexpected error while getting the string."
+msgstr ""
+
+#: src/xtnFrame.cpp:479
+msgid "XPath Expression search :"
+msgstr ""
+
+#: src/xtnFrame.cpp:479
+msgid "XPath Search"
+msgstr ""
+
+#: src/xtnXmlTree.cpp:140 src/xtnXmlTree.cpp:182
+#, c-format
+msgid "Error while Loading the file %s"
+msgstr ""
+
+#: src/xtnXmlTree.cpp:145
+msgid "Unable to instanciate stuctures, probably due to a memory problem"
+msgstr ""
+
+#: src/xtnXmlTree.cpp:476
+msgid "Invalid selected node."
+msgstr ""
+
+#: src/xtnXmlTree.cpp:483
+msgid "Unable to create the structure. Memory may be full."
+msgstr ""
+
+#: src/xtnXmlTree.cpp:496
+msgid "XPath query error."
+msgstr ""
+
+#: src/xtnXmlTree.cpp:514
+#, c-format
+msgid "Node %d of %d found (%s)"
+msgstr ""
+
+#: src/xtnXmlTree.cpp:518
+msgid "No nodes found : "
+msgstr ""

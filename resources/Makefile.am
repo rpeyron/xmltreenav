@@ -1,6 +1,7 @@
-SUBDIRS = xpm
+SUBDIRS = xpm treeicons
 EXTRA_DIST = \
 	resource.h \
 	resource.inc \
 	resources.rc \
-	FilesPhoto.ico
+	build_xpm.sh \
+	xmltreenav.ico

@@ -1,0 +1,53 @@
+# Project: xmlTreeNav
+# Makefile created by Dev-C++ 4.9.9.0
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = xmlTreeNav_private.res
+OBJ  = output/xtnApp.o output/xtnDialogDiffCurrent.o output/xtnDialogDiffDual.o output/xtnFrame.o output/xtnPrecomp.o output/xtnXmlTree.o output/ConfigDialog.o output/wxUniCompat.o $(RES)
+LINKOBJ  = output/xtnApp.o output/xtnDialogDiffCurrent.o output/xtnDialogDiffDual.o output/xtnFrame.o output/xtnPrecomp.o output/xtnXmlTree.o output/ConfigDialog.o output/wxUniCompat.o $(RES)
+LIBS =  -L"C:/Program Files/Dev-cpp/lib" -mwindows -Wl,--subsystem,windows -mwindows  -lwx_mswu-2.5 -llibxmldiff -lxml2 -lxslt -lexslt -lwsock32 -liconv -lstdc++ -lgcc -lodbc32 -lwsock32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lctl3d32 -ladvapi32 -lopengl32 -lglu32 -lole32 -loleaut32 -luuid    -fmessage-length=0 
+INCS =  -I"C:/Program Files/Dev-cpp/include" 
+CXXINCS =  -I"C:/Program Files/Dev-cpp/include/c++/3.3.1"  -I"C:/Program Files/Dev-cpp/include/c++/3.3.1/mingw32"  -I"C:/Program Files/Dev-cpp/include/c++/3.3.1/backward"  -I"C:/Program Files/Dev-cpp/lib/gcc-lib/mingw32/3.3.1/include"  -I"C:/Program Files/Dev-cpp/include" 
+BIN  = ../../bin/xmlTreeNav.exe
+CXXFLAGS = $(CXXINCS) -DWINVER=0x0400 -D__WIN95__ -D__GNUWIN32__ -D__WIN32__ -DHAVE_W32API_H -D__WXMSW__ -D__WINDOWS__ -fno-pcc-struct-return -Os -fno-rtti -DLIBXML_STATIC -I"C:\Program Files\Dev-Cpp\include\wx-2.5" -I"C:\Program Files\Dev-Cpp\lib\wx\include\msw-unicode-release-static-2.5" -I"..\..\lib"   -O3 -fmessage-length=0
+CFLAGS = $(INCS)   -O3 -fmessage-length=0
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before ../../bin/xmlTreeNav.exe all-after
+
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "..\..\bin\xmlTreeNav.exe" $(LIBS)
+
+output/xtnApp.o: ../../src/xtnApp.cpp
+	$(CPP) -c ../../src/xtnApp.cpp -o output/xtnApp.o $(CXXFLAGS)
+
+output/xtnDialogDiffCurrent.o: ../../src/xtnDialogDiffCurrent.cpp
+	$(CPP) -c ../../src/xtnDialogDiffCurrent.cpp -o output/xtnDialogDiffCurrent.o $(CXXFLAGS)
+
+output/xtnDialogDiffDual.o: ../../src/xtnDialogDiffDual.cpp
+	$(CPP) -c ../../src/xtnDialogDiffDual.cpp -o output/xtnDialogDiffDual.o $(CXXFLAGS)
+
+output/xtnFrame.o: ../../src/xtnFrame.cpp
+	$(CPP) -c ../../src/xtnFrame.cpp -o output/xtnFrame.o $(CXXFLAGS)
+
+output/xtnPrecomp.o: ../../src/xtnPrecomp.cpp
+	$(CPP) -c ../../src/xtnPrecomp.cpp -o output/xtnPrecomp.o $(CXXFLAGS)
+
+output/xtnXmlTree.o: ../../src/xtnXmlTree.cpp
+	$(CPP) -c ../../src/xtnXmlTree.cpp -o output/xtnXmlTree.o $(CXXFLAGS)
+
+output/ConfigDialog.o: ../../lib/wxmisc/ConfigDialog.cpp
+	$(CPP) -c ../../lib/wxmisc/ConfigDialog.cpp -o output/ConfigDialog.o $(CXXFLAGS)
+
+output/wxUniCompat.o: ../../lib/wxmisc/wxUniCompat.cpp
+	$(CPP) -c ../../lib/wxmisc/wxUniCompat.cpp -o output/wxUniCompat.o $(CXXFLAGS)
+
+xmlTreeNav_private.res: xmlTreeNav_private.rc 
+	$(WINDRES) -i xmlTreeNav_private.rc -I rc -o xmlTreeNav_private.res -O coff  --include-dir ../../RESOUR~1

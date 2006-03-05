@@ -100,7 +100,7 @@ WXICON_SMALL_DRIVE      ICON    DISCARDABLE     "wx/msw/drive.ico"
 WXICON_SMALL_CDROM      ICON    DISCARDABLE     "wx/msw/cdrom.ico"
 WXICON_SMALL_FLOPPY     ICON    DISCARDABLE     "wx/msw/floppy.ico"
 WXICON_SMALL_REMOVEABLE ICON    DISCARDABLE     "wx/msw/removble.ico"
-IDI_MAINICON            ICON    DISCARDABLE     "FilesPhoto.ico"
+IDI_MAINICON            ICON    DISCARDABLE     "xmltreenav.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //

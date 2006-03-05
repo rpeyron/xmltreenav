@@ -59,20 +59,48 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
+host_alias = @host_alias@
+host_triplet = @host@
 
 EXEEXT = @EXEEXT@
 OBJEXT = @OBJEXT@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 AMTAR = @AMTAR@
 AWK = @AWK@
+BUILD_INCLUDED_LIBINTL = @BUILD_INCLUDED_LIBINTL@
+CATOBJEXT = @CATOBJEXT@
 CC = @CC@
 CPP = @CPP@
 CXX = @CXX@
+DATADIRNAME = @DATADIRNAME@
 DEPDIR = @DEPDIR@
+GENCAT = @GENCAT@
+GLIBC21 = @GLIBC21@
+GMSGFMT = @GMSGFMT@
+HAVE_ASPRINTF = @HAVE_ASPRINTF@
+HAVE_LIB = @HAVE_LIB@
+HAVE_POSIX_PRINTF = @HAVE_POSIX_PRINTF@
+HAVE_SNPRINTF = @HAVE_SNPRINTF@
+HAVE_WPRINTF = @HAVE_WPRINTF@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+INSTOBJEXT = @INSTOBJEXT@
+INTLBISON = @INTLBISON@
+INTLLIBS = @INTLLIBS@
+INTLOBJS = @INTLOBJS@
+INTL_LIBTOOL_SUFFIX_PREFIX = @INTL_LIBTOOL_SUFFIX_PREFIX@
+LIB = @LIB@
+LIBICONV = @LIBICONV@
+LIBINTL = @LIBINTL@
+LTLIB = @LTLIB@
+LTLIBICONV = @LTLIBICONV@
+LTLIBINTL = @LTLIBINTL@
+MKINSTALLDIRS = @MKINSTALLDIRS@
 PACKAGE = @PACKAGE@
+POSUB = @POSUB@
 RANLIB = @RANLIB@
 STRIP = @STRIP@
+USE_INCLUDED_LIBINTL = @USE_INCLUDED_LIBINTL@
+USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 WX_CFLAGS = @WX_CFLAGS@
 WX_CFLAGS_ONLY = @WX_CFLAGS_ONLY@
@@ -83,38 +111,44 @@ WX_CXXFLAGS_ONLY = @WX_CXXFLAGS_ONLY@
 WX_LIBS = @WX_LIBS@
 WX_LIBS_STATIC = @WX_LIBS_STATIC@
 WX_VERSION = @WX_VERSION@
+XML2_CONFIG = @XML2_CONFIG@
+XML_CPPFLAGS = @XML_CPPFLAGS@
+XML_LIBS = @XML_LIBS@
 am__include = @am__include@
 am__quote = @am__quote@
 install_sh = @install_sh@
-bin_PROGRAMS = RPhoto
-RPhoto_LDADD = ../lib/wxVillaLib/libwxVillaLib.a ../lib/wxFix/libwxFix.a
-RPhoto_SOURCES = \
-	RatioPrecomp.cpp \
-	RatioPrecomp.h \
-	RatioFrame.cpp \
-	RatioFrame.h \
-	RPhoto.cpp \
-	RPhoto.h \
-	RectTracker.cpp \
-	RectTracker.h \
-	RatioImageBox.cpp \
-	RatioImageBox.h \
-	ConfigDialog.cpp \
-	ConfigDialog.h
+bin_PROGRAMS = xmltreenav
+xmltreenav_LDADD = ../lib/wxmisc/libwxmisc.a -lxmldiff -L../../libxmldiff/src
+xmltreenav_SOURCES = \
+    Makefile.am \
+    Makefile.in \
+    xtnApp.cpp \
+    xtnApp.h \
+    xtnDialogDiffCurrent.cpp \
+    xtnDialogDiffCurrent.h \
+    xtnDialogDiffDual.cpp \
+    xtnDialogDiffDual.h \
+    xtnFrame.cpp \
+    xtnFrame.h \
+    xtnPrecomp.cpp \
+    xtnPrecomp.h \
+    xtnXmlTree.cpp \
+    xtnXmlTree.h
 
+
+INCLUDES = -I../lib/
 subdir = src
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_CLEAN_FILES =
-bin_PROGRAMS = RPhoto$(EXEEXT)
+bin_PROGRAMS = xmltreenav$(EXEEXT)
 PROGRAMS = $(bin_PROGRAMS)
 
-am_RPhoto_OBJECTS = RatioPrecomp.$(OBJEXT) RatioFrame.$(OBJEXT) \
-	RPhoto.$(OBJEXT) RectTracker.$(OBJEXT) RatioImageBox.$(OBJEXT) \
-	ConfigDialog.$(OBJEXT)
-RPhoto_OBJECTS = $(am_RPhoto_OBJECTS)
-RPhoto_DEPENDENCIES = ../lib/wxVillaLib/libwxVillaLib.a \
-	../lib/wxFix/libwxFix.a
-RPhoto_LDFLAGS =
+am_xmltreenav_OBJECTS = xtnApp.$(OBJEXT) xtnDialogDiffCurrent.$(OBJEXT) \
+	xtnDialogDiffDual.$(OBJEXT) xtnFrame.$(OBJEXT) \
+	xtnPrecomp.$(OBJEXT) xtnXmlTree.$(OBJEXT)
+xmltreenav_OBJECTS = $(am_xmltreenav_OBJECTS)
+xmltreenav_DEPENDENCIES = ../lib/wxmisc/libwxmisc.a
+xmltreenav_LDFLAGS =
 
 DEFS = @DEFS@
 DEFAULT_INCLUDES =  -I. -I$(srcdir)
@@ -123,11 +157,11 @@ LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
-@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/ConfigDialog.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/RPhoto.Po ./$(DEPDIR)/RatioFrame.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/RatioImageBox.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/RatioPrecomp.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/RectTracker.Po
+@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/xtnApp.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xtnDialogDiffCurrent.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xtnDialogDiffDual.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xtnFrame.Po ./$(DEPDIR)/xtnPrecomp.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/xtnXmlTree.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
@@ -139,9 +173,9 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-DIST_SOURCES = $(RPhoto_SOURCES)
+DIST_SOURCES = $(xmltreenav_SOURCES)
 DIST_COMMON = Makefile.am Makefile.in
-SOURCES = $(RPhoto_SOURCES)
+SOURCES = $(xmltreenav_SOURCES)
 
 all: all-am
 
@@ -176,9 +210,9 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-RPhoto$(EXEEXT): $(RPhoto_OBJECTS) $(RPhoto_DEPENDENCIES) 
-	@rm -f RPhoto$(EXEEXT)
-	$(CXXLINK) $(RPhoto_LDFLAGS) $(RPhoto_OBJECTS) $(RPhoto_LDADD) $(LIBS)
+xmltreenav$(EXEEXT): $(xmltreenav_OBJECTS) $(xmltreenav_DEPENDENCIES) 
+	@rm -f xmltreenav$(EXEEXT)
+	$(CXXLINK) $(xmltreenav_LDFLAGS) $(xmltreenav_OBJECTS) $(xmltreenav_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT) core *.core
@@ -186,12 +220,12 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ConfigDialog.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RPhoto.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RatioFrame.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RatioImageBox.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RatioPrecomp.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RectTracker.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xtnApp.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xtnDialogDiffCurrent.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xtnDialogDiffDual.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xtnFrame.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xtnPrecomp.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/xtnXmlTree.Po@am__quote@
 
 distclean-depend:
 	-rm -rf ./$(DEPDIR)
@@ -350,9 +384,6 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 	mostlyclean-generic tags uninstall uninstall-am \
 	uninstall-binPROGRAMS uninstall-info-am
 
-
-# Pre-compiled headers
-# g++ $(wx-config --cppflags) -o RatioPrecomp.h.gch -c RatioPrecomp.cpp
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
