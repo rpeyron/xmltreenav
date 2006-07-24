@@ -54,6 +54,18 @@ xtnFrame::xtnFrame(wxWindow* parent,
 {
 	wxString str;
 
+	// Relative Directory Stuff
+#ifdef __WXMSW__
+	wxString exeFolder;
+	TCHAR  szthis[300];
+	TCHAR * c = szthis + GetModuleFileName(0, szthis, 300);
+	while(*c != '\\') c--; // c POINTE A LA FIN, RECULER TANT QUE NON '\\'
+	*c = 0;
+	exeFolder = wxString(szthis);
+	// SetCurrentDirectory(szthis);
+    m_locale.AddCatalogLookupPathPrefix(exeFolder);
+#endif
+
     // Locale Stuff
     m_locale.Init();
     m_locale.AddCatalog(wxT("xmlTreeNav"));
@@ -85,6 +97,14 @@ xtnFrame::xtnFrame(wxWindow* parent,
     xmlInitialize(m_curOptions);
 
 	m_pConfig->Read(wxT("Config/FileConf"), &str, _("config.xml"));
+
+#ifdef __WXMSW__
+	if ( (!str.Contains(wxT("\\"))) &&
+		(!::wxFileExists(str)) &&
+		(::wxFileExists(exeFolder + wxT("\\") + str)) )
+		str = exeFolder + wxT("\\") + str;
+#endif
+
 	LoadConfigFile(str);
 }
 
@@ -101,14 +121,16 @@ void xtnFrame::InitConfig()
     new wxConfigDialog_EntryCheck(*m_pConfigDialog, wxT("Engine"), wxT("OptimizeMemory"), _("Engine"), _("Optimize Memory usage"), TRUE);
     new wxConfigDialog_EntryCheck(*m_pConfigDialog, wxT("Engine"), wxT("UseEXSLT"), _("Engine"), _("Use EXSLT"), FALSE);
 
-    new wxConfigDialog_EntryText(*m_pConfigDialog, wxT("Config"), wxT("FileConf"), _("Config"), _("Configuration File"), _("config.xml"));
+    new wxConfigDialog_EntryTextEdit(*m_pConfigDialog, wxT("Config"), wxT("FileConf"), _("Config"), _("Configuration File"), _("config.xml"));
+    new wxConfigDialog_EntryTextEdit(*m_pConfigDialog, wxT("Config"), wxT("SearchSize"), _("Config"), _("Search Size"), _("250"));
 
     m_pConfigDialog->doLayout();
 }
 
 void xtnFrame::DoConfig()
 {
-    // int i;
+	wxString str;
+    long l;
     bool opt;
     // Clean Text
     m_pConfig->Read(wxT("XML/CleanText"), &opt);
@@ -128,6 +150,8 @@ void xtnFrame::DoConfig()
 	// Do not auto save
 	m_curOptions.automaticSave = false;
 
+    m_pConfig->Read(wxT("Config/SearchSize"), &str, wxT("250"));
+	if (str.ToLong(&l)) { GetToolBar()->FindWindowById(CTRL_XPATH)->SetSize(l, -1); GetToolBar()->Realize(); }
 }
 
 void xtnFrame::InitMenu()
@@ -139,13 +163,13 @@ void xtnFrame::InitMenu()
 	curMenu = new wxMenu();
 	curMenu->Append(MENU_FILE_OPEN, _("&Open..."), _("Open a file."));
 	curMenu->Append(MENU_FILE_OPEN_DIFF, _("&Open and Diff..."), _("Open and diff two XML files."));
-	curMenu->Append(MENU_FILE_SAVE, _("&Save") + wxString(wxT("\ts")), _("Save the current file."));
+	curMenu->Append(MENU_FILE_SAVE, _("&Save") + wxString(wxT("\tCtrl-s")), _("Save the current file."));
 	curMenu->Append(MENU_FILE_SAVEAS, _("&Save as..."), _("Save the current file under another name."));
 	curMenu->Append(MENU_FILE_RELOAD, _("&Reload"), _("Reload original file."));
 	curMenu->AppendSeparator();
 	curMenu->Append(MENU_FILE_PREFS, _("&Preferences"), _("Define application's settings."));
 	curMenu->AppendSeparator();
-	curMenu->Append(MENU_FILE_QUIT, _("&Quit")+wxString(wxT("\tQ")), _("Quit the application."));
+	curMenu->Append(MENU_FILE_QUIT, _("&Quit")+wxString(wxT("\tCtrl-Q")), _("Quit the application."));
 	m_pMenuBar->Append(curMenu, _("&File"));
     // - Edit Menu
     curMenu = new wxMenu();
@@ -189,6 +213,9 @@ void xtnFrame::InitToolBar()
 	GetToolBar()->AddTool(TOOL_SAVE, _("Save"), wxBitmap(xpm_save), wxNullBitmap, wxITEM_NORMAL ,_("Save the current file"),_("Save the current file"));
 	GetToolBar()->AddTool(TOOL_RELOAD, _("Reload"), wxBitmap(xpm_undo), wxNullBitmap, wxITEM_NORMAL , _("Reload original file"), _("Reload original file"));
 	GetToolBar()->AddSeparator();
+	GetToolBar()->AddControl(new wxComboBox(GetToolBar(), CTRL_XPATH, _("XPath Expression"), wxDefaultPosition, wxSize(200, 0)));
+	GetToolBar()->AddTool(TOOL_NEXT, _("Reload"), wxBitmap(xpm_arrow_right), wxNullBitmap, wxITEM_NORMAL , _("Search"), _("Search."));
+	// GetToolBar()->FindWindow(CTRL_XPATH)->
     GetToolBar()->Realize();
 }
  
@@ -236,15 +263,16 @@ void xtnFrame::InitControls()
     // Tree
     m_pXmlTree = new xtnXmlTree(m_curOptions, GetStatusBar(), this, CTRL_XML_TREE);
 
-#ifdef __WXMSW__
-	m_pIEHtml = new IEHtmlWin(this, CTRL_XML_IE);
-	m_pIEHtml->SetDropTarget(new xtnFrameDropTarget(this));
-	// horSizer->Add(m_pIEHtml, 1, wxEXPAND);
-	m_pXmlTree->Show(FALSE);
-	m_pIEHtml->Show(FALSE);
+    // horSizer->Add(m_pXmlTree, 1, wxEXPAND);
+#ifdef XTN_IE
+	m_pHtml = new IEHtmlWin(this, CTRL_XML_IE);
 #else
-    horSizer->Add(m_pXmlTree, 1, wxEXPAND);
+	m_pHtml = new wxHtmlWindow(this, CTRL_XML_IE);
 #endif
+	m_pHtml->SetDropTarget(new xtnFrameDropTarget(this));
+	// horSizer->Add(m_pHtml, 1, wxEXPAND);
+	m_pXmlTree->Show(FALSE);
+	m_pHtml->Show(FALSE);
 }
 
 
@@ -292,6 +320,8 @@ BEGIN_EVENT_TABLE(xtnFrame, wxFrame)
    EVT_TOOL(TOOL_OPENXSLT, xtnFrame::OnDispOpenXslt)
    EVT_TOOL(TOOL_SAVE, xtnFrame::OnFileSave)
    EVT_TOOL(TOOL_RELOAD, xtnFrame::OnFileReload)
+   EVT_TOOL(TOOL_NEXT, xtnFrame::OnEditSearchNext)
+   EVT_TEXT_ENTER(CTRL_XPATH, xtnFrame::OnEditSearchNext)
 END_EVENT_TABLE()
 
 
@@ -428,6 +458,7 @@ void xtnFrame::OnFileOpenAndDiff(wxCommandEvent &event)
 	if (dlg->ShowModal() == wxID_OK)
 	{
 		dlg->getDlgOptions(opt);
+		LoadFile(wxT("")); // Set view correctly
 		m_pXmlTree->DiffFiles(dlg->getBeforeFile(), dlg->getAfterFile(), &opt);
 	}
 	delete dlg;
@@ -508,7 +539,8 @@ void xtnFrame::OnEditPaste(wxCommandEvent &event)
 	}
 	else
 	{
-		/*
+// Strange bug on MSW
+#ifndef __WXMSW__
 		wxTextDataObject data;
 		// Put it in the Clipboard
 		if (wxTheClipboard->Open())
@@ -524,7 +556,7 @@ void xtnFrame::OnEditPaste(wxCommandEvent &event)
 			}
 			wxTheClipboard->Close();
 		}
-		*/
+#else        
 		// Put it in the Clipboard
 		if (::wxOpenClipboard())
 		{
@@ -572,34 +604,34 @@ void xtnFrame::OnEditPaste(wxCommandEvent &event)
 			}
 			::wxCloseClipboard();
 		}
+#endif            
 	}
 }
 
-
 void xtnFrame::OnEditSearch(wxCommandEvent &event)
 {
-    wxString search;
-    search = wxGetTextFromUser(_("XPath Expression search :"), _("XPath Search") ,m_sLastSearch, this);
-    if (search != wxT(""))
-    {
-        m_sLastSearch = search;
-        m_pLastSearchXmlNodeRef = m_pXmlTree->GetCurrentNode();
-        OnEditSearchNext(event);
-    }
+    // OnEditSearchNext(event);
+	GetToolBar()->FindWindowById(CTRL_XPATH)->SetFocus();
 }
 
 
 void xtnFrame::OnEditSearchNext(wxCommandEvent &event)
 {
-    wxString status;
-    if (m_sLastSearch != wxT(""))
+    //wxString status;
+    wxString search;
+	search = ((wxComboBox *)(GetToolBar()->FindWindowById(CTRL_XPATH)))->GetValue();
+    if ( (search != wxT("")) && (search != _("XPath Expression")) && (search != m_sLastSearch) )
     {
-        m_pXmlTree->FindNodes(m_sLastSearch, m_pLastSearchXmlNodeRef);
+        m_sLastSearch = search;
+		if (((wxComboBox *)(GetToolBar()->FindWindowById(CTRL_XPATH)))->FindString(m_sLastSearch) == -1)
+				((wxComboBox *)(GetToolBar()->FindWindowById(CTRL_XPATH)))->Append(m_sLastSearch);
+        m_pLastSearchXmlNodeRef = m_pXmlTree->GetCurrentNode();
     }
-    else
+    if (m_sLastSearch == wxT(""))
     {
-        OnEditSearch(event);
+	    m_sLastSearch = wxGetTextFromUser(_("XPath Expression search :"), _("XPath Search") ,m_sLastSearch, this);
     }
+    if (m_sLastSearch != wxT("")) m_pXmlTree->FindNodes(m_sLastSearch, m_pLastSearchXmlNodeRef);
 }
 
 
@@ -613,6 +645,7 @@ void xtnFrame::LoadConfigFile(const wxString &name)
 	wxMenu * curMenu;
 
 	// Clean stuff
+	((wxComboBox *)GetToolBar()->FindWindowById(CTRL_XPATH))->Clear();
 	curMenu = GetMenuBar()->GetMenu(MENU_DISP);
 	for(i = MENU_DISP_XBEGIN; i <= MENU_DISP_XEND; i++)
 		curMenu->Remove(i);
@@ -638,7 +671,7 @@ void xtnFrame::LoadConfigFile(const wxString &name)
 					customXsltMenu[iDisplay].file = xmlstring2wxString(xmlstring(xmlCharTmp(xmlGetProp(node, BAD_CAST "file"))));
 					curMenu->AppendRadioItem(MENU_DISP_XBEGIN + iDisplay, 
 							xmlstring2wxString(xmlstring(xmlCharTmp(xmlGetProp(node, BAD_CAST "name")))),
-							wxString::Format(_("Open Local XSLT Display with file %s"), customXsltMenu[iDisplay].file)
+							wxString::Format(_("Open Local XSLT Display with file %s"), customXsltMenu[iDisplay].file.c_str())
 							);
 					iDisplay++;
 				}
@@ -648,9 +681,18 @@ void xtnFrame::LoadConfigFile(const wxString &name)
 					customXsltMenu[iDisplay].file = xmlstring2wxString(xmlstring(xmlCharTmp(xmlGetProp(node, BAD_CAST "file"))));
 					curMenu->AppendRadioItem(MENU_DISP_XBEGIN + iDisplay, 
 							xmlstring2wxString(xmlstring(xmlCharTmp(xmlGetProp(node, BAD_CAST "name")))),
-							wxString::Format(_("Open HTML XSLT Display with file %s"), customXsltMenu[iDisplay].file)
+							wxString::Format(_("Open HTML XSLT Display with file %s"), customXsltMenu[iDisplay].file.c_str())
 							);
 					iDisplay++;
+				}
+				if (str != NULL) xmlFree(str);
+			}
+			if (xmlStrcmp(node->name, BAD_CAST "search") == 0)
+			{
+				str = xmlGetProp(node, BAD_CAST "expr");
+				if (str != NULL) 
+				{
+					((wxComboBox *)GetToolBar()->FindWindowById(CTRL_XPATH))->Append(xmlstring2wxString(xmlstring(str)));
 				}
 				if (str != NULL) xmlFree(str);
 			}
@@ -662,23 +704,29 @@ void xtnFrame::LoadConfigFile(const wxString &name)
 
 void xtnFrame::LoadFile(const wxString &name)
 {
-	if (name != wxT("")) m_pXmlTree->LoadFile(name);
-#ifdef __WXMSW__
+	if (name != wxT(""))
+	{
+		m_pXmlTree->LoadFile(name);
+	}
 	GetSizer()->Remove(m_pXmlTree);
-	GetSizer()->Remove(m_pIEHtml);
 	m_pXmlTree->Show(FALSE);
-	m_pIEHtml->Show(FALSE);
+	m_pHtml->Show(FALSE);
+	GetSizer()->Remove(m_pHtml);
 	if ((m_pHtmlXslt) && (m_pXmlTree->GetRootNode() != NULL))
 	{
-		m_pIEHtml->Show(TRUE);
-		GetSizer()->Add(m_pIEHtml, 1, wxEXPAND);
+		m_pHtml->Show(TRUE);
+		GetSizer()->Add(m_pHtml, 1, wxEXPAND);
 		Layout();
 		xmlDocPtr result;
 		result = xsltApplyStylesheet(m_pHtmlXslt, 
 			(m_pXmlTree->GetRootNode() != NULL)?m_pXmlTree->GetRootNode()->doc:NULL,
 			NULL);
 		xsltSaveResultToFilename(m_sResultTempFilename.mb_str(wxConvLocal), result, m_pHtmlXslt, 0);
-		m_pIEHtml->Open(m_sResultTempFilename);
+#ifdef XTN_IE
+		m_pHtml->Open(m_sResultTempFilename);
+#else
+		m_pHtml->LoadFile(m_sResultTempFilename);
+#endif
 	}
 	else
 	{
@@ -686,7 +734,7 @@ void xtnFrame::LoadFile(const wxString &name)
 		GetSizer()->Add(m_pXmlTree, 1, wxEXPAND);
 		Layout();
 	}
-#endif
+	
 }
 
 void xtnFrame::LoadHtmlXsltFile(const wxString &xsltname)

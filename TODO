@@ -1,10 +1,14 @@
-- Refresh sur un diff : filename = |XMLDIFF|before|after| (options à sauver dans l'objet, et déplacer la fonction de diff dans le tree)
 - Multi-document via tab (créer un objet document porteur des spécificités des barres de menu et toolbar, et déplacer les objets adequats de Frame et xtnXmlTree)
 - Arguments / Mode on XSLT files
-- XPath Bar (Bar, History, Preset, Highlight, extended evaluator : nodes to process / list of values to print)
+- XPath Bar options : Highlight, extended evaluator : nodes to process / list of values to print
 - Edit XML files : 
  * add diff:comment custom text
  * edit a node : extract the xml text of the node in text editor (scintilla ?), and then parse it back in the xml file.
  * add and remove nodes, attributes, comments,...
 - Add a console style window, to make operations as xmlsh or xmlgawk 
+
+Done :
+- Refresh sur un diff : filename = |XMLDIFF|before|after| (options à sauver dans l'objet, et déplacer la fonction de diff dans le tree)
+- Nom du fichier dans le titre
 - XSLT HTML Display (Select a XSLT File, and drag'n drop your XML file)
+- XPath Bar (Bar, History, Preset, 

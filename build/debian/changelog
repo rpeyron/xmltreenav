@@ -1,3 +1,13 @@
+xmltreenav (0.3-0) unstable; urgency=low
+
+  * Support IE HTML view / wxHtmlWindow for Linux
+  * Support Paste in IE HTML view 
+  * Added configuration file 
+  * Add XPath  Bar
+  * Filename in Title 
+
+ -- Remi Peyronnet <remi+debian@via.ecp.fr>  Mon, 24 Jul 2006 20:55:00 +0000
+
 xmltreenav (0.2-2) unstable; urgency=low
 
   * FIXED Behaviour on diff documents : Reload, Go to last location, Change view

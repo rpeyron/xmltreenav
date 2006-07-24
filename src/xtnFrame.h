@@ -37,8 +37,10 @@
 #include <libxmldiff/libxmldiff.h>
 #include <libxslt/xslt.h>
 
-#ifdef __WXMSW__
+#ifdef XTN_IE
 #include <iehtmlwin/iehtmlwin.h>
+#else
+#include <wx/html/htmlwin.h>
 #endif
 
 // Position des menus
@@ -75,10 +77,12 @@
 #define TOOL_OPENXSLT		20003
 #define TOOL_SAVE			20002
 #define TOOL_RELOAD			20005
+#define TOOL_NEXT			20006
 
 // Controls Ids
 #define CTRL_XML_TREE       30001
 #define CTRL_XML_IE			30002
+#define CTRL_XPATH			30003
 
 class xtnFrame : public wxFrame
 {
@@ -140,8 +144,10 @@ protected:
     appCommand m_curOptions;
 	wxMenuBar * m_pMenuBar;
     xtnXmlTree * m_pXmlTree;
-	#ifdef __WXMSW__
-	IEHtmlWin * m_pIEHtml;
+	#ifdef XTN_IE
+	IEHtmlWin * m_pHtml;
+	#else
+	wxHtmlWindow * m_pHtml;
 	#endif
 
     wxLocale m_locale;

@@ -1,5 +1,5 @@
-SUBDIRS= m4  lib src resources po
-EXTRA_DIST = config.rpath  config.rpath  \
+SUBDIRS= m4 m4  lib src resources po
+EXTRA_DIST = config.rpath  config.rpath  config.rpath  \
         README \
         COPYING \
         AUTHORS \

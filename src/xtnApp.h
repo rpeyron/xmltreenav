@@ -24,7 +24,11 @@
  * ************************************************************************** */
 
 #define XTN_NAME wxT("xmlTreeNav")
-#define XTN_VERSION wxT("v0.2.3")
+#define XTN_VERSION wxT("v0.3.0")
+
+#ifdef __WXMSW__
+#define XTN_IE
+#endif
 
 #define XMLTREENAV_FILTERLIST_ALL wxString(wxT("XML Files (*.xml)|*.xml|All files (*.*)|*.*"))
 #define XMLTREENAV_FILTERLIST_XSL wxString(wxT("XSL Files (*.xsl;*.xslt)|*.xsl;*.xslt|All files (*.*)|*.*"))

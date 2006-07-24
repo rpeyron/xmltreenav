@@ -31,10 +31,12 @@
 #endif
 
 #include "xtnPrecomp.h"
+#include "xtnApp.h"
 #include "../resources/resource.h"
 #include "../resources/resource.inc" // Include XPM Data
 #include "xtnXmlTree.h"
 #include <wxmisc/wxUniCompat.h>
+#include <wx/filename.h>
 
 IMPLEMENT_CLASS(xtnXmlTree, wxTreeCtrl)
 
@@ -186,6 +188,20 @@ void xtnXmlTree::LoadFile(const wxString & name, const struct globalOptions * cu
     PopulateItem(curItem);
     this->SetItemHasChildren(curItem, true);
     this->Expand(curItem);
+
+	// Title
+	if (m_sXmlFilename.Contains(wxT("|XMLDIFF|")))
+    {
+		GetParent()->SetTitle(wxString::Format(wxT("Diff %s / %s  - %s"),
+               wxFileName(m_sXmlFilename.AfterFirst(wxT('|')).AfterFirst(wxT('|')).BeforeFirst(wxT('|'))).GetFullName().c_str(),
+               wxFileName(m_sXmlFilename.AfterFirst(wxT('|')).AfterFirst(wxT('|')).AfterFirst(wxT('|')).BeforeFirst(wxT('|'))).GetFullName().c_str(),
+			   XTN_NAME
+            ));
+    }
+	else
+	{
+		GetParent()->SetTitle(wxString::Format(wxT("%s - %s"), wxFileName(m_sXmlFilename).GetFullName().c_str(), XTN_NAME));
+	}
 
 }
 

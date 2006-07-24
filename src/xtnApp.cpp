@@ -27,6 +27,7 @@
 #include "xtnFrame.h"
 #include "xtnXmlTree.h"
 #include <wx/cmdline.h>
+#include <wx/image.h>
 
 
 class xtnApp : public wxApp
@@ -43,7 +44,7 @@ IMPLEMENT_APP(xtnApp)
 
 bool xtnApp::OnInit()
 {
-	//wxInitAllImageHandlers();
+	wxInitAllImageHandlers();
 
 	frame = new xtnFrame(NULL, -1, XTN_NAME);
     wxApp::OnInit();

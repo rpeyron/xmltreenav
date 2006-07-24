@@ -272,7 +272,7 @@ PACKAGE_STRING=
 PACKAGE_BUGREPORT=
 
 ac_unique_file="configure.in"
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE CPP CXX CXXFLAGS ac_ct_CXX CXXDEPMODE RANLIB ac_ct_RANLIB WX_CONFIG_PATH WX_CPPFLAGS WX_CFLAGS WX_CXXFLAGS WX_CFLAGS_ONLY WX_CXXFLAGS_ONLY WX_LIBS WX_LIBS_STATIC WX_VERSION XML2_CONFIG XML_CPPFLAGS XML_LIBS MKINSTALLDIRS USE_NLS MSGFMT GMSGFMT XGETTEXT MSGMERGE build build_cpu build_vendor build_os host host_cpu host_vendor host_os LIBICONV LTLIBICONV INTLLIBS LIBINTL LTLIBINTL POSUB LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE RANLIB ac_ct_RANLIB WX_CONFIG_PATH WX_CPPFLAGS WX_CFLAGS WX_CXXFLAGS WX_CFLAGS_ONLY WX_CXXFLAGS_ONLY WX_LIBS WX_LIBS_STATIC WX_VERSION XML2_CONFIG XML_CPPFLAGS XML_LIBS MKINSTALLDIRS USE_NLS MSGFMT GMSGFMT XGETTEXT MSGMERGE build build_cpu build_vendor build_os host host_cpu host_vendor host_os INTL_MACOSX_LIBS LIBICONV LTLIBICONV INTLLIBS LIBINTL LTLIBINTL POSUB LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -820,8 +820,8 @@ if test -n "$ac_init_help"; then
 Optional Features:
   --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
-  --disable-dependency-tracking Speeds up one-time builds
-  --enable-dependency-tracking  Do not reject slow dependency extractors
+  --disable-dependency-tracking  speeds up one-time build
+  --enable-dependency-tracking   do not reject slow dependency extractors
   --disable-xmltest       Do not try to compile and run a test LIBXML program
   --disable-nls           do not use Native Language Support
   --disable-rpath         do not hardcode runtime library paths
@@ -829,11 +829,9 @@ Optional Features:
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
-  --with-wxdir=PATH       Use uninstalled version of wxWindows in PATH
-  --with-wx-config=CONFIG wx-config script to use (optional)
-  --with-wx-prefix=PREFIX Prefix where wxWindows is installed (optional)
-  --with-wx-exec-prefix=PREFIX
-                          Exec prefix where wxWindows is installed (optional)
+  --with-wx-prefix=PREFIX   Prefix where wxWindows is installed (optional)
+  --with-wx-exec-prefix=PREFIX Exec prefix where wxWindows is installed (optional)
+  --with-wx-config=CONFIG   wx-config script to use (optional)
   --with-xml-prefix=PFX   Prefix where libxml is installed (optional)
   --with-xml-exec-prefix=PFX Exec prefix where libxml is installed (optional)
   --with-gnu-ld           assume the C compiler uses GNU ld default=no
@@ -1292,7 +1290,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
-am__api_version="1.6"
+am__api_version="1.9"
 ac_aux_dir=
 for ac_dir in $srcdir $srcdir/.. $srcdir/../..; do
   if test -f $ac_dir/install-sh; then
@@ -1455,7 +1453,6 @@ _ACEOF
 program_transform_name=`echo $program_transform_name | sed -f conftest.sed`
 rm conftest.sed
 
-
 # expand $ac_aux_dir to an absolute path
 am_aux_dir=`cd $ac_aux_dir && pwd`
 
@@ -1467,6 +1464,39 @@ else
   am_missing_run=
   { echo "$as_me:$LINENO: WARNING: \`missing' script is too old or missing" >&5
 echo "$as_me: WARNING: \`missing' script is too old or missing" >&2;}
+fi
+
+if mkdir -p --version . >/dev/null 2>&1 && test ! -d ./--version; then
+  # We used to keeping the `.' as first argument, in order to
+  # allow $(mkdir_p) to be used without argument.  As in
+  #   $(mkdir_p) $(somedir)
+  # where $(somedir) is conditionally defined.  However this is wrong
+  # for two reasons:
+  #  1. if the package is installed by a user who cannot write `.'
+  #     make install will fail,
+  #  2. the above comment should most certainly read
+  #     $(mkdir_p) $(DESTDIR)$(somedir)
+  #     so it does not work when $(somedir) is undefined and
+  #     $(DESTDIR) is not.
+  #  To support the latter case, we have to write
+  #     test -z "$(somedir)" || $(mkdir_p) $(DESTDIR)$(somedir),
+  #  so the `.' trick is pointless.
+  mkdir_p='mkdir -p --'
+else
+  # On NextStep and OpenStep, the `mkdir' command does not
+  # recognize any option.  It will interpret all options as
+  # directories to create, and then abort because `.' already
+  # exists.
+  for d in ./-p ./--version;
+  do
+    test -d $d && rmdir $d
+  done
+  # $(mkinstalldirs) is defined by Automake if mkinstalldirs exists.
+  if test -f "$ac_aux_dir/mkinstalldirs"; then
+    mkdir_p='$(mkinstalldirs)'
+  else
+    mkdir_p='$(install_sh) -d'
+  fi
 fi
 
 for ac_prog in gawk mawk nawk awk
@@ -1538,7 +1568,16 @@ echo "${ECHO_T}no" >&6
   SET_MAKE="MAKE=${MAKE-make}"
 fi
 
- # test to see if srcdir already configured
+rm -rf .tst 2>/dev/null
+mkdir .tst 2>/dev/null
+if test -d .tst; then
+  am__leading_dot=.
+else
+  am__leading_dot=_
+fi
+rmdir .tst 2>/dev/null
+
+# test to see if srcdir already configured
 if test "`cd $srcdir && pwd`" != "`pwd`" &&
    test -f $srcdir/config.status; then
   { { echo "$as_me:$LINENO: error: source directory already configured; run \"make distclean\" there first" >&5
@@ -1546,9 +1585,19 @@ echo "$as_me: error: source directory already configured; run \"make distclean\"
    { (exit 1); exit 1; }; }
 fi
 
+# test whether we have cygpath
+if test -z "$CYGPATH_W"; then
+  if (cygpath --version) >/dev/null 2>/dev/null; then
+    CYGPATH_W='cygpath -w'
+  else
+    CYGPATH_W=echo
+  fi
+fi
+
+
 # Define the identity of the package.
  PACKAGE=xmlTreeNav
- VERSION=0.2.0
+ VERSION=0.2.2
 
 
 cat >>confdefs.h <<_ACEOF
@@ -1575,9 +1624,6 @@ AUTOHEADER=${AUTOHEADER-"${am_missing_run}autoheader"}
 
 
 MAKEINFO=${MAKEINFO-"${am_missing_run}makeinfo"}
-
-
-AMTAR=${AMTAR-"${am_missing_run}tar"}
 
 install_sh=${install_sh-"$am_aux_dir/install-sh"}
 
@@ -1671,6 +1717,13 @@ INSTALL_STRIP_PROGRAM="\${SHELL} \$(install_sh) -c -s"
 
 # We need awk for the "check" target.  The system "awk" is bad on
 # some platforms.
+# Always define AMTAR for backward compatibility.
+
+AMTAR=${AMTAR-"${am_missing_run}tar"}
+
+am__tar='${AMTAR} chof - "$$tardir"'; am__untar='${AMTAR} xf -'
+
+
 
 
 
@@ -2597,24 +2650,16 @@ ac_cpp='$CPP $CPPFLAGS'
 ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
-rm -f .deps 2>/dev/null
-mkdir .deps 2>/dev/null
-if test -d .deps; then
-  DEPDIR=.deps
-else
-  # MS-DOS does not allow filenames that begin with a dot.
-  DEPDIR=_deps
-fi
-rmdir .deps 2>/dev/null
-
+DEPDIR="${am__leading_dot}deps"
 
           ac_config_commands="$ac_config_commands depfiles"
 
 
 am_make=${MAKE-make}
 cat > confinc << 'END'
-doit:
+am__doit:
 	@echo done
+.PHONY: am__doit
 END
 # If we don't find an include directive, just comment out the code.
 echo "$as_me:$LINENO: checking for style of include used by $am_make" >&5
@@ -2629,7 +2674,7 @@ echo "include confinc" > confmf
 # In particular we don't look at `^make:' because GNU make might
 # be invoked under some other name (usually "gmake"), in which
 # case it prints its new name instead of `make'.
-if test "`$am_make -s -f confmf 2> /dev/null | fgrep -v 'ing directory'`" = "done"; then
+if test "`$am_make -s -f confmf 2> /dev/null | grep -v 'ing directory'`" = "done"; then
    am__include=include
    am__quote=
    _am_result=GNU
@@ -2689,18 +2734,34 @@ else
   # using a relative directory.
   cp "$am_depcomp" conftest.dir
   cd conftest.dir
+  # We will build objects and dependencies in a subdirectory because
+  # it helps to detect inapplicable dependency modes.  For instance
+  # both Tru64's cc and ICC support -MD to output dependencies as a
+  # side effect of compilation, but ICC will put the dependencies in
+  # the current directory while Tru64 will put them in the object
+  # directory.
+  mkdir sub
 
   am_cv_CC_dependencies_compiler_type=none
   if test "$am_compiler_list" = ""; then
      am_compiler_list=`sed -n 's/^#*\([a-zA-Z0-9]*\))$/\1/p' < ./depcomp`
   fi
   for depmode in $am_compiler_list; do
+    # Setup a source with many dependencies, because some compilers
+    # like to wrap large dependency lists on column 80 (with \), and
+    # we should not choose a depcomp mode which is confused by this.
+    #
     # We need to recreate these files for each test, as the compiler may
     # overwrite some of them when testing with obscure command lines.
     # This happens at least with the AIX C compiler.
-    echo '#include "conftest.h"' > conftest.c
-    echo 'int i;' > conftest.h
-    echo "${am__include} ${am__quote}conftest.Po${am__quote}" > confmf
+    : > sub/conftest.c
+    for i in 1 2 3 4 5 6; do
+      echo '#include "conftst'$i'.h"' >> sub/conftest.c
+      # Using `: > sub/conftst$i.h' creates only sub/conftst1.h with
+      # Solaris 8's {/usr,}/bin/sh.
+      touch sub/conftst$i.h
+    done
+    echo "${am__include} ${am__quote}sub/conftest.Po${am__quote}" > confmf
 
     case $depmode in
     nosideeffect)
@@ -2718,13 +2779,25 @@ else
     # mode.  It turns out that the SunPro C++ compiler does not properly
     # handle `-M -o', and we need to detect this.
     if depmode=$depmode \
-       source=conftest.c object=conftest.o \
-       depfile=conftest.Po tmpdepfile=conftest.TPo \
-       $SHELL ./depcomp $depcc -c conftest.c -o conftest.o >/dev/null 2>&1 &&
-       grep conftest.h conftest.Po > /dev/null 2>&1 &&
+       source=sub/conftest.c object=sub/conftest.${OBJEXT-o} \
+       depfile=sub/conftest.Po tmpdepfile=sub/conftest.TPo \
+       $SHELL ./depcomp $depcc -c -o sub/conftest.${OBJEXT-o} sub/conftest.c \
+         >/dev/null 2>conftest.err &&
+       grep sub/conftst6.h sub/conftest.Po > /dev/null 2>&1 &&
+       grep sub/conftest.${OBJEXT-o} sub/conftest.Po > /dev/null 2>&1 &&
        ${MAKE-make} -s -f confmf > /dev/null 2>&1; then
-      am_cv_CC_dependencies_compiler_type=$depmode
-      break
+      # icc doesn't choke on unknown options, it will just issue warnings
+      # or remarks (even with -Werror).  So we grep stderr for any message
+      # that says an option was ignored or not supported.
+      # When given -MP, icc 7.0 and 7.1 complain thusly:
+      #   icc: Command line warning: ignoring option '-M'; no argument required
+      # The diagnosis changed in icc 8.0:
+      #   icc: Command line remark: option '-MP' not supported
+      if (grep 'ignoring option' conftest.err ||
+          grep 'not supported' conftest.err) >/dev/null 2>&1; then :; else
+        am_cv_CC_dependencies_compiler_type=$depmode
+        break
+      fi
     fi
   done
 
@@ -2738,6 +2811,18 @@ fi
 echo "$as_me:$LINENO: result: $am_cv_CC_dependencies_compiler_type" >&5
 echo "${ECHO_T}$am_cv_CC_dependencies_compiler_type" >&6
 CCDEPMODE=depmode=$am_cv_CC_dependencies_compiler_type
+
+
+
+if
+  test "x$enable_dependency_tracking" != xno \
+  && test "$am_cv_CC_dependencies_compiler_type" = gcc3; then
+  am__fastdepCC_TRUE=
+  am__fastdepCC_FALSE='#'
+else
+  am__fastdepCC_TRUE='#'
+  am__fastdepCC_FALSE=
+fi
 
 
 ac_ext=c
@@ -3343,18 +3428,34 @@ else
   # using a relative directory.
   cp "$am_depcomp" conftest.dir
   cd conftest.dir
+  # We will build objects and dependencies in a subdirectory because
+  # it helps to detect inapplicable dependency modes.  For instance
+  # both Tru64's cc and ICC support -MD to output dependencies as a
+  # side effect of compilation, but ICC will put the dependencies in
+  # the current directory while Tru64 will put them in the object
+  # directory.
+  mkdir sub
 
   am_cv_CXX_dependencies_compiler_type=none
   if test "$am_compiler_list" = ""; then
      am_compiler_list=`sed -n 's/^#*\([a-zA-Z0-9]*\))$/\1/p' < ./depcomp`
   fi
   for depmode in $am_compiler_list; do
+    # Setup a source with many dependencies, because some compilers
+    # like to wrap large dependency lists on column 80 (with \), and
+    # we should not choose a depcomp mode which is confused by this.
+    #
     # We need to recreate these files for each test, as the compiler may
     # overwrite some of them when testing with obscure command lines.
     # This happens at least with the AIX C compiler.
-    echo '#include "conftest.h"' > conftest.c
-    echo 'int i;' > conftest.h
-    echo "${am__include} ${am__quote}conftest.Po${am__quote}" > confmf
+    : > sub/conftest.c
+    for i in 1 2 3 4 5 6; do
+      echo '#include "conftst'$i'.h"' >> sub/conftest.c
+      # Using `: > sub/conftst$i.h' creates only sub/conftst1.h with
+      # Solaris 8's {/usr,}/bin/sh.
+      touch sub/conftst$i.h
+    done
+    echo "${am__include} ${am__quote}sub/conftest.Po${am__quote}" > confmf
 
     case $depmode in
     nosideeffect)
@@ -3372,13 +3473,25 @@ else
     # mode.  It turns out that the SunPro C++ compiler does not properly
     # handle `-M -o', and we need to detect this.
     if depmode=$depmode \
-       source=conftest.c object=conftest.o \
-       depfile=conftest.Po tmpdepfile=conftest.TPo \
-       $SHELL ./depcomp $depcc -c conftest.c -o conftest.o >/dev/null 2>&1 &&
-       grep conftest.h conftest.Po > /dev/null 2>&1 &&
+       source=sub/conftest.c object=sub/conftest.${OBJEXT-o} \
+       depfile=sub/conftest.Po tmpdepfile=sub/conftest.TPo \
+       $SHELL ./depcomp $depcc -c -o sub/conftest.${OBJEXT-o} sub/conftest.c \
+         >/dev/null 2>conftest.err &&
+       grep sub/conftst6.h sub/conftest.Po > /dev/null 2>&1 &&
+       grep sub/conftest.${OBJEXT-o} sub/conftest.Po > /dev/null 2>&1 &&
        ${MAKE-make} -s -f confmf > /dev/null 2>&1; then
-      am_cv_CXX_dependencies_compiler_type=$depmode
-      break
+      # icc doesn't choke on unknown options, it will just issue warnings
+      # or remarks (even with -Werror).  So we grep stderr for any message
+      # that says an option was ignored or not supported.
+      # When given -MP, icc 7.0 and 7.1 complain thusly:
+      #   icc: Command line warning: ignoring option '-M'; no argument required
+      # The diagnosis changed in icc 8.0:
+      #   icc: Command line remark: option '-MP' not supported
+      if (grep 'ignoring option' conftest.err ||
+          grep 'not supported' conftest.err) >/dev/null 2>&1; then :; else
+        am_cv_CXX_dependencies_compiler_type=$depmode
+        break
+      fi
     fi
   done
 
@@ -3392,6 +3505,18 @@ fi
 echo "$as_me:$LINENO: result: $am_cv_CXX_dependencies_compiler_type" >&5
 echo "${ECHO_T}$am_cv_CXX_dependencies_compiler_type" >&6
 CXXDEPMODE=depmode=$am_cv_CXX_dependencies_compiler_type
+
+
+
+if
+  test "x$enable_dependency_tracking" != xno \
+  && test "$am_cv_CXX_dependencies_compiler_type" = gcc3; then
+  am__fastdepCXX_TRUE=
+  am__fastdepCXX_FALSE='#'
+else
+  am__fastdepCXX_TRUE='#'
+  am__fastdepCXX_FALSE=
+fi
 
 
 if test -n "$ac_tool_prefix"; then
@@ -3556,19 +3681,6 @@ test -z "$INSTALL_DATA" && INSTALL_DATA='${INSTALL} -m 644'
 
 
 
-# Check whether --with-wxdir or --without-wxdir was given.
-if test "${with_wxdir+set}" = set; then
-  withval="$with_wxdir"
-   wx_config_name="$withval/wx-config"
-                  wx_config_args="--inplace"
-fi;
-
-# Check whether --with-wx-config or --without-wx-config was given.
-if test "${with_wx_config+set}" = set; then
-  withval="$with_wx_config"
-  wx_config_name="$withval"
-fi;
-
 # Check whether --with-wx-prefix or --without-wx-prefix was given.
 if test "${with_wx_prefix+set}" = set; then
   withval="$with_wx_prefix"
@@ -3585,11 +3697,18 @@ else
   wx_config_exec_prefix=""
 fi;
 
+# Check whether --with-wx-config or --without-wx-config was given.
+if test "${with_wx_config+set}" = set; then
+  withval="$with_wx_config"
+  wx_config_name="$withval"
+else
+  wx_config_name=""
+fi;
+
 
     if test x${WX_CONFIG_NAME+set} != xset ; then
      WX_CONFIG_NAME=wx-config
   fi
-
   if test "x$wx_config_name" != x ; then
      WX_CONFIG_NAME="$wx_config_name"
   fi
@@ -3601,9 +3720,6 @@ fi;
   if test x$wx_config_prefix != x ; then
      wx_config_args="$wx_config_args --prefix=$wx_config_prefix"
      WX_LOOKUP_PATH="$WX_LOOKUP_PATH:$wx_config_prefix/bin"
-  fi
-  if test "$cross_compiling" = "yes"; then
-     wx_config_args="$wx_config_args --host=$host_alias"
   fi
 
     if test -x "$WX_CONFIG_NAME" ; then
@@ -3658,19 +3774,15 @@ fi
 
   if test "$WX_CONFIG_PATH" != "no" ; then
     WX_VERSION=""
+    no_wx=""
 
     min_wx_version=2.3.2
-    if test -z "" ; then
-      echo "$as_me:$LINENO: checking for wxWindows version >= $min_wx_version" >&5
+    echo "$as_me:$LINENO: checking for wxWindows version >= $min_wx_version" >&5
 echo $ECHO_N "checking for wxWindows version >= $min_wx_version... $ECHO_C" >&6
-    else
-      echo "$as_me:$LINENO: checking for wxWindows version >= $min_wx_version ()" >&5
-echo $ECHO_N "checking for wxWindows version >= $min_wx_version ()... $ECHO_C" >&6
-    fi
 
-    WX_CONFIG_WITH_ARGS="$WX_CONFIG_PATH $wx_config_args  "
+    WX_CONFIG_WITH_ARGS="$WX_CONFIG_PATH $wx_config_args"
 
-    WX_VERSION=`$WX_CONFIG_WITH_ARGS --version 2>/dev/null`
+    WX_VERSION=`$WX_CONFIG_WITH_ARGS --version`
     wx_config_major_version=`echo $WX_VERSION | \
            sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\1/'`
     wx_config_minor_version=`echo $WX_VERSION | \
@@ -3686,37 +3798,27 @@ echo $ECHO_N "checking for wxWindows version >= $min_wx_version ()... $ECHO_C" >
            sed 's/\([0-9]*\).\([0-9]*\).\([0-9]*\)/\3/'`
 
     wx_ver_ok=""
-    if test "x$WX_VERSION" != x ; then
-      if test $wx_config_major_version -gt $wx_requested_major_version; then
-        wx_ver_ok=yes
-      else
-        if test $wx_config_major_version -eq $wx_requested_major_version; then
-           if test $wx_config_minor_version -gt $wx_requested_minor_version; then
-              wx_ver_ok=yes
-           else
-              if test $wx_config_minor_version -eq $wx_requested_minor_version; then
-                 if test $wx_config_micro_version -ge $wx_requested_micro_version; then
-                    wx_ver_ok=yes
-                 fi
-              fi
-           fi
-        fi
+    if test $wx_config_major_version -gt $wx_requested_major_version; then
+      wx_ver_ok=yes
+    else
+      if test $wx_config_major_version -eq $wx_requested_major_version; then
+         if test $wx_config_minor_version -gt $wx_requested_minor_version; then
+            wx_ver_ok=yes
+         else
+            if test $wx_config_minor_version -eq $wx_requested_minor_version; then
+               if test $wx_config_micro_version -ge $wx_requested_micro_version; then
+                  wx_ver_ok=yes
+               fi
+            fi
+         fi
       fi
     fi
 
-    if test -n "$wx_ver_ok"; then
-
-      echo "$as_me:$LINENO: result: yes (version $WX_VERSION)" >&5
-echo "${ECHO_T}yes (version $WX_VERSION)" >&6
+    if test "x$wx_ver_ok" = x ; then
+      no_wx=yes
+    else
       WX_LIBS=`$WX_CONFIG_WITH_ARGS --libs`
-
-                              echo "$as_me:$LINENO: checking for wxWindows static library" >&5
-echo $ECHO_N "checking for wxWindows static library... $ECHO_C" >&6
       WX_LIBS_STATIC=`$WX_CONFIG_WITH_ARGS --static --libs`
-      if test -n "$WX_LIBS_STATIC"; then
-        echo "$as_me:$LINENO: result: yes" >&5
-echo "${ECHO_T}yes" >&6
-      fi
 
             wx_has_cppflags=""
       if test $wx_config_major_version -gt 2; then
@@ -3750,16 +3852,18 @@ echo "${ECHO_T}yes" >&6
          WX_CFLAGS_ONLY=`echo $WX_CFLAGS | sed "s@^$WX_CPPFLAGS *@@"`
          WX_CXXFLAGS_ONLY=`echo $WX_CXXFLAGS | sed "s@^$WX_CFLAGS *@@"`
       fi
+    fi
 
-      wxWin=1
-
+    if test "x$no_wx" = x ; then
+       echo "$as_me:$LINENO: result: yes (version $WX_VERSION)" >&5
+echo "${ECHO_T}yes (version $WX_VERSION)" >&6
+       wxWin=1
     else
-
        if test "x$WX_VERSION" = x; then
-                    echo "$as_me:$LINENO: result: no" >&5
+	  	  echo "$as_me:$LINENO: result: no" >&5
 echo "${ECHO_T}no" >&6
        else
-          echo "$as_me:$LINENO: result: no (version $WX_VERSION is not new enough)" >&5
+	  echo "$as_me:$LINENO: result: no (version $WX_VERSION is not new enough)" >&5
 echo "${ECHO_T}no (version $WX_VERSION is not new enough)" >&6
        fi
 
@@ -3769,7 +3873,6 @@ echo "${ECHO_T}no (version $WX_VERSION is not new enough)" >&6
        WX_LIBS=""
        WX_LIBS_STATIC=""
        :
-
     fi
   fi
 
@@ -4254,6 +4357,7 @@ fi
 
 
 
+
         MKINSTALLDIRS=
   if test -n "$ac_aux_dir"; then
     case "$ac_aux_dir" in
@@ -4330,7 +4434,8 @@ else
       test -z "$ac_dir" && ac_dir=.
       for ac_exec_ext in '' $ac_executable_extensions; do
         if $ac_executable_p "$ac_dir/$ac_word$ac_exec_ext"; then
-          if $ac_dir/$ac_word --statistics /dev/null >/dev/null 2>&1 &&
+          echo "$as_me: trying $ac_dir/$ac_word..." >&5
+          if $ac_dir/$ac_word --statistics /dev/null >&5 2>&1 &&
      (if $ac_dir/$ac_word --statistics /dev/null 2>&1 >/dev/null | grep usage >/dev/null; then exit 1; else exit 0; fi); then
             ac_cv_path_MSGFMT="$ac_dir/$ac_word$ac_exec_ext"
             break 2
@@ -4440,7 +4545,8 @@ else
       test -z "$ac_dir" && ac_dir=.
       for ac_exec_ext in '' $ac_executable_extensions; do
         if $ac_executable_p "$ac_dir/$ac_word$ac_exec_ext"; then
-          if $ac_dir/$ac_word --omit-header --copyright-holder= --msgid-bugs-address= /dev/null >/dev/null 2>&1 &&
+          echo "$as_me: trying $ac_dir/$ac_word..." >&5
+          if $ac_dir/$ac_word --omit-header --copyright-holder= --msgid-bugs-address= /dev/null >&5 2>&1 &&
      (if $ac_dir/$ac_word --omit-header --copyright-holder= --msgid-bugs-address= /dev/null 2>&1 >/dev/null | grep usage >/dev/null; then exit 1; else exit 0; fi); then
             ac_cv_path_XGETTEXT="$ac_dir/$ac_word$ac_exec_ext"
             break 2
@@ -4511,7 +4617,8 @@ else
       test -z "$ac_dir" && ac_dir=.
       for ac_exec_ext in '' $ac_executable_extensions; do
         if $ac_executable_p "$ac_dir/$ac_word$ac_exec_ext"; then
-          if $ac_dir/$ac_word --update -q /dev/null /dev/null >/dev/null 2>&1; then
+          echo "$as_me: trying $ac_dir/$ac_word..." >&5
+          if $ac_dir/$ac_word --update -q /dev/null /dev/null >&5 2>&1; then
             ac_cv_path_MSGMERGE="$ac_dir/$ac_word$ac_exec_ext"
             break 2
           fi
@@ -4743,6 +4850,7 @@ fi
 echo "$as_me:$LINENO: result: $acl_cv_prog_gnu_ld" >&5
 echo "${ECHO_T}$acl_cv_prog_gnu_ld" >&6
 with_gnu_ld=$acl_cv_prog_gnu_ld
+
 
 
 
@@ -4991,7 +5099,7 @@ fi;
                 if test "X$additional_includedir" = "X/usr/local/include"; then
                   if test -n "$GCC"; then
                     case $host_os in
-                      linux*) haveit=yes;;
+                      linux* | gnu* | k*bsd*-gnu) haveit=yes;;
                     esac
                   fi
                 fi
@@ -5035,7 +5143,7 @@ fi;
                       if test "X$additional_libdir" = "X/usr/local/lib"; then
                         if test -n "$GCC"; then
                           case $host_os in
-                            linux*) haveit=yes;;
+                            linux* | gnu* | k*bsd*-gnu) haveit=yes;;
                           esac
                         fi
                       fi
@@ -5175,6 +5283,146 @@ fi;
 
 
 
+    echo "$as_me:$LINENO: checking for CFPreferencesCopyAppValue" >&5
+echo $ECHO_N "checking for CFPreferencesCopyAppValue... $ECHO_C" >&6
+if test "${gt_cv_func_CFPreferencesCopyAppValue+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  gt_save_CPPFLAGS="$CPPFLAGS"
+     CPPFLAGS="$CPPFLAGS -I/System/Library/Frameworks/CoreFoundation.framework/Headers"
+     gt_save_LIBS="$LIBS"
+     LIBS="$LIBS -framework CoreFoundation"
+     cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+#include <CFPreferences.h>
+int
+main ()
+{
+CFPreferencesCopyAppValue(NULL, NULL)
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+  (eval $ac_link) 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+	 { ac_try='test -z "$ac_c_werror_flag"			 || test ! -s conftest.err'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; } &&
+	 { ac_try='test -s conftest$ac_exeext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  gt_cv_func_CFPreferencesCopyAppValue=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+gt_cv_func_CFPreferencesCopyAppValue=no
+fi
+rm -f conftest.err conftest.$ac_objext \
+      conftest$ac_exeext conftest.$ac_ext
+     CPPFLAGS="$gt_save_CPPFLAGS"
+     LIBS="$gt_save_LIBS"
+fi
+echo "$as_me:$LINENO: result: $gt_cv_func_CFPreferencesCopyAppValue" >&5
+echo "${ECHO_T}$gt_cv_func_CFPreferencesCopyAppValue" >&6
+  if test $gt_cv_func_CFPreferencesCopyAppValue = yes; then
+
+cat >>confdefs.h <<\_ACEOF
+#define HAVE_CFPREFERENCESCOPYAPPVALUE 1
+_ACEOF
+
+  fi
+    echo "$as_me:$LINENO: checking for CFLocaleCopyCurrent" >&5
+echo $ECHO_N "checking for CFLocaleCopyCurrent... $ECHO_C" >&6
+if test "${gt_cv_func_CFLocaleCopyCurrent+set}" = set; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  gt_save_CPPFLAGS="$CPPFLAGS"
+     CPPFLAGS="$CPPFLAGS -I/System/Library/Frameworks/CoreFoundation.framework/Headers"
+     gt_save_LIBS="$LIBS"
+     LIBS="$LIBS -framework CoreFoundation"
+     cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+#include <CFLocale.h>
+int
+main ()
+{
+CFLocaleCopyCurrent();
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+  (eval $ac_link) 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+	 { ac_try='test -z "$ac_c_werror_flag"			 || test ! -s conftest.err'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; } &&
+	 { ac_try='test -s conftest$ac_exeext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  gt_cv_func_CFLocaleCopyCurrent=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+gt_cv_func_CFLocaleCopyCurrent=no
+fi
+rm -f conftest.err conftest.$ac_objext \
+      conftest$ac_exeext conftest.$ac_ext
+     CPPFLAGS="$gt_save_CPPFLAGS"
+     LIBS="$gt_save_LIBS"
+fi
+echo "$as_me:$LINENO: result: $gt_cv_func_CFLocaleCopyCurrent" >&5
+echo "${ECHO_T}$gt_cv_func_CFLocaleCopyCurrent" >&6
+  if test $gt_cv_func_CFLocaleCopyCurrent = yes; then
+
+cat >>confdefs.h <<\_ACEOF
+#define HAVE_CFLOCALECOPYCURRENT 1
+_ACEOF
+
+  fi
+  INTL_MACOSX_LIBS=
+  if test $gt_cv_func_CFPreferencesCopyAppValue = yes || test $gt_cv_func_CFLocaleCopyCurrent = yes; then
+    INTL_MACOSX_LIBS="-Wl,-framework -Wl,CoreFoundation"
+  fi
+
+
+
+
   echo "$as_me:$LINENO: checking whether NLS is requested" >&5
 echo $ECHO_N "checking whether NLS is requested... $ECHO_C" >&6
     # Check whether --enable-nls or --disable-nls was given.
@@ -5220,7 +5468,7 @@ int
 main ()
 {
 bindtextdomain ("", "");
-return (int) gettext ("") + _nl_msg_cat_cntr + *_nl_domain_bindings
+return * gettext ("") + _nl_msg_cat_cntr + *_nl_domain_bindings
   ;
   return 0;
 }
@@ -5634,7 +5882,7 @@ fi;
                 if test "X$additional_includedir" = "X/usr/local/include"; then
                   if test -n "$GCC"; then
                     case $host_os in
-                      linux*) haveit=yes;;
+                      linux* | gnu* | k*bsd*-gnu) haveit=yes;;
                     esac
                   fi
                 fi
@@ -5678,7 +5926,7 @@ fi;
                       if test "X$additional_libdir" = "X/usr/local/lib"; then
                         if test -n "$GCC"; then
                           case $host_os in
-                            linux*) haveit=yes;;
+                            linux* | gnu* | k*bsd*-gnu) haveit=yes;;
                           esac
                         fi
                       fi
@@ -5822,12 +6070,12 @@ extern
 #ifdef __cplusplus
 "C"
 #endif
-const char *_nl_expand_alias ();
+const char *_nl_expand_alias (const char *);
 int
 main ()
 {
 bindtextdomain ("", "");
-return (int) gettext ("") + _nl_msg_cat_cntr + *_nl_expand_alias (0)
+return * gettext ("") + _nl_msg_cat_cntr + *_nl_expand_alias ("")
   ;
   return 0;
 }
@@ -5876,12 +6124,12 @@ extern
 #ifdef __cplusplus
 "C"
 #endif
-const char *_nl_expand_alias ();
+const char *_nl_expand_alias (const char *);
 int
 main ()
 {
 bindtextdomain ("", "");
-return (int) gettext ("") + _nl_msg_cat_cntr + *_nl_expand_alias (0)
+return * gettext ("") + _nl_msg_cat_cntr + *_nl_expand_alias ("")
   ;
   return 0;
 }
@@ -5938,6 +6186,14 @@ echo "${ECHO_T}$gt_cv_func_gnugettext1_libintl" >&6
         fi
 
 
+
+    if test -n "$INTL_MACOSX_LIBS"; then
+      if test "$gt_use_preinstalled_gnugettext" = "yes" \
+         || test "$nls_cv_use_gnu_gettext" = "yes"; then
+                LIBINTL="$LIBINTL $INTL_MACOSX_LIBS"
+        LTLIBINTL="$LTLIBINTL $INTL_MACOSX_LIBS"
+      fi
+    fi
 
     if test "$gt_use_preinstalled_gnugettext" = "yes" \
        || test "$nls_cv_use_gnu_gettext" = "yes"; then
@@ -6163,6 +6419,20 @@ if test -z "${AMDEP_TRUE}" && test -z "${AMDEP_FALSE}"; then
   { { echo "$as_me:$LINENO: error: conditional \"AMDEP\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"AMDEP\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
+if test -z "${am__fastdepCC_TRUE}" && test -z "${am__fastdepCC_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"am__fastdepCC\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"am__fastdepCC\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
+if test -z "${am__fastdepCXX_TRUE}" && test -z "${am__fastdepCXX_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"am__fastdepCXX\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"am__fastdepCXX\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
@@ -6710,6 +6980,7 @@ s,@LIBS@,$LIBS,;t t
 s,@INSTALL_PROGRAM@,$INSTALL_PROGRAM,;t t
 s,@INSTALL_SCRIPT@,$INSTALL_SCRIPT,;t t
 s,@INSTALL_DATA@,$INSTALL_DATA,;t t
+s,@CYGPATH_W@,$CYGPATH_W,;t t
 s,@PACKAGE@,$PACKAGE,;t t
 s,@VERSION@,$VERSION,;t t
 s,@ACLOCAL@,$ACLOCAL,;t t
@@ -6717,13 +6988,17 @@ s,@AUTOCONF@,$AUTOCONF,;t t
 s,@AUTOMAKE@,$AUTOMAKE,;t t
 s,@AUTOHEADER@,$AUTOHEADER,;t t
 s,@MAKEINFO@,$MAKEINFO,;t t
-s,@AMTAR@,$AMTAR,;t t
 s,@install_sh@,$install_sh,;t t
 s,@STRIP@,$STRIP,;t t
 s,@ac_ct_STRIP@,$ac_ct_STRIP,;t t
 s,@INSTALL_STRIP_PROGRAM@,$INSTALL_STRIP_PROGRAM,;t t
+s,@mkdir_p@,$mkdir_p,;t t
 s,@AWK@,$AWK,;t t
 s,@SET_MAKE@,$SET_MAKE,;t t
+s,@am__leading_dot@,$am__leading_dot,;t t
+s,@AMTAR@,$AMTAR,;t t
+s,@am__tar@,$am__tar,;t t
+s,@am__untar@,$am__untar,;t t
 s,@CC@,$CC,;t t
 s,@CFLAGS@,$CFLAGS,;t t
 s,@LDFLAGS@,$LDFLAGS,;t t
@@ -6738,11 +7013,15 @@ s,@AMDEP_TRUE@,$AMDEP_TRUE,;t t
 s,@AMDEP_FALSE@,$AMDEP_FALSE,;t t
 s,@AMDEPBACKSLASH@,$AMDEPBACKSLASH,;t t
 s,@CCDEPMODE@,$CCDEPMODE,;t t
+s,@am__fastdepCC_TRUE@,$am__fastdepCC_TRUE,;t t
+s,@am__fastdepCC_FALSE@,$am__fastdepCC_FALSE,;t t
 s,@CPP@,$CPP,;t t
 s,@CXX@,$CXX,;t t
 s,@CXXFLAGS@,$CXXFLAGS,;t t
 s,@ac_ct_CXX@,$ac_ct_CXX,;t t
 s,@CXXDEPMODE@,$CXXDEPMODE,;t t
+s,@am__fastdepCXX_TRUE@,$am__fastdepCXX_TRUE,;t t
+s,@am__fastdepCXX_FALSE@,$am__fastdepCXX_FALSE,;t t
 s,@RANLIB@,$RANLIB,;t t
 s,@ac_ct_RANLIB@,$ac_ct_RANLIB,;t t
 s,@WX_CONFIG_PATH@,$WX_CONFIG_PATH,;t t
@@ -6771,6 +7050,7 @@ s,@host@,$host,;t t
 s,@host_cpu@,$host_cpu,;t t
 s,@host_vendor@,$host_vendor,;t t
 s,@host_os@,$host_os,;t t
+s,@INTL_MACOSX_LIBS@,$INTL_MACOSX_LIBS,;t t
 s,@LIBICONV@,$LIBICONV,;t t
 s,@LTLIBICONV@,$LTLIBICONV,;t t
 s,@INTLLIBS@,$INTLLIBS,;t t
@@ -7157,27 +7437,21 @@ echo X"$mf" |
   else
     continue
   fi
-  grep '^DEP_FILES *= *[^ #]' < "$mf" > /dev/null || continue
-  # Extract the definition of DEP_FILES from the Makefile without
-  # running `make'.
-  DEPDIR=`sed -n -e '/^DEPDIR = / s///p' < "$mf"`
+  # Extract the definition of DEPDIR, am__include, and am__quote
+  # from the Makefile without running `make'.
+  DEPDIR=`sed -n 's/^DEPDIR = //p' < "$mf"`
   test -z "$DEPDIR" && continue
+  am__include=`sed -n 's/^am__include = //p' < "$mf"`
+  test -z "am__include" && continue
+  am__quote=`sed -n 's/^am__quote = //p' < "$mf"`
   # When using ansi2knr, U may be empty or an underscore; expand it
-  U=`sed -n -e '/^U = / s///p' < "$mf"`
-  test -d "$dirpart/$DEPDIR" || mkdir "$dirpart/$DEPDIR"
-  # We invoke sed twice because it is the simplest approach to
-  # changing $(DEPDIR) to its actual value in the expansion.
-  for file in `sed -n -e '
-    /^DEP_FILES = .*\\\\$/ {
-      s/^DEP_FILES = //
-      :loop
-	s/\\\\$//
-	p
-	n
-	/\\\\$/ b loop
-      p
-    }
-    /^DEP_FILES = / s/^DEP_FILES = //p' < "$mf" | \
+  U=`sed -n 's/^U = //p' < "$mf"`
+  # Find all dependency output files, they are included files with
+  # $(DEPDIR) in their names.  We invoke sed twice because it is the
+  # simplest approach to changing $(DEPDIR) to its actual value in the
+  # expansion.
+  for file in `sed -n "
+    s/^$am__include $am__quote\(.*(DEPDIR).*\)$am__quote"'$/\1/p' <"$mf" | \
        sed -e 's/\$(DEPDIR)/'"$DEPDIR"'/g' -e 's/\$U/'"$U"'/g'`; do
     # Make sure the directory exists.
     test -f "$dirpart/$file" && continue
@@ -7243,6 +7517,9 @@ done
           /*) top_srcdir="$ac_given_srcdir" ;;
           *)  top_srcdir="$ac_dots$ac_given_srcdir" ;;
         esac
+        # Treat a directory as a PO directory if and only if it has a
+        # POTFILES.in file. This allows packages to have multiple PO
+        # directories under different names or in different locations.
         if test -f "$ac_given_srcdir/$ac_dir/POTFILES.in"; then
           rm -f "$ac_dir/POTFILES"
           test -n "$as_me" && echo "$as_me: creating $ac_dir/POTFILES" || echo "creating $ac_dir/POTFILES"
@@ -7256,7 +7533,7 @@ done
             if test -n "$OBSOLETE_ALL_LINGUAS"; then
               test -n "$as_me" && echo "$as_me: setting ALL_LINGUAS in configure.in is obsolete" || echo "setting ALL_LINGUAS in configure.in is obsolete"
             fi
-            ALL_LINGUAS_=`sed -e "/^#/d" "$ac_given_srcdir/$ac_dir/LINGUAS"`
+            ALL_LINGUAS_=`sed -e "/^#/d" -e "s/#.*//" "$ac_given_srcdir/$ac_dir/LINGUAS"`
             # Hide the ALL_LINGUAS assigment from automake.
             eval 'ALL_LINGUAS''=$ALL_LINGUAS_'
             POMAKEFILEDEPS="$POMAKEFILEDEPS LINGUAS"

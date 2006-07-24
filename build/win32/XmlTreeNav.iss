@@ -3,7 +3,7 @@
 
 [Setup]
 AppName=xmlTreeNav
-AppVerName=xmlTreeNav 0.2.2
+AppVerName=xmlTreeNav 0.3.0
 AppPublisherURL=http://www.via.ecp.fr/~remi/soft/xml/xmltreenav/xmltreenav_en.php3
 AppSupportURL=http://www.via.ecp.fr/~remi/soft/xml/xmltreenav/xmltreenav_en.php3
 AppUpdatesURL=http://www.via.ecp.fr/~remi/soft/xml/xmltreenav/xmltreenav_en.php3

@@ -1,7 +1,36 @@
-02/05/2005 : v0.2.2
- - FIXED Behaviour on diff documents : 
-    * Reload,
-    * Go to last location
-    * Change view
- - FIXED Bug when diffing not wellformed xml files
- 
+2006-07-23 18:44  remi 0.3.0
+	* Add XPath  Bar
+
+2006-06-19 17:38  remi
+	* Filename in Title 
+    * wxHtmlWindow for Linux
+    * BUGFIX : OpenAndDiff when display has not been initialized 
+    * FIX : Exe Directory taken for config file and locals on Win32
+
+2006-03-06 00:51  remi
+	* Support IE HTML view 
+    * Support Paste in IE HTML view 
+    * Added configuration file
+
+2005-05-01 00:47  remi  0.2.2
+	*  Fixed bug when diffing not wellformed xml files 
+    * Allow change view on xmldiff output
+
+2005-03-10 20:59  remi
+	*  Fixed conversion issues ; works now on GNU/Debian with wx2.4 non unicode
+	* Removed libxmldiff : libxmldiff is now distributed in a separate clean package
+    * Initial debian build
+
+2005-01-16 01:30  remi 0.1.1
+	* Added Diff capabilities
+	* Added Copy to Clipboard feature
+	* BugFix : problem with values of 1 char only
+
+2004-08-21 20:07  remi  0.1.0
+	* Initial CVS Release
+    * Single file tree view  
+    * Working XSLT Display 
+    * XPath search  
+    * Preferences  * Localized  
+    * Windows and Linux build system (wxGTK2.5)
+
