@@ -1,3 +1,9 @@
+2008-09-29 18:46  remi 0.3.1
+	* Moved to wxWidgets 2.8
+	* Improved look'n feel on Linux
+	* Added Visual C++ 2008 project file
+	* Added --ignore to diff options
+
 2006-07-23 18:44  remi 0.3.0
 	* Add XPath  Bar
 

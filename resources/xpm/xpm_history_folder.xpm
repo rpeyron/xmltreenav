@@ -1,5 +1,5 @@
 /* XPM */
-static char *xpm_history_folder[] = {
+static const char *xpm_history_folder[] = {
 /* columns rows colors chars-per-pixel */
 "16 16 20 1",
 "  c #040404",

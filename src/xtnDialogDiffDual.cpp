@@ -19,6 +19,8 @@ xtnDialogDiffDual::xtnDialogDiffDual(wxWindow* parent, int id, const wxString& t
     btAfterBrowse = new wxButton(this, BT_BROWSE_AFTER, _("..."));
     lbIds = new wxStaticText(this, -1, _("Identifiers "));
     txIds = new wxTextCtrl(this, -1, _("@id,@value"));
+    lbIgnore = new wxStaticText(this, -1, _("Ignore Tags"));
+    txIgnore = new wxTextCtrl(this, -1, _("@ignore-attr,ignore-tag"));
     cbBeforeValues = new wxCheckBox(this, -1, _("Add before values"));
     lbSep = new wxStaticText(this, -1, _("Separator "));
     txSep = new wxTextCtrl(this, -1, _("|"));
@@ -36,12 +38,13 @@ void xtnDialogDiffDual::set_properties()
 {
     // begin wxGlade: xtnDialogDiffDual::set_properties
     SetTitle(_("Diff Two XML Files"));
-    SetSize(wxSize(363, 262));
+    SetSize(wxSize(363, 290));
     txWith->SetToolTip(_("Diff the currently opened XML file with this file."));
     txWith->SetFocus();
     btBrowseFile->SetSize(wxSize(30, -1));
     btAfterBrowse->SetSize(wxSize(30, -1));
     txIds->SetToolTip(_("Use these items as identifiers. (List of items separated by comma, attributes must be prefixed by @, and '.' can be used for the text)"));
+    txIgnore->SetToolTip(_("Differences on these items will be ignored"));
     cbBeforeValues->SetToolTip(_("If checked, when a difference occurs, the output file will contain \"before value <separator> after value\""));
     cbBeforeValues->SetValue(1);
     txSep->SetToolTip(_("Text to separate before and after values"));
@@ -58,6 +61,7 @@ void xtnDialogDiffDual::do_layout()
     wxBoxSizer* szButtons = new wxBoxSizer(wxHORIZONTAL);
     wxStaticBoxSizer* szOptions = new wxStaticBoxSizer(szOptions_staticbox, wxVERTICAL);
     wxBoxSizer* szSep = new wxBoxSizer(wxHORIZONTAL);
+    wxBoxSizer* szIgnore = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer* szIds = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer* szAfter = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer* szWith = new wxBoxSizer(wxHORIZONTAL);
@@ -73,6 +77,9 @@ void xtnDialogDiffDual::do_layout()
     szIds->Add(lbIds, 0, wxALIGN_CENTER_VERTICAL, 0);
     szIds->Add(txIds, 1, wxALIGN_CENTER_VERTICAL, 0);
     szOptions->Add(szIds, 0, wxALL|wxEXPAND, 3);
+    szIgnore->Add(lbIgnore, 0, wxALIGN_CENTER_VERTICAL, 0);
+    szIgnore->Add(txIgnore, 1, wxALIGN_CENTER_VERTICAL, 0);
+    szOptions->Add(szIgnore, 0, wxALL|wxEXPAND, 3);
     szOptions->Add(cbBeforeValues, 0, wxALL, 3);
     szSep->Add(lbSep, 0, wxALIGN_CENTER_VERTICAL, 0);
     szSep->Add(txSep, 1, wxALIGN_CENTER_VERTICAL, 0);

@@ -1,5 +1,5 @@
 /* XPM */
-static char *treeicons[] = {
+static const char *treeicons[] = {
 /* columns rows colors chars-per-pixel */
 "168 16 11 1",
 "  c black",

@@ -1,5 +1,5 @@
 /* XPM */
-static char *xpm_rotate_left[] = {
+static const char *xpm_rotate_left[] = {
 /* columns rows colors chars-per-pixel */
 "16 16 3 1",
 "  c black",

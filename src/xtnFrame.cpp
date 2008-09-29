@@ -3,7 +3,7 @@
  * -------------------------------------------------------------------------- *
  *                                                                            *
  * XmlTreeNav : Fast and Easy XML Files navigation / edition.                 *
- * Copyright (C) 2004 - Rémi Peyronnet <remi+xml@via.ecp.fr>                  *
+ * Copyright (C) 2004 - Rï¿½mi Peyronnet <remi+xml@via.ecp.fr>                  *
  *                                                                            *
  * This program is free software; you can redistribute it and/or              *
  * modify it under the terms of the GNU General Public License                *
@@ -89,8 +89,8 @@ xtnFrame::xtnFrame(wxWindow* parent,
     // Set Drag'n Drop
     SetDropTarget(new xtnFrameDropTarget(this));
 
-	Layout();
     SetSize(800,540);
+	Layout();
 
     setDefaultXmldiffOptions(m_curOptions);
     DoConfig();
@@ -125,6 +125,7 @@ void xtnFrame::InitConfig()
     new wxConfigDialog_EntryTextEdit(*m_pConfigDialog, wxT("Config"), wxT("SearchSize"), _("Config"), _("Search Size"), _("250"));
 
     m_pConfigDialog->doLayout();
+    m_pConfigDialog->SetSize(300,200);
 }
 
 void xtnFrame::DoConfig()
@@ -213,10 +214,11 @@ void xtnFrame::InitToolBar()
 	GetToolBar()->AddTool(TOOL_SAVE, _("Save"), wxBitmap(xpm_save), wxNullBitmap, wxITEM_NORMAL ,_("Save the current file"),_("Save the current file"));
 	GetToolBar()->AddTool(TOOL_RELOAD, _("Reload"), wxBitmap(xpm_undo), wxNullBitmap, wxITEM_NORMAL , _("Reload original file"), _("Reload original file"));
 	GetToolBar()->AddSeparator();
-	GetToolBar()->AddControl(new wxComboBox(GetToolBar(), CTRL_XPATH, _("XPath Expression"), wxDefaultPosition, wxSize(200, 0)));
+	GetToolBar()->AddControl(new wxComboBox(GetToolBar(), CTRL_XPATH, _("XPath Expression"), wxDefaultPosition, wxSize(200, -1)));
 	GetToolBar()->AddTool(TOOL_NEXT, _("Reload"), wxBitmap(xpm_arrow_right), wxNullBitmap, wxITEM_NORMAL , _("Search"), _("Search."));
 	// GetToolBar()->FindWindow(CTRL_XPATH)->
     GetToolBar()->Realize();
+    GetToolBar()->Layout();
 }
  
 void xtnFrame::InitAccelerator()
@@ -332,7 +334,7 @@ void xtnFrame::OnMenuFileQuit(wxCommandEvent &event)
 
 void xtnFrame::OnHelpAbout(wxCommandEvent &event)
 {
-    wxMessageBox(wxString::Format(_("%s %s\nlibxmldiff %s\n\n(c) 2004-2006 - Rémi Peyronnet\nhttp://www.via.ecp.fr/~remi"), XTN_NAME, XTN_VERSION, wxT(LIBXMLDIFF_VER)), XTN_NAME, wxOK |wxICON_INFORMATION);
+    wxMessageBox(wxString::Format(_("%s %s\nlibxmldiff %s\n\n(c) 2004-2006 - Remi Peyronnet\nhttp://www.via.ecp.fr/~remi"), XTN_NAME, XTN_VERSION, wxT(LIBXMLDIFF_VER)), XTN_NAME, wxOK |wxICON_INFORMATION);
 }
 
 void xtnFrame::OnFileOpen(wxCommandEvent &event)

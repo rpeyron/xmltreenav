@@ -192,7 +192,7 @@ void xtnXmlTree::LoadFile(const wxString & name, const struct globalOptions * cu
 	// Title
 	if (m_sXmlFilename.Contains(wxT("|XMLDIFF|")))
     {
-		GetParent()->SetTitle(wxString::Format(wxT("Diff %s / %s  - %s"),
+		((wxFrame *)GetParent())->SetTitle(wxString::Format(wxT("Diff %s / %s  - %s"),
                wxFileName(m_sXmlFilename.AfterFirst(wxT('|')).AfterFirst(wxT('|')).BeforeFirst(wxT('|'))).GetFullName().c_str(),
                wxFileName(m_sXmlFilename.AfterFirst(wxT('|')).AfterFirst(wxT('|')).AfterFirst(wxT('|')).BeforeFirst(wxT('|'))).GetFullName().c_str(),
 			   XTN_NAME
@@ -200,7 +200,7 @@ void xtnXmlTree::LoadFile(const wxString & name, const struct globalOptions * cu
     }
 	else
 	{
-		GetParent()->SetTitle(wxString::Format(wxT("%s - %s"), wxFileName(m_sXmlFilename).GetFullName().c_str(), XTN_NAME));
+		((wxFrame *)GetParent())->SetTitle(wxString::Format(wxT("%s - %s"), wxFileName(m_sXmlFilename).GetFullName().c_str(), XTN_NAME));
 	}
 
 }
@@ -445,7 +445,7 @@ void xtnXmlTree::PopulateItem(wxTreeItemId item)
         libelle = xmlstring2wxString(child->name);
         if (child->ns != NULL)
         {
-            libelle = xmlstring2wxString(child->ns->prefix) + wxT(":") + libelle;
+            if (child->ns->prefix != NULL) libelle = xmlstring2wxString(child->ns->prefix) + wxT(":") + libelle;
         }
         hasChildren = false;
         // Default Behaviour

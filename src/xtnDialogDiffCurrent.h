@@ -24,6 +24,11 @@
 			if (id == opt.ids.begin()) txIds->SetValue(xmlstring2wxString(*id)); \
 			  else txIds->SetValue(txIds->GetValue() + wxT(",") + xmlstring2wxString(*id)); \
 		} \
+		for(id = opt.ignore.begin(); id != opt.ignore.end(); id++) \
+		{ \
+			if (id == opt.ignore.begin()) txIgnore->SetValue(xmlstring2wxString(*id)); \
+			  else txIgnore->SetValue(txIgnore->GetValue() + wxT(",") + xmlstring2wxString(*id)); \
+		} \
 		cbBeforeValues->SetValue(opt.beforeValue); \
 		txSep->SetValue(xmlstring2wxString(opt.separator)); \
 		cbTagChilds->SetValue(opt.tagChildsAddedRemoved); \
@@ -33,6 +38,7 @@
 	void getDlgOptions(struct globalOptions & opt) \
 	{ \
 		parseOption("--ids", wxString2string(txIds->GetValue()), opt); \
+		parseOption("--ignore", wxString2string(txIgnore->GetValue()), opt); \
 		opt.beforeValue = cbBeforeValues->GetValue(); \
 		opt.separator = wxString2xmlstring(txSep->GetValue()); \
 		opt.tagChildsAddedRemoved = cbTagChilds->GetValue(); \
@@ -43,9 +49,9 @@ class xtnDialogDiffCurrent: public wxDialog {
 public:
     // begin wxGlade: xtnDialogDiffCurrent::ids
     enum {
-        BT_WITH_BROWSE = 1000,
-        BT_DIFF = 1001,
-        BT_CANCEL = 1002
+        BT_WITH_BROWSE = 1014,
+        BT_DIFF = 1015,
+        BT_CANCEL = 1016
     };
     // end wxGlade
 
@@ -68,6 +74,8 @@ protected:
     wxRadioButton* ioAfter;
     wxStaticText* lbIds;
     wxTextCtrl* txIds;
+    wxStaticText* lbIgnore;
+    wxTextCtrl* txIgnore;
     wxCheckBox* cbBeforeValues;
     wxStaticText* lbSep;
     wxTextCtrl* txSep;

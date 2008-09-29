@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Name=xmlTreeNav
+Comment=Display and diff XML files
+Comment[fr]=Affiche et compare des fichiers XML
+Exec=xmltreenav %f
+TryExec=xmltreenav
+Icon=/usr/share/xmltreenav/xmltreenav.xpm
+Terminal=false
+Categories=Application;Development
+MimeType=text/xml;text/xsl
+

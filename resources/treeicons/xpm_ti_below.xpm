@@ -1,5 +1,5 @@
 /* XPM */
-static char *xpm_ti_below[] = {
+static const char *xpm_ti_below[] = {
 /* columns rows colors chars-per-pixel */
 "16 16 7 1",
 "  c black",
@@ -14,14 +14,14 @@ static char *xpm_ti_below[] = {
 "@@@@@@@@@@@@@@@@",
 "@              @",
 "@ OOOOOOOOOOOO @",
-"@ O@@@...X@@@O @",
-"@ O@@.X@@.O@@O @",
-"@ O@@@@@@.O@@O @",
-"@ O@@@@o.O@@@O @",
-"@ O@@@@.O@@@@O @",
-"@ O@@@@@@@@@@O @",
-"@ O@@@@.O@@@@O @",
-"@ O@@@@.O@@@@O @",
+"@ O...@@@@X..O @",
+"@ O..@@X.@@X.O @",
+"@ O......@@X.O @",
+"@ O....@@@X..O @",
+"@ O....@@X...O @",
+"@ O..........O @",
+"@ O....@@X...O @",
+"@ O....@@X...O @",
 "@ OOOOOOOOOOOO @",
 "@              @",
 "@@@@@@@@@@@@@@@@",

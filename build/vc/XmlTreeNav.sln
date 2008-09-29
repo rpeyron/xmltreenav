@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XmlTreeNav", "XmlTreeNav.vcproj", "{870A9E6B-10D0-45FD-AF12-B8B53F141465}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libxmldiff", "..\..\..\libxmldiff\build\vc\libxmldiff.vcproj", "{0FCB3BAF-DA31-404B-A989-5B8B410C775A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{870A9E6B-10D0-45FD-AF12-B8B53F141465}.Debug|Win32.ActiveCfg = Debug|Win32
+		{870A9E6B-10D0-45FD-AF12-B8B53F141465}.Debug|Win32.Build.0 = Debug|Win32
+		{870A9E6B-10D0-45FD-AF12-B8B53F141465}.Release|Win32.ActiveCfg = Release|Win32
+		{870A9E6B-10D0-45FD-AF12-B8B53F141465}.Release|Win32.Build.0 = Release|Win32
+		{0FCB3BAF-DA31-404B-A989-5B8B410C775A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0FCB3BAF-DA31-404B-A989-5B8B410C775A}.Debug|Win32.Build.0 = Debug|Win32
+		{0FCB3BAF-DA31-404B-A989-5B8B410C775A}.Release|Win32.ActiveCfg = Release|Win32
+		{0FCB3BAF-DA31-404B-A989-5B8B410C775A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

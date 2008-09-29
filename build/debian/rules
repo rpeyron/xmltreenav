@@ -35,12 +35,14 @@ binary-arch: build install
 	install -d debian/xmltreenav/DEBIAN debian/xmltreenav/usr/share/xmltreenav
 	install -d debian/xmltreenav/usr/share/doc/xmltreenav debian/xmltreenav/usr/share/man/man1
 	install -d debian/xmltreenav/usr/lib/menu
+	install -d debian/xmltreenav/usr/share/applications
 	install -m644 -p debian/changelog debian/xmltreenav/usr/share/doc/xmltreenav/changelog.Debian
 	gzip -9f debian/xmltreenav/usr/share/doc/xmltreenav/changelog.Debian
 	install -m644 -p debian/copyright debian/xmltreenav/usr/share/doc/xmltreenav
 	install -m644 -p debian/xmltreenav.1 debian/xmltreenav/usr/share/man/man1
 	gzip -9f debian/xmltreenav/usr/share/man/man1/xmltreenav.1
 	install -m644 debian/menu debian/xmltreenav/usr/lib/menu/xmltreenav
+	install -m644 debian/xmltreenav.desktop debian/xmltreenav/usr/share/applications/xmltreenav.desktop
 	install -m644 debian/xmltreenav.xpm debian/xmltreenav/usr/share/xmltreenav/xmltreenav.xpm
 	install -m755 debian/postinst debian/xmltreenav/DEBIAN
 	install -m755 debian/postrm debian/xmltreenav/DEBIAN

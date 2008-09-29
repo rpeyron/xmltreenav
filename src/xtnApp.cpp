@@ -56,7 +56,7 @@ bool xtnApp::OnInit()
 
 void xtnApp::OnInitCmdLine(wxCmdLineParser& parser)
 {
-    parser.SetLogo(wxString::Format(_("%s %s (c) 2004 - Rémi Peyronnet - http://www.via.ecp.fr/~remi"), XTN_NAME, XTN_VERSION));
+    parser.SetLogo(wxString(XTN_NAME) + wxT(" ") + wxString(XTN_VERSION) + _(" (c) 2004 - Remi Peyronnet - http://www.via.ecp.fr/~remi"));
     parser.AddOption(wxT("x"), wxT("xslt"), _("XSLT Local Display File to use"));
     parser.AddOption(wxT("h"), wxT("html"), _("XSLT HTML Display File to use"));
     parser.AddOption(wxT("c"), wxT("config"), _("Config File to use"));

@@ -1,5 +1,5 @@
 /* XPM */
-static char *xpm_ti_comment[] = {
+static const char *xpm_ti_comment[] = {
 /* columns rows colors chars-per-pixel */
 "16 16 4 1",
 "  c black",

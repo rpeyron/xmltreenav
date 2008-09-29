@@ -18,6 +18,7 @@ ShowLanguageDialog=no
 [Files]
 Source: ..\..\bin\xmlTreeNav.exe; DestDir: {app}; Flags: ignoreversion
 Source: ..\..\bin\xmldiff.exe; DestDir: {app}; Flags: ignoreversion
+Source: ..\..\bin\config.xml; DestDir: {app}; Flags: ignoreversion
 Source: ..\..\bin\libxmldiff.dll; DestDir: {app}; Flags: ignoreversion
 Source: ..\..\bin\libxml2.dll; DestDir: {app}; Flags: ignoreversion
 Source: ..\..\bin\libxslt.dll; DestDir: {app}; Flags: ignoreversion

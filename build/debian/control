@@ -6,6 +6,6 @@ Standards-Version: 2.4.1.2
 
 Package: xmltreenav
 Architecture: any
-Depends: libxml2 libxslt1 libxmldiff libwxgtk2.4
+Depends: libxml2, libxslt1.1, libxmldiff, libwxgtk2.8-0
 Description: xmlTreeNav is a XML viewer specially designed for diffing XML files.
  xmlTreeNav includes diff functionnalities of libxmldiff, and provides a graphical display of the differences. It also have several useful functions, as XPath search, "XSLT local" display,...

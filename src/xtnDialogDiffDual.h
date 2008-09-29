@@ -16,10 +16,10 @@ class xtnDialogDiffDual: public wxDialog {
 public:
     // begin wxGlade: xtnDialogDiffDual::ids
     enum {
-        BT_BROWSE_WITH = 1003,
-        BT_BROWSE_AFTER = 1004,
-        BT_DIFF = 1005,
-        BT_CANCEL = 1006
+        BT_BROWSE_WITH = 1017,
+        BT_BROWSE_AFTER = 1018,
+        BT_DIFF = 1019,
+        BT_CANCEL = 1020
     };
     // end wxGlade
 
@@ -43,6 +43,8 @@ protected:
     wxButton* btAfterBrowse;
     wxStaticText* lbIds;
     wxTextCtrl* txIds;
+    wxStaticText* lbIgnore;
+    wxTextCtrl* txIgnore;
     wxCheckBox* cbBeforeValues;
     wxStaticText* lbSep;
     wxTextCtrl* txSep;

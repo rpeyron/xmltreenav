@@ -1,5 +1,5 @@
 /* XPM */
-static char *xpm_crop[] = {
+static const char *xpm_crop[] = {
 /* columns rows colors chars-per-pixel */
 "16 16 3 1",
 "  c black",

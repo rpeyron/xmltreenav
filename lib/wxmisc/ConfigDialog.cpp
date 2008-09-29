@@ -74,8 +74,11 @@ wxConfigDialog::wxConfigDialog(wxConfig & config,
     SetSizer(sizer);
     // Add Tab Control
     m_pTabs = new wxNotebook(this, -1, wxDefaultPosition, wxSize(200,150));
+	/*
     wxNotebookSizer * nbs = new wxNotebookSizer(m_pTabs);
     sizer->Add(nbs, 1, wxEXPAND);
+	*/
+    sizer->Add(m_pTabs, 1, wxEXPAND);
     // Add buttons
     wxBoxSizer * btn_sizer = new wxBoxSizer(wxHORIZONTAL);
     btn_sizer->Add(new wxButton(this, wxID_OK , _("Apply")), 0, wxALL, 5);
@@ -118,7 +121,8 @@ void wxConfigDialog::saveToConfig()
 void wxConfigDialog::OnOK(wxCommandEvent & event)
 {
     saveToConfig();
-    wxDialog::OnOK(event);
+    // wx2.8 wxDialog::OnOK(event);
+	Close();
 }
 
 void wxConfigDialog::doLayout()

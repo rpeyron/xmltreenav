@@ -24,7 +24,7 @@
  * ************************************************************************** */
 
 #define XTN_NAME wxT("xmlTreeNav")
-#define XTN_VERSION wxT("v0.3.0")
+#define XTN_VERSION wxT("v0.3.1")
 
 #ifdef __WXMSW__
 #define XTN_IE

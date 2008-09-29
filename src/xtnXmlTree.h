@@ -3,7 +3,7 @@
  * -------------------------------------------------------------------------- *
  *                                                                            *
  * XmlTreeNav : Fast and Easy XML Files navigation / edition.                 *
- * Copyright (C) 2004 - Rémi Peyronnet <remi+xml@via.ecp.fr>                  *
+ * Copyright (C) 2004 - Rï¿½mi Peyronnet <remi+xml@via.ecp.fr>                  *
  *                                                                            *
  * This program is free software; you can redistribute it and/or              *
  * modify it under the terms of the GNU General Public License                *
@@ -54,7 +54,7 @@ public:
 			wxWindowID id, 
 			const wxPoint& pos = wxDefaultPosition, 
 			const wxSize& size = wxDefaultSize, 
-			long style = wxTR_HAS_BUTTONS + wxTR_HIDE_ROOT + wxTR_LINES_AT_ROOT , 
+			long style = wxTR_HAS_BUTTONS + wxTR_HIDE_ROOT + wxTR_LINES_AT_ROOT + wxTR_HAS_VARIABLE_ROW_HEIGHT , 
             const wxValidator & validator = wxDefaultValidator,
 			const wxString& name = wxT("xmltree"));
 	~xtnXmlTree();
@@ -82,7 +82,7 @@ protected:
     void OnItemExpanding(wxTreeEvent & event);
     void OnItemDeleted(wxTreeEvent & event);
     //void OnItemCollapsing(wxTreeEvent & event);
-	// - Déclaration de la table
+	// - Dï¿½claration de la table
     DECLARE_EVENT_TABLE()
 
     void PopulateItem(wxTreeItemId item);

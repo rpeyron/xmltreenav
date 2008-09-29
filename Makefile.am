@@ -1,5 +1,5 @@
-SUBDIRS= m4 m4  lib src resources po
-EXTRA_DIST = config.rpath  config.rpath  config.rpath  \
+SUBDIRS= lib src resources po
+EXTRA_DIST = config.rpath m4/ChangeLog  config.rpath  config.rpath  config.rpath  \
         README \
         COPYING \
         AUTHORS \
@@ -16,6 +16,7 @@ EXTRA_DIST = config.rpath  config.rpath  config.rpath  \
 		build/dev-cpp/xmlTreeNav_private.res \
 		build/vc/XmlTreeNav.dsp \
         build/vc/XmlTreeNav.dsw \
+        build/vc/XmlTreeNav.vcproj \
         build/win32/XmlTreeNav.iss \
         build/win32/make_zip.bat \
         build/debian/control \
@@ -23,6 +24,7 @@ EXTRA_DIST = config.rpath  config.rpath  config.rpath  \
         build/debian/conffiles \
         build/debian/copyright \
         build/debian/menu \
+        build/debian/xmltreenav.desktop \
         build/debian/postinst \
         build/debian/postrm \
         build/debian/rules \
