@@ -24,7 +24,7 @@
  * ************************************************************************** */
 
 #define XTN_NAME wxT("xmlTreeNav")
-#define XTN_VERSION wxT("v0.3.3")
+#define XTN_VERSION wxT("v0.3.3-2")
 #define XTN_COPYRIGHT wxT("(c) 2004-2016 - Remi Peyronnet")
 #define XTN_WEBSITE wxT("http://www.lprp.fr")
 #define XTN_APP_DESCRIPTION _("Performs efficient XML tree navigation and diff XML files.")

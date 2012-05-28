@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <xmltreenav>
-  <!--
+
+  <!-- @name attribute is used to create the menu ; string is localized with po/mo files ; see po/extra-strings.cpp for defaults entries -->
+  <display name="Display only added, removed or equal" type="local" file="filter-added-removed-or-equal.xsl" />
+  <!-- 
   <display name="HTML Voyage" type="html" file="voyage.xsl" />
   <display name="Test Local" type="local" file="test.xsl" />
   -->
-  <display name="Display only added, removed or equal" type="local" file="filter-added-removed-or-equal.xsl" />
 
+  <!-- Only @expr attribute is used and shown in the combobox ; @name attribute is only here for documentation (may be used in the future) -->
   <search name="All Nodes" expr="*" />
   <search name="All Nodes named nodeName" expr="//nodeName" />
   <search name="All Nodes named nodeName with parent parent" expr="//parent/nodeName" />

@@ -3,11 +3,12 @@ Section: contrib/text
 Priority: optional
 Maintainer: Remi Peyronnet <remi+xmltreenav@via.ecp.fr>
 Standards-Version: 2.4.1.2
-Build-Depends: pkg-config, libxml2-dev, libxslt-dev, libxmldiff, libwxgtk3.0-dev
+Build-Depends: pkg-config, libxml2-dev, libxslt-dev, libxmldiff, libwxgtk3.0-dev, zip
 
+# Pour Ubuntu : libwxgtk3.0-0v5 / pour debian : libwxgtk3.0
 Package: xmltreenav
 Architecture: any
-Depends: libc6, libxml2, libxslt1.1, libxmldiff, libwxgtk3.0-0
+Depends: libc6, libxml2, libxslt1.1, libxmldiff, libwxgtk3.0-0v5
 Description: This is a XML viewer specially designed for diffing XML files.
  xmlTreeNav includes diff functionnalities of libxmldiff, and provides a
  graphical display of the differences. It also have several useful functions,

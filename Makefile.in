@@ -84,12 +84,7 @@ DIST_COMMON = INSTALL NEWS README AUTHORS ChangeLog \
 	ABOUT-NLS COPYING TODO compile config.guess config.rpath \
 	config.sub depcomp install-sh missing
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/gettext.m4 \
-	$(top_srcdir)/m4/iconv.m4 $(top_srcdir)/m4/intlmacosx.m4 \
-	$(top_srcdir)/m4/lib-ld.m4 $(top_srcdir)/m4/lib-link.m4 \
-	$(top_srcdir)/m4/lib-prefix.m4 $(top_srcdir)/m4/nls.m4 \
-	$(top_srcdir)/m4/po.m4 $(top_srcdir)/m4/progtest.m4 \
-	$(top_srcdir)/configure.ac
+am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
@@ -841,7 +836,8 @@ uninstall-am:
 deb:
 	ln -sf build/debian .
 	chmod +x debian/rules
-	dpkg-buildpackage
+	dpkg-buildpackage -I*.a -I*.la -I*.o -I*.so -I.*.sw? -I*/*~ -I,,* -I.[#~]* -I.arch-ids -I.arch-inventory -I.be -I.bzr -I.bzr.backup -I.bzr.tags -I.bzrignore -I.cvsignore -I.deps -I.git -I.gitattributes -I.gitignore -I.gitmodules -I.hg -I.hgignore -I.hgsigs -I.hgtags -I.shelf -I.svn -ICVS -IDEADJOE -IRCS -I_MTN -I_darcs
+	rm -Rf debian/$(PACKAGE)/
 
 debarchiver:
 	mv ../$(PACKAGE)_* /home/www/dist/debian/incoming
@@ -892,6 +888,12 @@ deb-src: dist
 	cd ..; \
 	rm --force $(DEBSOURCEPKG); \
 	rm --recursive --force $(DEBSOURCEDIR)
+
+ppa:
+	scite debian/control
+	scite debian/changelog
+	debuild -S -sa
+	dput ppa ../*.changes
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

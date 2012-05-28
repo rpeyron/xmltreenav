@@ -25,6 +25,9 @@ EXTRA_DIST = config.rpath m4/ChangeLog  \
         build/vc2013/xmlTreeNav.sln \
         build/vc2013/xmlTreeNav.vcxproj.filters \
         build/vc2013/xmlTreeNav.vcxproj \
+		build/vc2017/xmlTreeNav.sln \
+		build/vc2017/xmlTreeNav.vcxproj.filters \
+		build/vc2017/xmlTreeNav.vcxproj \
         build/win32/XmlTreeNav.iss \
         build/win32/make_zip.bat \
         build/debian/control \
@@ -47,7 +50,8 @@ EXTRA_DIST = config.rpath m4/ChangeLog  \
 deb:
 	ln -sf build/debian .
 	chmod +x debian/rules
-	dpkg-buildpackage
+	dpkg-buildpackage -I*.a -I*.la -I*.o -I*.so -I.*.sw? -I*/*~ -I,,* -I.[#~]* -I.arch-ids -I.arch-inventory -I.be -I.bzr -I.bzr.backup -I.bzr.tags -I.bzrignore -I.cvsignore -I.deps -I.git -I.gitattributes -I.gitignore -I.gitmodules -I.hg -I.hgignore -I.hgsigs -I.hgtags -I.shelf -I.svn -ICVS -IDEADJOE -IRCS -I_MTN -I_darcs
+	rm -Rf debian/$(PACKAGE)/
 
 debarchiver:
 	mv ../$(PACKAGE)_* /home/www/dist/debian/incoming
@@ -102,6 +106,13 @@ deb-src: dist
 	cd ..; \
 	rm --force $(DEBSOURCEPKG); \
 	rm --recursive --force $(DEBSOURCEDIR)
+
+
+ppa:
+	scite debian/control
+	scite debian/changelog
+	debuild -S -sa
+	dput ppa ../*.changes
 
 
 ACLOCAL_AMFLAGS = -I m4

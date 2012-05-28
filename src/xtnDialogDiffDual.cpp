@@ -3,13 +3,14 @@
 #include "xtnDialogDiffDual.h"
 #include "xtnApp.h"
 #include <wx/filename.h>
+#include <wx/gbsizer.h>
 
 
 xtnDialogDiffDual::xtnDialogDiffDual(wxWindow* parent, int id, const wxString& title, const wxPoint& pos, const wxSize& size, long style):
     wxDialog(parent, id, title, pos, size, wxDEFAULT_DIALOG_STYLE)
 {
     // begin wxGlade: xtnDialogDiffDual::xtnDialogDiffDual
-    szOptions_staticbox = new wxStaticBox(this, -1, _("Diff Options"));
+    //szOptions_staticbox = new wxStaticBox(this, -1, _("Diff Options"));
     lbTitle = new wxStaticText(this, -1, _("xmlDiff two files"));
     lbWith = new wxStaticText(this, -1, _("Before"));
     txWith = new wxTextCtrl(this, -1, wxT(""));
@@ -39,7 +40,7 @@ void xtnDialogDiffDual::set_properties()
 {
     // begin wxGlade: xtnDialogDiffDual::set_properties
     SetTitle(_("Diff Two XML Files"));
-    SetMinSize(wxSize(450, 325));
+    SetMinSize(wxSize(550, 325));
     txWith->SetToolTip(_("Diff the currently opened XML file with this file."));
     txWith->SetFocus();
     btBrowseFile->SetSize(wxSize(25, -1));
@@ -57,6 +58,7 @@ void xtnDialogDiffDual::set_properties()
 
 void xtnDialogDiffDual::do_layout()
 {
+/*
     // begin wxGlade: xtnDialogDiffDual::do_layout
     wxBoxSizer* szMain = new wxBoxSizer(wxVERTICAL);
     wxBoxSizer* szButtons = new wxBoxSizer(wxHORIZONTAL);
@@ -107,6 +109,50 @@ void xtnDialogDiffDual::do_layout()
     SetSizer(szMain);
     Layout();
     // end wxGlade
+*/
+	wxGridBagSizer * szMain = new wxGridBagSizer(5,5);
+	wxBoxSizer* szButtons = new wxBoxSizer(wxHORIZONTAL);
+
+	szMain->SetCols(3);
+	szMain->SetRows(11);
+	szMain->AddGrowableCol(1);
+
+	szMain->Add(lbTitle, wxGBPosition(0,0),wxGBSpan(1,3), wxALL | wxALIGN_CENTER_HORIZONTAL, 4);
+
+	szMain->Add(lbWith, wxGBPosition(1, 0), wxGBSpan(1, 1), wxALIGN_CENTER_VERTICAL);
+	szMain->Add(txWith, wxGBPosition(1, 1), wxGBSpan(1, 1), wxALIGN_CENTER_VERTICAL | wxEXPAND);
+	szMain->Add(btBrowseFile, wxGBPosition(1, 2), wxGBSpan(1, 1), wxALIGN_CENTER_VERTICAL);
+
+	szMain->Add(lbAfter, wxGBPosition(2, 0), wxGBSpan(1, 1), wxALIGN_CENTER_VERTICAL);
+	szMain->Add(txAfter, wxGBPosition(2, 1), wxGBSpan(1, 1), wxALIGN_CENTER_VERTICAL | wxEXPAND);
+	szMain->Add(btAfterBrowse, wxGBPosition(2, 2), wxGBSpan(1, 1), wxALIGN_CENTER_VERTICAL);
+
+	szMain->Add(lbIds, wxGBPosition(4, 0), wxGBSpan(1, 1), wxALIGN_CENTER_VERTICAL);
+	szMain->Add(txIds, wxGBPosition(4, 1), wxGBSpan(1, 2), wxALIGN_CENTER_VERTICAL | wxEXPAND);
+
+	szMain->Add(lbIgnore, wxGBPosition(5, 0), wxGBSpan(1, 1), wxALIGN_CENTER_VERTICAL);
+	szMain->Add(txIgnore, wxGBPosition(5, 1), wxGBSpan(1, 2), wxALIGN_CENTER_VERTICAL | wxEXPAND);
+
+	szMain->Add(cbBeforeValues, wxGBPosition(6, 0), wxGBSpan(1, 3), wxALIGN_CENTER_VERTICAL | wxEXPAND);
+
+	szMain->Add(lbSep, wxGBPosition(7, 0), wxGBSpan(1, 1), wxALIGN_CENTER_VERTICAL);
+	szMain->Add(txSep, wxGBPosition(7, 1), wxGBSpan(1, 2), wxALIGN_CENTER_VERTICAL | wxEXPAND);
+
+	szMain->Add(cbTagChilds, wxGBPosition(8, 0), wxGBSpan(1, 3), wxALIGN_CENTER_VERTICAL | wxEXPAND);
+
+	szMain->AddGrowableRow(9);
+
+	szButtons->Add(btDiff, 0, wxALIGN_CENTER_VERTICAL, 0);
+	szButtons->AddSpacer(5);
+	szButtons->Add(btCancel, 0, wxALIGN_CENTER_VERTICAL, 0);
+	szMain->Add(szButtons, wxGBPosition(10, 0), wxGBSpan(1, 3), wxALIGN_CENTER_VERTICAL | wxALIGN_CENTER_HORIZONTAL, 2);
+
+	wxBoxSizer* szBorder = new wxBoxSizer(wxVERTICAL);
+	szBorder->Add(szMain, 0, wxEXPAND | wxALL, 7);
+
+	SetAutoLayout(true);
+	SetSizer(szBorder);
+	Layout();
 }
 
 

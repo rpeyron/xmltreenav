@@ -90,6 +90,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\lib\wxmisc\ConfigDialog.cpp" />
     <ClCompile Include="..\..\lib\wxmisc\wxUniCompat.cpp" />
+    <Text Include="..\..\po\extra-strings.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </Text>
     <ClCompile Include="..\..\src\xtnApp.cpp" />
     <ClCompile Include="..\..\src\xtnDialogDiffCurrent.cpp" />
     <ClCompile Include="..\..\src\xtnDialogDiffDual.cpp" />
@@ -124,6 +127,9 @@
   <ItemGroup>
     <ResourceCompile Include="..\..\lib\wxactivex\wxIE.rc" />
     <ResourceCompile Include="..\..\resources\resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\bin\config.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

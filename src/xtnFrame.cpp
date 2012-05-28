@@ -518,7 +518,7 @@ void xtnFrame::OnHelpXPath(wxCommandEvent &event)
 
 	topsizer = new wxBoxSizer(wxVERTICAL);
 
-	html = new HtmlWindow(&dlg, wxID_ANY, wxDefaultPosition, wxSize(380, 160), wxHW_SCROLLBAR_AUTO);
+	html = new HtmlWindow(&dlg, wxID_ANY, wxDefaultPosition, wxSize(640, 300), wxHW_SCROLLBAR_AUTO);
 	html->SetBorders(0);
 	html->SetPage(_(
 		"<html><body>"
@@ -537,7 +537,7 @@ void xtnFrame::OnHelpXPath(wxCommandEvent &event)
 		"<br/> - <a href='http://zvon.org/xxl/XPathTutorial/Output_fre/examples.html'>XPath examples [en]</a>"
 		"<br/> - <a href='http://www.tutorialspoint.com/xpath/'>XPath Tutorial [en]</a>"
 		"<br/> - <a href='http://www.w3schools.com/xml/xpath_intro.asp'>XPath Tutorial (w3schools) [en]</a>"
-		"</body></html>")); 
+		"<br/></body></html>")); 
 	html->SetMinSize(wxSize(html->GetInternalRepresentation()->GetWidth(), html->GetInternalRepresentation()->GetHeight()));
 	topsizer->Add(html, 1, wxEXPAND | wxALL, 10);
 
@@ -945,7 +945,7 @@ void xtnFrame::LoadConfigFile(const wxString &name)
 					customXsltMenu[iDisplay].type = customXslt::CUSTOM_XSLT_LOCAL;
 					customXsltMenu[iDisplay].file = xmlstring2wxString(xmlstring(xmlCharTmp(xmlGetProp(node, BAD_CAST "file"))));
 					curMenu->AppendRadioItem(MENU_DISP_XBEGIN + iDisplay, 
-							xmlstring2wxString(xmlstring(xmlCharTmp(xmlGetProp(node, BAD_CAST "name")))),
+							_(xmlstring2wxString(xmlstring(xmlCharTmp(xmlGetProp(node, BAD_CAST "name"))))),
 							wxString::Format(_("Open Local XSLT Display with file %s"), customXsltMenu[iDisplay].file.c_str())
 							);
 					iDisplay++;
@@ -955,7 +955,7 @@ void xtnFrame::LoadConfigFile(const wxString &name)
 					customXsltMenu[iDisplay].type = customXslt::CUSTOM_XSLT_HTML;
 					customXsltMenu[iDisplay].file = xmlstring2wxString(xmlstring(xmlCharTmp(xmlGetProp(node, BAD_CAST "file"))));
 					curMenu->AppendRadioItem(MENU_DISP_XBEGIN + iDisplay, 
-							xmlstring2wxString(xmlstring(xmlCharTmp(xmlGetProp(node, BAD_CAST "name")))),
+							_(xmlstring2wxString(xmlstring(xmlCharTmp(xmlGetProp(node, BAD_CAST "name"))))),
 							wxString::Format(_("Open HTML XSLT Display with file %s"), customXsltMenu[iDisplay].file.c_str())
 							);
 					iDisplay++;
@@ -975,6 +975,9 @@ void xtnFrame::LoadConfigFile(const wxString &name)
 		}
 		xmlFreeDoc(doc);
 	}
+
+	// 2016-12-18 : Added support for localisation of config strings (see _( ) macro used in menu items) - add entries to po/extra-strings.cpp - not for xpath
+
 }
 
 void xtnFrame::LoadFile(const wxString &name)

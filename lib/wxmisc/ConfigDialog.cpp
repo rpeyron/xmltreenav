@@ -1,23 +1,10 @@
 /* ****************************************************************************
  * ConfigDialog.cpp                                                           *
- * -------------------------------------------------------------------------- *
  *                                                                            *
- * Copyright (C) 2004 - Rémi Peyronnet <remi+xml@via.ecp.fr>                  *
+ * (c) 2004-2008 - Rémi Peyronnet <remi+wx@via.ecp.fr>                        *
  *                                                                            *
- * This program is free software; you can redistribute it and/or              *
- * modify it under the terms of the GNU General Public License                *
- * as published by the Free Software Foundation; either version 2             *
- * of the License, or (at your option) any later version.                     *
+ * Licence : wxWindows (based on L-GPL)                                       *
  *                                                                            *
- * This program is distributed in the hope that it will be useful,            *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of             *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              *
- * GNU General Public License for more details.                               *
- *                                                                            *
- * You should have received a copy of the GNU General Public License          *
- * along with this program; if not, write to the Free Software                *
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.*
- * http://www.gnu.org/copyleft/gpl.html                                       *
  * ************************************************************************** */
 
 
@@ -27,6 +14,7 @@
 #include <wx/arrimpl.cpp> 
 WX_DEFINE_OBJARRAY(ArrayOf_wxConfigDialog_Entry);
 
+#include <wx/gbsizer.h>
 
 /*
 
@@ -56,6 +44,9 @@ WX_DEFINE_OBJARRAY(ArrayOf_wxConfigDialog_Entry);
   */
 
 
+// CONFIGDIALOG_ALIGN : define this for GridBag alignment
+#define CONFIGDIALOG_ALIGN
+
 // wxConfigDialog_Entry ------------------------------------------------------
 
 wxConfigDialog::wxConfigDialog(wxConfig & config,
@@ -71,21 +62,16 @@ wxConfigDialog::wxConfigDialog(wxConfig & config,
 {
     // Add sizer sizer
     wxBoxSizer * sizer = new wxBoxSizer(wxVERTICAL);
-    SetSizer(sizer);
     // Add Tab Control
-    m_pTabs = new wxNotebook(this, -1, wxDefaultPosition, wxSize(200,150));
-	/*
-    wxNotebookSizer * nbs = new wxNotebookSizer(m_pTabs);
-    sizer->Add(nbs, 1, wxEXPAND);
-	*/
+    m_pTabs = new wxNotebook(this, -1);
+    // wxNotebookSizer * nbs = new wxNotebookSizer(m_pTabs);
     sizer->Add(m_pTabs, 1, wxEXPAND);
     // Add buttons
     wxBoxSizer * btn_sizer = new wxBoxSizer(wxHORIZONTAL);
     btn_sizer->Add(new wxButton(this, wxID_OK , _("Apply")), 0, wxALL, 5);
     btn_sizer->Add(new wxButton(this, wxID_CANCEL, _("Cancel")), 0, wxALL, 5);
     sizer->Add(btn_sizer, 0, wxALIGN_CENTER);
-    Layout();
-    sizer->SetSizeHints(this);
+    SetSizer(sizer);
 }
 
 wxConfigDialog::~wxConfigDialog()
@@ -121,14 +107,14 @@ void wxConfigDialog::saveToConfig()
 void wxConfigDialog::OnOK(wxCommandEvent & event)
 {
     saveToConfig();
-    // wx2.8 wxDialog::OnOK(event);
-	Close();
+    // wxDialog::OnOK(event);
+    event.Skip();
 }
 
 void wxConfigDialog::doLayout()
 {
-    Layout();
-    GetSizer()->SetSizeHints(this);
+	//SetClientSize(GetBestSize());
+	Layout();
 }
 
 
@@ -140,14 +126,20 @@ wxConfigDialog_Entry::wxConfigDialog_Entry(wxConfigDialog & cfgDlg, const wxStri
     this->groupId = groupId;
     this->entryId = entryId;
     this->entryDes = entryDes;
-    // m_pSizer creation (not in member, because will automatically be deleted)
-    m_pSizer = new wxBoxSizer(wxHORIZONTAL);
     // Check if the GroupId exists, and creates it if necessary
     if (getPagesString().Index(pageId) == wxNOT_FOUND)
     {
         wxPanel * panel;
         panel = new wxPanel(&getNotebook());
-        panel->SetSizer(new wxBoxSizer(wxVERTICAL));
+#ifdef CONFIGDIALOG_ALIGN
+        panel->SetSizer(new wxGridBagSizer(10,5));
+		((wxGridBagSizer *)(panel->GetSizer()))->SetCols(3);
+		((wxGridBagSizer *)(panel->GetSizer()))->AddGrowableCol(1);
+		((wxGridBagSizer *)(panel->GetSizer()))->Add(2,5,wxGBPosition(0,0));
+#else
+		panel->SetSizer(new wxBoxSizer(wxVERTICAL));
+		panel->GetSizer()->PrependSpacer(5);
+#endif
         panel->GetSizer()->SetSizeHints(panel);
 
         getNotebook().AddPage(panel, pageId);
@@ -156,7 +148,13 @@ wxConfigDialog_Entry::wxConfigDialog_Entry(wxConfigDialog & cfgDlg, const wxStri
     // Add our sizer to the tab
     m_pParent = getNotebook().GetPage(getPagesString().Index(pageId));
     wxASSERT(m_pParent != NULL);
-    m_pParent->GetSizer()->Add(m_pSizer, 0, wxEXPAND | wxALL, 1);
+#ifdef CONFIGDIALOG_ALIGN
+	m_pSizer = m_pParent->GetSizer();
+#else
+	// m_pSizer creation (not in member, because will automatically be deleted)
+	m_pSizer = new wxBoxSizer(wxHORIZONTAL);
+	m_pParent->GetSizer()->Add(m_pSizer, 0, wxEXPAND | wxALL, 5);
+#endif
     // Add ourselves to the elements
     cfgDlg.getElements().Add(this);
 }
@@ -185,7 +183,13 @@ wxConfigDialog_EntryCheck::wxConfigDialog_EntryCheck(wxConfigDialog & cfgDlg, co
 {
     m_pCheck = new wxCheckBox(m_pParent, -1, entryDes);
     loadFromConfig();   saveToConfig();
-    m_pSizer->Add(m_pCheck, 1);
+#ifdef CONFIGDIALOG_ALIGN
+	wxGridBagSizer * gb = (wxGridBagSizer *)m_pSizer;
+	int row = gb->GetRows(); gb->SetRows(row+1); 
+	gb->Add(m_pCheck, wxGBPosition(row, 0), wxGBSpan(1, 3), wxLEFT, 5);
+#else
+	m_pSizer->Add(m_pCheck, 1);
+#endif
 }
 
 wxConfigDialog_EntryCheck::~wxConfigDialog_EntryCheck()
@@ -217,7 +221,13 @@ wxConfigDialog_EntryRadio::wxConfigDialog_EntryRadio(wxConfigDialog & cfgDlg, co
     m_pRadio = new wxRadioBox(m_pParent, -1, entryDes, 
         wxDefaultPosition, wxDefaultSize, n, entries, 1, wxRA_SPECIFY_COLS);
     loadFromConfig();   saveToConfig();
-    m_pSizer->Add(m_pRadio, 1);
+#ifdef CONFIGDIALOG_ALIGN
+	wxGridBagSizer * gb = (wxGridBagSizer *)m_pSizer;
+	int row = gb->GetRows(); gb->SetRows(row+1); 
+	gb->Add(m_pRadio, wxGBPosition(row, 0), wxGBSpan(1, 3), wxLEFT | wxRIGHT | wxEXPAND, 5);
+#else
+	m_pSizer->Add(m_pRadio, 1);
+#endif
 }
 
 wxConfigDialog_EntryRadio::~wxConfigDialog_EntryRadio()
@@ -247,7 +257,13 @@ wxConfigDialog_EntryText::wxConfigDialog_EntryText(wxConfigDialog & cfgDlg, cons
       entryDefault(entryDefault)
 {
     m_pLabel = new wxStaticText(m_pParent, -1, entryDes);
-    m_pSizer->Add(m_pLabel, 0, wxALIGN_CENTER | wxRIGHT, 5);
+#ifdef CONFIGDIALOG_ALIGN
+	wxGridBagSizer * gb = (wxGridBagSizer *)m_pSizer;
+	int row = gb->GetRows(); gb->SetRows(row+1);
+	gb->Add(m_pLabel, wxGBPosition(row, 0), wxGBSpan(1, 3), wxALIGN_CENTER_VERTICAL | wxLEFT | wxRIGHT, 5);
+#else
+	m_pSizer->Add(m_pLabel, 0, wxALIGN_CENTER | wxRIGHT, 5);
+#endif
 }
 
 wxConfigDialog_EntryText::~wxConfigDialog_EntryText()
@@ -260,9 +276,16 @@ wxConfigDialog_EntryTextEdit::wxConfigDialog_EntryTextEdit(wxConfigDialog & cfgD
     : wxConfigDialog_EntryText(cfgDlg, groupId, entryId, pageId, entryDes, entryDefault)
 {
     m_pText = new wxTextCtrl(m_pParent, -1);
-    m_pSizer->Add(m_pText, 1, wxLEFT | wxRIGHT | wxEXPAND, 5);
-    loadFromConfig();
-    saveToConfig();
+#ifdef CONFIGDIALOG_ALIGN
+	wxGridBagSizer * gb = (wxGridBagSizer *)m_pSizer;
+	int row = gb->GetRows()-1;
+	gb->SetItemSpan(m_pLabel, wxGBSpan(1, 1));
+	gb->Add(m_pText, wxGBPosition(row, 1), wxGBSpan(1, 2), wxLEFT | wxRIGHT | wxEXPAND, 5);
+#else
+	m_pSizer->Add(m_pText, 1, wxLEFT | wxRIGHT | wxEXPAND, 5);
+#endif
+	loadFromConfig();
+	saveToConfig();
 }
 wxConfigDialog_EntryTextEdit::~wxConfigDialog_EntryTextEdit() {};
 
@@ -270,7 +293,7 @@ bool wxConfigDialog_EntryTextEdit::loadFromConfig()
 {
     wxString val;
     val = entryDefault;
-    getConfig().Read(groupId + wxT("/") + entryId, &val);
+    getConfig().Read(groupId + wxT("/") + entryId, &val, entryDefault);
     m_pText->SetValue(val);
     return TRUE;
 }
@@ -290,9 +313,34 @@ wxConfigDialog_EntryCombo::wxConfigDialog_EntryCombo(wxConfigDialog & cfgDlg, co
 {
     m_pCombo = new wxComboBox(m_pParent, -1, entryDefault, wxDefaultPosition, wxDefaultSize,
         n, entries);
-    m_pSizer->Add(m_pCombo, 1, wxLEFT | wxRIGHT | wxEXPAND, 5);
+#ifdef CONFIGDIALOG_ALIGN
+	wxGridBagSizer * gb = (wxGridBagSizer *)m_pSizer;
+	int row = gb->GetRows()-1;
+	gb->SetItemSpan(m_pLabel, wxGBSpan(1, 1));
+	gb->Add(m_pCombo, wxGBPosition(row, 1), wxGBSpan(1, 2), wxLEFT | wxRIGHT | wxEXPAND, 5);
+#else
+	m_pSizer->Add(m_pCombo, 1, wxLEFT | wxRIGHT | wxEXPAND, 5);
+#endif
     loadFromConfig();
     saveToConfig();
+}
+
+wxConfigDialog_EntryCombo::wxConfigDialog_EntryCombo(wxConfigDialog & cfgDlg, const wxString & groupId, const wxString & entryId, const wxString & pageId, const wxString & entryDes, const wxArrayString entries, const wxString & entryDefault)
+    : wxConfigDialog_EntryText(cfgDlg, groupId, entryId, pageId, entryDes),
+      entryDefault(entryDefault)
+{
+    m_pCombo = new wxComboBox(m_pParent, -1, entryDefault, wxDefaultPosition, wxDefaultSize,
+        entries);
+#ifdef CONFIGDIALOG_ALIGN
+	wxGridBagSizer * gb = (wxGridBagSizer *)m_pSizer;
+	int row = gb->GetRows()-1;
+	gb->SetItemSpan(m_pLabel, wxGBSpan(1, 1));
+	gb->Add(m_pCombo, wxGBPosition(row, 1), wxGBSpan(1, 2), wxLEFT | wxRIGHT | wxEXPAND, 5);
+#else
+	m_pSizer->Add(m_pCombo, 1, wxLEFT | wxRIGHT | wxEXPAND, 5);
+#endif
+	loadFromConfig();
+	saveToConfig();
 }
 
 wxConfigDialog_EntryCombo::~wxConfigDialog_EntryCombo() {};
