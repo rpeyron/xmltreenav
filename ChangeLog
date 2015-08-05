@@ -1,3 +1,13 @@
+2015-08-03 21:13  remi 0.3.2
+	* Updated to wxWidgets 3.0.2  (was difficult with wxChecks and wxTreeCtrl changes...)
+	* Added italian langage thanks to Roberto BORIOTTI (bovirsu)
+	* Fixed some issues reported by Roberto BORIOTTI
+	* Fixed other bugs (show only diffs,...)
+	* Added legend menu
+	* Fixed build system
+	* Updated icon
+	* Upgraded about box to wxAboutBox
+
 2008-09-29 18:46  remi 0.3.1
 	* Moved to wxWidgets 2.8
 	* Improved look'n feel on Linux

@@ -38,7 +38,7 @@
 #include "wxUniCompat.h"
 
 #if (wxUSE_UNICODE != 1) || (defined wxUNICOMPAT)
- #warning Use built-in UTF8<->Latin1 support. Output will not be correct on non-latin1 systems.
+ //#warning Use built-in UTF8<->Latin1 support. Output will not be correct on non-latin1 systems.
 #endif
 
 xmlstring wxString2xmlstring(const wxString & str)

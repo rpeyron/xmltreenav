@@ -5,7 +5,7 @@
 #include <wx/filename.h>
 
 xtnDialogDiffCurrent::xtnDialogDiffCurrent(wxWindow* parent, int id, const wxString& title, const wxPoint& pos, const wxSize& size, long style):
-    wxDialog(parent, id, title, pos, size, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER|wxTHICK_FRAME)
+    wxDialog(parent, id, title, pos, size, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER)
 {
     // begin wxGlade: xtnDialogDiffCurrent::xtnDialogDiffCurrent
     szOptions_staticbox = new wxStaticBox(this, -1, _("Diff Options"));
@@ -28,6 +28,7 @@ xtnDialogDiffCurrent::xtnDialogDiffCurrent(wxWindow* parent, int id, const wxStr
 
     set_properties();
     do_layout();
+	Fit();
     // end wxGlade
 }
 
@@ -37,10 +38,10 @@ void xtnDialogDiffCurrent::set_properties()
 {
     // begin wxGlade: xtnDialogDiffCurrent::set_properties
     SetTitle(_("Diff to current XML File"));
-    SetSize(wxSize(360, 285));
+    SetMinSize(wxSize(450, 325));
     txWith->SetToolTip(_("Diff the currently opened XML file with this file."));
     txWith->SetFocus();
-    btBrowseFile->SetSize(wxSize(30, -1));
+    btBrowseFile->SetSize(wxSize(25, -1));
     radioBefore->SetToolTip(_("Use the file specified above as before file, and the currently opened file as after file."));
     radioBefore->SetValue(1);
     ioAfter->SetToolTip(_("Use the file specified above as after file, and the currently opened file as before file."));
@@ -67,7 +68,9 @@ void xtnDialogDiffCurrent::do_layout()
     wxBoxSizer* szBefore = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer* szWith = new wxBoxSizer(wxHORIZONTAL);
     szMain->Add(lbTitle, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 4);
+	szWith->AddSpacer(5);
     szWith->Add(lbWith, 0, wxRIGHT|wxALIGN_CENTER_VERTICAL, 5);
+	szWith->AddSpacer(5);
     szWith->Add(txWith, 1, wxALIGN_CENTER_VERTICAL, 0);
     szWith->Add(btBrowseFile, 0, wxALIGN_CENTER_VERTICAL, 0);
     szMain->Add(szWith, 0, wxALL|wxEXPAND|wxALIGN_RIGHT, 3);
@@ -75,20 +78,28 @@ void xtnDialogDiffCurrent::do_layout()
     szBefore->Add(ioAfter, 0, wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 0);
     szMain->Add(szBefore, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
     szIds->Add(lbIds, 0, wxALIGN_CENTER_VERTICAL, 0);
+	szIds->AddSpacer(5);
     szIds->Add(txIds, 1, wxALIGN_CENTER_VERTICAL, 0);
     szOptions->Add(szIds, 0, wxALL|wxEXPAND, 3);
     szIgnore->Add(lbIgnore, 0, wxALIGN_CENTER_VERTICAL, 0);
+	szIgnore->AddSpacer(5);
     szIgnore->Add(txIgnore, 1, wxALIGN_CENTER_VERTICAL, 0);
     szOptions->Add(szIgnore, 0, wxALL|wxEXPAND, 3);
+	szOptions->AddSpacer(5);
     szOptions->Add(cbBeforeValues, 0, wxALL, 3);
     szSep->Add(lbSep, 0, wxALIGN_CENTER_VERTICAL, 0);
+	szSep->AddSpacer(5);
     szSep->Add(txSep, 1, wxALIGN_CENTER_VERTICAL, 0);
     szOptions->Add(szSep, 0, wxALL|wxEXPAND, 3);
+	szOptions->AddSpacer(5);
     szOptions->Add(cbTagChilds, 0, wxALL, 3);
     szMain->Add(szOptions, 0, wxALL|wxEXPAND, 3);
     szButtons->Add(btDiff, 0, wxALIGN_CENTER_VERTICAL, 0);
+	szButtons->AddSpacer(5);
     szButtons->Add(btCancel, 0, wxALIGN_CENTER_VERTICAL, 0);
+	szMain->AddStretchSpacer();
     szMain->Add(szButtons, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 2);
+	szMain->AddSpacer(5);
     SetAutoLayout(true);
     SetSizer(szMain);
     Layout();
@@ -118,7 +129,7 @@ void xtnDialogDiffCurrent::OnBrowseWith(wxCommandEvent &event)
 		fn.GetName(),
 		wxT(""), 
 		XMLTREENAV_FILTERLIST_ALL,
-		wxOPEN | wxFILE_MUST_EXIST);
+		wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (name != wxT(""))
     {
 		txWith->SetValue(name);

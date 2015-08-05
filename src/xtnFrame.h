@@ -55,6 +55,7 @@
 #define MENU_FILE_PREFS     10080
 #define MENU_FILE_QUIT		10099
 #define MENU_HELP_ABOUT		10901
+#define MENU_HELP_LEGENDE	10902
 // Edit
 #define MENU_EDIT_COPY	    10302
 #define MENU_EDIT_PASTE	    10303
@@ -137,6 +138,7 @@ protected:
     void OnDiffDiffOnly(wxCommandEvent &event);
     //   - Help
     void OnHelpAbout(wxCommandEvent &event);
+    void OnHelpLegende(wxCommandEvent &event);
 	// - Déclaration de la table
     DECLARE_EVENT_TABLE()
 

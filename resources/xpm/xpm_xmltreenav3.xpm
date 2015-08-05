@@ -1,5 +1,5 @@
 /* XPM */
-static char *xpm_xmltreenav3[] = {
+static const char *xpm_xmltreenav3[] = {
 /* columns rows colors chars-per-pixel */
 "48 48 211 2 ",
 "   c #0C0C0C",

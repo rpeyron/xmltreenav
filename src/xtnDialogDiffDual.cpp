@@ -30,6 +30,7 @@ xtnDialogDiffDual::xtnDialogDiffDual(wxWindow* parent, int id, const wxString& t
 
     set_properties();
     do_layout();
+	Fit();
     // end wxGlade
 }
 
@@ -38,11 +39,11 @@ void xtnDialogDiffDual::set_properties()
 {
     // begin wxGlade: xtnDialogDiffDual::set_properties
     SetTitle(_("Diff Two XML Files"));
-    SetSize(wxSize(363, 290));
+    SetMinSize(wxSize(450, 325));
     txWith->SetToolTip(_("Diff the currently opened XML file with this file."));
     txWith->SetFocus();
-    btBrowseFile->SetSize(wxSize(30, -1));
-    btAfterBrowse->SetSize(wxSize(30, -1));
+    btBrowseFile->SetSize(wxSize(25, -1));
+    btAfterBrowse->SetSize(wxSize(25, -1));
     txIds->SetToolTip(_("Use these items as identifiers. (List of items separated by comma, attributes must be prefixed by @, and '.' can be used for the text)"));
     txIgnore->SetToolTip(_("Differences on these items will be ignored"));
     cbBeforeValues->SetToolTip(_("If checked, when a difference occurs, the output file will contain \"before value <separator> after value\""));
@@ -66,29 +67,42 @@ void xtnDialogDiffDual::do_layout()
     wxBoxSizer* szAfter = new wxBoxSizer(wxHORIZONTAL);
     wxBoxSizer* szWith = new wxBoxSizer(wxHORIZONTAL);
     szMain->Add(lbTitle, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 4);
+	szWith->AddSpacer(5);
     szWith->Add(lbWith, 0, wxRIGHT|wxALIGN_CENTER_VERTICAL, 5);
+	szWith->AddSpacer(5);
     szWith->Add(txWith, 1, wxALIGN_CENTER_VERTICAL, 0);
+	szWith->AddSpacer(5);
     szWith->Add(btBrowseFile, 0, wxALIGN_CENTER_VERTICAL, 0);
     szMain->Add(szWith, 0, wxALL|wxEXPAND|wxALIGN_RIGHT, 3);
+	szAfter->AddSpacer(5);
     szAfter->Add(lbAfter, 0, wxRIGHT|wxALIGN_CENTER_VERTICAL, 14);
+	szAfter->AddSpacer(5);
     szAfter->Add(txAfter, 1, wxALIGN_CENTER_VERTICAL, 0);
+	szAfter->AddSpacer(5);
     szAfter->Add(btAfterBrowse, 0, wxALIGN_CENTER_VERTICAL, 0);
     szMain->Add(szAfter, 0, wxALL|wxEXPAND, 3);
     szIds->Add(lbIds, 0, wxALIGN_CENTER_VERTICAL, 0);
+	szIds->AddSpacer(5);
     szIds->Add(txIds, 1, wxALIGN_CENTER_VERTICAL, 0);
     szOptions->Add(szIds, 0, wxALL|wxEXPAND, 3);
     szIgnore->Add(lbIgnore, 0, wxALIGN_CENTER_VERTICAL, 0);
+	szIgnore->AddSpacer(5);
     szIgnore->Add(txIgnore, 1, wxALIGN_CENTER_VERTICAL, 0);
     szOptions->Add(szIgnore, 0, wxALL|wxEXPAND, 3);
     szOptions->Add(cbBeforeValues, 0, wxALL, 3);
     szSep->Add(lbSep, 0, wxALIGN_CENTER_VERTICAL, 0);
+	szSep->AddSpacer(5);
     szSep->Add(txSep, 1, wxALIGN_CENTER_VERTICAL, 0);
     szOptions->Add(szSep, 0, wxALL|wxEXPAND, 3);
+	szOptions->AddSpacer(5);
     szOptions->Add(cbTagChilds, 0, wxALL, 3);
     szMain->Add(szOptions, 0, wxALL|wxEXPAND, 3);
     szButtons->Add(btDiff, 0, wxALIGN_CENTER_VERTICAL, 0);
+	szButtons->AddSpacer(5);
     szButtons->Add(btCancel, 0, wxALIGN_CENTER_VERTICAL, 0);
+	szMain->AddStretchSpacer();
     szMain->Add(szButtons, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 2);
+	szMain->AddSpacer(5);
     SetAutoLayout(true);
     SetSizer(szMain);
     Layout();
@@ -120,7 +134,7 @@ void xtnDialogDiffDual::OnBrowseWith(wxCommandEvent &event)
 		fn.GetName(),
 		wxT(""), 
 		XMLTREENAV_FILTERLIST_ALL,
-		wxOPEN | wxFILE_MUST_EXIST);
+		wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (name != wxT(""))
     {
 		txWith->SetValue(name);
@@ -137,7 +151,7 @@ void xtnDialogDiffDual::OnBrowseAfter(wxCommandEvent &event)
 		fn.GetName(),
 		wxT(""), 
 		XMLTREENAV_FILTERLIST_ALL,
-		wxOPEN | wxFILE_MUST_EXIST);
+		wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (name != wxT(""))
     {
 		txAfter->SetValue(name);

@@ -1,3 +1,4 @@
+- Fix removal of IEWin with wxHtmlWindow
 - Multi-document via tab (créer un objet document porteur des spécificités des barres de menu et toolbar, et déplacer les objets adequats de Frame et xtnXmlTree)
 - Arguments / Mode on XSLT files
 - XPath Bar options : Highlight, extended evaluator : nodes to process / list of values to print
@@ -12,3 +13,35 @@ Done :
 - Nom du fichier dans le titre
 - XSLT HTML Display (Select a XSLT File, and drag'n drop your XML file)
 - XPath Bar (Bar, History, Preset, 
+
+
+2015-07-19 - boriotti-change-requests
+01a :
+- Center Info window in program window (instead on screen) -> Done (with wx3.0.2)
+- Increase info window size -> Nok, automatic size
+- Update link in info window  -> Fixed
+
+02 :
+- Delete HTML Voyage / Test Local items (not available in program folder) -> Fixed
+
+03 : Diff Dialog
+- Center Diff Dialog in program window -> Done
+- Increase dialog width  -> Done
+- Increase space for texts  -> Done
+- Increase button widths, and separate them with space -> Width is automatic, but spacer added
+
+04 : Bug when saving without any file loaded -> Fixed
+
+05 : Bug with infotext with Diff / Diff to... menu -> Fixed
+
+06 & 08 : 
+- Legend of colors and icons -> Added (Help)
+- Change changes icons 
+- Increase size of icons
+
+07 :
+- Title : put the program name always as first -> Nok : consistent with Microsoft guidelines and other program behaviour
+
+v2
+- Structure of lang/ folder -> Changed
+- Internationalization of files combo list -> Done

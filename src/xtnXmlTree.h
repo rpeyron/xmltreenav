@@ -70,7 +70,6 @@ public:
     int FindNodes(const wxString & xpath, xmlNodePtr refNode);
     xmlNodePtr GetCurrentNode();
     xmlNodePtr GetRootNode();
-    void MakeNodeVisible(xmlNodePtr node);
 
 public:
     bool m_bShowDiff;
@@ -85,8 +84,8 @@ protected:
 	// - D�claration de la table
     DECLARE_EVENT_TABLE()
 
-    void PopulateItem(wxTreeItemId item);
-
+    void PopulateItem(const wxTreeItemId & item);
+    wxTreeItemId MakeNodeVisible(xmlNodePtr node);
     void LoadTreeImageList();
 
 protected:

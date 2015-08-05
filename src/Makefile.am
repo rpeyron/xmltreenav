@@ -16,5 +16,5 @@ xmltreenav_SOURCES= \
     xtnXmlTree.cpp \
     xtnXmlTree.h
 
-INCLUDES=-I../lib/
+AM_CPPFLAGS=-I../lib/
 

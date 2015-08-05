@@ -1,629 +1,638 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: xmlTreeNav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-05 17:44+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-08-05 17:31+0200\n"
+"PO-Revision-Date: 2015-08-05 17:44+0100\n"
+"Last-Translator: Rémi Peyronnet <remi+poedit@via.ecp.fr>\n"
+"Language-Team: Italian <bovirus@gmail.com>\n"
+"Language: it_IT\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../src/xtnApp.cpp:60
 msgid "XSLT Local Display File to use"
-msgstr ""
+msgstr "File locale XSLT visualizzazione da usare"
 
 #: ../src/xtnApp.cpp:61
 msgid "XSLT HTML Display File to use"
-msgstr ""
+msgstr "File locale XSLT HTML visualizzazione da usare"
 
 #: ../src/xtnApp.cpp:62
 msgid "Config File to use"
-msgstr ""
+msgstr "File configurazione da usare"
 
 #: ../src/xtnApp.cpp:63
 msgid "XML File to open"
-msgstr ""
+msgstr "File XML da aprire"
 
 #: ../src/xtnDialogDiffCurrent.cpp:11 ../src/xtnDialogDiffDual.cpp:12
 msgid "Diff Options"
-msgstr ""
+msgstr "Opzioni comparazione"
 
 #: ../src/xtnDialogDiffCurrent.cpp:12
 msgid "xmlDiff current file"
-msgstr ""
+msgstr "Compara il file XML aperto con questo file"
 
 #: ../src/xtnDialogDiffCurrent.cpp:13
 msgid "With "
-msgstr ""
+msgstr "Con"
 
 #: ../src/xtnDialogDiffCurrent.cpp:15 ../src/xtnDialogDiffDual.cpp:16
 #: ../src/xtnDialogDiffDual.cpp:19
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: ../src/xtnDialogDiffCurrent.cpp:16
 msgid "...as Before file"
-msgstr ""
+msgstr "come 1. file"
 
 #: ../src/xtnDialogDiffCurrent.cpp:17
 msgid "... as After file"
-msgstr ""
+msgstr "come 2. file"
 
 #: ../src/xtnDialogDiffCurrent.cpp:18 ../src/xtnDialogDiffDual.cpp:20
 msgid "Identifiers "
-msgstr ""
+msgstr "Identificatori"
 
 #: ../src/xtnDialogDiffCurrent.cpp:19 ../src/xtnDialogDiffDual.cpp:21
 msgid "@id,@value"
-msgstr ""
+msgstr "@id,@value"
 
 #: ../src/xtnDialogDiffCurrent.cpp:20 ../src/xtnDialogDiffDual.cpp:22
 msgid "Ignore Tags"
-msgstr ""
+msgstr "Ignora tag"
 
 #: ../src/xtnDialogDiffCurrent.cpp:21 ../src/xtnDialogDiffDual.cpp:23
 msgid "@ignore-attr,ignore-tag"
-msgstr ""
+msgstr "@ignore-attr,ignore-tag"
 
 #: ../src/xtnDialogDiffCurrent.cpp:22 ../src/xtnDialogDiffDual.cpp:24
 msgid "Add before values"
-msgstr ""
+msgstr "Aggiungi prima del valore"
 
 #: ../src/xtnDialogDiffCurrent.cpp:23 ../src/xtnDialogDiffDual.cpp:25
 msgid "Separator "
-msgstr ""
+msgstr "Separatore"
 
 #: ../src/xtnDialogDiffCurrent.cpp:24 ../src/xtnDialogDiffDual.cpp:26
 msgid "|"
-msgstr ""
+msgstr "|"
 
 #: ../src/xtnDialogDiffCurrent.cpp:25 ../src/xtnDialogDiffDual.cpp:27
 msgid "Tag Childs"
-msgstr ""
+msgstr "Tag relativi"
 
 #: ../src/xtnDialogDiffCurrent.cpp:26 ../src/xtnDialogDiffDual.cpp:28
 msgid "&Diff !"
-msgstr ""
+msgstr "&Compara!"
 
 #: ../src/xtnDialogDiffCurrent.cpp:27 ../src/xtnDialogDiffDual.cpp:29
 msgid "&Cancel"
-msgstr ""
+msgstr "&Annulla"
 
 #: ../src/xtnDialogDiffCurrent.cpp:40 ../src/xtnFrame.cpp:564
 msgid "Diff to current XML File"
-msgstr ""
+msgstr "Compara con il file XML attuale"
 
 #: ../src/xtnDialogDiffCurrent.cpp:42 ../src/xtnDialogDiffDual.cpp:43
 msgid "Diff the currently opened XML file with this file."
-msgstr ""
+msgstr "Compara il file XML aperto con questo file"
 
 #: ../src/xtnDialogDiffCurrent.cpp:45
 msgid ""
 "Use the file specified above as before file, and the currently opened file "
 "as after file."
 msgstr ""
+"Usa il file specifcato sopra come file pre, e il file attualmente aperto "
+"come file post."
 
 #: ../src/xtnDialogDiffCurrent.cpp:47
 msgid ""
 "Use the file specified above as after file, and the currently opened file as "
 "before file."
 msgstr ""
+"Usa il file specifcato sopra come file post, e il file attualmente aperto "
+"come file pre."
 
 #: ../src/xtnDialogDiffCurrent.cpp:48 ../src/xtnDialogDiffDual.cpp:47
 msgid ""
 "Use these items as identifiers. (List of items separated by comma, "
 "attributes must be prefixed by @, and '.' can be used for the text)"
 msgstr ""
+"Usa questi elementi come identificatori (elenco di elementi separati da "
+"virgola, gli attributi devono essere prefissati da @, e '.' possono essere "
+"usati per il testo)"
 
 #: ../src/xtnDialogDiffCurrent.cpp:49 ../src/xtnDialogDiffDual.cpp:48
 msgid "Differences on these items will be ignored"
-msgstr ""
+msgstr "Le differenze di questi elementi verranno ignorate"
 
 #: ../src/xtnDialogDiffCurrent.cpp:50 ../src/xtnDialogDiffDual.cpp:49
 msgid ""
 "If checked, when a difference occurs, the output file will contain \"before "
 "value <separator> after value\""
 msgstr ""
+"Se selezionata, quando c'è una differenza, il file destinazione conterrà "
+"\"valore precedente <separatore valore successivo\""
 
 #: ../src/xtnDialogDiffCurrent.cpp:52 ../src/xtnDialogDiffDual.cpp:51
 msgid "Text to separate before and after values"
-msgstr ""
+msgstr "Testo di sperazione prima e dopo i valori"
 
 #: ../src/xtnDialogDiffCurrent.cpp:53 ../src/xtnDialogDiffDual.cpp:52
 msgid "Recursively tag childs of added or deleted nodes."
-msgstr ""
+msgstr "Tag relativi ricorsivi dei nodi aggiunti o eliminati"
 
 #: ../src/xtnDialogDiffCurrent.cpp:127 ../src/xtnDialogDiffDual.cpp:132
 #: ../src/xtnDialogDiffDual.cpp:149 ../src/xtnFrame.cpp:214
 #: ../src/xtnFrame.cpp:415
 msgid "Open a file"
-msgstr ""
+msgstr "Apri un file"
 
 #: ../src/xtnDialogDiffDual.cpp:13
 msgid "xmlDiff two files"
-msgstr ""
+msgstr "Comparazione di due file XML"
 
 #: ../src/xtnDialogDiffDual.cpp:14
 msgid "Before"
-msgstr ""
+msgstr "1. file"
 
 #: ../src/xtnDialogDiffDual.cpp:17
 msgid "After"
-msgstr ""
+msgstr "2. file"
 
 #: ../src/xtnDialogDiffDual.cpp:41
 msgid "Diff Two XML Files"
-msgstr ""
+msgstr "Comparazione di due file XML"
 
 #: ../src/xtnFrame.cpp:100 ../src/xtnFrame.cpp:125
 msgid "config.xml"
-msgstr ""
+msgstr "config.xml"
 
 #: ../src/xtnFrame.cpp:116
 msgid "Preferences"
-msgstr ""
+msgstr "Impostazioni"
 
 #: ../src/xtnFrame.cpp:118 ../src/xtnFrame.cpp:119 ../src/xtnFrame.cpp:120
 msgid "XML"
-msgstr ""
+msgstr "XML"
 
 #: ../src/xtnFrame.cpp:118
 msgid "Clean Text"
-msgstr ""
+msgstr "Azzeramento testo"
 
 #: ../src/xtnFrame.cpp:119
 msgid "Enforce Cleaning"
-msgstr ""
+msgstr "Pulizia forzata"
 
 #: ../src/xtnFrame.cpp:120
 msgid "Pretty Print on Save"
-msgstr ""
+msgstr "Stampa veloce al salvataggio"
 
 #: ../src/xtnFrame.cpp:122 ../src/xtnFrame.cpp:123
 msgid "Engine"
-msgstr ""
+msgstr "Motore"
 
 #: ../src/xtnFrame.cpp:122
 msgid "Optimize Memory usage"
-msgstr ""
+msgstr "Otttimizza uso memoria"
 
 #: ../src/xtnFrame.cpp:123
 msgid "Use EXSLT"
-msgstr ""
+msgstr "Usa EXSLT"
 
 #: ../src/xtnFrame.cpp:125 ../src/xtnFrame.cpp:126
 msgid "Config"
-msgstr ""
+msgstr "Varie"
 
 #: ../src/xtnFrame.cpp:125
 msgid "Configuration File"
-msgstr ""
+msgstr "File configurazione"
 
 #: ../src/xtnFrame.cpp:126
 msgid "Search Size"
-msgstr ""
+msgstr "Dimensione ricerca"
 
 #: ../src/xtnFrame.cpp:126
 msgid "250"
-msgstr ""
+msgstr "250"
 
 #: ../src/xtnFrame.cpp:166
 msgid "&Open..."
-msgstr ""
+msgstr "&Apri..."
 
 #: ../src/xtnFrame.cpp:166
 msgid "Open a file."
-msgstr ""
+msgstr "Apri un file"
 
 #: ../src/xtnFrame.cpp:167
 msgid "&Open and Diff..."
-msgstr ""
+msgstr "Apri e c&ompara..."
 
 #: ../src/xtnFrame.cpp:167
 msgid "Open and diff two XML files."
-msgstr ""
+msgstr "Apri e compara due file XML."
 
 #: ../src/xtnFrame.cpp:168
 msgid "&Save"
-msgstr ""
+msgstr "&Salva"
 
 #: ../src/xtnFrame.cpp:168
 msgid "Save the current file."
-msgstr ""
+msgstr "Salva il file attuale"
 
 #: ../src/xtnFrame.cpp:169
 msgid "&Save as..."
-msgstr ""
+msgstr "&Salva come..."
 
 #: ../src/xtnFrame.cpp:169
 msgid "Save the current file under another name."
-msgstr ""
+msgstr "Salva il file attuale con un nome diverso."
 
 #: ../src/xtnFrame.cpp:170
 msgid "&Reload"
-msgstr ""
+msgstr "&Ricarica"
 
 #: ../src/xtnFrame.cpp:170
 msgid "Reload original file."
-msgstr ""
+msgstr "Ricarica il file originale."
 
 #: ../src/xtnFrame.cpp:172
 msgid "&Preferences"
-msgstr ""
+msgstr "&Impostazioni"
 
 #: ../src/xtnFrame.cpp:172
 msgid "Define application's settings."
-msgstr ""
+msgstr "Configura le impostazioni dell'applicazione"
 
 #: ../src/xtnFrame.cpp:174
 msgid "&Quit"
-msgstr ""
+msgstr "&Esci"
 
 #: ../src/xtnFrame.cpp:174
 msgid "Quit the application."
-msgstr ""
+msgstr "Esci dall'applicazione"
 
 #: ../src/xtnFrame.cpp:175
 msgid "&File"
-msgstr ""
+msgstr "&File"
 
 #: ../src/xtnFrame.cpp:178
 msgid "&Copy"
-msgstr ""
+msgstr "&Copia"
 
 #: ../src/xtnFrame.cpp:178
 msgid "Copy current node to clipboard."
-msgstr ""
+msgstr "Copie il nodo attuale negli Appunti"
 
 #: ../src/xtnFrame.cpp:179
 msgid "&Paste"
-msgstr ""
+msgstr "&Incolla"
 
 #: ../src/xtnFrame.cpp:179
 msgid "Paste to file."
-msgstr ""
+msgstr "Incolla nel file"
 
 #: ../src/xtnFrame.cpp:181
 msgid "&Search..."
-msgstr ""
+msgstr "&Cerca..."
 
 #: ../src/xtnFrame.cpp:181
 msgid "Search nodes with XPath expression."
-msgstr ""
+msgstr "Cerca nodi con espressione XPath"
 
 #: ../src/xtnFrame.cpp:182
 msgid "&Next"
-msgstr ""
+msgstr "&Successivo"
 
 #: ../src/xtnFrame.cpp:182
 msgid "Next node of the previous search."
-msgstr ""
+msgstr "Nodo successivo della ricerca precedente"
 
 #: ../src/xtnFrame.cpp:183
 msgid "&Edit"
-msgstr ""
+msgstr "&Modifica"
 
 #: ../src/xtnFrame.cpp:186
 msgid "&Normal"
-msgstr ""
+msgstr "Visualizzazione standard"
 
 #: ../src/xtnFrame.cpp:186
 msgid "Normal display, with attributes and text inline."
-msgstr ""
+msgstr "Visualizzazione normale, con attributi e testo in linea."
 
 #: ../src/xtnFrame.cpp:187
 msgid "&Texts"
-msgstr ""
+msgstr "Visualizza solo &testo"
 
 #: ../src/xtnFrame.cpp:187
 msgid "Display with attributes inline, and texts as elements."
-msgstr ""
+msgstr "Visualizza con attributi relativi, e testo come elementi."
 
 #: ../src/xtnFrame.cpp:188
 msgid "&Full"
-msgstr ""
+msgstr "Visualizza &tutti gli elementi"
 
 #: ../src/xtnFrame.cpp:188
 msgid "Display everything as elements."
-msgstr ""
+msgstr "Visualizza qualasiasi cosa come elemento"
 
 #: ../src/xtnFrame.cpp:189
 msgid "&Open Local XSLT Display..."
-msgstr ""
+msgstr "&Apri file locale XSLT HTML..."
 
 #: ../src/xtnFrame.cpp:189
 msgid "Open a XSLT Local Display file."
-msgstr ""
+msgstr "Apri un file locale visualizzazione XSLT."
 
 #: ../src/xtnFrame.cpp:190
 msgid "&Open HTML XSLT Display..."
-msgstr ""
+msgstr "&Apri visualizzazione XSLT HTML..."
 
 #: ../src/xtnFrame.cpp:190
 msgid "Open a XSLT HTML Display file."
-msgstr ""
+msgstr "Apri un file visualizzazione XSLT HTML"
 
 #: ../src/xtnFrame.cpp:193
 msgid "&Display"
-msgstr ""
+msgstr "&Visualizza"
 
 #: ../src/xtnFrame.cpp:196
 msgid "&Diff to..."
-msgstr ""
+msgstr "&Compara con il file..."
 
 #: ../src/xtnFrame.cpp:196
 msgid "Diff current XML file to another file."
-msgstr ""
+msgstr "Compara il file XML attuale con un altro file"
 
 #: ../src/xtnFrame.cpp:198
 msgid "&Show differences"
-msgstr ""
+msgstr "&Visualizza differenze"
 
 #: ../src/xtnFrame.cpp:198
 msgid "Highlight differents elements."
-msgstr ""
+msgstr "Evidenzia elementi differenti"
 
 #: ../src/xtnFrame.cpp:200
 msgid "Show &only differences"
-msgstr ""
+msgstr "Visualizza s&olo le differenze"
 
 #: ../src/xtnFrame.cpp:200
 msgid "Show only elements with differences."
-msgstr ""
+msgstr "Visualizza solo elementi differenti."
 
 #: ../src/xtnFrame.cpp:201
 msgid "&Diff"
-msgstr ""
+msgstr "&Compara"
 
 #: ../src/xtnFrame.cpp:204
 msgid "Diff &icon's significations..."
-msgstr ""
+msgstr "Significato icone differenze..."
 
 #: ../src/xtnFrame.cpp:204
 msgid "Explains diff icons."
-msgstr ""
+msgstr "Visualizza significato icone differenze"
 
 #: ../src/xtnFrame.cpp:205
 msgid "&About..."
-msgstr ""
+msgstr "&Info su..."
 
 #: ../src/xtnFrame.cpp:205
 msgid "About this application."
-msgstr ""
+msgstr "Info su questa applicazione"
 
 #: ../src/xtnFrame.cpp:206
 msgid "&Help"
-msgstr ""
+msgstr "&Guida in linea"
 
 #: ../src/xtnFrame.cpp:214
 msgid "Open"
-msgstr ""
+msgstr "Apri"
 
 #: ../src/xtnFrame.cpp:215
 msgid "Open XSLT"
-msgstr ""
+msgstr "Apri XSLT"
 
 #: ../src/xtnFrame.cpp:215
 msgid "Open a XSLT display file"
-msgstr ""
+msgstr "Apri un file visualizzazione XSLT"
 
 #: ../src/xtnFrame.cpp:216
 msgid "Save"
-msgstr ""
+msgstr "Salva"
 
 #: ../src/xtnFrame.cpp:216
 msgid "Save the current file"
-msgstr ""
+msgstr "Salva il file attuale"
 
 #: ../src/xtnFrame.cpp:217
 msgid "Reload"
-msgstr ""
+msgstr "Ricarica"
 
 #: ../src/xtnFrame.cpp:217
 msgid "Reload original file"
-msgstr ""
+msgstr "Ricarica il file originale"
 
 #: ../src/xtnFrame.cpp:219 ../src/xtnFrame.cpp:716
 msgid "XPath Expression"
-msgstr ""
+msgstr "Espressione XPath "
 
 #: ../src/xtnFrame.cpp:220
 msgid "Search"
-msgstr ""
+msgstr "Cerca"
 
 #: ../src/xtnFrame.cpp:220
 msgid "Search."
-msgstr ""
+msgstr "Cerca"
 
 #: ../src/xtnFrame.cpp:257
 msgid "Ready"
-msgstr ""
+msgstr "Pronto."
 
 #: ../src/xtnFrame.cpp:351
 msgid "french translation"
-msgstr ""
+msgstr "traduzione francese"
 
 #: ../src/xtnFrame.cpp:352
 msgid "italian translation"
-msgstr ""
+msgstr "traduzione italiana"
 
 #: ../src/xtnFrame.cpp:361
 msgid "Significations of the diff icons"
-msgstr ""
+msgstr "Significato delle icone delle differenze"
 
 #: ../src/xtnFrame.cpp:362
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: ../src/xtnFrame.cpp:375
 msgid "Diff status"
-msgstr ""
+msgstr "Stato differenze"
 
 #: ../src/xtnFrame.cpp:380
 msgid "is added in the second file (not present in the first)"
-msgstr ""
+msgstr "è presente solo nel secondo file (non è presente nel primo)"
 
 #: ../src/xtnFrame.cpp:381
 msgid "is removed in the second file (present in the first)"
-msgstr ""
+msgstr "non è presente nel secondo file (è presente solo nel primo)"
 
 #: ../src/xtnFrame.cpp:382
 msgid "has different values in the two files (modified)"
-msgstr ""
+msgstr "hanno differenti valore nei due file (modificati)"
 
 #: ../src/xtnFrame.cpp:383
 msgid "is a node with no differences, but differences exist on children nodes"
-msgstr ""
+msgstr "è un nodo senza differenze, la differenza esiste nel nodo figlio"
 
 #: ../src/xtnFrame.cpp:385
 msgid "XML Elements"
-msgstr ""
+msgstr "Elmenti XML"
 
 #: ../src/xtnFrame.cpp:390
 msgid "is a standard Element (with no differences)"
-msgstr ""
+msgstr "è un elemento standard (senza differenze)"
 
 #: ../src/xtnFrame.cpp:391
 msgid "is a Text item (when displayed as nodes)"
-msgstr ""
+msgstr "è un elementoi testo (quando sono visualizzati come nodi)"
 
 #: ../src/xtnFrame.cpp:392
 msgid "is an Attribute item (when displayed as nodes)"
-msgstr ""
+msgstr "è un elemento attributo (quando sono visualizzati come nodi)"
 
 #: ../src/xtnFrame.cpp:393
 msgid "is a Comment node (when texts are displayed as nodes)"
-msgstr ""
+msgstr "è un nodo commento (quando i testi sono visualizzati come nodi)"
 
 #: ../src/xtnFrame.cpp:394
 msgid "is the Root element of the XML File (may be hidden)"
-msgstr ""
+msgstr "è l'elemento principale del file XML (può essere nascosto)"
 
 #: ../src/xtnFrame.cpp:395
 msgid "is an other type of node"
-msgstr ""
+msgstr "è un altro tipo di nodo"
 
 #: ../src/xtnFrame.cpp:438 ../src/xtnFrame.cpp:459
 msgid "No file to save"
-msgstr ""
+msgstr "Nessun file da salvare"
 
 #: ../src/xtnFrame.cpp:449
 msgid "Save a file"
-msgstr ""
+msgstr "Salva in un file"
 
 #: ../src/xtnFrame.cpp:506
 msgid "Open a Local Display XSLT file"
-msgstr ""
+msgstr "Apri un file locale visualizzazione XSLT"
 
 #: ../src/xtnFrame.cpp:518
 msgid "Open a HTML Display XSLT file"
-msgstr ""
+msgstr "Apri un file visualizzazione XSLT HTML"
 
 #: ../src/xtnFrame.cpp:547
 msgid "Diff two XML File"
-msgstr ""
+msgstr "Comparazione di due file XML"
 
 #: ../src/xtnFrame.cpp:603
 msgid "Unexpected error while getting the string."
-msgstr ""
+msgstr "Errore inaspettato durante l'ottenimento stringa"
 
 #: ../src/xtnFrame.cpp:725
 msgid "XPath Expression search :"
-msgstr ""
+msgstr "Espressione XPath da cercare: "
 
 #: ../src/xtnFrame.cpp:725
 msgid "XPath Search"
-msgstr ""
+msgstr "Ricerca XPath"
 
 #: ../src/xtnFrame.cpp:746
 msgid "&Custom Displays"
-msgstr ""
+msgstr "&Visualizzazione personalizzata"
 
 #: ../src/xtnFrame.cpp:746
 msgid "List of custom display in your configuration file."
-msgstr ""
+msgstr "Elementi visualizzazione personalizzata nel file configurazione."
 
 #: ../src/xtnFrame.cpp:768
 #, c-format
 msgid "Open Local XSLT Display with file %s"
-msgstr ""
+msgstr "Apri il file locale XSLT con il file %s"
 
 #: ../src/xtnFrame.cpp:778
 #, c-format
 msgid "Open HTML XSLT Display with file %s"
-msgstr ""
+msgstr "Apri visualizzazione XSLT HTML con il file %s"
 
 #: ../src/xtnFrame.cpp:845 ../src/xtnXmlTree.cpp:180 ../src/xtnXmlTree.cpp:244
 #, c-format
 msgid "Error while Loading the file %s"
-msgstr ""
+msgstr "Errore durante il caricamento del file %s"
 
 #: ../src/xtnXmlTree.cpp:113
 #, c-format
 msgid "Parsing Before file OK : %ld nodes"
-msgstr ""
+msgstr "Analisi prima dell'OK file : %ld nodi"
 
 #: ../src/xtnXmlTree.cpp:118
 #, c-format
 msgid "Parsing After file OK : %ld nodes"
-msgstr ""
+msgstr "Analisi dopo OK file : %ld nodi"
 
 #: ../src/xtnXmlTree.cpp:121
 #, c-format
 msgid "Diff OK : %ld nodes processed"
-msgstr ""
+msgstr "Comparazione OK : %ld nodi elebaorati"
 
 #: ../src/xtnXmlTree.cpp:124
 #, c-format
 msgid "Diff in progress... (%d%%)"
-msgstr ""
+msgstr "Comparazione... (%d%%)"
 
 #: ../src/xtnXmlTree.cpp:125
 #, c-format
 msgid "%d%%"
-msgstr ""
+msgstr "%d%%"
 
 #: ../src/xtnXmlTree.cpp:185
 msgid "Unable to instanciate stuctures, probably due to a memory problem"
 msgstr ""
+"Impossibile creare la struttura, probabilmente a causa di problemi di "
+"memoria."
 
 #: ../src/xtnXmlTree.cpp:276
 msgid "Error while diffing the files."
-msgstr ""
+msgstr "Errore durante la comparazione dei file"
 
 #: ../src/xtnXmlTree.cpp:611
 msgid "Invalid selected node."
-msgstr ""
+msgstr "Nodo selezione non valido"
 
 #: ../src/xtnXmlTree.cpp:618
 msgid "Unable to create the structure. Memory may be full."
-msgstr ""
+msgstr "Impossibile creare la struttura. La memoria potrebbe essere esaurita."
 
 #: ../src/xtnXmlTree.cpp:631
 msgid "XPath query error."
-msgstr ""
+msgstr "Errore richiesta Xpath."
 
 #: ../src/xtnXmlTree.cpp:649
 #, c-format
 msgid "Node %d of %d found (%s)"
-msgstr ""
+msgstr "Trovati nodo %d di %d nodi (%s)."
 
 #: ../src/xtnXmlTree.cpp:653
 msgid "No nodes found : "
-msgstr ""
+msgstr "Nessun nodo trovato:"
 
 #: ../src/xtnApp.h:30
 msgid "Performs efficient XML tree navigation and diff XML files."
 msgstr ""
+"Permette una veloce navigazione nella struttura dei file XML e la loro "
+"comparazione."
 
 #: ../src/xtnApp.h:31
 #, c-format
@@ -634,33 +643,46 @@ msgid ""
 "(c) 2004-2015 - Remi Peyronnet\n"
 "http://people.via.ecp.fr/~remi"
 msgstr ""
+"%s %s\n"
+"libxmldiff %s\n"
+"\n"
+"© 2004-2015 - Remi Peyronnet\n"
+"http://people.via.ecp.fr/~remi"
 
 #: ../src/xtnApp.h:32
 msgid " (c) 2004 - Remi Peyronnet - http://people.via.ecp.fr/~remi"
-msgstr ""
+msgstr "(c) 2004-2015 - Remi Peyronnet - http://people.via.ecp.fr/~remi"
 
 #: ../src/xtnApp.h:42
 msgid "XML Files (*.xml)|*.xml|All files (*.*)|*.*"
-msgstr ""
+msgstr "File XML (*.xml)|*.xml|Tutti file (*.*)|*.*"
 
 #: ../src/xtnApp.h:43
 msgid "XSL Files (*.xsl;*.xslt)|*.xsl;*.xslt|All files (*.*)|*.*"
-msgstr ""
+msgstr "File XSL (*.xsl;*.xslt)|*.xsl;*.xslt|Tutti i file (*.*)|*.*"
 
 #: ../src/xtnApp.h:52 ../src/xtnApp.h:55
 msgid ""
 "This function is not yet implemented, \n"
 "or is being developped.\n"
 msgstr ""
+"Questa funzione non è ancora implementata, \n"
+"o è in sviluppo.\n"
 
 #: ../src/xtnApp.h:52 ../src/xtnApp.h:55
 msgid "Function not implemented."
-msgstr ""
+msgstr "Funzione non implementata"
 
 #: ../lib/wxmisc/ConfigDialog.cpp:84
 msgid "Apply"
-msgstr ""
+msgstr "Applica"
 
 #: ../lib/wxmisc/ConfigDialog.cpp:85
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
+
+#~ msgid "Translators"
+#~ msgstr "Traduttori"
+
+#~ msgid "%ld%%"
+#~ msgstr "%ld%%"

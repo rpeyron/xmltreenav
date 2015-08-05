@@ -19,6 +19,8 @@
 #include "xpm/xpm_light_grey.xpm"
 #include "xpm/xpm_history_folder.xpm"
 #include "xpm/xpm_xmltreenav.xpm"
+#include "xpm/xpm_xmltreenav2.xpm"
+#include "xpm/xpm_xmltreenav3.xpm"
 
 #include "treeicons/xpm_ti_root.xpm"
 #include "treeicons/xpm_ti_element.xpm"

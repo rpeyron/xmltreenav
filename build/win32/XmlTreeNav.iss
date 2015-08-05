@@ -3,7 +3,7 @@
 
 [Setup]
 AppName=xmlTreeNav
-AppVerName=xmlTreeNav 0.3.0
+AppVerName=xmlTreeNav 0.3.2
 AppPublisherURL=http://www.via.ecp.fr/~remi/soft/xml/xmltreenav/xmltreenav_en.php3
 AppSupportURL=http://www.via.ecp.fr/~remi/soft/xml/xmltreenav/xmltreenav_en.php3
 AppUpdatesURL=http://www.via.ecp.fr/~remi/soft/xml/xmltreenav/xmltreenav_en.php3
@@ -17,15 +17,16 @@ ShowLanguageDialog=no
 
 [Files]
 Source: ..\..\bin\xmlTreeNav.exe; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\bin\xmldiff.exe; DestDir: {app}; Flags: ignoreversion
+Source: ..\..\bin\lang\fr\xmlTreeNav.mo; DestDir: {app}/lang/fr; Flags: ignoreversion
+Source: ..\..\bin\lang\it\xmlTreeNav.mo; DestDir: {app}/lang/it; Flags: ignoreversion
 Source: ..\..\bin\config.xml; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\bin\libxmldiff.dll; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\bin\libxml2.dll; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\bin\libxslt.dll; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\bin\libexslt.dll; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\bin\iconv.dll; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\bin\zlib1.dll; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\bin\fr\xmlTreeNav.mo; DestDir: {app}/fr; Flags: ignoreversion
+Source: ..\..\..\libxmldiff\bin\xmldiff.exe; DestDir: {app}; Flags: ignoreversion
+Source: ..\..\..\libxmldiff\bin\libxmldiff.dll; DestDir: {app}; Flags: ignoreversion
+Source: ..\..\..\libxmldiff\bin\libxml2.dll; DestDir: {app}; Flags: ignoreversion
+Source: ..\..\..\libxmldiff\bin\libxslt.dll; DestDir: {app}; Flags: ignoreversion
+Source: ..\..\..\libxmldiff\bin\libexslt.dll; DestDir: {app}; Flags: ignoreversion
+Source: ..\..\..\libxmldiff\bin\iconv.dll; DestDir: {app}; Flags: ignoreversion
+Source: ..\..\..\libxmldiff\bin\zlib1.dll; DestDir: {app}; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

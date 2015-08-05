@@ -38,6 +38,8 @@
 #include <wxmisc/wxUniCompat.h>
 #include <wx/filename.h>
 
+#include <libxml/xpath.h>
+
 IMPLEMENT_CLASS(xtnXmlTree, wxTreeCtrl)
 
 static int dummyDeclForIntelliSense;
@@ -119,8 +121,8 @@ void cbDialogProgressionBar(int percent, int prec,
 		frame->SetStatusText(wxString::Format(_("Diff OK : %ld nodes processed"), nbNodesProcessed),0);
         break;
     default:
-		frame->SetStatusText(wxString::Format(_("Diff in progress... (%ld%%)"), percent),0);
-		frame->SetStatusText(wxString::Format(_("%ld%%"), percent),1);
+		frame->SetStatusText(wxString::Format(_("Diff in progress... (%d%%)"), percent),0);
+		frame->SetStatusText(wxString::Format(_("%d%%"), percent),1);
         break;
     }
 }
@@ -132,8 +134,9 @@ class treeItemXmlNode : public wxTreeItemData
     private:
         xmlNodePtr node;
     public:
-        treeItemXmlNode(xmlNodePtr node) : wxTreeItemData(), node(node) {}
-        ~treeItemXmlNode() {}
+		treeItemXmlNode(xmlNodePtr node) : wxTreeItemData(), node(node) { /* Too early to have id */ }
+        ~treeItemXmlNode() { node->_private = NULL; }
+		void SetId(const wxTreeItemId& id) { m_pItem = id; node->_private = id.GetID();  }
         xmlNodePtr getXmlNodePtr() { return node; }
         void setXmlNodePtr(xmlNodePtr node) { this->node = node; }
 };
@@ -185,9 +188,14 @@ void xtnXmlTree::LoadFile(const wxString & name, const struct globalOptions * cu
 	if (m_sXmlFilename.Contains(wxT("|XMLDIFF|"))) cleanPrivateTag(node);
 
     curItem = this->AddRoot(wxT("ROOT"), TI_ROOT, -1, new treeItemXmlNode(node));
+	node->_private = curItem.GetID();
     PopulateItem(curItem);
     this->SetItemHasChildren(curItem, true);
+
+// It seems that 3.0 does not need any more Expand (to be check in Linux)
+#if !wxCHECK_VERSION(3, 0, 0)	
     this->Expand(curItem);
+#endif
 
 	// Title
 	if (m_sXmlFilename.Contains(wxT("|XMLDIFF|")))
@@ -305,11 +313,15 @@ void xtnXmlTree::Refresh(bool reload)
     else
     {
         node = ((treeItemXmlNode *)this->GetItemData(GetRootItem()))->getXmlNodePtr();
-        Delete(GetRootItem());
+		DeleteAllItems();
         curItem = this->AddRoot(wxT("ROOT"), TI_ROOT, -1, new treeItemXmlNode(node));
+		node->_private = curItem.GetID();
         PopulateItem(curItem);
         this->SetItemHasChildren(curItem, true);
-        this->Expand(curItem);
+// It seems that 3.0 does not need any more Expand (to be check in Linux)
+#if !wxCHECK_VERSION(3, 0, 0)	
+		this->Expand(curItem);
+#endif
     }        
 
     if (path != BAD_CAST "")
@@ -321,7 +333,7 @@ void xtnXmlTree::Refresh(bool reload)
             {
                 if (xpathObj->nodesetval->nodeTab)
                 {
-                    MakeNodeVisible(xpathObj->nodesetval->nodeTab[0]);
+						MakeNodeVisible(xpathObj->nodesetval->nodeTab[0]);
                 }
             }
             xmlXPathFreeObject(xpathObj);
@@ -329,24 +341,26 @@ void xtnXmlTree::Refresh(bool reload)
     }
 }
 
-void xtnXmlTree::MakeNodeVisible(xmlNodePtr node)
+wxTreeItemId xtnXmlTree::MakeNodeVisible(xmlNodePtr node)
 {
     wxTreeItemId item;
 
-    if (node == NULL) return;
-    item = wxTreeItemId((wxTreeItemIdValue)node->_private);
-    if (!item.IsOk())
+    if (node == NULL) return item;
+    if (node->_private == NULL)
     {
-        MakeNodeVisible(node->parent);
-        PopulateItem(GetSelection());
-        item = wxTreeItemId((wxTreeItemIdValue)node->_private);
+		if (node->parent)
+		{
+			item = MakeNodeVisible(node->parent);
+			if (item.IsOk()) PopulateItem(item);
+		}
+		else return item;
     }
     // The item has been added in the tree
-    if (item.IsOk())
-    {
-        SelectItem(item);
-    }
+	item = wxTreeItemId(node->_private);
+	if (item.IsOk() && (item != GetRootItem()) )  SelectItem(item);
+	return item;
 }
+
 
 xmlDocPtr xtnXmlTree::applyNodeStylesheet(xmlNodePtr node, xsltStylesheetPtr xslt)
 {
@@ -384,6 +398,8 @@ xmlXPathObjectPtr xtnXmlTree::getDisplayedNodes(xmlNodePtr node, xmlDocPtr displ
     if (xpathCtx == NULL) return NULL;
     xpathCtx->node = node;
     xpathCtx->namespaces = xmlGetNsList(node->doc, node);
+	// Need to fix empty root item ; replaced by xmlSearchNs
+	// xmlXPathRegisterNs(xpathCtx, BAD_CAST "diff", BAD_CAST "http://www.via.ecp.fr/~remi/soft/xml/xmldiff");
     xpathCtx->nsNr = 0;
     if (xpathCtx->namespaces) ns = *xpathCtx->namespaces; else ns = NULL;
     while (ns != NULL) { xpathCtx->nsNr++; ns = ns->next; }
@@ -398,7 +414,7 @@ xmlXPathObjectPtr xtnXmlTree::getDisplayedNodes(xmlNodePtr node, xmlDocPtr displ
     }
     if (xpath == BAD_CAST "")
     {
-        if (m_bShowDiffOnly) { xpath_nodes = BAD_CAST "*[@diff:status][@diff:status!='none']"; } else { xpath_nodes = BAD_CAST "*"; }
+        if (m_bShowDiffOnly && xmlSearchNs(node->doc, node, BAD_CAST "diff")) { xpath_nodes = BAD_CAST "*[@diff:status][@diff:status!='none']"; } else { xpath_nodes = BAD_CAST "*"; }
         if (m_bShowDiff) { xpath_attr = BAD_CAST "@*[name()!='diff:status']"; } else { xpath_attr = BAD_CAST "@*"; }
         if (m_eDispMode == XTN_DISP_FULL) xpath = xpath_nodes + BAD_CAST "|" + xpath_attr + xmlstring(BAD_CAST "|comment()|processing-instruction()|text()");
         else if (m_eDispMode == XTN_DISP_TEXT) xpath = xpath_nodes + xmlstring(BAD_CAST "|comment()|processing-instruction()|text()");
@@ -414,7 +430,7 @@ xmlXPathObjectPtr xtnXmlTree::getDisplayedNodes(xmlNodePtr node, xmlDocPtr displ
     return xpathObj;
 }
 
-void xtnXmlTree::PopulateItem(wxTreeItemId item)
+void xtnXmlTree::PopulateItem(const wxTreeItemId & item)
 {
     xmlNodePtr node, child;
     xmlAttrPtr attr;
@@ -428,6 +444,7 @@ void xtnXmlTree::PopulateItem(wxTreeItemId item)
 
     // If the Item has already child, do not process
     if (GetChildrenCount(item, FALSE) > 0) return;
+	if (!item.IsOk()) return;
 
     // Else we populate
     // Get the nodelist to treat
@@ -557,7 +574,7 @@ void xtnXmlTree::PopulateItem(wxTreeItemId item)
         }
         childItem = this->AppendItem(item, libelle, icon, -1,new treeItemXmlNode(child));
         if (hasChildren) this->SetItemHasChildren(childItem, true);
-        child->_private = (void *)childItem.m_pItem;
+        child->_private = childItem.GetID();
     }
     if (xpathObj != NULL) xmlXPathFreeObject(xpathObj);
 }

@@ -20,6 +20,8 @@ EXTRA_DIST= \
      xpm_light_green.xpm \
      xpm_light_red.xpm \
      xpm_light_grey.xpm \
-	 xpm_xmltreenav.xpm
+	 xpm_xmltreenav.xpm \
+	 xpm_xmltreenav3.xpm \
+	 xpm_xmltreenav2.xpm
 	 
 

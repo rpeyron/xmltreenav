@@ -3,9 +3,10 @@ Section: contrib/text
 Priority: optional
 Maintainer: Remi Peyronnet <remi+xmltreenav@via.ecp.fr>
 Standards-Version: 2.4.1.2
+Build-Depends: pkg-config, libxml2-dev, libxslt-dev, libxmldiff, libwxgtk3.0-dev
 
 Package: xmltreenav
 Architecture: any
-Depends: libxml2, libxslt1.1, libxmldiff, libwxgtk2.8-0
+Depends: libxml2, libxslt1.1, libxmldiff, libwxgtk3.0-0
 Description: xmlTreeNav is a XML viewer specially designed for diffing XML files.
  xmlTreeNav includes diff functionnalities of libxmldiff, and provides a graphical display of the differences. It also have several useful functions, as XPath search, "XSLT local" display,...

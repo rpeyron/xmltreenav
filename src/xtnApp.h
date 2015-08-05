@@ -24,14 +24,23 @@
  * ************************************************************************** */
 
 #define XTN_NAME wxT("xmlTreeNav")
-#define XTN_VERSION wxT("v0.3.1")
+#define XTN_VERSION wxT("v0.3.2")
+#define XTN_COPYRIGHT wxT("(c) 2004-2015 - Remi Peyronnet")
+#define XTN_WEBSITE wxT("http://people.via.ecp.fr/~remi")
+#define XTN_APP_DESCRIPTION _("Performs efficient XML tree navigation and diff XML files.")
+#define XTN_ABOUT _("%s %s\nlibxmldiff %s\n\n(c) 2004-2015 - Remi Peyronnet\nhttp://people.via.ecp.fr/~remi")
+#define XTN_ABOUT_CMDLINE _(" (c) 2004 - Remi Peyronnet - http://people.via.ecp.fr/~remi")
 
-#ifdef __WXMSW__
+/*
+// 2015-07-19 (RP) Disabled IEWin with wxWidgets 3.0
+// To re-add in a compatible wxWidgets version, add lib/iehtmlwin/iehtmlwin.* to your project
+#if (defined __WXMSW__ ) && (!wxCHECK_VERSION(3,0,0))
 #define XTN_IE
 #endif
+*/
 
-#define XMLTREENAV_FILTERLIST_ALL wxString(wxT("XML Files (*.xml)|*.xml|All files (*.*)|*.*"))
-#define XMLTREENAV_FILTERLIST_XSL wxString(wxT("XSL Files (*.xsl;*.xslt)|*.xsl;*.xslt|All files (*.*)|*.*"))
+#define XMLTREENAV_FILTERLIST_ALL wxString(_("XML Files (*.xml)|*.xml|All files (*.*)|*.*"))
+#define XMLTREENAV_FILTERLIST_XSL wxString(_("XSL Files (*.xsl;*.xslt)|*.xsl;*.xslt|All files (*.*)|*.*"))
 
 #define XMLTREENAV_TEMP_PREFIX wxT("xmltreenav_")
 

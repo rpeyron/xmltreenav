@@ -4,4 +4,6 @@ EXTRA_DIST = \
 	resource.inc \
 	resources.rc \
 	build_xpm.sh \
-	xmltreenav.ico
+	xmltreenav.ico \
+	xmltreenav2.png \
+	xmltreenav3.png
