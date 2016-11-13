@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xmltreenav>
+  <!--
+  <display name="HTML Voyage" type="html" file="voyage.xsl" />
+  <display name="Test Local" type="local" file="test.xsl" />
+  -->
+  <display name="Display only added, removed or equal" type="local" file="filter-added-removed-or-equal.xsl" />
+
+  <search name="All Nodes" expr="*" />
+  <search name="All Nodes named nodeName" expr="//nodeName" />
+  <search name="All Nodes named nodeName with parent parent" expr="//parent/nodeName" />
+  <search name="All Nodes with attribute named attributeName" expr="//*[@attributeName]" />
+  <search name="All Nodes with attribute named attributeName with value toto" expr="//*[@attributeName='toto']" />
+  <search name="All Nodes with content text toto" expr="//*[text()='toto']" />
+  <search name="Added Nodes" expr="//*[@diff:status='added']" />
+
+</xmltreenav>

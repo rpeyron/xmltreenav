@@ -1,0 +1,2 @@
+
+wxString _("Translators");

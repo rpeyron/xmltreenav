@@ -29,6 +29,9 @@
 #include <wx/cmdline.h>
 #include <wx/image.h>
 
+#include <wx/filesys.h>
+#include <wx/fs_zip.h>
+
 
 class xtnApp : public wxApp
 {
@@ -45,6 +48,7 @@ IMPLEMENT_APP(xtnApp)
 bool xtnApp::OnInit()
 {
 	wxInitAllImageHandlers();
+	wxFileSystem::AddHandler(new wxZipFSHandler);
 
 	frame = new xtnFrame(NULL, -1, XTN_NAME);
     wxApp::OnInit();

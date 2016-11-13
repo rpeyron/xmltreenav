@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="English">
+		<param name="Local" value="help_en.html">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Introducting">
+			<param name="Local" value="help_en.html#intro">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Common use">
+			<param name="Local" value="help_en.html#classic">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Reference">
+			<param name="Local" value="help_en.html#ref">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="License, Updates,...">
+			<param name="Local" value="help_en.html#lic">
+			</OBJECT>
+</UL>
+<!--	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Français">
+		<param name="Local" value="help_fr.html">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Introduction">
+			<param name="Local" value="help_fr.html#intro">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Utilisation classique">
+			<param name="Local" value="help_fr.html#classic">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Référence">
+			<param name="Local" value="help_fr.html#ref">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Licence, Mise à jour,...">
+			<param name="Local" value="help_fr.html#lic">
+			</OBJECT>
+	</UL>-->
+</UL>
+</BODY></HTML>

@@ -1,0 +1,12 @@
+[OPTIONS]
+Compatibility=1.1
+Compiled file=xmltreenav.chm
+Contents file=contents.hhc
+Display compile progress=No
+Title=xmlTreeNav Help File
+; Default topic=help_en.html
+
+[FILES]
+help_en.html
+
+

@@ -4,5 +4,5 @@
 gettextize -f
 mv -f configure.in~ configure.in
 aclocal -I m4
-automake -a
+automake -a --copy
 autoconf

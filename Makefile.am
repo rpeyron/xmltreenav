@@ -1,5 +1,5 @@
-SUBDIRS= lib src resources po
-EXTRA_DIST = config.rpath m4/ChangeLog  config.rpath m4/ChangeLog  config.rpath  config.rpath  config.rpath  \
+SUBDIRS= lib src resources po doc
+EXTRA_DIST = config.rpath m4/ChangeLog  \
         README \
         COPYING \
         AUTHORS \
@@ -7,16 +7,24 @@ EXTRA_DIST = config.rpath m4/ChangeLog  config.rpath m4/ChangeLog  config.rpath 
         INSTALL \
         NEWS \
         TODO \
-		build/dev-cpp/Makefile.win \
-		build/dev-cpp/xmlTreeNav.dev \
-		build/dev-cpp/xmlTreeNav.ico \
-		build/dev-cpp/xmlTreeNav.layout \
-		build/dev-cpp/xmlTreeNav_private.h \
-		build/dev-cpp/xmlTreeNav_private.rc \
-		build/dev-cpp/xmlTreeNav_private.res \
-		build/vc/XmlTreeNav.dsp \
-        build/vc/XmlTreeNav.dsw \
+        build/dev-cpp/xmlTreeNav.layout \
+        build/dev-cpp/xmlTreeNav.dev \
+        build/dev-cpp/xmlTreeNav_private.h \
+        build/dev-cpp/xmlTreeNav_private.rc \
+        build/dev-cpp/xmlTreeNav_private.res \
+        build/dev-cpp/xmlTreeNav.ico \
+        build/dev-cpp/Makefile.win \
+        build/vc/XmlTreeNav.dsp \
+        build/vc/.cvsignore \
         build/vc/XmlTreeNav.vcproj \
+        build/vc/XmlTreeNav.dsw \
+        build/vc/XmlTreeNav.sln \
+        build/vc/_wx_intellisense.h \
+        build/vc2010/xmlTreeNav.sln \
+        build/vc2010/xmlTreeNav.vcxproj \
+        build/vc2013/xmlTreeNav.sln \
+        build/vc2013/xmlTreeNav.vcxproj.filters \
+        build/vc2013/xmlTreeNav.vcxproj \
         build/win32/XmlTreeNav.iss \
         build/win32/make_zip.bat \
         build/debian/control \
@@ -32,20 +40,28 @@ EXTRA_DIST = config.rpath m4/ChangeLog  config.rpath m4/ChangeLog  config.rpath 
         build/debian/xmltreenav.xpm \
         po/po_build.bat \
         po/po_update.bat \
-        doc/HOWTO-Package-Debian.txt \
-		doc/xmlTreeNav_en.html
+        po/extra-strings.cpp \
+        doc/HOWTO-Package-Debian.txt
 	
 
-old-deb:
+deb:
 	ln -sf build/debian .
 	chmod +x debian/rules
-	dpkg-buildpackage -rfakeroot
-	fakeroot debian/rules clean
+	dpkg-buildpackage
+
+debarchiver:
+	mv ../$(PACKAGE)_* /home/www/dist/debian/incoming
+	debarchiver --ignoredestcheck --dl 4
+	debarchiver --autoscanall
+    
+testapt:
+	sudo apt-get update -o "Dir::Etc::sourcelist=sources.list.d/lprp.list" -o "Dir::Etc::sourceparts=-" -o "APT::Get::List-Cleanup=0"
+	sudo apt-get install --reinstall xmltreenav
 
 
 DEBSOURCEPKG=$(PACKAGE)_$(VERSION).orig.tar.gz
 DEBSOURCEDIR=$(PACKAGE)-$(VERSION)
-deb: dist
+deb-debuild: dist
 	ln -sf build/debian .
 	@echo "Building Debian package..."; \
 	if test ! -d debian; then \

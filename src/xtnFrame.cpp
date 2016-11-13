@@ -39,6 +39,11 @@
 #include <wx/clipbrd.h>
 #include <libxslt/xsltutils.h>
 #include <wx/aboutdlg.h>
+#include <wx/stdpaths.h>
+
+#if wxUSE_STATLINE
+#include <wx/statline.h>
+#endif // wxUSE_STATLINE
 
 IMPLEMENT_CLASS(xtnFrame, wxFrame)
 
@@ -53,11 +58,19 @@ xtnFrame::xtnFrame(wxWindow* parent,
 					   const wxString& name)
 	: wxFrame(parent, id, title, pos, size, style, name)
 {
+	wxFileName fn;
 	wxString str;
+	wxString exeFolder = wxT("");    
+	wxString hlpFolder = wxT("");
+
+	// Set Lang Folder
+	exeFolder = wxStandardPaths::Get().GetResourcesDir();
+
+/*
+	Obsolete path finding attempts
 
 	// Relative Directory Stuff
 #ifdef __WXMSW__
-	wxString exeFolder;
 	TCHAR  szthis[300];
 	TCHAR * c = szthis + GetModuleFileName(0, szthis, 300);
 	while(*c != '\\') c--; // c POINTE A LA FIN, RECULER TANT QUE NON '\\'
@@ -65,11 +78,28 @@ xtnFrame::xtnFrame(wxWindow* parent,
 	exeFolder = wxString(szthis);
 	// SetCurrentDirectory(szthis);
     m_locale.AddCatalogLookupPathPrefix(exeFolder + "\\lang");
+#else
+#ifdef BINDIR
+// Preprocessor Guru by http://www.decompile.com/cpp/faq/file_and_line_error_string.htm
+#define STRINGIFY(x) #x
+#define TOSTRING(x) STRINGIFY(x)
+    char exeChar[] = TOSTRING(BINDIR);
+    exeFolder = wxString(exeChar,wxConvLocal);
+    // Quick Debian Hack : remove /debian/rphoto from BINDIR
+    if (exeFolder.Find(wxT("debian/rphoto")) != -1)
+    {
+      exeFolder = exeFolder.Mid(exeFolder.Find(wxT("debian/rphoto")) + ::wxStrlen(wxT("debian/rphoto")));
+    }
+    wxLogDebug(wxT("exeFolder : ") + exeFolder); 
+#endif   
 #endif
-
+*/
     // Locale Stuff
-    m_locale.Init();
-    m_locale.AddCatalog(wxT("xmlTreeNav"));
+#ifdef __WXMSW__
+	m_locale.AddCatalogLookupPathPrefix(exeFolder + "\\lang");
+#endif
+	m_locale.Init();
+    m_locale.AddCatalog(wxT("xmltreenav"));
 
     // Variables
     m_sLastSearch = wxT("");
@@ -106,7 +136,16 @@ xtnFrame::xtnFrame(wxWindow* parent,
 		str = exeFolder + wxT("\\") + str;
 #endif
 
-	LoadConfigFile(str);
+	// Search config file in current path, user config dir, config dir, resources dir (read only config file, non cumulative for now)
+	if ((fn = wxFileName(str)).FileExists()) { LoadConfigFile(fn.GetFullPath()); }
+	else if ((fn = wxFileName(wxStandardPaths::Get().GetUserConfigDir(), str)).FileExists())  { LoadConfigFile(fn.GetFullPath()); }
+	else if ((fn = wxFileName(wxStandardPaths::Get().GetConfigDir(), str)).FileExists())  { LoadConfigFile(fn.GetFullPath()); }
+	else if ((fn = wxFileName(wxStandardPaths::Get().GetResourcesDir(), str)).FileExists())  { LoadConfigFile(fn.GetFullPath()); }
+
+	// Search help file
+	str = wxT("xmltreenav.htb");
+	if ((fn = wxFileName(str)).FileExists()) { m_help.AddBook(fn.GetFullPath()); }
+	else if ((fn = wxFileName(wxStandardPaths::Get().GetResourcesDir(), str)).FileExists())  { m_help.AddBook(fn.GetFullPath()); }
 }
 
 void xtnFrame::InitConfig()
@@ -124,6 +163,12 @@ void xtnFrame::InitConfig()
 
     new wxConfigDialog_EntryTextEdit(*m_pConfigDialog, wxT("Config"), wxT("FileConf"), _("Config"), _("Configuration File"), _("config.xml"));
     new wxConfigDialog_EntryTextEdit(*m_pConfigDialog, wxT("Config"), wxT("SearchSize"), _("Config"), _("Search Size"), _("250"));
+
+	new wxConfigDialog_EntryTextEdit(*m_pConfigDialog, wxT("DiffDefaults"), wxT("Ids"), _("Diff Defaults"), _("Identifiers"), _("@id,@value"));
+	new wxConfigDialog_EntryTextEdit(*m_pConfigDialog, wxT("DiffDefaults"), wxT("IgnoreTags"), _("Diff Defaults"), _("Ignore Tags"), _("@ignore-attr,ignore-tag"));
+	new wxConfigDialog_EntryCheck(*m_pConfigDialog, wxT("DiffDefaults"), wxT("PrevValues"), _("Diff Defaults"), _("Add before values"), TRUE);
+	new wxConfigDialog_EntryTextEdit(*m_pConfigDialog, wxT("DiffDefaults"), wxT("PrevSeparator"), _("Diff Defaults"), _("Separator"), _("|"));
+	new wxConfigDialog_EntryCheck(*m_pConfigDialog, wxT("DiffDefaults"), wxT("TagChilds"), _("Diff Defaults"), _("Tag childs"), TRUE);
 
     m_pConfigDialog->doLayout();
     m_pConfigDialog->SetSize(500,300);
@@ -151,6 +196,22 @@ void xtnFrame::DoConfig()
     m_curOptions.useEXSLT = opt;
 	// Do not auto save
 	m_curOptions.automaticSave = false;
+
+	// Ids
+	m_pConfig->Read(wxT("DiffDefaults/Ids"), &str);
+	if (!str.IsEmpty()) { parseOption("--ids", wxString2string(str), m_curOptions); } else { m_curOptions.ids.clear(); }
+	// IgnoreTags
+	m_pConfig->Read(wxT("DiffDefaults/IgnoreTags"), &str);
+	if (!str.IsEmpty()) { parseOption("--ignore", wxString2string(str), m_curOptions); } else { m_curOptions.ignore.clear(); }
+	// Before Values
+	m_pConfig->Read(wxT("DiffDefaults/PrevValues"), &opt);
+	m_curOptions.beforeValue = opt;
+	// Separator
+	m_pConfig->Read(wxT("DiffDefaults/PrevSeparator"), &str);
+	m_curOptions.separator = wxString2xmlstring(str);
+	// Tag Childs
+	m_pConfig->Read(wxT("DiffDefaults/TagChilds"), &opt);
+	m_curOptions.tagChildsAddedRemoved = opt;
 
     m_pConfig->Read(wxT("Config/SearchSize"), &str, wxT("250"));
 	if (str.ToLong(&l)) { GetToolBar()->FindWindowById(CTRL_XPATH)->SetSize(l, -1); GetToolBar()->Realize(); }
@@ -180,7 +241,10 @@ void xtnFrame::InitMenu()
 	curMenu->AppendSeparator();
 	curMenu->Append(MENU_EDIT_SEARCH, _("&Search...")+wxString(wxT("\tCtrl-F")), _("Search nodes with XPath expression."));
 	curMenu->Append(MENU_EDIT_SEARCHNXT, _("&Next")+wxString(wxT("\tF3")), _("Next node of the previous search."));
-    m_pMenuBar->Append(curMenu, _("&Edit"));
+	curMenu->AppendSeparator();
+	curMenu->Append(MENU_EDIT_EXPANDALL, _("&Expand All") + wxString(wxT("\t*")), _("Expand all nodes of selected item."));
+	curMenu->Append(MENU_EDIT_COLLAPSEALL, _("Co&llapse All") + wxString(wxT("\t-")), _("Collapse all nodes of selected item."));
+	m_pMenuBar->Append(curMenu, _("&Edit"));
     // - Display Menu
     curMenu = new wxMenu();
 	curMenu->AppendRadioItem(MENU_DISP_NORMAL, _("&Normal"), _("Normal display, with attributes and text inline."));
@@ -191,7 +255,7 @@ void xtnFrame::InitMenu()
     curMenu->Check(MENU_DISP_NORMAL, TRUE);
 	curMenu->AppendSeparator();
     m_pMenuBar->Append(curMenu, _("&Display"));
-    // - Display Menu
+    // - Compare Menu
     curMenu = new wxMenu();
 	curMenu->Append(MENU_DIFF_DIFF, _("&Diff to..."), _("Diff current XML file to another file."));
     // curMenu->Enable(MENU_DIFF_DIFF, FALSE);
@@ -201,7 +265,11 @@ void xtnFrame::InitMenu()
     m_pMenuBar->Append(curMenu, _("&Diff"));
 	// - Help Menu
 	curMenu = new wxMenu();
+	curMenu->Append(MENU_HELP_HELP, _("Help..."), _("Main help file."));
+	curMenu->AppendSeparator();
 	curMenu->Append(MENU_HELP_LEGENDE, _("Diff &icon's significations..."), _("Explains diff icons."));
+	curMenu->Append(MENU_HELP_XPATH, _("Quick &XPath reference..."), _("XPath reference URLs."));
+	curMenu->AppendSeparator();
 	curMenu->Append(MENU_HELP_ABOUT, _("&About..."), _("About this application."));
 	m_pMenuBar->Append(curMenu, _("&Help"));
 	SetMenuBar(m_pMenuBar);
@@ -308,6 +376,8 @@ BEGIN_EVENT_TABLE(xtnFrame, wxFrame)
    EVT_MENU(MENU_EDIT_PASTE, xtnFrame::OnEditPaste)
    EVT_MENU(MENU_EDIT_SEARCH, xtnFrame::OnEditSearch)
    EVT_MENU(MENU_EDIT_SEARCHNXT, xtnFrame::OnEditSearchNext)
+   EVT_MENU(MENU_EDIT_EXPANDALL, xtnFrame::OnEditExpandAll)
+   EVT_MENU(MENU_EDIT_COLLAPSEALL, xtnFrame::OnEditCollapseAll)
    // Menu Disp
    EVT_MENU(MENU_DISP_NORMAL, xtnFrame::OnDispNormal)
    EVT_MENU(MENU_DISP_TEXT, xtnFrame::OnDispText)
@@ -321,7 +391,9 @@ BEGIN_EVENT_TABLE(xtnFrame, wxFrame)
    EVT_MENU(MENU_DIFF_DIFFONLY, xtnFrame::OnDiffDiffOnly)
    // Menu Help
    EVT_MENU(MENU_HELP_ABOUT, xtnFrame::OnHelpAbout)
+   EVT_MENU(MENU_HELP_XPATH, xtnFrame::OnHelpXPath)
    EVT_MENU(MENU_HELP_LEGENDE, xtnFrame::OnHelpLegende)
+   EVT_MENU(MENU_HELP_HELP, xtnFrame::OnHelpHelp)
    // Toolbar
    EVT_TOOL(TOOL_OPEN, xtnFrame::OnFileOpen)
    EVT_TOOL(TOOL_OPENXSLT, xtnFrame::OnDispOpenXslt)
@@ -348,6 +420,7 @@ void xtnFrame::OnHelpAbout(wxCommandEvent &event)
 	info.SetWebSite(XTN_WEBSITE);
 	//info.SetLicence(wxT("GPL"));
 	//info.AddDeveloper(wxT("Remi Peyronnet"));
+	//  _("Translators") // Add translation for item (or provide all wxWidgets translations)
 	info.AddTranslator(wxString("Rémi Peyronnet (",wxConvUTF8) + _("french translation")+ wxT(")"));
 	info.AddTranslator(wxT("bovirus (")+_("italian translation") + wxT(")"));
     wxAboutBox(info, this);
@@ -407,6 +480,81 @@ void xtnFrame::OnHelpLegende(wxCommandEvent &event)
 	dlg->ShowModal();
 	dlg->Destroy();
 	delete dlg;
+}
+
+void xtnFrame::OnHelpHelp(wxCommandEvent &event)
+{
+	m_help.Display(_("help_en.html"));
+}
+
+class HtmlWindow : public wxHtmlWindow
+{
+public:
+	HtmlWindow(wxWindow *parent, wxWindowID id = -1,
+		const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+		long style = wxHW_SCROLLBAR_AUTO, const wxString& name = _T("htmlWindow"));
+	void OnLinkClicked(const wxHtmlLinkInfo& link);
+};
+
+HtmlWindow::HtmlWindow(wxWindow *parent, wxWindowID id, const wxPoint& pos,
+	const wxSize& size, long style, const wxString& name)
+	: wxHtmlWindow(parent, id, pos, size, style, name)
+{
+}
+
+void HtmlWindow::OnLinkClicked(const wxHtmlLinkInfo& link)
+{
+	if (link.GetHref().StartsWith(_T("http")))
+		wxLaunchDefaultBrowser(link.GetHref());
+	else
+		wxHtmlWindow::OnLinkClicked(link);
+}
+
+void xtnFrame::OnHelpXPath(wxCommandEvent &event)
+{
+	wxBoxSizer *topsizer;
+	HtmlWindow *html;
+	wxDialog dlg(this, wxID_ANY, wxString(_("XPath Help")), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
+
+	topsizer = new wxBoxSizer(wxVERTICAL);
+
+	html = new HtmlWindow(&dlg, wxID_ANY, wxDefaultPosition, wxSize(380, 160), wxHW_SCROLLBAR_AUTO);
+	html->SetBorders(0);
+	html->SetPage(_(
+		"<html><body>"
+		"Simple XPath search expression :"
+		"<br/> - <code>*</code> : all childen nodes"
+		"<br/> - <code>//*</code> : all nodes of the document"
+		"<br/> - <code>//mynode</code> : all nodes of the document named <code>mynode</code>"
+		"<br/> - <code>//parent/mynode</code> : all nodes of the document named <code>mynode</code> and a parent <code>parent</code>"
+		"<br/> - <code>//*[@myattr]</code> : all nodes of the document with an attribute named <code>myattr</code>"
+		"<br/> - <code>//*[@myattr='toto']</code> : all nodes of the document with an attribute named <code>myattr</code> with value <code>toto</code>"
+		"<br/> - <code>//*[text()='toto']</code> : all nodes of the document with text content<code>toto</code>"
+		"<br/>"
+		"<br/>More advanced XPath references and tutorial :"
+		"<br/> - <a href='https://www.w3.org/TR/xpath/'>XPath Specification</a>"
+		"<br/> - <a href='https://openclassrooms.com/courses/structurez-vos-donnees-avec-xml/xpath-localiser-les-donnees'>XPath tutorial [fr]</a>"
+		"<br/> - <a href='http://zvon.org/xxl/XPathTutorial/Output_fre/examples.html'>XPath examples [en]</a>"
+		"<br/> - <a href='http://www.tutorialspoint.com/xpath/'>XPath Tutorial [en]</a>"
+		"<br/> - <a href='http://www.w3schools.com/xml/xpath_intro.asp'>XPath Tutorial (w3schools) [en]</a>"
+		"</body></html>")); 
+	html->SetMinSize(wxSize(html->GetInternalRepresentation()->GetWidth(), html->GetInternalRepresentation()->GetHeight()));
+	topsizer->Add(html, 1, wxEXPAND | wxALL, 10);
+
+#if wxUSE_STATLINE
+	topsizer->Add(new wxStaticLine(&dlg, wxID_ANY), 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
+#endif // wxUSE_STATLINE
+
+	wxButton *bu1 = new wxButton(&dlg, wxID_OK, _("OK"));
+	bu1->SetDefault();
+
+	topsizer->Add(bu1, 0, wxALL | wxALIGN_RIGHT, 15);
+
+	dlg.SetSizer(topsizer);
+	dlg.SetAutoLayout(true);
+	dlg.Layout();
+	dlg.Fit();
+	dlg.ShowModal();
 }
 
 void xtnFrame::OnFileOpen(wxCommandEvent &event)
@@ -727,6 +875,39 @@ void xtnFrame::OnEditSearchNext(wxCommandEvent &event)
     if (m_sLastSearch != wxT("")) m_pXmlTree->FindNodes(m_sLastSearch, m_pLastSearchXmlNodeRef);
 }
 
+void xtnFrame::OnEditExpandAll(wxCommandEvent &event)
+{
+	wxTreeItemId visible;
+	if (m_pXmlTree == NULL) return;
+	if (m_pXmlTree->GetSelection().IsOk())
+	{
+		m_pXmlTree->ExpandAllChildren(m_pXmlTree->GetSelection());
+		m_pXmlTree->ScrollTo(m_pXmlTree->GetSelection());
+	}
+	else if (m_pXmlTree->GetRootItem().IsOk())
+	{
+		visible = m_pXmlTree->GetFirstVisibleItem();
+		m_pXmlTree->ExpandAllChildren(m_pXmlTree->GetRootItem());
+		m_pXmlTree->ScrollTo(visible);
+	}
+}
+
+void xtnFrame::OnEditCollapseAll(wxCommandEvent &event)
+{
+	wxTreeItemId visible;
+	if (m_pXmlTree == NULL) return;
+	if (m_pXmlTree->GetSelection().IsOk())
+	{
+		m_pXmlTree->CollapseAllChildren(m_pXmlTree->GetSelection());
+		m_pXmlTree->ScrollTo(m_pXmlTree->GetSelection());
+	}
+	else if (m_pXmlTree->GetRootItem().IsOk())
+	{
+		visible = m_pXmlTree->GetFirstVisibleItem();
+		m_pXmlTree->CollapseAllChildren(m_pXmlTree->GetRootItem());
+		m_pXmlTree->ScrollTo(visible);
+	}
+}
 
 void xtnFrame::LoadConfigFile(const wxString &name)
 {

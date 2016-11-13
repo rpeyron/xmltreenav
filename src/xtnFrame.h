@@ -36,6 +36,7 @@
 #include "../lib/wxmisc/ConfigDialog.h"
 #include <libxmldiff/libxmldiff.h>
 #include <libxslt/xslt.h>
+#include <wx/html/helpctrl.h>
 
 #ifdef XTN_IE
 #include <iehtmlwin/iehtmlwin.h>
@@ -56,11 +57,15 @@
 #define MENU_FILE_QUIT		10099
 #define MENU_HELP_ABOUT		10901
 #define MENU_HELP_LEGENDE	10902
+#define MENU_HELP_XPATH		10903
+#define MENU_HELP_HELP		10904
 // Edit
 #define MENU_EDIT_COPY	    10302
 #define MENU_EDIT_PASTE	    10303
 #define MENU_EDIT_SEARCH    10311
 #define MENU_EDIT_SEARCHNXT 10312
+#define MENU_EDIT_EXPANDALL 10313
+#define MENU_EDIT_COLLAPSEALL 10314
 // Display
 #define MENU_DISP_NORMAL    10101
 #define MENU_DISP_TEXT      10102
@@ -125,7 +130,9 @@ protected:
     void OnEditSearchNext(wxCommandEvent &event);
     void OnEditCopy(wxCommandEvent &event);
 	void OnEditPaste(wxCommandEvent &event);
-    //   - Display
+	void OnEditExpandAll(wxCommandEvent &event);
+	void OnEditCollapseAll(wxCommandEvent &event);
+	//   - Display
 	void OnDispNormal(wxCommandEvent &event);
 	void OnDispText(wxCommandEvent &event);
 	void OnDispFull(wxCommandEvent &event);
@@ -139,6 +146,8 @@ protected:
     //   - Help
     void OnHelpAbout(wxCommandEvent &event);
     void OnHelpLegende(wxCommandEvent &event);
+	void OnHelpXPath(wxCommandEvent &event);
+	void OnHelpHelp(wxCommandEvent &event);
 	// - Déclaration de la table
     DECLARE_EVENT_TABLE()
 
@@ -156,6 +165,7 @@ protected:
     wxConfig * m_pConfig;
     wxConfigDialog * m_pConfigDialog;
     wxString m_sLastSearch;
+	wxHtmlHelpController m_help;
 
     xmlNodePtr m_pLastSearchXmlNodeRef;
 	xsltStylesheetPtr m_pHtmlXslt;

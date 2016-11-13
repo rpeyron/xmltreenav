@@ -1,3 +1,15 @@
+xmltreenav (0.3.3) stable; urgency=low
+
+  * Release 0.3.3 ; see Changelog
+
+ -- Remi Peyronnet <remi+debian@via.ecp.fr>  Sat, 12 Nov 2016 20:55:00 +0000
+
+xmltreenav (0.3-2ppa2) trusty; urgency=medium
+
+  * PPA release for trusty
+
+ -- Remi Peyronnet <remi+debian@via.ecp.fr>  Fri, 18 Sep 2015 19:23:01 +0200
+
 xmltreenav (0.3-2ppa1) stable; urgency=low
 
   * wx3.0 update (major update)

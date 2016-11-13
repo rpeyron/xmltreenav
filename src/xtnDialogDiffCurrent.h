@@ -37,8 +37,8 @@
 #define DEFINE_getDlgOptions \
 	void getDlgOptions(struct globalOptions & opt) \
 	{ \
-		parseOption("--ids", wxString2string(txIds->GetValue()), opt); \
-		parseOption("--ignore", wxString2string(txIgnore->GetValue()), opt); \
+		if (!(txIds->GetValue().IsEmpty())) { parseOption("--ids", wxString2string(txIds->GetValue()), opt); } else { opt.ids.clear(); }  \
+		if (!(txIgnore->GetValue().IsEmpty())) { parseOption("--ignore", wxString2string(txIgnore->GetValue()), opt); } else { opt.ignore.clear(); }  \
 		opt.beforeValue = cbBeforeValues->GetValue(); \
 		opt.separator = wxString2xmlstring(txSep->GetValue()); \
 		opt.tagChildsAddedRemoved = cbTagChilds->GetValue(); \

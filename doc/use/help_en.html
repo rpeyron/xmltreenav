@@ -1,0 +1,160 @@
+<html>
+<head>
+ <title>xmlTreeNav - Quick Start</title>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+
+<style>
+h1 {
+    color: rgb(77, 91, 144);
+    font-size: 160%;
+    font-weight: bold;
+    border-bottom: solid 1px rgb(132, 155, 243);
+}
+
+h2 {
+    color: rgb(132, 155, 243);
+    font-size: 160%;
+    font-weight: bold;
+    clear: both;
+}
+
+h3 {
+    color: rgb(77, 91, 144);
+    font-size: 120%;
+    font-style: italic;
+    clear: both;
+}
+
+.imgr {
+    float : right;
+    margin-left : 0.5em;
+}
+
+.toc {
+ float: right;
+ border: 1px solid rgb(132, 155, 243);
+ background-color: white;
+}
+
+.toc a { text-decoration: none; color: rgb(77, 91, 144); padding: 0.5em;}
+
+</style>
+
+</head>
+<body>
+
+<div class="toc">
+ <a href="#intro">Introducting</a><br />
+ <a href="#classic">Common Use</a><br />
+ <a href="#ref">Reference</a><br />
+ <a href="#lic">License, Updates,...</a><br />
+</div>
+
+<a name="intro"><h1>Introducting</h1></a>
+<p>xmlTreeNav aims at providing easy navigation in XML files.</p>
+<ul>
+ <li>tree navigation</li>
+ <li>diff XML files</li>
+ <li>customization of the display with XSLT files (you can customize what appears on a tree line : add a label, convert ids...)</li>
+ <li>XSLT HTML visualization (you can automatically apply a XSLT and view the result in xmlTreeNav ; if you copy/paste XML, it will be transformed)</li>
+ <li>support for large XML files</li>
+ <li>run both on Windows and Linux</li>
+</ul>
+
+<a name="classic"><h1>Common Use</h1></a>
+<p>Common use of this software is to :</p>
+<ul>
+ <li>Open XML files to navigate easily through the XML tree (useful for large and hierarchical XML trees)</li>
+ <li>Diff two XML files and graphically see the result.</li>
+ <li>Search XML files with powerful XPath search</li>
+</ul>
+<p>It has also powerful display functionnalities as XSL or HTML display that allows to do XSLT transformation on the XML file and display the resulting XML or HTML file, this is very useful to </p>
+<ul>
+ <li>Convert the XML file to something readable (HTML) and apply XSLT transformation with a simple drag'n drop ; you could do the exact same thing in a browser but it will need you to modify the XML file beforehand to include the XSLT command</li>
+ <li>Convert the XML file to another tree structure which could be more accurate to navigate, with the use of XSLT transformation and the display in xmlTreeNav of the resulting XML file ; you can set up default XSLT visualisations in the setup file</li>
+</ul>
+<h2>Diff two XML files</h2>
+
+<p>Run the application, and select File / Open and Compare menu ; you will see the diff window :</p>
+<ul>
+ <li><b>Before :</b> clic the "..." button to browse and select the file to diff that will be treated as 'before' file</li>
+ <li><b>After :</b> clic the "..." button to browse and select the file to diff that will be treated as 'after' file</li>
+ <li><b>Identifiers :</b> tells the diff algorithm what should be used as identifiers ; it can be attributes (prefixed with @), or nodes values. If no identifier is provided, the order of elements will be used.</li>
+ <li><b>Ignore tags :</b> tells the diff algorithm which nodes or attributes should not be taken in account.</li>
+ <li><b>Add before values :</b> adds in resulting XML file the values that were in the file 'before' with the separator below</li>
+ <li><b>Separator :</b> use this as separator to construct the field : [before value][separator][after value].</li>
+ <li><b>Tag Childs :</b> if set, all  the children of an added or removed node will also be marked as added or removed.</li>
+</ul>
+<p>Note that the settings are those of libxmldiff, the diff library used underlying ; you may find more detailled instructions in libxmldiff documentation.</p>
+<h2>Display</h2>
+<p>Several displays are preconfigured, you can choose the best to fit to your file :</p>
+<ul>
+ <li><b>Standard :</b> will display on the same line the attributes and the value of the node</li>
+ <li><b>Text :</b> will display on the same line the attributes of the node ; but the value of the node will be displayed as a child text element</li>
+ <li><b>All Nodes :</b> will display everything as child nodes (attributes, text,...)</li>
+</ul>
+<p>The 'Diff' menu adds two options for xml files resulting of a diff operation :</p>
+<ul>
+ <li><b>Show differences :</b> will interpret the attributes diff:status returned by the diff algorithm as icons ; the legend of icons can be found in 'Help / Diff icon's significations' menu</li>
+ <li><b>Show only differences :</b> will mask nodes that are not modified</li>
+</ul>
+<p>You may use advanced display capabilites :</p>
+<ul>
+ <li><b>Open Local XSLT Display... :</b> will perform a XLST transformation on each node before display and display the result. The tranformation must lead to a single root node named 'node', with special attributes are treated to customize the display, as 'icon' attribute to set icon, 'children' attribute for the node selection to be displayed as child nodes ; the value of the node will be used as the label of the tree item. Please have a look at the sample file 'filter-added-removed-or-equal.xsl', and please note that the xml tree passed to the XSL is a subdocument containing only the current node to be displayed and its children.</li>
+ <li><b>Open HTML XSLT Display... :</b> will perform a XLST transformation on the whole document and display the result in an embedded HTML browser.</li>
+ <li>You may add custom displays with the help of the config.xml file ; see the config.xml file section.</li>
+</ul>
+<h2>Search</h2>
+<p>You can search through the file with XPath langage (only XPath expression returning nodes) ; some basic XPath samples are given in the search box and 'Help / Quick XPath reference" menu. The number of found nodes will be displayed in the status bar.</p>
+<p>The 'Next' button will navigate through the results. The item number will be displayed in the status bar.</p>
+<p>Then, press the "Apply" button, or use the shortcut <b>Ctrl-Return</b>; your text should now be displayed in black, and is now memorized to be saved with the file.</p>
+<p>All nodes could be expanded or collapsed with the menu items in Edit, or their shortcuts</p>
+<p>You can copy the underlying XML part of the selected node with 'Edit / Copy' and paste it in a text editor</p>
+
+<a name="ref"><h1>Reference </h1></a>
+<h2>Settings</h2>
+This screen allows you to modify every single settings :
+<ul>
+ <li><b>XML / Clean Text :</b> tells the XML parser to not create blank text nodes ; this is useful for XML files with indentation to not have dummy text nodes with only the spaces used for indentation.</li>
+ <li><b>XML / Enforce Cleaning :</b> will clean also both CR LF, useful for XML files edited in DOS mode carriage returns, and will also clean texts from leading or trailing spaces and carriage returns.</li>
+ <li><b>XML / Pretty Print on Save :</b> when saving, the XML will be saved with indentation</li>
+ 
+ <li><b>Engine / Optimize Memory usage :</b> tells the XML Diff Engine to optimize the memory and not keep items that have been treated ; this item is useful in complex xmldiff scripts, but I see no reason to not tick this item in xmlTreeNav ; will probably be removed in the future.</li>
+ <li><b>Engine / Use EXSLT :</b> enable use of EXSLT langage extensions ; you must tick this if you use EXSLT extensions in the XSLT files used for display.</li>
+ 
+ <li><b>Config / Configuration File :</b> the name of the configuration file to use.</li>
+ <li><b>Config / Search Size :</b> the size of the search bar in the toolbar (in pixels).</li>
+</ul>
+
+<h2>Config.xml</h2>
+<p>The config.xml file is a basic XML file with a main node 'xmltreenav' to add more options.</p>
+<h3>Custom displays</h3>
+<p>You can preconfigure <b>custom displays</b> with 'display' nodes with the following attributes :</p>
+<ul>
+  <li><b>name :</b> the name that will appear in the Display menu</li>
+  <li><b>type :</b> the type of custom display : 'local' (local XSLT) or 'html' (HTML XSLT Display)</li>
+  <li><b>file :</b> the filename of the XSLT file</li>
+</ul>
+Example : <code> &lt;display name="Display only added, removed or equal" type="local" file="filter-added-removed-or-equal.xsl" /&gt; </code>
+<p>You can preconfigure <b>custom searches</b> with 'search' nodes with the following attributes :</p>
+<ul>
+  <li><b>name :</b> not used, only useful when editing the config.xml file</li>
+  <li><b>expr :</b> the XPath expressin that will be adding in the search combo box</li>
+</ul>
+Example : <code> &lt;search name="All Nodes with content text toto" expr="//*[text()='toto']" /&gt; </code>
+
+
+<h2>Command Line</h2>
+A few options are available on the command line :
+<pre>xmlTreeNav [/x localdisplay.xsl] [/h htmldisplay.xsl] [/c config.xml] xmlfile.xml</pre>
+<ul>
+<li><code>xmlfile</code> : XML file to open</li>
+<li><code>/x or --xslt</code> : XSLT Local Display File to use</li>
+<li><code>/h or --html<</code> : XSLT HTML Display File to use</li>
+<li><code>/c or --config</code> : Config File to use</li>
+</ul>
+<a name="lic"><h1>License, Updates, Support</h1></a>
+<p>This software is distributed under GPL license ; it basically means that its use is <b>free</b> and its source code is available in order to allow you to improve it (see GPL license for conditions).</p>
+<p>Home location of this software is : <a href="http://www.lprp.fr/soft/xml/xmltreenav/xmltreenav_en.php3">http://www.lprp.fr/soft/xml/xmltreenav/xmltreenav_en.php3</a>. . You will find there documentation, updates and contact information.</p>
+</body>
+</html>

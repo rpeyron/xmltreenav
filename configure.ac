@@ -1,4 +1,4 @@
-AC_INIT(xmlTreeNav,0.3.2)
+AC_INIT(xmlTreeNav,0.3.3)
 AC_CONFIG_SRCDIR([configure.ac])
 AM_INIT_AUTOMAKE
 AC_PROG_CC
@@ -37,7 +37,7 @@ PKG_CHECK_MODULES(LIBXMLDIFF, libxmldiff >= 0.1,
 
 dnl Internationalization
 AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.14.4])
+AM_GNU_GETTEXT_VERSION([0.19])
 
 dnl libxmldiff pkg-config
 PKG_CHECK_MODULES([libxmldiff], [libxmldiff >= 0.2.0])
@@ -54,6 +54,8 @@ AC_CONFIG_FILES([ \
     lib/Makefile \
     lib/wxmisc/Makefile \
     po/Makefile.in \
+    doc/Makefile \
+    doc/use/Makefile \
     resources/Makefile \
     resources/xpm/Makefile \
     resources/treeicons/Makefile \

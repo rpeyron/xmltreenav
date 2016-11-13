@@ -24,12 +24,12 @@
  * ************************************************************************** */
 
 #define XTN_NAME wxT("xmlTreeNav")
-#define XTN_VERSION wxT("v0.3.2")
-#define XTN_COPYRIGHT wxT("(c) 2004-2015 - Remi Peyronnet")
-#define XTN_WEBSITE wxT("http://people.via.ecp.fr/~remi")
+#define XTN_VERSION wxT("v0.3.3")
+#define XTN_COPYRIGHT wxT("(c) 2004-2016 - Remi Peyronnet")
+#define XTN_WEBSITE wxT("http://www.lprp.fr")
 #define XTN_APP_DESCRIPTION _("Performs efficient XML tree navigation and diff XML files.")
-#define XTN_ABOUT _("%s %s\nlibxmldiff %s\n\n(c) 2004-2015 - Remi Peyronnet\nhttp://people.via.ecp.fr/~remi")
-#define XTN_ABOUT_CMDLINE _(" (c) 2004 - Remi Peyronnet - http://people.via.ecp.fr/~remi")
+#define XTN_ABOUT _("%s %s\nlibxmldiff %s\n\n(c) 2004-2016 - Remi Peyronnet\nhttp://www.lprp.fr")
+#define XTN_ABOUT_CMDLINE _(" (c) 2004 - Remi Peyronnet - http://www.lprp.fr")
 
 /*
 // 2015-07-19 (RP) Disabled IEWin with wxWidgets 3.0
