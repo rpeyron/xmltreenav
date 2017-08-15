@@ -17,7 +17,7 @@ Homepage : http://www.lprp.fr/soft/xml/xmltreenav/xmltreenav_en.php3
 xmlTreeNav depends on :
 - wxWidgets  (https://www.wxwidgets.org/)
 - libxml2 (http://xmlsoft.org/)
-- libxmldiff 
+- libxmldiff (https://github.com/rpeyron/libxmldiff/)
 
 ## Linux build
 
