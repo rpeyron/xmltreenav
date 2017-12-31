@@ -1,13 +1,13 @@
-xmltreenav (0.3.3ppa5) xenial; urgency=low
-
-  * PPA update
- 
- -- Remi Peyronnet <remi+debian@via.ecp.fr>  Sat, 12 Nov 2016 20:55:00 +0000
-
 xmltreenav (0.3.3) stable; urgency=low
 
   * Release 0.3.3 ; see Changelog
 
+ -- Remi Peyronnet <remi+debian@via.ecp.fr>  Sat, 12 Nov 2016 20:55:00 +0000
+
+xmltreenav (0.3.3ppa5) xenial; urgency=low
+
+  * PPA update
+ 
  -- Remi Peyronnet <remi+debian@via.ecp.fr>  Sat, 12 Nov 2016 20:55:00 +0000
 
 xmltreenav (0.3-2ppa2) trusty; urgency=medium

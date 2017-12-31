@@ -10,6 +10,22 @@ xmlTreeNav is a GUI for libxmldiff, and easy tree navigation :
 
 Homepage : http://www.lprp.fr/soft/xml/xmltreenav/xmltreenav_en.php3
 
+# Install
+
+See prebuilt binary packages in release tab for Windows and Debian.
+
+PPA repository for Ubuntu : [ppa:rpeyron/ppa](https://launchpad.net/~rpeyron/+archive/ubuntu/ppa)
+
+Debian repository :
+```
+# Add repository
+sudo echo "deb [arch=amd64]  http://www.lprp.fr/debian stable main" > /etc/apt/sources.list.d/lprp.list
+# Add apt key (remi+debian@via.ecp.fr)
+sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 090B93891134CECB
+# Install
+sudo apt-get install xmltreenav
+```
+
 # Build instructions
 
 ## Dependancies
@@ -35,7 +51,7 @@ You may install dependancies on debian systems by :
 # Build dependancies
 sudo apt-get install pkg-config libxml2-dev libxslt-dev libxmldiff libwxgtk3.0-dev
 # Run dependancies
-sudo apt-get install libc6 libxml2,libxslt1.1 libxmldiff libwxgtk3.0-0
+sudo apt-get install libc6 libxml2,libxslt1.1 libxmldiff libwxgtk3.0-0v5
 ```
 
 
