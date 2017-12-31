@@ -33,7 +33,7 @@ sudo apt-get install xmltreenav
 xmlTreeNav depends on :
 - wxWidgets  (https://www.wxwidgets.org/)
 - libxml2 (http://xmlsoft.org/)
-- libxmldiff 
+- libxmldiff (https://github.com/rpeyron/libxmldiff/)
 
 ## Linux build
 
