@@ -6,7 +6,7 @@
 [Setup]
 AppName={#AppName}
 AppPublisher=Remi Peyronnet
-AppVersion=0.3.3-2
+AppVersion=0.3.4beta
 ;AppVerName=xmlTreeNav 0.3.2
 AppPublisherURL=http://www.lprp.fr/soft/xml/xmltreenav/xmltreenav_en.php3
 AppSupportURL=http://www.lprp.fr/soft/xml/xmltreenav/xmltreenav_en.php3

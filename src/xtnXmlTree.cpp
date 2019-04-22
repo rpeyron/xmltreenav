@@ -430,6 +430,31 @@ xmlXPathObjectPtr xtnXmlTree::getDisplayedNodes(xmlNodePtr node, xmlDocPtr displ
     return xpathObj;
 }
 
+int xtnXmlTree::getDiffIcon(int defIcon, xmlNodePtr child)
+{
+	int icon;
+	xmlChar * strTemp; 
+	xmlstring sxTemp;	
+
+	icon = defIcon;
+	// Diff Icon
+	if (m_bShowDiff)
+	{
+		strTemp = xmlGetNsProp(child, diffStatusAttr, diffNamespace);
+		if (strTemp != NULL)
+		{
+			sxTemp = strTemp;
+			if (sxTemp == BAD_CAST "added") icon = TI_ADDED;
+			else if (sxTemp == BAD_CAST "removed") icon = TI_REMOVED;
+			else if (sxTemp == BAD_CAST "modified") icon = TI_MODIFIED;
+			else icon = TI_BELOW;
+			xmlFree(strTemp);
+		}
+	}
+
+	return icon;
+}
+
 void xtnXmlTree::PopulateItem(const wxTreeItemId & item)
 {
     xmlNodePtr node, child;
@@ -459,7 +484,7 @@ void xtnXmlTree::PopulateItem(const wxTreeItemId & item)
     {
         child = xpathObj->nodesetval->nodeTab[i];
         icon = TI_UNKNOWN;
-        libelle = xmlstring2wxString(child->name);
+        libelle = (child->name)?xmlstring2wxString(child->name):"";
         if (child->ns != NULL)
         {
             if (child->ns->prefix != NULL) libelle = xmlstring2wxString(child->ns->prefix) + wxT(":") + libelle;
@@ -469,21 +494,7 @@ void xtnXmlTree::PopulateItem(const wxTreeItemId & item)
         switch(child->type)
         {
             case XML_ELEMENT_NODE:
-                icon = TI_ELEMENT;
-                // Diff Icon
-                if (m_bShowDiff)
-                {
-                    strTemp = xmlGetNsProp(child, diffStatusAttr, diffNamespace);
-                    if (strTemp != NULL)
-                    {
-                        sxTemp = strTemp;
-                        if (sxTemp == BAD_CAST "added") icon = TI_ADDED;
-                        else if (sxTemp == BAD_CAST "removed") icon = TI_REMOVED;
-                        else if (sxTemp == BAD_CAST "modified") icon = TI_MODIFIED;
-                        else icon = TI_BELOW;
-                        xmlFree(strTemp);
-                    }
-                }
+                icon = getDiffIcon(TI_ELEMENT, child);
                 // Append attributes
                 if (m_eDispMode != XTN_DISP_FULL)
                 {
@@ -520,20 +531,32 @@ void xtnXmlTree::PopulateItem(const wxTreeItemId & item)
                 if ((m_eDispMode == XTN_DISP_FULL) && (child->properties)) hasChildren = true;
                 break;
             case XML_ATTRIBUTE_NODE:
-                icon = TI_ATTRIBUTE;
+				icon = getDiffIcon(TI_ATTRIBUTE, child);
                 libelle += wxT("=\"");
                 libelle += xmlstring2wxString(xmlstring(xmlCharTmp(xmlNodeGetContent((xmlNodePtr)child))));
                 libelle += wxT("\"");
                 break;
             case XML_TEXT_NODE:
-                icon = TI_TEXT;
+				icon = getDiffIcon(TI_TEXT, child);
                 libelle = xmlstring2wxString(child->content);
                 break;
             case XML_COMMENT_NODE:
-                icon = TI_COMMENT;
+				icon = getDiffIcon(TI_COMMENT, child);
                 libelle = wxString(wxT("<-- ")) + xmlstring2wxString(child->content) + wxString(wxT(" -->"));
                 break;
-            default:
+			case XML_CDATA_SECTION_NODE:
+				icon = getDiffIcon(TI_UNKNOWN, child);
+				libelle = wxString(wxT("<![CDATA["));
+				if (child->content)	libelle += xmlstring2wxString(child->content);
+				libelle += wxString(wxT("]]>"));
+				break;
+			case XML_PI_NODE:
+				icon = getDiffIcon(TI_UNKNOWN, child);
+				libelle = wxString(wxT("<?")) + libelle + wxString(wxT(" "));
+				if (child->content)	libelle += xmlstring2wxString(child->content);
+				libelle += wxString(wxT("?>"));
+				break;
+			default:
                 break;
         }
         // XSLT

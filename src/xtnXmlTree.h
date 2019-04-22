@@ -88,6 +88,8 @@ protected:
     wxTreeItemId MakeNodeVisible(xmlNodePtr node);
     void LoadTreeImageList();
 
+	int getDiffIcon(int defIcon, xmlNodePtr child);
+
 protected:
     xmlDocPtr applyNodeStylesheet(xmlNodePtr node, xsltStylesheetPtr xslt);
     xmlXPathObjectPtr getDisplayedNodes(xmlNodePtr node, xmlDocPtr displayInfo);

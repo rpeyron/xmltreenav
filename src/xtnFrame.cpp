@@ -170,8 +170,11 @@ void xtnFrame::InitConfig()
 	new wxConfigDialog_EntryTextEdit(*m_pConfigDialog, wxT("DiffDefaults"), wxT("PrevSeparator"), _("Diff Defaults"), _("Separator"), _("|"));
 	new wxConfigDialog_EntryCheck(*m_pConfigDialog, wxT("DiffDefaults"), wxT("TagChilds"), _("Diff Defaults"), _("Tag childs"), TRUE);
 
+	new wxConfigDialog_EntryCheck(*m_pConfigDialog, wxT("DiffDefaults"), wxT("SpecialNodesIds"), _("Diff Defaults"), _("Special Node Ids"), TRUE);
+	new wxConfigDialog_EntryCheck(*m_pConfigDialog, wxT("DiffDefaults"), wxT("SpecialNodesBeforeValue"), _("Diff Defaults"), _("Special Nodes Before Value"), FALSE);
+
     m_pConfigDialog->doLayout();
-    m_pConfigDialog->SetSize(500,300);
+    m_pConfigDialog->SetSize(500,350);
 }
 
 void xtnFrame::DoConfig()
@@ -212,6 +215,12 @@ void xtnFrame::DoConfig()
 	// Tag Childs
 	m_pConfig->Read(wxT("DiffDefaults/TagChilds"), &opt);
 	m_curOptions.tagChildsAddedRemoved = opt;
+	// SpecialNodesIds
+	m_pConfig->Read(wxT("DiffDefaults/SpecialNodesIds"), &opt);
+	m_curOptions.specialNodesIds = opt;
+	// SpecialNodesBeforeValue
+	m_pConfig->Read(wxT("DiffDefaults/SpecialNodesBeforeValue"), &opt);
+	m_curOptions.specialNodesBeforeValue = opt;
 
     m_pConfig->Read(wxT("Config/SearchSize"), &str, wxT("250"));
 	if (str.ToLong(&l)) { GetToolBar()->FindWindowById(CTRL_XPATH)->SetSize(l, -1); GetToolBar()->Realize(); }
@@ -415,7 +424,7 @@ void xtnFrame::OnHelpAbout(wxCommandEvent &event)
 	wxAboutDialogInfo info;
     info.SetName(XTN_NAME);
     info.SetVersion(XTN_VERSION);
-    info.SetDescription(XTN_APP_DESCRIPTION);
+    info.SetDescription(XTN_APP_DESCRIPTION + wxString::Format(wxString("\n\nlibxmldiff: %s\n"), wxT(LIBXMLDIFF_VER)));
     info.SetCopyright(XTN_COPYRIGHT);
 	info.SetWebSite(XTN_WEBSITE);
 	//info.SetLicence(wxT("GPL"));
@@ -799,15 +808,16 @@ void xtnFrame::OnEditPaste(wxCommandEvent &event)
 		}
 #else        
 		// Put it in the Clipboard
-		if (::wxOpenClipboard())
+		if (wxTheClipboard->Open())
 		{
-			if (::wxIsClipboardFormatAvailable(1))
+			wxTextDataObject data;
+			if (wxTheClipboard->IsSupported(data.GetFormat()))
 			{
-				char * data;
-				data = (char *)::wxGetClipboardData(1);
+				wxTheClipboard->GetData(data);
 				wxFile fil;
 				fil.Open(m_sDirectXMLTempFilename,wxFile::write);
-				fil.Write(wxString(data, wxConvLocal));
+				//fil.Write(wxString(data.GetText(), wxConvLocal));
+				fil.Write(data.GetText());
 				fil.Close();
 				// Add open / close tag if problems
 				doc = NULL;
@@ -818,7 +828,7 @@ void xtnFrame::OnEditPaste(wxCommandEvent &event)
 				{
 					fil.Open(m_sDirectXMLTempFilename,wxFile::write);
 					fil.Write(wxT("<file>\n"));
-					fil.Write(wxString(data, wxConvLocal));
+					fil.Write(data.GetText());
 					fil.Write(wxT("\n</file>"));
 					fil.Close();
 					try {
@@ -827,7 +837,7 @@ void xtnFrame::OnEditPaste(wxCommandEvent &event)
 					if (doc == NULL)
 					{
 						fil.Open(m_sDirectXMLTempFilename,wxFile::write);
-						fil.Write(wxString(data, wxConvLocal));
+						fil.Write(data.GetText());
 						fil.Close();
 					}
 					else
@@ -839,11 +849,9 @@ void xtnFrame::OnEditPaste(wxCommandEvent &event)
 				{
 					xmlFreeDoc(doc);
 				}
-
-				delete [] data;
 				LoadFile(m_sDirectXMLTempFilename);
 			}
-			::wxCloseClipboard();
+			wxTheClipboard->Close();
 		}
 #endif            
 	}

@@ -1,3 +1,8 @@
+2019-04-22 14:33  remi 0.3.4beta
+	* libxmldiff 0.2.9beta
+	* Add new parameters for special nodes
+	* Fixed crash while displaying CData nodes
+
 2016-12-18 17:13  remi 0.3.3-2
 	* Small fixes and improvments asked by bovirus
 	* ConfigDialog field align with wxGridBagSizer
