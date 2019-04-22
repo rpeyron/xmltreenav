@@ -447,7 +447,7 @@ int xtnXmlTree::getDiffIcon(int defIcon, xmlNodePtr child)
 			if (sxTemp == BAD_CAST "added") icon = TI_ADDED;
 			else if (sxTemp == BAD_CAST "removed") icon = TI_REMOVED;
 			else if (sxTemp == BAD_CAST "modified") icon = TI_MODIFIED;
-			else icon = TI_BELOW;
+			else if (sxTemp == BAD_CAST "below") icon = TI_BELOW;
 			xmlFree(strTemp);
 		}
 	}
