@@ -46,9 +46,9 @@
 
 xmlstring wxString2xmlstring(const wxString & str);
 wxString xmlstring2wxString(const xmlstring & str);
-string wxString2string(const wxString & str);
-wxString string2wxString(const string & str);
-string xmlstring2string(const xmlstring & str);
-xmlstring string2xmlstring(const string & str);
+std::string wxString2string(const wxString & str);
+wxString string2wxString(const std::string & str);
+std::string xmlstring2string(const xmlstring & str);
+xmlstring string2xmlstring(const std::string & str);
 
 #endif // __WXUNICOMPAT_H__

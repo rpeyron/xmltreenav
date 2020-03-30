@@ -87,16 +87,16 @@ wxString xmlstring2wxString(const xmlstring & str)
 #endif    
 }
     
-string wxString2string(const wxString & str)
+std::string wxString2string(const wxString & str)
 {
 #if (wxUSE_UNICODE == 1) && (!defined wxUNICOMPAT)
-    return string((const char *) str.mb_str(wxConvLocal));
+    return std::string((const char *) str.mb_str(wxConvLocal));
 #else
-    return string((const char*) str.c_str());
+    return std::string((const char*) str.c_str());
 #endif    
 }
     
-wxString string2wxString(const string & str)
+wxString string2wxString(const std::string & str)
 {
 #if (wxUSE_UNICODE == 1) && (!defined wxUNICOMPAT)
     return wxString(str.c_str(),wxConvLocal);
@@ -105,12 +105,12 @@ wxString string2wxString(const string & str)
 #endif    
 }    
 
-string xmlstring2string(const xmlstring & str)
+std::string xmlstring2string(const xmlstring & str)
 {
     return wxString2string(xmlstring2wxString(str));
 }
     
-xmlstring string2xmlstring(const string & str)
+xmlstring string2xmlstring(const std::string & str)
 {
     return wxString2xmlstring(string2wxString(str));
 }    

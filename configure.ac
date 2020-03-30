@@ -1,4 +1,4 @@
-AC_INIT(xmlTreeNav,0.3.3)
+AC_INIT(xmlTreeNav,0.3.4beta)
 AC_CONFIG_SRCDIR([configure.ac])
 AM_INIT_AUTOMAKE
 AC_PROG_CC
@@ -37,12 +37,12 @@ PKG_CHECK_MODULES(LIBXMLDIFF, libxmldiff >= 0.1,
 
 dnl Internationalization
 AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.19])
+AM_GNU_GETTEXT_VERSION([0.19.8])
 
 dnl libxmldiff pkg-config
 PKG_CHECK_MODULES([libxmldiff], [libxmldiff >= 0.2.0])
 
-dnl DEBUG="-g "
+DEBUG="-g -H "
 LIBS="$DEBUG $LIBS $WX_LIBS $XML_LIBS $libxmldiff_LIBS"
 CXXFLAGS="$DEBUG $CXXFLAGS $WX_CXXFLAGS $XML_CXXFLAGS $libxmldiff_CXXFLAGS"
 CPPFLAGS="$DEBUG $CPPFLAGS $WX_CPPFLAGS $XML_CPPFLAGS $libxmldiff_CPPFLAGS"

@@ -462,7 +462,7 @@ void xtnXmlTree::PopulateItem(const wxTreeItemId & item)
     xmlDocPtr result;
     wxTreeItemId childItem;
     wxString libelle;
-    xmlChar * strTemp;    string sTemp;     xmlstring sxTemp;
+    xmlChar * strTemp;    std::string sTemp;     xmlstring sxTemp;
     xmlXPathObjectPtr xpathObj, xpathChildObj; 
     int icon, i, nb, nbChild;
     bool hasChildren;

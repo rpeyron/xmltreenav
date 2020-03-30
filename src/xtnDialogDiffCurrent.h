@@ -18,7 +18,7 @@
 #define DEFINE_setDlgOptions \
 	void setDlgOptions(const struct globalOptions opt) \
 	{ \
-	    vector<xmlstring>::const_iterator id; \
+	    std::vector<xmlstring>::const_iterator id; \
 		for(id = opt.ids.begin(); id != opt.ids.end(); id++) \
 		{ \
 			if (id == opt.ids.begin()) txIds->SetValue(xmlstring2wxString(*id)); \
