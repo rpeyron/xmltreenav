@@ -1,3 +1,4 @@
+SET PATH=D:\Util\Prog\GetText\bin;%PATH%
 
 REM template
 copy xmlTreeNav.pot ..\bin\lang\xmlTreeNav.pot

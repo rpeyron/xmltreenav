@@ -6,19 +6,21 @@
 [Setup]
 AppName={#AppName}
 AppPublisher=Remi Peyronnet
-AppVersion=0.3.4beta
+AppVersion=0.3.4
 ;AppVerName=xmlTreeNav 0.3.2
 AppPublisherURL=http://www.lprp.fr/soft/xml/xmltreenav/xmltreenav_en.php3
 AppSupportURL=http://www.lprp.fr/soft/xml/xmltreenav/xmltreenav_en.php3
 AppUpdatesURL=http://www.lprp.fr/soft/xml/xmltreenav/xmltreenav_en.php3
-DefaultDirName={pf}\{#AppName}
+DefaultDirName={autopf}\{#AppName}
 DefaultGroupName={#AppName}
 AllowNoIcons=true
-; DisableProgramGroupPage=yes
+DisableProgramGroupPage=yes
 OutputBaseFilename=xmltreenav_setup
 OutputDir=..\..\distrib\
 ShowLanguageDialog=yes
 AlwaysShowGroupOnReadyPage=True
+PrivilegesRequired=lowest
+PrivilegesRequiredOverridesAllowed=dialog
 
 [Files]
 Source: ..\..\bin\xmlTreeNav.exe; DestDir: {app}; Flags: ignoreversion
@@ -29,17 +31,11 @@ Source: ..\..\bin\config.xml; DestDir: {app}; Flags: ignoreversion
 Source: ..\..\bin\xmltreenav.htb; DestDir: {app}; Flags: ignoreversion
 Source: ..\..\bin\filter-added-removed-or-equal.xsl; DestDir: {app}; Flags: ignoreversion
 Source: ..\..\..\libxmldiff\bin\xmldiff.exe; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\..\libxmldiff\bin\libxmldiff.dll; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\..\libxmldiff\bin\libxml2.dll; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\..\libxmldiff\bin\libxslt.dll; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\..\libxmldiff\bin\libexslt.dll; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\..\libxmldiff\bin\iconv.dll; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\..\libxmldiff\bin\zlib1.dll; DestDir: {app}; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
 ;Name: {userprograms}\xmlTreeNav; Filename: {app}\xmlTreeNav.exe; WorkingDir: {app}
-Name: {group}\{#AppName}; Filename: {app}\xmlTreeNav.exe; WorkingDir: {app}
+Name: {autoprograms}\{#AppName}; Filename: {app}\xmlTreeNav.exe; WorkingDir: {app}
 
 [Run]
 Filename: {app}\xmlTreeNav.exe; Description: {cm:LaunchProgram, {#AppName}};  Flags: nowait postinstall skipifsilent

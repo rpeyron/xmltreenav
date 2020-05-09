@@ -1,3 +1,7 @@
+2020-05-09 14:33  remi 0.3.4
+	* libxmldiff 0.2.9
+	* vs2019 & vcpkg build
+
 2019-04-22 14:33  remi 0.3.4beta
 	* libxmldiff 0.2.9beta
 	* Add new parameters for special nodes

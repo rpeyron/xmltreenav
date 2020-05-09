@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1062
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xmlTreeNav", "xmlTreeNav.vcxproj", "{4F231D63-EFF7-5077-BBC9-A257EA09085E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{85888AE5-2AF6-8B58-3801-011A3BF73764} = {85888AE5-2AF6-8B58-3801-011A3BF73764}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libxmldiff", "..\..\..\libxmldiff\build\vc2017\libxmldiff.vcxproj", "{85888AE5-2AF6-8B58-3801-011A3BF73764}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F231D63-EFF7-5077-BBC9-A257EA09085E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4F231D63-EFF7-5077-BBC9-A257EA09085E}.Debug|Win32.Build.0 = Debug|Win32
+		{4F231D63-EFF7-5077-BBC9-A257EA09085E}.Release|Win32.ActiveCfg = Release|Win32
+		{4F231D63-EFF7-5077-BBC9-A257EA09085E}.Release|Win32.Build.0 = Release|Win32
+		{85888AE5-2AF6-8B58-3801-011A3BF73764}.Debug|Win32.ActiveCfg = Debug|Win32
+		{85888AE5-2AF6-8B58-3801-011A3BF73764}.Debug|Win32.Build.0 = Debug|Win32
+		{85888AE5-2AF6-8B58-3801-011A3BF73764}.Release|Win32.ActiveCfg = Release|Win32
+		{85888AE5-2AF6-8B58-3801-011A3BF73764}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {341CF4CA-D3AF-440C-BE94-2FBD6C27D5BD}
+	EndGlobalSection
+EndGlobal

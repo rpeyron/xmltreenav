@@ -1,4 +1,4 @@
-AC_INIT(xmlTreeNav,0.3.4beta)
+AC_INIT(xmlTreeNav,0.3.4)
 AC_CONFIG_SRCDIR([configure.ac])
 AM_INIT_AUTOMAKE
 AC_PROG_CC
@@ -35,6 +35,17 @@ PKG_CHECK_MODULES(LIBXMLDIFF, libxmldiff >= 0.1,
 		)
 
 
+AC_ARG_ENABLE(debug,
+[  --enable-debug    Turn on debugging],
+[case "${enableval}" in
+  yes) 
+    DEBUGG="-g -H -fomit-frame-pointer -DDEBUG" 
+    WXDEBUG="--debug"
+    ;;
+  no)  debug=false ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-debug) ;;
+esac],[debug=false])
+
 dnl Internationalization
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.19.8])
@@ -43,10 +54,10 @@ dnl libxmldiff pkg-config
 PKG_CHECK_MODULES([libxmldiff], [libxmldiff >= 0.2.0])
 
 DEBUG="-g -H "
-LIBS="$DEBUG $LIBS $WX_LIBS $XML_LIBS $libxmldiff_LIBS"
-CXXFLAGS="$DEBUG $CXXFLAGS $WX_CXXFLAGS $XML_CXXFLAGS $libxmldiff_CXXFLAGS"
-CPPFLAGS="$DEBUG $CPPFLAGS $WX_CPPFLAGS $XML_CPPFLAGS $libxmldiff_CPPFLAGS"
-CFLAGS="$DEBUG $CFLAGS $WX_CFLAGS $XML_CFLAGS $libxmldiff_CFLAGS"
+LIBS="$DEBUGG $LIBS $WX_LIBS $XML_LIBS $libxmldiff_LIBS"
+CXXFLAGS="$DEBUGG $CXXFLAGS $WX_CXXFLAGS $XML_CXXFLAGS $libxmldiff_CXXFLAGS"
+CPPFLAGS="$DEBUGG $CPPFLAGS $WX_CPPFLAGS $XML_CPPFLAGS $libxmldiff_CPPFLAGS"
+CFLAGS="$DEBUGG $CFLAGS $WX_CFLAGS $XML_CFLAGS $libxmldiff_CFLAGS"
 
 AC_CONFIG_FILES([ \
     Makefile \
