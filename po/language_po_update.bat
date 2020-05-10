@@ -1,22 +1,19 @@
 @ECHO OFF
 
-SET PATH=C:\Tools;%PATH%
+CALL language_vars.bat
 
-SET TEMPLATE-FILE=xmlTreeNav.pot
-SET LANGUAGES=fr it
-
+SET TEMPLATE-FILE=%CATALOG%.pot
 SET CHARACTERS=400
-SET XGETTEXT-OPTIONS=--c++ --keyword=_ --from-code=ISO-8859-1
+SET XGETTEXT-OPTIONS=--c++ --keyword=_ --from-code=ISO-8859-1 -D %FILE-DIRECTORY%
 SET MSGMERGE-OPTIONS=-q -U -N --backup=none --width=%CHARACTERS% --no-wrap --no-location
 SET MSGATTRIB-OPTIONS=--no-obsolete --no-fuzzy --width=%CHARACTERS% --no-wrap --no-location
 SET MSGFMT-OPTIONS=--statistics
-SET FILE-LIST=file_windows.txt
 
 REM XGETTEXT/MSGMERGE/MSGATTRIB/MSGFMT commands should be in path
 
 CLS
 
-ECHO ######### Program 'xmltreernav' ###########
+ECHO ######### Program '%CATALOG%' ###########
 ECHO.
 WHERE /q xgettext.exe
 IF %ERRORLEVEL% NEQ 0 goto xgettext-not-in-path

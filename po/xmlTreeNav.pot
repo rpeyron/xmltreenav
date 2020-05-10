@@ -1,20 +1,19 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR (c) 2004-2005 - Rémi Peyronnet - GPL
-# This file is distributed under the same license as the xmltreenav package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xmltreenav 0.3.4\n"
-"Report-Msgid-Bugs-To: remi+xmltreenav@via.ecp.fr\n"
-"POT-Creation-Date: 2020-05-09 19:41+0200\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-10 18:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: lib/wxmisc/ConfigDialog.cpp:71
@@ -43,20 +42,6 @@ msgstr ""
 
 #: src/xtnApp.h:30
 msgid "Performs efficient XML tree navigation and diff XML files."
-msgstr ""
-
-#: src/xtnApp.h:31
-#, c-format
-msgid ""
-"%s %s\n"
-"libxmldiff %s\n"
-"\n"
-"(c) 2004-2020 - Remi Peyronnet\n"
-"http://www.lprp.fr"
-msgstr ""
-
-#: src/xtnApp.h:32
-msgid " (c) 2004 - Remi Peyronnet - http://www.lprp.fr"
 msgstr ""
 
 #: src/xtnApp.h:42
@@ -632,8 +617,8 @@ msgid ""
 "childen nodes<br/> - <code>//*</code> : all nodes of the document<br/> - "
 "<code>//mynode</code> : all nodes of the document named <code>mynode</"
 "code><br/> - <code>//parent/mynode</code> : all nodes of the document named "
-"<code>mynode</code> and a parent <code>parent</code><br/> - <code>//"
-"*[@myattr]</code> : all nodes of the document with an attribute named "
+"<code>mynode</code> and a parent <code>parent</code><br/> - <code>//*"
+"[@myattr]</code> : all nodes of the document with an attribute named "
 "<code>myattr</code><br/> - <code>//*[@myattr='toto']</code> : all nodes of "
 "the document with an attribute named <code>myattr</code> with value "
 "<code>toto</code><br/> - <code>//*[text()='toto']</code> : all nodes of the "
@@ -759,4 +744,45 @@ msgstr ""
 
 #: src/xtnXmlTree.cpp:676
 msgid "No nodes found : "
+msgstr ""
+
+#: po/extra-strings.cpp:3
+#, c-format
+msgid "About %s"
+msgstr ""
+
+#: po/extra-strings.cpp:4
+msgid "Translators"
+msgstr ""
+
+#: po/extra-strings.cpp:7
+msgid "Display only added, removed or equal"
+msgstr ""
+
+#: po/extra-strings.cpp:9
+msgid "All Nodes"
+msgstr ""
+
+#: po/extra-strings.cpp:10
+msgid "All Nodes named nodeName"
+msgstr ""
+
+#: po/extra-strings.cpp:11
+msgid "All Nodes named nodeName with parent parent"
+msgstr ""
+
+#: po/extra-strings.cpp:12
+msgid "All Nodes with attribute named attributeName"
+msgstr ""
+
+#: po/extra-strings.cpp:13
+msgid "All Nodes with attribute named attributeName with value toto"
+msgstr ""
+
+#: po/extra-strings.cpp:14
+msgid "All Nodes with content text toto"
+msgstr ""
+
+#: po/extra-strings.cpp:15
+msgid "Added Nodes"
 msgstr ""

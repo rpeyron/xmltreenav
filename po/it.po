@@ -2,16 +2,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xmlTreeNav 0.3.4 (translation v. 10.05.2020)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-10 16:33+0200\n"
+"POT-Creation-Date: 2020-05-10 18:06+0200\n"
 "PO-Revision-Date: 2020-05-10 16:36+0200\n"
 "Last-Translator: bovirus <bovirus@gmail.com>\n"
 "Language-Team: Italian <bovirus@gmail.com>\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 2.3\n"
+
+msgid "Apply"
+msgstr "OK"
+
+msgid "Cancel"
+msgstr "Annulla"
 
 msgid "XSLT Local Display File to use"
 msgstr "File locale XSLT visualizzazione da usare"
@@ -27,23 +33,6 @@ msgstr "File XML da aprire"
 
 msgid "Performs efficient XML tree navigation and diff XML files."
 msgstr "Permette una veloce navigazione nella struttura dei file XML e la loro comparazione."
-
-#, c-format
-msgid ""
-"%s %s\n"
-"libxmldiff %s\n"
-"\n"
-"(c) 2004-2020 - Remi Peyronnet\n"
-"http://www.lprp.fr"
-msgstr ""
-"%s %s\n"
-"libxmldiff %s\n"
-"\n"
-"(c) 2004-2020 - Remi Peyronnet\n"
-"http://www.lprp.fr"
-
-msgid " (c) 2004 - Remi Peyronnet - http://www.lprp.fr"
-msgstr " (c) 2004-2020 - Remi Peyronnet - http://www.lprp.fr"
 
 msgid "XML Files (*.xml)|*.xml|All files (*.*)|*.*"
 msgstr "File XML (*.xml)|*.xml|Tutti file (*.*)|*.*"
@@ -549,12 +538,6 @@ msgstr "Trovati nodo %d di %d nodi (%s)."
 
 msgid "No nodes found : "
 msgstr "Nessun nodo trovato: "
-
-msgid "Apply"
-msgstr "OK"
-
-msgid "Cancel"
-msgstr "Annulla"
 
 #, c-format
 msgid "About %s"
