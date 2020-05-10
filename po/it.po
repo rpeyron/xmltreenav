@@ -829,8 +829,7 @@ msgstr "Tutti i nodi con attributo NomeAttributo"
 msgid "All Nodes with attribute named attributeName with value toto"
 msgstr "Tutti i nodi con attributo NomeAttributo con valore xxxx"
 
-#: ../po/extra-strin
-gs.cpp:14
+#: ../po/extra-strings.cpp:14
 msgid "All Nodes with content text toto"
 msgstr "Tutti i nodi contenetti il testo xxxx"
 

@@ -12,4 +12,4 @@ src/xtnPrecomp.cpp
 src/xtnPrecomp.h
 src/xtnXmlTree.cpp
 src/xtnXmlTree.h
-extra-strings.cpp
+po/extra-strings.cpp

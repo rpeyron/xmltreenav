@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xmlTreeNav\n"
 "Report-Msgid-Bugs-To: remi+xmltreenav@via.ecp.fr\n"
-"POT-Creation-Date: 2020-05-09 19:41+0200\n"
+"POT-Creation-Date: 2020-05-10 16:26+0200\n"
 "PO-Revision-Date: 2020-05-09 19:33+0200\n"
 "Last-Translator: Rémi Peyronnet <remi+poedit@via.ecp.fr>\n"
 "Language-Team: French <remi+xmltreenav@via.ecp.fr>\n"
@@ -48,25 +48,6 @@ msgid "Performs efficient XML tree navigation and diff XML files."
 msgstr ""
 "Permet de naviguer efficacement dans les fichiers XML\n"
 "et une comparaison facile entre deux fichiers XML."
-
-#: src/xtnApp.h:31
-#, c-format
-msgid ""
-"%s %s\n"
-"libxmldiff %s\n"
-"\n"
-"(c) 2004-2020 - Remi Peyronnet\n"
-"http://www.lprp.fr"
-msgstr ""
-"%s %s\n"
-"libxmldiff %s\n"
-"\n"
-"© 2004-2020 - Rémi Peyronnet\n"
-"http://www.lprp.fr"
-
-#: src/xtnApp.h:32
-msgid " (c) 2004 - Remi Peyronnet - http://www.lprp.fr"
-msgstr " (c) 2004 - Rémi Peyronnet - http://www.lprp.fr"
 
 #: src/xtnApp.h:42
 msgid "XML Files (*.xml)|*.xml|All files (*.*)|*.*"
@@ -802,36 +783,62 @@ msgstr "Noeud %d sur %d noeuds trouvés (%s)."
 msgid "No nodes found : "
 msgstr "Aucun noeud trouvé : "
 
-#~ msgid "About %s"
-#~ msgstr "A propos de %s"
+#: po/extra-strings.cpp:3
+#, c-format
+msgid "About %s"
+msgstr "A propos de %s"
 
-#~ msgid "Translators"
-#~ msgstr "Traducteurs"
+#: po/extra-strings.cpp:4
+msgid "Translators"
+msgstr "Traducteurs"
 
-#~ msgid "Display only added, removed or equal"
-#~ msgstr "Afficher seulement ajouté, enlevé ou égal"
+#: po/extra-strings.cpp:7
+msgid "Display only added, removed or equal"
+msgstr "Afficher seulement ajouté, enlevé ou égal"
 
-#~ msgid "All Nodes"
-#~ msgstr "Tous les nœuds"
+#: po/extra-strings.cpp:9
+msgid "All Nodes"
+msgstr "Tous les nœuds"
 
-#~ msgid "All Nodes named nodeName"
-#~ msgstr "Tous les nœuds nodeName"
+#: po/extra-strings.cpp:10
+msgid "All Nodes named nodeName"
+msgstr "Tous les nœuds nodeName"
 
-#~ msgid "All Nodes named nodeName with parent parent"
-#~ msgstr "Tous les nœuds nodeName ayant comme père parent"
+#: po/extra-strings.cpp:11
+msgid "All Nodes named nodeName with parent parent"
+msgstr "Tous les nœuds nodeName ayant comme père parent"
 
-#~ msgid "All Nodes with attribute named attributeName"
-#~ msgstr "Tous les nœuds ayant un attribut attributeName"
+#: po/extra-strings.cpp:12
+msgid "All Nodes with attribute named attributeName"
+msgstr "Tous les nœuds ayant un attribut attributeName"
 
-#~ msgid "All Nodes with attribute named attributeName with value toto"
+#: po/extra-strings.cpp:13
+msgid "All Nodes with attribute named attributeName with value toto"
+msgstr "Tous les nœuds avec un attribut attributeName ayant comme valeur toto"
+
+#: po/extra-strings.cpp:14
+msgid "All Nodes with content text toto"
+msgstr "Tous les nœuds dont le contenu est le texte toto"
+
+#: po/extra-strings.cpp:15
+msgid "Added Nodes"
+msgstr "Nœuds ajoutés"
+
+#~ msgid ""
+#~ "%s %s\n"
+#~ "libxmldiff %s\n"
+#~ "\n"
+#~ "(c) 2004-2020 - Remi Peyronnet\n"
+#~ "http://www.lprp.fr"
 #~ msgstr ""
-#~ "Tous les nœuds avec un attribut attributeName ayant comme valeur toto"
+#~ "%s %s\n"
+#~ "libxmldiff %s\n"
+#~ "\n"
+#~ "© 2004-2020 - Rémi Peyronnet\n"
+#~ "http://www.lprp.fr"
 
-#~ msgid "All Nodes with content text toto"
-#~ msgstr "Tous les nœuds dont le contenu est le texte toto"
-
-#~ msgid "Added Nodes"
-#~ msgstr "Nœuds ajoutés"
+#~ msgid " (c) 2004 - Remi Peyronnet - http://www.lprp.fr"
+#~ msgstr " (c) 2004 - Rémi Peyronnet - http://www.lprp.fr"
 
 #~ msgid "%ld%%"
 #~ msgstr "%ld%%"
