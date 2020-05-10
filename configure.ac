@@ -1,4 +1,4 @@
-AC_INIT(xmlTreeNav,0.3.4)
+AC_INIT(xmlTreeNav,0.3.5pre)
 AC_CONFIG_SRCDIR([configure.ac])
 AM_INIT_AUTOMAKE
 AC_PROG_CC

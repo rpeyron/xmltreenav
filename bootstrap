@@ -2,7 +2,7 @@
 
 # libtoolize
 gettextize -f
-mv -f configure.in~ configure.in
+#mv -f configure.in~ configure.in
 aclocal -I m4
 automake -a --copy
 autoconf
