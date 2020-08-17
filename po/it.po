@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: xmlTreeNav 0.3.4 (translation v. 10.05.2020)\n"
+"Project-Id-Version: xmlTreeNav 0.3.4 (12.08.2020)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-17 15:45+0200\n"
 "PO-Revision-Date: 2020-05-10 16:36+0200\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.1\n"
 
 msgid "Apply"
 msgstr "OK"
@@ -127,10 +127,6 @@ msgstr "Tag relativi ricorsivi dei nodi aggiunti o eliminati."
 
 msgid "Open a file"
 msgstr "Apri un file"
-
-#, c-format
-msgid "XML File With '%s' does not exists"
-msgstr ""
 
 msgid "xmlDiff two files"
 msgstr "Compara due file XML"
@@ -441,7 +437,7 @@ msgid "is a standard Element (with no differences)"
 msgstr "è un elemento standard (senza differenze)"
 
 msgid "is a Text item (when displayed as nodes)"
-msgstr "è un elementoi testo (quando sono visualizzati come nodi)"
+msgstr "è un elemento testo (quando sono visualizzati come nodi)"
 
 msgid "is an Attribute item (when displayed as nodes)"
 msgstr "è un elemento attributo (quando sono visualizzati come nodi)"
@@ -542,7 +538,7 @@ msgid "Unable to create the structure. Memory may be full."
 msgstr "Impossibile creare la struttura. La memoria potrebbe essere esaurita."
 
 msgid "XPath query error."
-msgstr "Errore richiesta Xpath."
+msgstr "Errore richiesta XPath."
 
 #, c-format
 msgid "Node %d of %d found (%s)"
@@ -577,7 +573,7 @@ msgid "All Nodes with attribute named attributeName with value toto"
 msgstr "Tutti i nodi con attributo NomeAttributo con valore xxxx"
 
 msgid "All Nodes with content text toto"
-msgstr "Tutti i nodi contenetti il testo xxxx"
+msgstr "Tutti i nodi contenenti il testo xxxx"
 
 msgid "Added Nodes"
 msgstr "Nodi aggiunti"
