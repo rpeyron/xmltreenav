@@ -138,6 +138,10 @@ void xtnDialogDiffCurrent::OnBrowseWith(wxCommandEvent &event)
 
 void xtnDialogDiffCurrent::OnDiff(wxCommandEvent &event)
 {
-	EndModal(wxID_OK);
+    if (!wxFileExists(this->withFilename())) {
+        wxMessageBox(wxString::Format(_("XML File With '%s' does not exists"), this->withFilename()), XTN_NAME, wxOK | wxICON_ERROR);
+        return;
+    }
+    EndModal(wxID_OK);
 }
 

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xmlTreeNav\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-10 18:01+0200\n"
-"PO-Revision-Date: 2020-05-10 16:35+0200\n"
+"POT-Creation-Date: 2020-08-17 15:45+0200\n"
+"PO-Revision-Date: 2020-08-17 15:47+0200\n"
 "Last-Translator: bovirus <bovirus@gmail.com>\n"
 "Language-Team: French <remi+xmltreenav@via.ecp.fr>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4\n"
 
 msgid "Apply"
 msgstr "Appliquer"
@@ -136,6 +136,10 @@ msgstr "Marque les noeuds fils des noeuds ajoutés ou supprimés."
 msgid "Open a file"
 msgstr "Ouvrir un fichier"
 
+#, c-format
+msgid "XML File With '%s' does not exists"
+msgstr "Le fichier XML Avec '%s' n'existe pas"
+
 msgid "xmlDiff two files"
 msgstr "Compare deux fichiers XML"
 
@@ -147,6 +151,14 @@ msgstr "Après"
 
 msgid "Diff Two XML Files"
 msgstr "Compare deux fichiers XML"
+
+#, c-format
+msgid "XML File Before '%s' does not exists"
+msgstr "Le fichier XML Avant '%s' n'existe pas"
+
+#, c-format
+msgid "XML File After '%s' does not exists"
+msgstr "Le fichier XML Après '%s' n'existe pas"
 
 msgid "config.xml"
 msgstr "config.xml"

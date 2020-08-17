@@ -206,6 +206,14 @@ void xtnDialogDiffDual::OnBrowseAfter(wxCommandEvent &event)
 
 void xtnDialogDiffDual::OnDiff(wxCommandEvent &event)
 {
-	EndModal(wxID_OK);
+    if (!wxFileExists(this->getBeforeFile())) {
+        wxMessageBox(wxString::Format(_("XML File Before '%s' does not exists"), this->getBeforeFile()), XTN_NAME, wxOK | wxICON_ERROR);
+        return;
+    }
+    if (!wxFileExists(this->getAfterFile())) {
+        wxMessageBox(wxString::Format(_("XML File After '%s' does not exists"), this->getAfterFile()), XTN_NAME, wxOK | wxICON_ERROR);
+        return;
+    } 
+    EndModal(wxID_OK);
 }
 

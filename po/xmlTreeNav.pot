@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-10 18:08+0200\n"
+"POT-Creation-Date: 2020-08-17 15:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -181,6 +181,11 @@ msgstr ""
 msgid "Open a file"
 msgstr ""
 
+#: src/xtnDialogDiffCurrent.cpp:142
+#, c-format
+msgid "XML File With '%s' does not exists"
+msgstr ""
+
 #: src/xtnDialogDiffDual.cpp:14
 msgid "xmlDiff two files"
 msgstr ""
@@ -195,6 +200,16 @@ msgstr ""
 
 #: src/xtnDialogDiffDual.cpp:42
 msgid "Diff Two XML Files"
+msgstr ""
+
+#: src/xtnDialogDiffDual.cpp:210
+#, c-format
+msgid "XML File Before '%s' does not exists"
+msgstr ""
+
+#: src/xtnDialogDiffDual.cpp:214
+#, c-format
+msgid "XML File After '%s' does not exists"
 msgstr ""
 
 #: src/xtnFrame.cpp:130 src/xtnFrame.cpp:164
