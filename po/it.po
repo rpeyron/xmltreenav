@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: xmlTreeNav 0.3.4 (12.08.2020)\n"
+"Project-Id-Version: xmlTreeNav 0.3.4 (v. 18.08.2020)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-17 15:45+0200\n"
-"PO-Revision-Date: 2020-05-10 16:36+0200\n"
+"POT-Creation-Date: 2020-08-19 12:34+0200\n"
+"PO-Revision-Date: 2020-08-18 09:44+0200\n"
 "Last-Translator: bovirus <bovirus@gmail.com>\n"
 "Language-Team: Italian <bovirus@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgid "XML File to open"
 msgstr "File XML da aprire"
 
 msgid "Performs efficient XML tree navigation and diff XML files."
-msgstr "Permette una veloce navigazione nella struttura dei file XML e la loro comparazione."
+msgstr "Permette una veloce navigazione nella struttura dei file XML e la loro comparazione"
 
 msgid "XML Files (*.xml)|*.xml|All files (*.*)|*.*"
 msgstr "File XML (*.xml)|*.xml|Tutti file (*.*)|*.*"
@@ -44,11 +44,11 @@ msgid ""
 "This function is not yet implemented, \n"
 "or is being developped.\n"
 msgstr ""
-"Questa funzione non è ancora stata implementata,\n"
+"Questa funzione non è ancora implementata, \n"
 "o è in sviluppo.\n"
 
 msgid "Function not implemented."
-msgstr "Funzione non implementata."
+msgstr "Funzione non implementata"
 
 msgid "Diff Options"
 msgstr "Opzioni comparazione"
@@ -57,7 +57,7 @@ msgid "xmlDiff current file"
 msgstr "Compara il file XML aperto con questo file"
 
 msgid "With "
-msgstr "Con "
+msgstr "Con"
 
 msgid "..."
 msgstr "..."
@@ -69,7 +69,7 @@ msgid "... as After file"
 msgstr "come 2. file"
 
 msgid "Identifiers "
-msgstr "Identificatori "
+msgstr "Identificatori"
 
 msgid "@id,@value"
 msgstr "@id,@value"
@@ -81,10 +81,10 @@ msgid "@ignore-attr,ignore-tag"
 msgstr "@ignore-attr,ignore-tag"
 
 msgid "Add before values"
-msgstr "Aggiungi prima del valore"
+msgstr "Aggiungi separatore tra i valori"
 
 msgid "Separator "
-msgstr "Separatore "
+msgstr "Separatore"
 
 msgid "|"
 msgstr "|"
@@ -102,13 +102,13 @@ msgid "Diff to current XML File"
 msgstr "Compara con il file XML attuale"
 
 msgid "Diff the currently opened XML file with this file."
-msgstr "Compara il file XML aperto con questo file."
+msgstr "Compara il file XML aperto con questo file"
 
 msgid "Use the file specified above as before file, and the currently opened file as after file."
-msgstr "Usa il file specificato sopra come primo file, e il file attualmente aperto come secondo file."
+msgstr "Usa il file specificato sopra come 1. file , e il file attualmente aperto come 2. file"
 
 msgid "Use the file specified above as after file, and the currently opened file as before file."
-msgstr "Usa il file specificato sopra come secondo file, e il file attualmente aperto come primo file."
+msgstr "Usa il file specificato sopra come 2. file, e il file attualmente aperto come 1. file."
 
 msgid "Use these items as identifiers. (List of items separated by comma, attributes must be prefixed by @, and '.' can be used for the text)"
 msgstr "Usa questi elementi come identificatori (elenco di elementi separati da virgola, gli attributi devono essere prefissati da @, e '.' possono essere usati per il testo)"
@@ -117,19 +117,23 @@ msgid "Differences on these items will be ignored"
 msgstr "Le differenze di questi elementi verranno ignorate"
 
 msgid "If checked, when a difference occurs, the output file will contain \"before value <separator> after value\""
-msgstr "Se selezionata, quando c'è una differenza, il file destinazione conterrà \"valore precedente <separatore> valore successivo\""
+msgstr "Se selezionata, quando c'è una differenza, il file destinazione conterrà \"valore 1. file <separatore> valore 2. file\""
 
 msgid "Text to separate before and after values"
-msgstr "Testo di separazione prima e dopo i valori"
+msgstr "Testo di separazione valori 1. file e 2. file"
 
 msgid "Recursively tag childs of added or deleted nodes."
-msgstr "Tag relativi ricorsivi dei nodi aggiunti o eliminati."
+msgstr "Tag relativi ricorsivi dei nodi aggiunti o eliminati"
 
 msgid "Open a file"
 msgstr "Apri un file"
 
+#, c-format
+msgid "XML File With '%s' does not exist"
+msgstr "Il file XML con '%s' non esiste"
+
 msgid "xmlDiff two files"
-msgstr "Compara due file XML"
+msgstr "Comparazione di due file XML"
 
 msgid "Before"
 msgstr "1. file"
@@ -141,12 +145,12 @@ msgid "Diff Two XML Files"
 msgstr "Comparazione di due file XML"
 
 #, c-format
-msgid "XML File Before '%s' does not exists"
-msgstr ""
+msgid "XML File Before '%s' does not exist"
+msgstr "Il file XML prima di '%s' non esiste"
 
 #, c-format
-msgid "XML File After '%s' does not exists"
-msgstr ""
+msgid "XML File After '%s' does not exist"
+msgstr "Il file XML prima di '%s' non esiste"
 
 msgid "config.xml"
 msgstr "config.xml"
@@ -197,55 +201,55 @@ msgid "Separator"
 msgstr "Separatore"
 
 msgid "Tag childs"
-msgstr "Tag relativi"
+msgstr "Tag figli"
 
 msgid "Special Node Ids"
 msgstr "ID nodi speciali"
 
 msgid "Special Nodes Before Value"
-msgstr "Valore prima nodi speciali"
+msgstr "Nodi speciali prima del valore"
 
 msgid "&Open..."
 msgstr "&Apri..."
 
 msgid "Open a file."
-msgstr "Apre un file."
+msgstr "Apri un file"
 
 msgid "&Open and Diff..."
 msgstr "Apri e c&ompara..."
 
 msgid "Open and diff two XML files."
-msgstr "Apre e compara due file XML."
+msgstr "Apri e compara due file XML"
 
 msgid "&Save"
 msgstr "&Salva"
 
 msgid "Save the current file."
-msgstr "Salva il file attuale."
+msgstr "Salva il file attuale"
 
 msgid "&Save as..."
 msgstr "&Salva come..."
 
 msgid "Save the current file under another name."
-msgstr "Salva il file attuale con un nome diverso."
+msgstr "Salva il file attuale con un nome diverso"
 
 msgid "&Reload"
-msgstr "&Ricarica file"
+msgstr "&Ricarica e ri-compara file"
 
 msgid "Reload original file."
-msgstr "Ricarica il file originale."
+msgstr "Ricarica il file originale"
 
 msgid "&Preferences"
 msgstr "&Impostazioni"
 
 msgid "Define application's settings."
-msgstr "Configura le impostazioni dell'applicazione."
+msgstr "Configura le impostazioni dell'applicazione"
 
 msgid "&Quit"
 msgstr "&Esci"
 
 msgid "Quit the application."
-msgstr "Esce dall'applicazione."
+msgstr "Esci dall'applicazione"
 
 msgid "&File"
 msgstr "&File"
@@ -254,70 +258,70 @@ msgid "&Copy"
 msgstr "&Copia"
 
 msgid "Copy current node to clipboard."
-msgstr "Copia il nodo attuale negli Appunti."
+msgstr "Copie il nodo attuale negli Appunti"
 
 msgid "&Paste"
 msgstr "&Incolla"
 
 msgid "Paste to file."
-msgstr "Incolla nel file."
+msgstr "Incolla nel file"
 
 msgid "&Search..."
 msgstr "&Cerca..."
 
 msgid "Search nodes with XPath expression."
-msgstr "Cerca nodi con espressione XPath."
+msgstr "Cerca nodi con espressione XPath"
 
 msgid "&Next"
 msgstr "&Successivo"
 
 msgid "Next node of the previous search."
-msgstr "Nodo successivo della ricerca precedente."
+msgstr "Nodo successivo della ricerca precedente"
 
 msgid "&Expand All"
 msgstr "&Espandi tutto"
 
 msgid "Expand all nodes of selected item."
-msgstr "Espande tutti i nodi degli elementi selezionati."
+msgstr "Espande tutti i nodi degli elementi selezionati"
 
 msgid "Co&llapse All"
 msgstr "&Riduci tutto"
 
 msgid "Collapse all nodes of selected item."
-msgstr "Riduce tutti i nodi degli elementi selezionati."
+msgstr "Riduce tutti i nodi degli elementi selezionati"
 
 msgid "&Edit"
 msgstr "&Modifica"
 
 msgid "&Normal"
-msgstr "Visualizzazione &normale"
+msgstr "Visualizzazione standard"
 
 msgid "Normal display, with attributes and text inline."
-msgstr "Visualizzazione normale, con attributi e testo in linea."
+msgstr "Visualizzazione normale, con attributi e testo in linea"
 
 msgid "&Texts"
 msgstr "Visualizza solo &testo"
 
 msgid "Display with attributes inline, and texts as elements."
-msgstr "Visualizza con attributi relativi, e testo come elementi."
+msgstr "Visualizza con attributi relativi, e testo come elementi"
 
 msgid "&Full"
 msgstr "Visualizza &tutti gli elementi"
 
 msgid "Display everything as elements."
-msgstr "Visualizza qualsiasi cosa come elemento."
+msgstr "Visualizza qualsiasi cosa come elemento"
 
 msgid "&Open Local XSLT Display..."
 msgstr "&Apri file locale XSLT HTML..."
 
 msgid "Open a XSLT Local Display file."
-msgstr "Apre un file locale visualizzazione XSLT."
+msgstr "Apri un file locale visualizzazione XSLT"
 
 msgid "&Open HTML XSLT Display..."
 msgstr "&Apri visualizzazione XSLT HTML..."
 
 msgid "Open a XSLT HTML Display file."
-msgstr "Apre un file visualizzazione XSLT HTML."
+msgstr "Apri un file visualizzazione XSLT HTML"
 
 msgid "&Display"
 msgstr "&Visualizza"
@@ -326,19 +330,19 @@ msgid "&Diff to..."
 msgstr "&Compara con il file..."
 
 msgid "Diff current XML file to another file."
-msgstr "Compara il file XML attuale con un altro file."
+msgstr "Compara il file XML attuale con un altro file"
 
 msgid "&Show differences"
-msgstr "Vi&sualizza differenze"
+msgstr "&Visualizza differenze"
 
 msgid "Highlight differents elements."
-msgstr "Evidenzia elementi differenti."
+msgstr "Evidenzia elementi differenti"
 
 msgid "Show &only differences"
 msgstr "Visualizza s&olo le differenze"
 
 msgid "Show only elements with differences."
-msgstr "Visualizza solo elementi differenti."
+msgstr "Visualizza solo elementi differenti"
 
 msgid "&Diff"
 msgstr "&Compara"
@@ -347,25 +351,25 @@ msgid "Help..."
 msgstr "Guida in linea..."
 
 msgid "Main help file."
-msgstr "File principale Guida in linea."
+msgstr "File principale Guida in linea"
 
 msgid "Diff &icon's significations..."
 msgstr "Significato icone differenze..."
 
 msgid "Explains diff icons."
-msgstr "Visualizza significato differenti icone."
+msgstr "Visualizza significato icone differenze"
 
 msgid "Quick &XPath reference..."
 msgstr "Guida in linea rapida &XPath..."
 
 msgid "XPath reference URLs."
-msgstr "URL riferimento XPath."
+msgstr "URL riferimento XPath"
 
 msgid "&About..."
-msgstr "&Info sul programma..."
+msgstr "&Info sul programma"
 
 msgid "About this application."
-msgstr "Info su questo programma."
+msgstr "Info su questo programma"
 
 msgid "&Help"
 msgstr "&Guida in linea"
@@ -398,7 +402,7 @@ msgid "Search"
 msgstr "Cerca"
 
 msgid "Search."
-msgstr "Cerca."
+msgstr "Cerca"
 
 msgid "Ready"
 msgstr "Pronto"
@@ -410,7 +414,7 @@ msgid "italian translation"
 msgstr "traduzione italiana"
 
 msgid "Significations of the diff icons"
-msgstr "Significato icone delle differenze"
+msgstr "Significato delle icone delle differenze"
 
 msgid "Ok"
 msgstr "OK"
@@ -425,7 +429,7 @@ msgid "is removed in the second file (present in the first)"
 msgstr "non è presente nel secondo file (è presente solo nel primo)"
 
 msgid "has different values in the two files (modified)"
-msgstr "hanno differenti valori nei due file (modificati)"
+msgstr "hanno differenti valore nei due file (modificati)"
 
 msgid "is a node with no differences, but differences exist on children nodes"
 msgstr "è un nodo senza differenze, la differenza esiste nel nodo figlio"
@@ -479,7 +483,7 @@ msgid "Diff two XML File"
 msgstr "Comparazione di due file XML"
 
 msgid "Unexpected error while getting the string."
-msgstr "Errore inaspettato durante l'ottenimento stringa."
+msgstr "Errore inaspettato durante l'ottenimento stringa"
 
 msgid "XPath Expression search :"
 msgstr "Espressione XPath da cercare:"
@@ -491,7 +495,7 @@ msgid "&Custom Displays"
 msgstr "&Visualizzazione personalizzata"
 
 msgid "List of custom display in your configuration file."
-msgstr "Elementi visualizzazione personalizzata nel file configurazione."
+msgstr "Elementi visualizzazione personalizzata nel file configurazione"
 
 #, c-format
 msgid "Open Local XSLT Display with file %s"
@@ -503,19 +507,19 @@ msgstr "Apri visualizzazione XSLT HTML con il file %s"
 
 #, c-format
 msgid "Error while Loading the file %s"
-msgstr "Errore durante il caricamento del file %s"
+msgstr "Errore durante il caricamento del file '%s'"
 
 #, c-format
 msgid "Parsing Before file OK : %ld nodes"
-msgstr "Analisi prima di file OK : %ld nodi"
+msgstr "Analisi prima dell'OK file: '%ld' nodi"
 
 #, c-format
 msgid "Parsing After file OK : %ld nodes"
-msgstr "Analisi dopo di file OK : %ld nodi"
+msgstr "Analisi dopo OK file: '%ld' nodi"
 
 #, c-format
 msgid "Diff OK : %ld nodes processed"
-msgstr "Comparazione OK : %ld nodi elaborati"
+msgstr "Comparazione OK: '%ld' nodi elaborati"
 
 #, c-format
 msgid "Diff in progress... (%d%%)"
@@ -526,13 +530,13 @@ msgid "%d%%"
 msgstr "%d%%"
 
 msgid "Unable to instanciate stuctures, probably due to a memory problem"
-msgstr "Impossibile creare la struttura, probabilmente a causa di problemi di memoria"
+msgstr "Impossibile creare la struttura, probabilmente a causa di problemi di memoria."
 
 msgid "Error while diffing the files."
-msgstr "Errore durante la comparazione dei file."
+msgstr "Errore durante la comparazione dei file"
 
 msgid "Invalid selected node."
-msgstr "Nodo selezione non valido."
+msgstr "Nodo selezione non valido"
 
 msgid "Unable to create the structure. Memory may be full."
 msgstr "Impossibile creare la struttura. La memoria potrebbe essere esaurita."
@@ -545,7 +549,7 @@ msgid "Node %d of %d found (%s)"
 msgstr "Trovati nodo %d di %d nodi (%s)."
 
 msgid "No nodes found : "
-msgstr "Nessun nodo trovato: "
+msgstr "Nessun nodo trovato:"
 
 #, c-format
 msgid "About %s"
@@ -561,7 +565,7 @@ msgid "All Nodes"
 msgstr "Tutti i nodi"
 
 msgid "All Nodes named nodeName"
-msgstr "Tutti i nodi nominati NomeNodo"
+msgstr "Tutti i nodi come NomeNodo"
 
 msgid "All Nodes named nodeName with parent parent"
 msgstr "Tutti i nomi nominati NomeNodo con genitori"
@@ -573,7 +577,7 @@ msgid "All Nodes with attribute named attributeName with value toto"
 msgstr "Tutti i nodi con attributo NomeAttributo con valore xxxx"
 
 msgid "All Nodes with content text toto"
-msgstr "Tutti i nodi contenenti il testo xxxx"
+msgstr "Tutti i nodi contenti il testo xxxx"
 
 msgid "Added Nodes"
 msgstr "Nodi aggiunti"

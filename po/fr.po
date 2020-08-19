@@ -137,7 +137,7 @@ msgid "Open a file"
 msgstr "Ouvrir un fichier"
 
 #, c-format
-msgid "XML File With '%s' does not exists"
+msgid "XML File With '%s' does not exist"
 msgstr "Le fichier XML Avec '%s' n'existe pas"
 
 msgid "xmlDiff two files"
@@ -153,11 +153,11 @@ msgid "Diff Two XML Files"
 msgstr "Compare deux fichiers XML"
 
 #, c-format
-msgid "XML File Before '%s' does not exists"
+msgid "XML File Before '%s' does not exist"
 msgstr "Le fichier XML Avant '%s' n'existe pas"
 
 #, c-format
-msgid "XML File After '%s' does not exists"
+msgid "XML File After '%s' does not exist"
 msgstr "Le fichier XML Après '%s' n'existe pas"
 
 msgid "config.xml"

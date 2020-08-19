@@ -73,9 +73,9 @@ void xtnDialogDiffCurrent::do_layout()
 	szWith->AddSpacer(5);
     szWith->Add(txWith, 1, wxALIGN_CENTER_VERTICAL, 0);
     szWith->Add(btBrowseFile, 0, wxALIGN_CENTER_VERTICAL, 0);
-    szMain->Add(szWith, 0, wxALL|wxEXPAND|wxALIGN_RIGHT, 3);
-    szBefore->Add(radioBefore, 0, wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 0);
-    szBefore->Add(ioAfter, 0, wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 0);
+    szMain->Add(szWith, 0, wxALL|wxEXPAND /*|wxALIGN_RIGHT*/, 3);
+    szBefore->Add(radioBefore, 0, wxEXPAND/*|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL*/, 0);
+    szBefore->Add(ioAfter, 0, wxEXPAND/*|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL*/, 0);
     szMain->Add(szBefore, 0, wxALL|wxALIGN_CENTER_HORIZONTAL, 3);
     szIds->Add(lbIds, 0, wxALIGN_CENTER_VERTICAL, 0);
 	szIds->AddSpacer(5);
@@ -139,7 +139,7 @@ void xtnDialogDiffCurrent::OnBrowseWith(wxCommandEvent &event)
 void xtnDialogDiffCurrent::OnDiff(wxCommandEvent &event)
 {
     if (!wxFileExists(this->withFilename())) {
-        wxMessageBox(wxString::Format(_("XML File With '%s' does not exists"), this->withFilename()), XTN_NAME, wxOK | wxICON_ERROR);
+        wxMessageBox(wxString::Format(_("XML File With '%s' does not exist"), this->withFilename()), XTN_NAME, wxOK | wxICON_ERROR);
         return;
     }
     EndModal(wxID_OK);
