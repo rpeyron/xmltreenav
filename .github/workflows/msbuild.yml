@@ -36,6 +36,10 @@ jobs:
         vcpkgTriplet: '${{ matrix.triplet }}'
         vcpkgArguments: '${{ matrix.vcpkgPackages }}'      
         vcpkgGitCommitId: 0bf3923f9fab4001c00f0f429682a0853b5749e0
+    
+    - name: Integrate vcpkg to msbuild
+      run: vcpkg.exe integrate
+      working-directory: ${{env.GITHUB_WORKSPACE}}/vcpkg
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
