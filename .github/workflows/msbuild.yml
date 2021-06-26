@@ -15,7 +15,7 @@ jobs:
         - platform: Win32
           configuration: Release
           triplet: x86-windows-static
-          vcpkgPackages: 'wxwidgets libxml2 libxslt expat'
+          vcpkgPackages: 'wxwidgets libxml2 libxslt'
     steps:
     - name: Checkout current repository
       uses: actions/checkout@v2
@@ -48,12 +48,21 @@ jobs:
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{matrix.configuration}} /p:Plaform=${{matrix.platform}} ${{env.SOLUTION_FILE_PATH}}
 
+    - name: Install gettex
+      run: nuget install gettext
+      
+    - name: Compile PO files
+      shell: cmd
+      run: .\language_mo_build.bat
+      working-directory: ${{env.WIN_BUILD_TOOLS}}/../../po
+
     - name: Create Package
-      run: make_zip.bat
+      shell: cmd
+      run: .\make_zip.bat
       working-directory: ${{env.WIN_BUILD_TOOLS}}      
       
     - name: Create Installer
-      run: iscc XmlTreeNax.iss
+      run: iscc.exe XmlTreeNax.iss
       working-directory: ${{env.WIN_BUILD_TOOLS}}
       
     - uses: actions/upload-artifact@v2
