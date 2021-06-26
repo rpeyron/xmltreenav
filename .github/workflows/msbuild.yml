@@ -74,11 +74,11 @@ jobs:
     - name: Add suffix
       shell: cmd
       run: |
-        ren xmltreenav_bin.zip xmltreenav_bin-${{matrix.configuration}}.zip
-        ren xmltreenav_setup.exe xmltreenav_setup-${{matrix.configuration}}.exe
+        ren xmltreenav_bin.zip xmltreenav_bin-${{matrix.suffix}}.zip
+        ren xmltreenav_setup.exe xmltreenav_setup-${{matrix.suffix}}.exe
       working-directory: ${{env.WIN_BUILD_TOOLS}}/../../distrib
       
     - uses: actions/upload-artifact@v2
       with:
-        name: xmltreenav-distrib-${{matrix.configuration}}
+        name: xmltreenav-distrib-${{matrix.suffix}}
         path: xmlTreeNav/distrib
