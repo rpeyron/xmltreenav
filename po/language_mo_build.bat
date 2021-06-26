@@ -14,6 +14,7 @@ ECHO.
 REM MSGATTRIB/MSGFMT commands should be in path
 
 ECHO **** Copy '%TEMPLATE-FILE%' language template in '%DESTINATION-PATH%'
+if not exist   "%DESTINATION-PATH%"  mkdir "%DESTINATION-PATH%" >NUL
 copy %TEMPLATE-FILE% %DESTINATION-PATH%\%TEMPLATE-FILE% >NUL
 ECHO.
 
