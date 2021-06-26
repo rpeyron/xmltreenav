@@ -1,3 +1,5 @@
+[![MSBuild](https://github.com/rpeyron/xmltreenav/actions/workflows/msbuild.yml/badge.svg)](https://github.com/rpeyron/xmltreenav/actions/workflows/msbuild.yml)
+
 # xmltreenav
 
 xmlTreeNav is a GUI for libxmldiff, and easy tree navigation :
@@ -20,6 +22,8 @@ sudo apt-add-repository ppa:rpeyron/ppa
 ```
 
 # Build instructions
+
+xmlTreeNav is now built by GitGub Actions continuuous integration. So you may also compile it on your own by forking this repository.
 
 ## Dependancies
 
