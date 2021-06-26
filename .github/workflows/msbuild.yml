@@ -4,6 +4,7 @@ on: [push]
 
 env:
   SOLUTION_FILE_PATH: xmlTreeNav/build/vc2019
+  WIN_BUILD_TOOLS: xmlTreeNav/build/win32
 
 jobs:
   build:
@@ -46,3 +47,16 @@ jobs:
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{matrix.configuration}} /p:Plaform=${{matrix.platform}} ${{env.SOLUTION_FILE_PATH}}
+
+    - name: Create Package
+      run: make_zip.bat
+      working-directory: ${{env.WIN_BUILD_TOOLS}}      
+      
+    - name: Create Installer
+      run: iscc XmlTreeNax.iss
+      working-directory: ${{env.WIN_BUILD_TOOLS}}
+      
+    - uses: actions/upload-artifact@v2
+      with:
+        name: xmltreenav-distrib
+        path: xmlTreeNav/distrib
