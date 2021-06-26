@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "xmlTreeNav"
-#define MyAppBaseVersion="0.3.5"
-#define MyAppFullVersion=MyAppBaseVersion + "pre"
+#define MyAppBaseVersion="0.3.4"
+#define MyAppFullVersion=MyAppBaseVersion + "-2"
 #define MyAppPublisher="Remi Peyronnet"
 #define MyAppCopyright="Copyright (c) Remi Peyronnet"
 #define MyAppURL="http://www.lprp.fr/soft/xml/xmltreenav/xmltreenav_en.php3"

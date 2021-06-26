@@ -1,0 +1,62 @@
+name: MSBuild
+
+on: [push]
+
+env:
+  SOLUTION_FILE_PATH: xmlTreeNav/build/vc2019
+  WIN_BUILD_TOOLS: xmlTreeNav/build/win32
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        include:
+        - platform: Win32
+          configuration: Release
+          triplet: x86-windows-static
+          vcpkgPackages: 'wxwidgets libxml2 libxslt expat'
+    steps:
+    - name: Checkout current repository
+      uses: actions/checkout@v2
+      with:
+        path: 'xmlTreeNav'
+      
+    - name: Checkout dependancies repository
+      uses: actions/checkout@v2
+      with: 
+        repository: 'rpeyron/libxmldiff'
+        path: 'libxmldiff'
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+      
+    - name: Install vcpkg packages
+      uses: lukka/run-vcpkg@v7.3
+      with:
+        vcpkgTriplet: '${{ matrix.triplet }}'
+        vcpkgArguments: '${{ matrix.vcpkgPackages }}'      
+        vcpkgGitCommitId: 0bf3923f9fab4001c00f0f429682a0853b5749e0
+    
+    - name: Integrate vcpkg to msbuild
+      run: vcpkg.exe integrate install
+      working-directory: ${{env.GITHUB_WORKSPACE}}/vcpkg
+
+    - name: Build
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild /m /p:Configuration=${{matrix.configuration}} /p:Plaform=${{matrix.platform}} ${{env.SOLUTION_FILE_PATH}}
+
+    - name: Create Package
+      run: make_zip.bat
+      working-directory: ${{env.WIN_BUILD_TOOLS}}      
+      
+    - name: Create Installer
+      run: iscc XmlTreeNax.iss
+      working-directory: ${{env.WIN_BUILD_TOOLS}}
+      
+    - uses: actions/upload-artifact@v2
+      with:
+        name: xmltreenav-distrib
+        path: xmlTreeNav/distrib
