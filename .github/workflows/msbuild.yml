@@ -48,6 +48,14 @@ jobs:
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{matrix.configuration}} /p:Plaform=${{matrix.platform}} ${{env.SOLUTION_FILE_PATH}}
 
+    - name: Install gettex
+      run: nuget install gettext
+      
+    - name: Compile PO files
+      shell: cmd
+      run: .\language_mo_build.bat
+      working-directory: ${{env.WIN_BUILD_TOOLS}}/../../po
+
     - name: Create Package
       shell: cmd
       run: .\make_zip.bat
