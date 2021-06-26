@@ -23,7 +23,7 @@ sudo apt-add-repository ppa:rpeyron/ppa
 
 # Build instructions
 
-xmlTreeNav is now built by GitGub Actions continuuous integration. So you may also compile it on your own by forking this repository.
+xmlTreeNav is now built by GitHub Actions continuuous integration. So you may also compile it on your own by forking this repository.
 
 ## Dependancies
 
