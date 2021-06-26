@@ -1,0 +1,41 @@
+name: MSBuild
+
+on: [push]
+
+env:
+  SOLUTION_FILE_PATH: build/vc2019
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        include:
+        - platform: Win32
+          configuration: Release
+          triplet: x86-windows-static
+          vcpkgPackages: 'wxwidgets libxml2 libxslt'
+    steps:
+    - name: Checkout current repository
+      uses: actions/checkout@v2
+      
+    - name: Checkout dependancies repository
+      uses: actions/checkout@v2
+      with: 
+        repository: 'rpeyron/libxmldiff'
+        path: '..'
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+      
+    - name: Install vcpkg packages
+      uses: lukka/run-vcpkg@v7.3
+      with:
+        vcpkgTriplet: '${{ matrix.triplet }}'
+        vcpkgArguments: '${{ matrix.vcpkgPackages }}'      
+
+    - name: Build
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild /m /p:Configuration=${{matrix.configuration}};Plaform=${{matrix.platform}} ${{env.SOLUTION_FILE_PATH}}
