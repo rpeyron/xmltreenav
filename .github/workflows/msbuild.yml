@@ -62,7 +62,7 @@ jobs:
       working-directory: ${{env.WIN_BUILD_TOOLS}}      
       
     - name: Create Installer
-      run: iscc.exe XmlTreeNax.iss
+      run: iscc.exe XmlTreeNav.iss
       working-directory: ${{env.WIN_BUILD_TOOLS}}
       
     - uses: actions/upload-artifact@v2
