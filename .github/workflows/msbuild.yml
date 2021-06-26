@@ -49,7 +49,7 @@ jobs:
       run: msbuild /m /p:Configuration=${{matrix.configuration}} /p:Plaform=${{matrix.platform}} ${{env.SOLUTION_FILE_PATH}}
 
     - name: Install gettex
-      run: nuget install gettext
+      run: nuget install Gettext.Tools
       
     - name: Compile PO files
       shell: cmd
