@@ -3,7 +3,7 @@ name: MSBuild
 on: [push]
 
 env:
-  SOLUTION_FILE_PATH: build/vc2019
+  SOLUTION_FILE_PATH: xmlTreeNav/build/vc2019
 
 jobs:
   build:
@@ -18,12 +18,14 @@ jobs:
     steps:
     - name: Checkout current repository
       uses: actions/checkout@v2
+      with:
+        path: 'xmlTreeNav'
       
     - name: Checkout dependancies repository
       uses: actions/checkout@v2
       with: 
         repository: 'rpeyron/libxmldiff'
-        path: '..'
+        path: 'libxmldiff'
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
