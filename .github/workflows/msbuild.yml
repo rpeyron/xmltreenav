@@ -15,7 +15,7 @@ jobs:
         - platform: Win32
           configuration: Release
           triplet: x86-windows-static
-          vcpkgPackages: 'wxwidgets libxml2 libxslt'
+          vcpkgPackages: 'wxwidgets libxml2 libxslt expat'
     steps:
     - name: Checkout current repository
       uses: actions/checkout@v2
