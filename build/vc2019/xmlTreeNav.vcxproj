@@ -81,7 +81,7 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>libcmt.lib;libcpmt.lib;libxmldiff.lib;libxml2.lib;libxslt.lib;libexslt.lib;wxbase31u.lib;wxbase31u_net.lib;wxbase31u_xml.lib;wxmsw31u_richtext.lib;wxmsw31u_xrc.lib;wxmsw31u_adv.lib;wxmsw31u_aui.lib;wxmsw31u_core.lib;wxmsw31u_gl.lib;wxmsw31u_html.lib;wxmsw31u_media.lib;wxmsw31u_qa.lib;zlib.lib;expat.lib;jpeg.lib;libpng16.lib;wxregexu.lib;tiff.lib;odbc32.lib;odbccp32.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;</AdditionalDependencies>
+      <AdditionalDependencies>libcmt.lib;libcpmt.lib;libxmldiff.lib;libxml2.lib;libxslt.lib;libexslt.lib;wxbase31u.lib;wxbase31u_net.lib;wxbase31u_xml.lib;wxmsw31u_richtext.lib;wxmsw31u_xrc.lib;wxmsw31u_adv.lib;wxmsw31u_aui.lib;wxmsw31u_core.lib;wxmsw31u_gl.lib;wxmsw31u_html.lib;wxmsw31u_media.lib;wxmsw31u_qa.lib;zlib.lib;jpeg.lib;libpng16.lib;wxregexu.lib;tiff.lib;odbc32.lib;odbccp32.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
@@ -120,6 +120,19 @@
     <None Include="..\..\po\po_update.bat" />
     <None Include="..\..\po\xmlTreeNav.pot" />
     <None Include="..\..\resources\resource.inc" />
+    <None Include="..\..\resources\wx\msw\blank.cur" />
+    <None Include="..\..\resources\wx\msw\bullseye.cur" />
+    <None Include="..\..\resources\wx\msw\hand.cur" />
+    <None Include="..\..\resources\wx\msw\noentry.cur" />
+    <None Include="..\..\resources\wx\msw\pbrush.cur" />
+    <None Include="..\..\resources\wx\msw\pencil.cur" />
+    <None Include="..\..\resources\wx\msw\pntleft.cur" />
+    <None Include="..\..\resources\wx\msw\pntright.cur" />
+    <None Include="..\..\resources\wx\msw\query.cur" />
+    <None Include="..\..\resources\wx\msw\rightarr.cur" />
+    <None Include="..\..\resources\wx\msw\roller.cur" />
+    <None Include="..\..\resources\wx\msw\size.cur" />
+    <None Include="..\..\resources\wx\msw\watch1.cur" />
     <None Include="..\..\TODO" />
     <None Include="..\win32\XmlTreeNav.iss" />
   </ItemGroup>
@@ -129,6 +142,21 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\..\bin\config.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\lib\wxactivex\wxIE.ico" />
+    <Image Include="..\..\resources\extras\wxbitmap.bmp" />
+    <Image Include="..\..\resources\wx\msw\cdrom.ico" />
+    <Image Include="..\..\resources\wx\msw\computer.ico" />
+    <Image Include="..\..\resources\wx\msw\csquery.bmp" />
+    <Image Include="..\..\resources\wx\msw\disable.bmp" />
+    <Image Include="..\..\resources\wx\msw\drive.ico" />
+    <Image Include="..\..\resources\wx\msw\file1.ico" />
+    <Image Include="..\..\resources\wx\msw\floppy.ico" />
+    <Image Include="..\..\resources\wx\msw\folder1.ico" />
+    <Image Include="..\..\resources\wx\msw\folder2.ico" />
+    <Image Include="..\..\resources\wx\msw\removble.ico" />
+    <Image Include="..\..\resources\xmltreenav3.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

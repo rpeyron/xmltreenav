@@ -1,8 +1,8 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Developer Studio generated include file.
-// Used by resources.rc
+// fichier Include Microsoft Visual C++.
+// Utilisé par resources.rc
 //
-#define IDI_ICON1                       128
+#define IDI_ICON1                       1
 
 // Next default values for new objects
 // 

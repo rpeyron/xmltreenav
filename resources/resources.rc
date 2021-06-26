@@ -92,6 +92,8 @@ WXCURSOR_RIGHT_ARROW    CURSOR  DISCARDABLE     "wx/msw/rightarr.cur"
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
+IDI_MAINICON            ICON    DISCARDABLE     "xmltreenav3.ico"
+
 WXICON_SMALL_CLOSED_FOLDER ICON    DISCARDABLE     "wx/msw/folder1.ico"
 WXICON_SMALL_OPEN_FOLDER ICON    DISCARDABLE     "wx/msw/folder2.ico"
 WXICON_SMALL_FILE       ICON    DISCARDABLE     "wx/msw/file1.ico"
@@ -100,7 +102,6 @@ WXICON_SMALL_DRIVE      ICON    DISCARDABLE     "wx/msw/drive.ico"
 WXICON_SMALL_CDROM      ICON    DISCARDABLE     "wx/msw/cdrom.ico"
 WXICON_SMALL_FLOPPY     ICON    DISCARDABLE     "wx/msw/floppy.ico"
 WXICON_SMALL_REMOVEABLE ICON    DISCARDABLE     "wx/msw/removble.ico"
-IDI_MAINICON            ICON    DISCARDABLE     "xmltreenav.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
