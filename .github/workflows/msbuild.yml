@@ -16,6 +16,12 @@ jobs:
           configuration: Release
           triplet: x86-windows-static
           vcpkgPackages: 'wxwidgets libxml2 libxslt'
+          suffix: x86
+        - platform: x64
+          configuration: Release
+          triplet: x64-windows-static
+          vcpkgPackages: 'wxwidgets libxml2 libxslt'
+          suffix: x64
     steps:
     - name: Checkout current repository
       uses: actions/checkout@v2
@@ -65,7 +71,14 @@ jobs:
       run: iscc.exe XmlTreeNav.iss
       working-directory: ${{env.WIN_BUILD_TOOLS}}
       
+    - name: Add suffix
+      shell: cmd
+      run: |
+        ren xmltreenav_bin.zip xmltreenav_bin-${{matrix.configuration}}.zip
+        ren xmltreenav_setup.exe xmltreenav_setup-${{matrix.configuration}}.exe
+      working-directory: ${{env.WIN_BUILD_TOOLS}}/../../distrib
+      
     - uses: actions/upload-artifact@v2
       with:
-        name: xmltreenav-distrib
+        name: xmltreenav-distrib-${{matrix.configuration}}
         path: xmlTreeNav/distrib
