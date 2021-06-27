@@ -8,6 +8,7 @@
 #define MyAppCopyright="Copyright (c) Remi Peyronnet"
 #define MyAppURL="http://www.lprp.fr/soft/xml/xmltreenav/xmltreenav_en.php3"
 #define MyAppOutFile="xmltreenav_setup"
+#define MyAppPlatform="32bit"
 
 [Setup]
 AppName={#MyAppName}
@@ -20,20 +21,20 @@ DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=true
 DisableProgramGroupPage=yes
-OutputBaseFilename={#MyAppOutFile}
+OutputBaseFilename={#MyAppOutFile}_{#MyAppPlatform}
 OutputDir=..\..\distrib\
 ShowLanguageDialog=yes
 AlwaysShowGroupOnReadyPage=True
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
 
-AppVerName={#MyAppName} {#MyAppFullVersion}
-UninstallDisplayName={#MyAppName}
+AppVerName={#MyAppName} {#MyAppFullVersion} ({#MyAppPlatform})
+UninstallDisplayName={#MyAppName} ({#MyAppPlatform})
 UninstallDisplayIcon={app}\xmlTreeNav.exe
 VersionInfoCompany={#MyAppPublisher}
-; VersionInfoDescription={#MyAppName}
+VersionInfoDescription={#MyAppName} ({#MyAppPlatform}) installer
 VersionInfoVersion={#MyAppBaseVersion}
-VersionInfoProductName={#MyAppName}
+VersionInfoProductName={#MyAppName} ({#MyAppPlatform})
 AppCopyright={#MyAppCopyright}
 
 
