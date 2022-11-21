@@ -2,8 +2,14 @@
 <xmltreenav>
 
   <!-- @name attribute is used to create the menu ; string is localized with po/mo files ; see po/extra-strings.cpp for defaults entries -->
-  <display name="Display only added, removed or equal" type="local" file="filter-added-removed-or-equal.xsl" />
-  <!-- 
+  <display name="Display only added" type="local" file="xslt/filter-added.xsl" />
+  <display name="Display only removed" type="local" file="xslt/filter-removed.xsl" />
+  <display name="Display only added or removed" type="local" file="xslt/filter-added-removed.xsl" />
+  <display name="Display only added, removed or equal" type="local" file="xslt/filter-added-removed-or-equal.xsl" />
+
+  <display name="Display HTML Lists of differences" type="html" file="xslt/html-lists.xsl" />
+
+   <!-- 
   <display name="HTML Voyage" type="html" file="voyage.xsl" />
   <display name="Test Local" type="local" file="test.xsl" />
   -->
