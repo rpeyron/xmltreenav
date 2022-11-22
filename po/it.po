@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: xmlTreeNav italian language v. 19.08.2020\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-19 12:34+0200\n"
+"Report-Msgid-Bugs-To: remi+xmltreenav@via.ecp.fr\n"
+"POT-Creation-Date: 2022-11-22 21:40+0100\n"
 "PO-Revision-Date: 2020-08-19 15:29+0200\n"
 "Last-Translator: bovirus <bovirus@gmail.com>\n"
 "Language-Team: Italian <bovirus@gmail.com>\n"
@@ -802,33 +802,52 @@ msgid "Translators"
 msgstr "Traduttori"
 
 #: po/extra-strings.cpp:7
-msgid "Display only added, removed or equal"
+#, fuzzy
+msgid "Display only added"
+msgstr "Visualizza solo aggiunte, rimosse o identiche"
+
+#: po/extra-strings.cpp:8
+#, fuzzy
+msgid "Display only removed"
 msgstr "Visualizza solo aggiunte, rimosse o identiche"
 
 #: po/extra-strings.cpp:9
+#, fuzzy
+msgid "Display only added or removed"
+msgstr "Visualizza solo aggiunte, rimosse o identiche"
+
+#: po/extra-strings.cpp:10
+msgid "Display only added, removed or equal"
+msgstr "Visualizza solo aggiunte, rimosse o identiche"
+
+#: po/extra-strings.cpp:12
+msgid "Display HTML Lists of differences"
+msgstr ""
+
+#: po/extra-strings.cpp:14
 msgid "All Nodes"
 msgstr "Tutti i nodi"
 
-#: po/extra-strings.cpp:10
+#: po/extra-strings.cpp:15
 msgid "All Nodes named nodeName"
 msgstr "Tutti i nodi come NomeNodo"
 
-#: po/extra-strings.cpp:11
+#: po/extra-strings.cpp:16
 msgid "All Nodes named nodeName with parent parent"
 msgstr "Tutti i nomi nominati NomeNodo con genitori"
 
-#: po/extra-strings.cpp:12
+#: po/extra-strings.cpp:17
 msgid "All Nodes with attribute named attributeName"
 msgstr "Tutti i nodi con attributo NomeAttributo"
 
-#: po/extra-strings.cpp:13
+#: po/extra-strings.cpp:18
 msgid "All Nodes with attribute named attributeName with value toto"
 msgstr "Tutti i nodi con attributo NomeAttributo con valore xxxx"
 
-#: po/extra-strings.cpp:14
+#: po/extra-strings.cpp:19
 msgid "All Nodes with content text toto"
 msgstr "Tutti i nodi contenti il testo xxxx"
 
-#: po/extra-strings.cpp:15
+#: po/extra-strings.cpp:20
 msgid "Added Nodes"
 msgstr "Nodi aggiunti"
