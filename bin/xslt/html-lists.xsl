@@ -17,13 +17,11 @@
  <h1>Modified</h1>
  <table>
  <tr><th>Id</th><th>Value</th></tr>
- <xsl:apply-templates select="//*[@diff:status='added']" />
  <xsl:apply-templates select="//*[@diff:status='modified']" />
  </table>
  <h1>Removed</h1>
   <table>
  <tr><th>Id</th><th>Value</th></tr>
- <xsl:apply-templates select="//*[@diff:status='added']" />
  <xsl:apply-templates select="//*[@diff:status='removed']" />
  </table>
  </body>
