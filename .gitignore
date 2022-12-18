@@ -6,8 +6,12 @@ autom4te.cache
 ABOUT-NLS
 debian
 
+*.exe
+*.o
+*.a
 *.gmo
 *.po.orig
+*.htb
 
 Makefile
 Makefile.in

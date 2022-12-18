@@ -7,8 +7,6 @@ EXTRA_DIST = config.rpath m4/ChangeLog  \
         INSTALL \
         NEWS \
         TODO \
-		bin/config.xml \
-		bin/filter-added-removed-or-equal.xsl \
         build/dev-cpp/xmlTreeNav.layout \
         build/dev-cpp/xmlTreeNav.dev \
         build/dev-cpp/xmlTreeNav_private.h \

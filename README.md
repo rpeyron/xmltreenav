@@ -54,9 +54,28 @@ sudo apt-get install libc6 libxml2,libxslt1.1 libxmldiff libwxgtk3.0-0v5
 
 ## Windows build
 
+### With Visual Studio
+
 Windows Build is done with Visual Studio Community Edition. 
 Please use the latest version in build/ (older vc version are not maintained)
 
+### With vscode and msys2
+
+To build with msys2/mingw64:
+
+You need to compile and install libxmldiff first
+
+```
+pacman -S mingw-w64-x86_64-wxwidgets3.2-msw mingw-w64-x86_64-wxwidgets3.2-common
+pacman -S zip
+./configure
+make
+```
+
+Note: the build with msys2 won't be statically linked, so if you want to use it outside the msys2 environment, you will need to collect the required DLL to identify with:
+```
+ldd src/xmltreenav.exe | grep mingw
+```
 
 # Contributing
 

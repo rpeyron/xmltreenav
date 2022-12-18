@@ -1,4 +1,4 @@
-AC_INIT(xmlTreeNav,0.3.4-2)
+AC_INIT([xmlTreeNav],[0.3.4-2])
 AC_CONFIG_SRCDIR([configure.ac])
 AM_INIT_AUTOMAKE
 AC_PROG_CC
@@ -7,10 +7,18 @@ AC_PROG_CXX
 AC_PROG_RANLIB
 AC_PROG_INSTALL
 
+
 dnl wxWindows -----
-AM_OPTIONS_WXCONFIG
-reqwx=3.0.0
-AM_PATH_WXCONFIG($reqwx, wxWin=1)
+WX_CONFIG_OPTIONS
+WX_STANDARD_OPTIONS([debug,unicode,shared,toolkit,wxshared])
+
+WX_DEBUG=$DEBUG
+WX_UNICODE=$UNICODE
+
+WX_CONVERT_STANDARD_OPTIONS_TO_WXCONFIG_FLAGS
+WX_CONFIG_CHECK([3.0.0], [wxWin=1],,[html,core,net,base],[$WXCONFIG_FLAGS])
+WX_DETECT_STANDARD_OPTION_VALUES
+
 if test "$wxWin" != 1; then
 	AC_MSG_ERROR([
 		wxWidgets must be installed on your system.
@@ -23,17 +31,6 @@ if test "$wxWin" != 1; then
 		])
 fi
 dnl --------------
-
-dnl libxml
-AM_PATH_XML2( 2.0.0, , AC_MSG_ERROR(libxml2 must be installed.) )
-AC_CHECK_LIB(xslt, main, , AC_MSG_ERROR(libxslt must be installed.))
-AC_CHECK_LIB(exslt, main, , AC_MSG_ERROR(libexslt must be installed.))
-
-PKG_CHECK_MODULES(LIBXMLDIFF, libxmldiff >= 0.1,
-		[],
-		[AC_MSG_FAILURE([libxmldiff not found])]
-		)
-
 
 AC_ARG_ENABLE(debug,
 [  --enable-debug    Turn on debugging],
@@ -48,16 +45,26 @@ esac],[debug=false])
 
 dnl Internationalization
 AM_GNU_GETTEXT([external])
-AM_GNU_GETTEXT_VERSION([0.19.8])
+AM_GNU_GETTEXT_VERSION([0.21])
+
+
+dnl libxml
+#AM_PATH_XML2( 2.0.0, , AC_MSG_ERROR(libxml2 must be installed.) )
+#AC_CHECK_LIB(xslt, main, , AC_MSG_ERROR(libxslt must be installed.))
+#AC_CHECK_LIB(exslt, main, , AC_MSG_ERROR(libexslt must be installed.))
+
+PKG_CHECK_MODULES([libxml], [libxml-2.0 >= 2.6.26 libxslt libexslt])
 
 dnl libxmldiff pkg-config
 PKG_CHECK_MODULES([libxmldiff], [libxmldiff >= 0.2.0])
 
+# Static link attempts: -static -static-libgcc -static-libstdc++
+
 DEBUG="-g -H "
-LIBS="$DEBUGG $LIBS $WX_LIBS $XML_LIBS $libxmldiff_LIBS"
-CXXFLAGS="$DEBUGG $CXXFLAGS $WX_CXXFLAGS $XML_CXXFLAGS $libxmldiff_CXXFLAGS"
-CPPFLAGS="$DEBUGG $CPPFLAGS $WX_CPPFLAGS $XML_CPPFLAGS $libxmldiff_CPPFLAGS"
-CFLAGS="$DEBUGG $CFLAGS $WX_CFLAGS $XML_CFLAGS $libxmldiff_CFLAGS"
+LIBS="$DEBUGG $LIBS $WX_LIBS $libxml_LIBS $libxmldiff_LIBS "
+CXXFLAGS="$DEBUGG $CXXFLAGS $WX_CXXFLAGS $libxml_CFLAGS $libxmldiff_CFLAGS "
+CPPFLAGS="$DEBUGG $CPPFLAGS $WX_CPPFLAGS $libxml_CFLAGS $libxmldiff_CFLAGS "
+CFLAGS="$DEBUGG $CFLAGS $WX_CFLAGS $libxml_CFLAGS $libxmldiff_CFLAGS "
 
 AC_CONFIG_FILES([ \
     Makefile \
@@ -72,3 +79,5 @@ AC_CONFIG_FILES([ \
     resources/treeicons/Makefile \
     ])
 AC_OUTPUT
+
+WX_STANDARD_OPTIONS_SUMMARY_MSG
