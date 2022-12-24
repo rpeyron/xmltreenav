@@ -44,6 +44,7 @@ jobs:
         vcpkgArguments: '${{ matrix.vcpkgPackages }}'      
         runVcpkgInstall: true
         vcpkgGitCommitId: 0bf3923f9fab4001c00f0f429682a0853b5749e0
+        vcpkgDirectory: '${{ runner.workspace }}/b/vcpkg'
     
     - name: Integrate vcpkg to msbuild
       run: vcpkg.exe integrate install
