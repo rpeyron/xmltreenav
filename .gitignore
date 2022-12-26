@@ -45,3 +45,9 @@ lib/libxmldiff
 /build/vc*/Release
 /build/vc*/vcpkg_installed
 /out
+
+/bin/lang/**/*.mo
+/bin/lang/**/*.po
+/bin/lang/**/*.pot
+
+/distrib

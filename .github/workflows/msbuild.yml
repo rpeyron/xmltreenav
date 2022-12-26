@@ -3,7 +3,7 @@ name: MSBuild
 on: [push]
 
 env:
-  SOLUTION_FILE_PATH: xmlTreeNav/build/vc2019
+  SOLUTION_FILE_PATH: xmlTreeNav/build/vc2022
   WIN_BUILD_TOOLS: xmlTreeNav/build/win32
 
 jobs:
@@ -14,13 +14,9 @@ jobs:
         include:
         - platform: Win32
           configuration: Release
-          triplet: x86-windows-static
-          vcpkgPackages: 'wxwidgets libxml2 libxslt'
           suffix: x86
         - platform: x64
           configuration: Release
-          triplet: x64-windows-static
-          vcpkgPackages: 'wxwidgets libxml2 libxslt'
           suffix: x64
     steps:
     - name: Checkout current repository
@@ -35,16 +31,8 @@ jobs:
         path: 'libxmldiff'
 
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
-      
-    - name: Install vcpkg packages
-      uses: lukka/run-vcpkg@v10
-      with:
-        vcpkgTriplet: '${{ matrix.triplet }}'
-        vcpkgArguments: '${{ matrix.vcpkgPackages }}'      
-        runVcpkgInstall: true
-        # vcpkgGitCommitId: 0bf3923f9fab4001c00f0f429682a0853b5749e0
-    
+      uses: microsoft/setup-msbuild@v1.1
+  
     - name: Integrate vcpkg to msbuild
       run: vcpkg.exe integrate install
       working-directory: ${{env.GITHUB_WORKSPACE}}/vcpkg

@@ -3,7 +3,7 @@
 
 #define MyAppName "xmlTreeNav"
 #define MyAppBaseVersion="0.3.4"
-#define MyAppFullVersion=MyAppBaseVersion + "-2"
+#define MyAppFullVersion=MyAppBaseVersion + "-3"
 #define MyAppPublisher="Remi Peyronnet"
 #define MyAppCopyright="Copyright (c) Remi Peyronnet"
 #define MyAppURL="http://www.lprp.fr/soft/xml/xmltreenav/xmltreenav_en.php3"
@@ -44,8 +44,8 @@ Source: ..\..\bin\lang\it\xmlTreeNav.mo; DestDir: {app}/lang/it; Flags: ignoreve
 Source: ..\..\bin\lang\xmlTreeNav.pot; DestDir: {app}/lang; Flags: ignoreversion
 Source: ..\..\bin\config.xml; DestDir: {app}; Flags: ignoreversion
 Source: ..\..\bin\xmltreenav.htb; DestDir: {app}; Flags: ignoreversion
-Source: ..\..\bin\filter-added-removed-or-equal.xsl; DestDir: {app}; Flags: ignoreversion
-; Source: ..\..\..\libxmldiff\bin\xmldiff.exe; DestDir: {app}; Flags: ignoreversion
+Source: ..\..\bin\xslt\*; DestDir: {app}; Flags: ignoreversion recursesubdirs
+;Source: ..\..\..\libxmldiff\bin\xmldiff.exe; DestDir: {app}; Flags: ignoreversion skipifsourcedoesntexist
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

@@ -7,6 +7,6 @@ REM zip -9 -j ..\distrib\xmltreenav_bin.zip ..\..\libxmldiff\bin\libxmldiff.dll 
 REM zip -9 ..\distrib\xmltreenav_bin_light.zip xmlTreeNav.exe lang\xmlTreeNav.pot lang\fr\xmlTreeNav.po lang\fr\xmlTreeNav.mo lang\it\xmlTreeNav.mo lang\it\xmlTreeNav.po config.xml filter-added-removed-or-equal.xsl xmltreenav.htb
 
 7z a -tzip -r  xmltreenav.htb ..\doc\use\*.*
-7z a -tzip -r  ..\distrib\xmltreenav_bin.zip xmlTreeNav.exe lang\xmlTreeNav.pot lang\fr\xmlTreeNav.po lang\fr\xmlTreeNav.mo lang\it\xmlTreeNav.mo lang\it\xmlTreeNav.po config.xml filter-added-removed-or-equal.xsl xmltreenav.htb
+7z a -tzip -r  ..\distrib\xmltreenav_bin.zip xmlTreeNav.exe lang\xmlTreeNav.pot lang\fr\xmlTreeNav.po lang\fr\xmlTreeNav.mo lang\it\xmlTreeNav.mo lang\it\xmlTreeNav.po config.xml XSLT xmltreenav.htb
 7z a -tzip -r  ..\distrib\xmltreenav_bin.zip ..\..\libxmldiff\bin\xmldiff.exe 
-7z a -tzip -r  ..\distrib\xmltreenav_bin_light.zip xmlTreeNav.exe lang\xmlTreeNav.pot lang\fr\xmlTreeNav.po lang\fr\xmlTreeNav.mo lang\it\xmlTreeNav.mo lang\it\xmlTreeNav.po config.xml filter-added-removed-or-equal.xsl xmltreenav.htb
+7z a -tzip -r  ..\distrib\xmltreenav_bin_light.zip xmlTreeNav.exe lang\xmlTreeNav.pot lang\fr\xmlTreeNav.po lang\fr\xmlTreeNav.mo lang\it\xmlTreeNav.mo lang\it\xmlTreeNav.po config.xml xslt xmltreenav.htb
