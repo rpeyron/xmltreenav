@@ -45,7 +45,7 @@ Source: ..\..\bin\lang\xmlTreeNav.pot; DestDir: {app}/lang; Flags: ignoreversion
 Source: ..\..\bin\config.xml; DestDir: {app}; Flags: ignoreversion
 Source: ..\..\bin\xmltreenav.htb; DestDir: {app}; Flags: ignoreversion
 Source: ..\..\bin\xslt\*; DestDir: {app}; Flags: ignoreversion recursesubdirs
-Source: ..\..\..\libxmldiff\bin\xmldiff.exe; DestDir: {app}; Flags: ignoreversion
+;Source: ..\..\..\libxmldiff\bin\xmldiff.exe; DestDir: {app}; Flags: ignoreversion skipifsourcedoesntexist
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
