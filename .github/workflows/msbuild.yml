@@ -37,14 +37,14 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
       
-#    - name: Install vcpkg packages
-#      uses: lukka/run-vcpkg@v10
-#      with:
-#        vcpkgTriplet: '${{ matrix.triplet }}'
-#        vcpkgArguments: '${{ matrix.vcpkgPackages }}'      
-#        runVcpkgInstall: true
-#        vcpkgGitCommitId: 0bf3923f9fab4001c00f0f429682a0853b5749e0
-#        vcpkgDirectory: '${{ runner.workspace }}/b/vcpkg'
+    - name: Install vcpkg packages
+      uses: lukka/run-vcpkg@v10
+      with:
+        vcpkgTriplet: '${{ matrix.triplet }}'
+        vcpkgArguments: '${{ matrix.vcpkgPackages }}'      
+        runVcpkgInstall: true
+        vcpkgGitCommitId: 6adca01a3fadca0cc0b80f03ec57c7c3a0be5c02
+        vcpkgDirectory: '${{ runner.workspace }}/b/vcpkg'
     
     - name: Integrate vcpkg to msbuild
       run: vcpkg.exe integrate install
