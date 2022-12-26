@@ -3,7 +3,7 @@ name: MSBuild
 on: [push]
 
 env:
-  SOLUTION_FILE_PATH: xmlTreeNav/build/vc2019
+  SOLUTION_FILE_PATH: xmlTreeNav/build/vc2022
   WIN_BUILD_TOOLS: xmlTreeNav/build/win32
 
 jobs:
