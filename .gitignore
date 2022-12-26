@@ -30,7 +30,18 @@ po/*.sed
 po/*.sin
 
 *~
+*.lib
+*.pdb
+*.exp
 
 bin/test*.*
 
 lib/libxmldiff
+
+.vs
+/build/vc*/x64
+/build/vc*/win32
+/build/vc*/Debug
+/build/vc*/Release
+/build/vc*/vcpkg_installed
+/out

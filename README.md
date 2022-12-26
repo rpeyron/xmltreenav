@@ -59,6 +59,11 @@ sudo apt-get install libc6 libxml2,libxslt1.1 libxmldiff libwxgtk3.0-0v5
 Windows Build is done with Visual Studio Community Edition. 
 Please use the latest version in build/ (older vc version are not maintained)
 
+vcpkg is now used for automatic dependencies installation through manifest. 
+
+At the time I am writing this, I have not been able to use it with vcpkg installed with scoop, so you should stick to the recommanded way to install vcpkg for msbuild (ie with git clone outside project folder)
+
+
 ### With vscode and msys2
 
 To build with msys2/mingw64:

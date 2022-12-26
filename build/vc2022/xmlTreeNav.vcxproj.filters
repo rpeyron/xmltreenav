@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Internalization">
+      <UniqueIdentifier>{a2f2007f-ecb4-4e9c-b227-ef059f7c98a9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\lib\wxmisc\wxUniCompat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnDialogDiffCurrent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnDialogDiffDual.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnPrecomp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnXmlTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\wxmisc\ConfigDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\lib\wxactivex\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\wxmisc\wxUniCompat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xtnApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xtnDialogDiffCurrent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xtnDialogDiffDual.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xtnFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xtnPrecomp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xtnXmlTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\resources\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\wxmisc\ConfigDialog.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\resources\resource.inc">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\..\TODO" />
+    <None Include="..\..\ChangeLog" />
+    <None Include="..\..\po\fr.po">
+      <Filter>Internalization</Filter>
+    </None>
+    <None Include="..\..\po\it.po">
+      <Filter>Internalization</Filter>
+    </None>
+    <None Include="..\..\po\po_build.bat">
+      <Filter>Internalization</Filter>
+    </None>
+    <None Include="..\..\po\po_update.bat">
+      <Filter>Internalization</Filter>
+    </None>
+    <None Include="..\..\po\xmlTreeNav.pot">
+      <Filter>Internalization</Filter>
+    </None>
+    <None Include="..\..\configure.ac" />
+    <None Include="..\win32\XmlTreeNav.iss" />
+    <None Include="..\..\resources\wx\msw\hand.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\bullseye.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\pencil.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\noentry.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\size.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\roller.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\watch1.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\pbrush.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\pntleft.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\pntright.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\query.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\blank.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\rightarr.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\lib\wxactivex\wxIE.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="..\..\resources\resources.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\bin\config.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\po\extra-strings.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\resources\xmltreenav3.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\lib\wxactivex\wxIE.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\resources\wx\msw\folder1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\resources\wx\msw\folder2.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\resources\wx\msw\file1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\resources\wx\msw\computer.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\resources\wx\msw\drive.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\resources\wx\msw\cdrom.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\resources\wx\msw\floppy.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\resources\wx\msw\removble.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\resources\wx\msw\disable.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\resources\wx\msw\csquery.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\resources\extras\wxbitmap.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
