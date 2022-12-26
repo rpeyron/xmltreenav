@@ -14,13 +14,9 @@ jobs:
         include:
         - platform: Win32
           configuration: Release
-          triplet: x86-windows-static
-          vcpkgPackages: 'wxwidgets libxml2 libxslt'
           suffix: x86
         - platform: x64
           configuration: Release
-          triplet: x64-windows-static
-          vcpkgPackages: 'wxwidgets libxml2 libxslt'
           suffix: x64
     steps:
     - name: Checkout current repository
@@ -36,12 +32,7 @@ jobs:
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
-      
-    - name: Install vcpkg packages
-      uses: lukka/run-vcpkg@v10
-      with:
-        vcpkgGitCommitId: 6adca01a3fadca0cc0b80f03ec57c7c3a0be5c02
-    
+  
     - name: Integrate vcpkg to msbuild
       run: vcpkg.exe integrate install
       working-directory: ${{env.GITHUB_WORKSPACE}}/vcpkg
