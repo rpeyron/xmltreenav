@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+  "name": "xmltreenav",
+  "version": "0.4.5-1",
+  "dependencies": [
+    "wxwidgets",
+    "libxml2",
+    "libxslt"
+  ],
+  "builtin-baseline": "6adca01a3fadca0cc0b80f03ec57c7c3a0be5c02"
+}

@@ -6,8 +6,12 @@ autom4te.cache
 ABOUT-NLS
 debian
 
+*.exe
+*.o
+*.a
 *.gmo
 *.po.orig
+*.htb
 
 Makefile
 Makefile.in
@@ -26,7 +30,18 @@ po/*.sed
 po/*.sin
 
 *~
+*.lib
+*.pdb
+*.exp
 
 bin/test*.*
 
 lib/libxmldiff
+
+.vs
+/build/vc*/x64
+/build/vc*/win32
+/build/vc*/Debug
+/build/vc*/Release
+/build/vc*/vcpkg_installed
+/out
