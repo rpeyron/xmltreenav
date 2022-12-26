@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{dfc35fb8-4f7b-4e68-a303-12bac511d3ba}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{e32bdecd-312e-4c0c-a684-d59d104df726}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{681d5f0e-3208-4b4b-8deb-817f134fb53f}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="wxMisc">
+      <UniqueIdentifier>{04393aed-2c4f-4735-8fdb-55229809f7b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wxIEHTML">
+      <UniqueIdentifier>{90021b11-df23-4849-8424-aaeb5b85442a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\xtnApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnDialogDiffCurrent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnDialogDiffDual.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnPrecomp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnXmlTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\wxmisc\ConfigDialog.cpp">
+      <Filter>wxMisc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\wxmisc\wxUniCompat.cpp">
+      <Filter>wxMisc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\iehtmlwin\iehtmlwin.cpp">
+      <Filter>wxIEHTML</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_wx_intellisense.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xtnApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xtnDialogDiffCurrent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xtnDialogDiffDual.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xtnFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xtnPrecomp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\xtnXmlTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\wxmisc\ConfigDialog.h">
+      <Filter>wxMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\wxmisc\wxUniCompat.h">
+      <Filter>wxMisc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lib\iehtmlwin\iehtmlwin.h">
+      <Filter>wxIEHTML</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\resources\arrow_left.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\arrow_left.ICO">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\arrow_right.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\blank.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\blank.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\bullseye.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\bullseye.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\cdrom.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\cdrom.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\colours.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\computer.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\computer.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\copy.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\crop.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\csquery.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\csquery.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\cut.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\disable.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\disable.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\drive.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\drive.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\explorer.BMP">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\explorer.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\file1.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\file1.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\FilesPhoto.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\floppy.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\floppy.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\folder1.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\folder1.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\folder2.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\folder2.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\fullscrn.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\hand.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\hand.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\help.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\landorpo.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\landscap.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\magnif1.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\magnif1.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\new.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\noentry.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\noentry.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\open.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\page.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\paste.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\pbrush.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\pbrush.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\pencil.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\pencil.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\pntleft.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\pntleft.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\pntright.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\pntright.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\portrait.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\preview.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\print.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\query.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\query.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\removble.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\removble.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\rightarr.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\rightarr.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\roller.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\roller.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\rotate_left.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\rotate_right.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\save.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\size.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\size.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\undo.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\src\wx\msw\watch1.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wx\msw\watch1.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\wxbitmap.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resources\xmltreenav.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\resources\resources.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

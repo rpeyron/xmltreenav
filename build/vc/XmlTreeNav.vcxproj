@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{870A9E6B-10D0-45FD-AF12-B8B53F141465}</ProjectGuid>
+    <RootNamespace>XmlTreeNav</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\Debug\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\Release\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\bin/XmlTreeNav.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\lib;..\..\..\libxmldiff\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>wxUSE_UNICODE=1;__WXDEBUG__;__WXMSW__;WIN32;NDEBUG;_WINDOWS;WINVER=0x0400;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeaderOutputFile>.\Debug/XmlTreeNav.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x040c</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>wxbase28u.lib;wxbase28u_net.lib;wxbase28u_odbc.lib;wxbase28u_xml.lib;wxmsw28u_richtext.lib;wxmsw28u_xrc.lib;wxmsw28u_adv.lib;wxmsw28u_aui.lib;wxmsw28u_core.lib;wxmsw28u_dbgrid.lib;wxmsw28u_gl.lib;wxmsw28u_html.lib;wxmsw28u_media.lib;wxmsw28u_qa.lib;wxzlib.lib;wxexpat.lib;wxjpeg.lib;wxpng.lib;wxregexu.lib;wxtiff.lib;libxmldiff.lib;libxml2.lib;iconv.lib;libxslt.lib;libexslt.lib;odbc32.lib;odbccp32.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\bin/XmlTreeNav.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>Debug;..\..\..\libxmldiff\build\vc\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcd.lib;libcid.lib;msvcrt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\..\..\bin/XmlTreeNav.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\..\..\bin/XmlTreeNav.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\..\..\bin/XmlTreeNav.tlb</TypeLibraryName>
+      <HeaderFileName>
+      </HeaderFileName>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\lib;..\..\..\libxmldiff\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>wxUSE_UNICODE=1;__WXMSW__;WIN32;NDEBUG;_WINDOWS;WINVER=0x0400;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\Release/XmlTreeNav.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x040c</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>wxbase28u.lib;wxbase28u_net.lib;wxbase28u_odbc.lib;wxbase28u_xml.lib;wxmsw28u_richtext.lib;wxmsw28u_xrc.lib;wxmsw28u_adv.lib;wxmsw28u_aui.lib;wxmsw28u_core.lib;wxmsw28u_dbgrid.lib;wxmsw28u_gl.lib;wxmsw28u_html.lib;wxmsw28u_media.lib;wxmsw28u_qa.lib;wxzlib.lib;wxexpat.lib;wxjpeg.lib;wxpng.lib;wxregexu.lib;wxtiff.lib;libxmldiff.lib;libxml2.lib;iconv.lib;libxslt.lib;libexslt.lib;odbc32.lib;odbccp32.lib;comctl32.lib;rpcrt4.lib;wsock32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>.\..\..\bin/XmlTreeNav.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <AdditionalLibraryDirectories>Release;..\..\..\libxmldiff\build\vc\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libc.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ProgramDatabaseFile>.\..\..\bin/XmlTreeNav.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\..\..\bin/XmlTreeNav.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\xtnApp.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnDialogDiffCurrent.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnDialogDiffDual.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnFrame.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnPrecomp.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\xtnXmlTree.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\wxmisc\ConfigDialog.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\wxmisc\wxUniCompat.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\iehtmlwin\iehtmlwin.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_wx_intellisense.h" />
+    <ClInclude Include="..\..\src\xtnApp.h" />
+    <ClInclude Include="..\..\src\xtnDialogDiffCurrent.h" />
+    <ClInclude Include="..\..\src\xtnDialogDiffDual.h" />
+    <ClInclude Include="..\..\src\xtnFrame.h" />
+    <ClInclude Include="..\..\src\xtnPrecomp.h" />
+    <ClInclude Include="..\..\src\xtnXmlTree.h" />
+    <ClInclude Include="..\..\lib\wxmisc\ConfigDialog.h" />
+    <ClInclude Include="..\..\lib\wxmisc\wxUniCompat.h" />
+    <ClInclude Include="..\..\lib\iehtmlwin\iehtmlwin.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\resources\arrow_left.bmp" />
+    <None Include="..\..\resources\arrow_left.ICO" />
+    <None Include="..\..\resources\arrow_right.bmp" />
+    <None Include="..\..\resources\wx\msw\blank.cur" />
+    <None Include="..\..\src\wx\msw\blank.cur" />
+    <None Include="..\..\src\wx\msw\bullseye.cur" />
+    <None Include="..\..\resources\wx\msw\bullseye.cur" />
+    <None Include="..\..\src\wx\msw\cdrom.ico" />
+    <None Include="..\..\resources\wx\msw\cdrom.ico" />
+    <None Include="..\..\resources\colours.bmp" />
+    <None Include="..\..\src\wx\msw\computer.ico" />
+    <None Include="..\..\resources\wx\msw\computer.ico" />
+    <None Include="..\..\resources\copy.bmp" />
+    <None Include="..\..\resources\crop.bmp" />
+    <None Include="..\..\resources\wx\msw\csquery.bmp" />
+    <None Include="..\..\src\wx\msw\csquery.bmp" />
+    <None Include="..\..\resources\cut.bmp" />
+    <None Include="..\..\src\wx\msw\disable.bmp" />
+    <None Include="..\..\resources\wx\msw\disable.bmp" />
+    <None Include="..\..\resources\wx\msw\drive.ico" />
+    <None Include="..\..\src\wx\msw\drive.ico" />
+    <None Include="..\..\resources\explorer.BMP" />
+    <None Include="..\..\resources\explorer.ico" />
+    <None Include="..\..\src\wx\msw\file1.ico" />
+    <None Include="..\..\resources\wx\msw\file1.ico" />
+    <None Include="..\..\resources\FilesPhoto.ico" />
+    <None Include="..\..\src\wx\msw\floppy.ico" />
+    <None Include="..\..\resources\wx\msw\floppy.ico" />
+    <None Include="..\..\resources\wx\msw\folder1.ico" />
+    <None Include="..\..\src\wx\msw\folder1.ico" />
+    <None Include="..\..\src\wx\msw\folder2.ico" />
+    <None Include="..\..\resources\wx\msw\folder2.ico" />
+    <None Include="..\..\resources\fullscrn.bmp" />
+    <None Include="..\..\src\wx\msw\hand.cur" />
+    <None Include="..\..\resources\wx\msw\hand.cur" />
+    <None Include="..\..\resources\help.bmp" />
+    <None Include="..\..\resources\landorpo.bmp" />
+    <None Include="..\..\resources\landscap.bmp" />
+    <None Include="..\..\resources\wx\msw\magnif1.cur" />
+    <None Include="..\..\src\wx\msw\magnif1.cur" />
+    <None Include="..\..\resources\new.bmp" />
+    <None Include="..\..\src\wx\msw\noentry.cur" />
+    <None Include="..\..\resources\wx\msw\noentry.cur" />
+    <None Include="..\..\resources\open.bmp" />
+    <None Include="..\..\resources\page.bmp" />
+    <None Include="..\..\resources\paste.bmp" />
+    <None Include="..\..\src\wx\msw\pbrush.cur" />
+    <None Include="..\..\resources\wx\msw\pbrush.cur" />
+    <None Include="..\..\resources\wx\msw\pencil.cur" />
+    <None Include="..\..\src\wx\msw\pencil.cur" />
+    <None Include="..\..\src\wx\msw\pntleft.cur" />
+    <None Include="..\..\resources\wx\msw\pntleft.cur" />
+    <None Include="..\..\src\wx\msw\pntright.cur" />
+    <None Include="..\..\resources\wx\msw\pntright.cur" />
+    <None Include="..\..\resources\portrait.bmp" />
+    <None Include="..\..\resources\preview.bmp" />
+    <None Include="..\..\resources\print.bmp" />
+    <None Include="..\..\resources\wx\msw\query.cur" />
+    <None Include="..\..\src\wx\msw\query.cur" />
+    <None Include="..\..\src\wx\msw\removble.ico" />
+    <None Include="..\..\resources\wx\msw\removble.ico" />
+    <None Include="..\..\src\wx\msw\rightarr.cur" />
+    <None Include="..\..\resources\wx\msw\rightarr.cur" />
+    <None Include="..\..\src\wx\msw\roller.cur" />
+    <None Include="..\..\resources\wx\msw\roller.cur" />
+    <None Include="..\..\resources\rotate_left.bmp" />
+    <None Include="..\..\resources\rotate_right.bmp" />
+    <None Include="..\..\resources\save.bmp" />
+    <None Include="..\..\src\wx\msw\size.cur" />
+    <None Include="..\..\resources\wx\msw\size.cur" />
+    <None Include="..\..\resources\undo.bmp" />
+    <None Include="..\..\src\wx\msw\watch1.cur" />
+    <None Include="..\..\resources\wx\msw\watch1.cur" />
+    <None Include="..\..\resources\wxbitmap.bmp" />
+    <None Include="..\..\resources\xmltreenav.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\resources\resources.rc">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">\Actu\XML\xmltreenav\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">\Actu\XML\xmltreenav\resources;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -4,7 +4,8 @@ m4
 config.*
 autom4te.cache
 ABOUT-NLS
-debian
+
+/debian
 
 *.exe
 *.o
@@ -13,12 +14,16 @@ debian
 *.po.orig
 *.htb
 
+*.old
+
 Makefile
 Makefile.in
 Makevars.template
 POTFILES
 
 compile
+
+/bin/tests
 
 po/*.header*
 po/Rules-quot
@@ -34,7 +39,6 @@ po/*.sin
 *.pdb
 *.exp
 
-bin/test*.*
 
 lib/libxmldiff
 
@@ -45,9 +49,15 @@ lib/libxmldiff
 /build/vc*/Release
 /build/vc*/vcpkg_installed
 /out
+/build/**/Upgrade*
+/build/**/*.suo*
+/build/**/*.user
+
+
 
 /bin/lang/**/*.mo
 /bin/lang/**/*.po
 /bin/lang/**/*.pot
+/bin/test*.*
 
 /distrib
