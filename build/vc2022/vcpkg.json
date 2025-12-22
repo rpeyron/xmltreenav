@@ -7,5 +7,5 @@
     "libxml2",
     "libxslt"
   ],
-  "builtin-baseline": "4b6bce313ef917b9635e9287d06225743e242888"
+  "$remove$builtin-baseline": "4b6bce313ef917b9635e9287d06225743e242888"
 }
