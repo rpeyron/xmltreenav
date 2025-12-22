@@ -8,7 +8,7 @@ env:
 
 jobs:
   build:
-    runs-on: windows-2022
+    runs-on: windows-2025
     strategy:
       matrix:
         include:
@@ -20,18 +20,18 @@ jobs:
           suffix: x64
     steps:
     - name: Checkout current repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v6
       with:
         path: 'xmlTreeNav'
       
     - name: Checkout dependancies repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v6
       with: 
         repository: 'rpeyron/libxmldiff'
         path: 'libxmldiff'
 
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.1
+      uses: microsoft/setup-msbuild@v2
   
     - name: Integrate vcpkg to msbuild
       run: vcpkg.exe integrate install
@@ -67,7 +67,7 @@ jobs:
         ren xmltreenav_setup.exe xmltreenav_setup-${{matrix.suffix}}.exe
       working-directory: ${{env.WIN_BUILD_TOOLS}}/../../distrib
       
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v6
       with:
         name: xmltreenav-distrib-${{matrix.suffix}}
         path: xmlTreeNav/distrib
